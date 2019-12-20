@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience</title>
+  <meta name="description" content="TBD" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="TBD" />
+  <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience" />
+  
+  <meta name="twitter:description" content="TBD" />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Students of NS/PY 357 Bates College" />
+
+
+<meta name="date" content="2019-12-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Ch2.html"/>
+<link rel="next" href="Ch4.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-book-is-free-as-in-pizza"><i class="fa fa-check"></i><b>1.1</b> This book is free (as in pizza)</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i><b>1.5</b> Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> What is Computational Neuroscience?</a><ul>
+<li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>2.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#levels-of-organization"><i class="fa fa-check"></i><b>2.4</b> Levels of organization</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>2.5</b> Applications of computational neuroscience</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>2.6</b> The future of computational neuroscience</a></li>
+<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.7</b> Summary</a></li>
+<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#exercises"><i class="fa fa-check"></i><b>2.8</b> Exercises:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> Hodgkin and Huxley Model</a><ul>
+<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>3.3</b> What is an action potential?</a></li>
+<li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>3.4</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>3.5</b> The Hodgkin and Huxley model</a></li>
+<li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#spike-trains"><i class="fa fa-check"></i><b>4.3</b> Spike Trains</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#spike-statistics"><i class="fa fa-check"></i><b>4.4</b> Spike Statistics</a></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#spike-triggered-average"><i class="fa fa-check"></i><b>4.5</b> Spike-triggered Average</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#reverse-correlation"><i class="fa fa-check"></i><b>4.6</b> Reverse Correlation</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Neural Networks</a><ul>
+<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-list"><i class="fa fa-check"></i><b>5.1</b> Vocabulary List:</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introductionbackground"><i class="fa fa-check"></i><b>5.2</b> Introduction/Background</a></li>
+<li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#different-types-of-learning"><i class="fa fa-check"></i><b>5.3</b> Different Types of Learning</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>5.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#perceptron"><i class="fa fa-check"></i><b>5.5</b> Perceptron</a></li>
+<li class="chapter" data-level="5.6" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Decoding</a><ul>
+<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-3"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-3"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#imaging-techniques"><i class="fa fa-check"></i><b>6.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="Ch5.html"><a href="Ch5.html#eeg"><i class="fa fa-check"></i><b>6.3.1</b> EEG</a></li>
+<li class="chapter" data-level="6.3.2" data-path="Ch5.html"><a href="Ch5.html#meg"><i class="fa fa-check"></i><b>6.3.2</b> MEG</a></li>
+<li class="chapter" data-level="6.3.3" data-path="Ch5.html"><a href="Ch5.html#fmri"><i class="fa fa-check"></i><b>6.3.3</b> fMRI</a></li>
+<li class="chapter" data-level="6.3.4" data-path="Ch5.html"><a href="Ch5.html#ecog"><i class="fa fa-check"></i><b>6.3.4</b> ECOG</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#introduction-to-decoding"><i class="fa fa-check"></i><b>6.4</b> Introduction to Decoding</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#what-is-a-classifier"><i class="fa fa-check"></i><b>6.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="Ch5.html"><a href="Ch5.html#correlation-classifiers"><i class="fa fa-check"></i><b>6.5.1</b> Correlation classifiers</a></li>
+<li class="chapter" data-level="6.5.2" data-path="Ch5.html"><a href="Ch5.html#distance-based-classifiers"><i class="fa fa-check"></i><b>6.5.2</b> Distance-based classifiers</a></li>
+<li class="chapter" data-level="6.5.3" data-path="Ch5.html"><a href="Ch5.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>6.5.3</b> Boundary-based classifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#cross-validation"><i class="fa fa-check"></i><b>6.6</b> Cross validation</a></li>
+<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#conclusion"><i class="fa fa-check"></i><b>6.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> References</a><ul>
+<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#chapter-1"><i class="fa fa-check"></i><b>7.1</b> Chapter 1</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#chapter-2"><i class="fa fa-check"></i><b>7.2</b> Chapter 2</a></li>
+<li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#chapter-3"><i class="fa fa-check"></i><b>7.3</b> Chapter 3</a></li>
+<li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#chapter-4"><i class="fa fa-check"></i><b>7.4</b> Chapter 4</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#chapter-5"><i class="fa fa-check"></i><b>7.5</b> Chapter 5</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Glossary</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computational Neuroscience</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Ch3" class="section level1">
+<h1><span class="header-section-number">4</span> Reverse Correlation and Receptive Field Mapping</h1>
+<div id="vocabulary-2" class="section level2">
+<h2><span class="header-section-number">4.1</span> Vocabulary</h2>
+<ul>
+<li>Poisson process<br />
+</li>
+<li>Spike train<br />
+</li>
+<li>Peri-stimulus time histogram<br />
+</li>
+<li>Spike count rate<br />
+</li>
+<li>Interspike interval<br />
+</li>
+<li>Fano factor<br />
+</li>
+<li>Coefficient of variation<br />
+</li>
+<li>Spike-triggered average<br />
+</li>
+<li>White noise</li>
+<li>Reverse correlation</li>
+</ul>
+</div>
+<div id="introduction-2" class="section level2">
+<h2><span class="header-section-number">4.2</span> Introduction</h2>
+<p>Throughout our everyday lives, we receive an enormous amount of sensory inputs from our surrounding environment: the color of the clouds before sunset, the melody played by an old record player, the smell of apple pie, or the taste of your favorite dish. Our brain, with its incredible computational capacity, successfully encodes all these sensory inputs from different modalities to something we can perceive and understand, in the language of neurons. Our discussion from previous chapters noted that the language of neurons–or the neural code–consists of action potentials that are all-or-none events, and we learned how neurons fire an action potential. In this chapter, we are going to talk about why neuron fires and how to characterize and analyze these action potentials using spike trains. Based on this, we are going to discuss ways to study the relationship between outside stimuli and neural responses.</p>
+</div>
+<div id="spike-trains" class="section level2">
+<h2><span class="header-section-number">4.3</span> Spike Trains</h2>
+<div style="float:right;width:561px">
+<div class="figure"><span id="fig:spikeTrain-fig"></span>
+<img src="images/spikeTrain.png" alt="Example of a spike train. Graph A shows the recorded stimulus and graph B shows the recorded actions potentials during the stimulus."  />
+<p class="caption">
+Figure 4.1: Example of a spike train. Graph A shows the recorded stimulus and graph B shows the recorded actions potentials during the stimulus.
+</p>
+</div>
+</div>
+<p>Assume that we measured a neuron firing in response to a sensory stimulus, and we recorded its voltage changes and displayed the signal in an oscilloscope. How should we analyze the information encoded in these action potentials? As we mentioned before, the action potential is an all-or-none event. This binary characteristic gives us a way to simplify the complicated voltage response curve: for every time point in our measurement, if there is a spike firing, denote its value as 1; if not, denote it as 0. After the recording, we get a sequence of 0s and 1s in a time-dependent order. We commonly refer to this sequence as a spike train, shown in Figure 1, part B.</p>
+<p>Since all action potentials fire to the same voltage level, there is no difference in their intensities. Thus, in order to have action potentials that convey meaningful information, neurons can only vary on timing of firing, including varying firing rates or varying the time intervals between each firing. Although this seems super-simplified, our spike train contains mostly the information we need to analyze if we want to know what causes the original neuron to fire. In order to systematically analyze these data in spike trains, we first need to define some statistics.</p>
+</div>
+<div id="spike-statistics" class="section level2">
+<h2><span class="header-section-number">4.4</span> Spike Statistics</h2>
+<p>Now we have a sequence of 0s and 1s which represent neural firing, the next step is to calculate the <strong>spike count rate</strong>, which is the number of spikes divided over a given time interval. This parameter directly shows the firing rate, but it cannot reflect variation. Assume that we have two neurons that have the same spike count rate. One is a regular-firing neuron and the spikes are evenly distributed along the time axis, while the other is a bursting neuron that fires sets of spikes with longer intervals between individual sets. How can we distinguish between these two spike trains? Here, we want to introduce another parameter called the <strong>interspike interval (ISI)</strong> or in other words, the time interval between every pair of spikes. In Figure 2, there is a histogram that shows the distribution of ISIs from an artificial spike train. The ISI histogram can be characterized by <strong>coefficient of variation (CV)</strong>, which is the standard deviation of ISIs divided by the mean of it. Apart from that, we can also use the <strong>Fano factor</strong> to measure the spike variability. It is calculated by the variance of the number of spikes divided by the mean number of spikes in a given time interval. Compare to CV, Fano factor is less dependent on the intervals between spikes but more on the number of spikes in a given time bin. If the underlying firing rate varies or the spike firing in irregular time points, both CV and Fano factor increase. Thus, CV and Fano factors are useful secondary statistics that helps to measure variability in spike trains.</p>
+<div class="figure"><span id="fig:poissonISI-fig"></span>
+<img src="images/poissonISI.png" alt="Distribution of ISIs from a randomly firing artificial neuron."  />
+<p class="caption">
+Figure 4.2: Distribution of ISIs from a randomly firing artificial neuron.
+</p>
+</div>
+<p>We can do a lot with a single spike train. However, in vivo, neural responses are highly variable and the response of a neuron to the same stimulus may even vary from trial to trial. Effectively, to account for the cross-trial variability, we need to analyze results from multiple trials to get a better estimate of the average neural response. A <strong>peristimulus time histogram (PSTH)</strong> can be generated by averaging across trials. The most direct method is to put trials in small time windows that correspond to each time point and calculate the spike count rate in window for each time point. By implementing this process, each time point is assigned an average rate, and by plotting we get a continuous frequency curve. One example is shown in the Exercise 1, in the “spike density” section, in which spikes are averaged in time windows, and then averaged across trials. In this case, all trials are run on the same neuron, which reduces the cross-trial variability and increases the time resolution. The response, however, may be affected by adaptation. Furthermore, we can also assess the firing pattern of a population of neurons by calculating the average spike counting rate for all the time points, and then averaging across trials. At this point, different trials are run on different neurons, and the generated response curve accounts for the response pattern of a population of neurons in the area that was tested. This method, while it generates better time resolution, omits the possible variability across neurons in the population.
+Choosing different time windows influences the characteristics of the frequency curve, as shown in Figure 3. In general, PSTH is essential because it transforms a discontinuous spike train into continuous response curves, which allows us to calculate the correlation between stimulus and response. This will be further elaborated upon in the later sections.</p>
+<p><strong>Exercise 1:</strong> What are the pros and cons for each type of histogram?</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:left;">
+Algorithm
+</th>
+<th style="text-align:left;">
+Input
+</th>
+<th style="text-align:left;">
+Output
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Spike Count Rate
+</td>
+<td style="text-align:left;">
+Calculate the number of spikes per time interval
+</td>
+<td style="text-align:left;">
+<img src="images/spikeTable0.png" />
+</td>
+<td style="text-align:left;">
+<img src="images/spikeTable1.png" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Spike Density
+</td>
+<td style="text-align:left;">
+Use a single neuron to compute different trials
+</td>
+<td style="text-align:left;">
+<img src="images/spikeTable2.png" />
+</td>
+<td style="text-align:left;">
+<img src="images/spikeTable3.png" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Population Density
+</td>
+<td style="text-align:left;">
+Use different neurons during a single trial
+</td>
+<td style="text-align:left;">
+<img src="images/spikeTable4.png" />
+</td>
+<td style="text-align:left;">
+<img src="images/spikeTable5.png" />
+</td>
+</tr>
+</tbody>
+</table>
+<img src="images/firingRate1.png" />
+<div class="figure"><span id="fig:firingRate-fig"></span>
+<img src="images/firingRate2.png" alt="PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output."  />
+<p class="caption">
+Figure 4.3: PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output.
+</p>
+</div>
+<p>Sometimes, instead of collecting data from real neurons, we need to simulate spike trains from given statistics. The artificial spike trains can be compared with real data, or used to reconstruct possible firing patterns with a given stimulus. Here, we will discuss the homogeneous Poisson process, or the simplest way of generating artificial spike train. The homogeneous <strong>Poisson process</strong> entails that for every small interval on the timeline, the probability of an event happening (in our case, action potential) will be proportional to the length of the time interval, while the proportionality constant <em>r</em> is fixed. To understand this abstract definition, think about a timeline whereby at each time point, we throw a coin and record the head as 1. Try to visualize that timeline. We agree that all 1s will be randomly spread along the timeline, and the interval between when we get a pair of heads, varies along the timeline. This will look very similar to an artificial spike train generated by the Poisson process, whose distribution can be expressed by the following formula: <span class="math display">\[p(q\ spikes\ in\ \Delta{t}) = e^{-\lambda}\frac{\lambda^{n}}{n!} \]</span></p>
+<img src="images/PoissonSpike.png" />
+<div class="figure"><span id="fig:poisson-fig"></span>
+<img src="images/ISIdistribution.png" alt="An artificial spike train generated by Poisson process and its ISI distribution. Notice that the spikes are randomly distributed along the time axis, and the ISI histogram has an exponential distribution."  />
+<p class="caption">
+Figure 4.4: An artificial spike train generated by Poisson process and its ISI distribution. Notice that the spikes are randomly distributed along the time axis, and the ISI histogram has an exponential distribution.
+</p>
+</div>
+<p><strong>Exercise 2</strong>: Explain the qualifications for a poisson spike train?</p>
+</div>
+<div id="spike-triggered-average" class="section level2">
+<h2><span class="header-section-number">4.5</span> Spike-triggered Average</h2>
+<p>An essential tool for describing neurons, and how they respond to certain stimuli, is the <strong>spike-triggered average (STA)</strong>. The STA is the average value of the stimulus during some time interval before a spike occurs. Researchers record a neuron’s activity as it responds to various stimuli. First, the researchers must determine the amount of time before a spike they want to analyze. Once the data has been obtained and the time step determined, the value of the one-time step before a spike is recorded, and averaged across trials. This value ultimately characterizes the level of stimulus necessary for the neuron to fire. It is important to note that the spike-triggered average is measuring the average level of the stimulus, not of the neuron. This calculation is based on the probability of a neuron spiking due to stimuli activity to occur in the recent past.</p>
+<div class="figure"><span id="fig:STA-fig"></span>
+<img src="images/spikeTriggeredAverage.png" alt="The spike triggered average can be used to calculate both the stimulus and the spike train."  />
+<p class="caption">
+Figure 4.5: The spike triggered average can be used to calculate both the stimulus and the spike train.
+</p>
+</div>
+<div style="float:left;width:312px">
+<div class="figure"><span id="fig:whiteNoise-fig"></span>
+<img src="images/whiteNoise.png" alt="Example of a white noise stimulus using gray scale."  />
+<p class="caption">
+Figure 4.6: Example of a white noise stimulus using gray scale.
+</p>
+</div>
+</div>
+<p>The spike-triggered average can be utilized to determine the receptive fields of individual neurons. However, when using the STA to determine receptive fields, the stimulus presented to the recording neuron must be sufficiently random. If it isn’t, any correlation in stimuli will be presented in the generated receptive field, thus skewing the result. A <strong>white noise</strong>, is a type of stimulus with random variation where the value at each time point is independent of all other points. White noise can be employed in these instances to provide a receptive field without bias. White noise stimuli can look different based on the neuron and the system being observed, from a series of random auditory frequencies to randomly generated pixels stimulating the visual cortex. For each set of stimuli, the value at each time point does not correlate with the values around it. For more information on spike-triggered average analyses, especially concerning receptive fields,<a href="https://jov.arvojournals.org/article.aspx?articleid=2193104">read this experiment.</a></p>
+</div>
+<div id="reverse-correlation" class="section level2">
+<h2><span class="header-section-number">4.6</span> Reverse Correlation</h2>
+<div class="figure"><span id="fig:STA2-fig"></span>
+<img src="images/reverseCorrelation.png" alt="Reverse correlation encompasses both spike triggered averages and spike triggered covariance."  />
+<p class="caption">
+Figure 4.7: Reverse correlation encompasses both spike triggered averages and spike triggered covariance.
+</p>
+</div>
+<p>When analyzing neurons and neuronal responses, there are two main factors: the inputs (controlled by researchers), and the outputs (measured by researchers). The process of <strong>reverse correlation</strong> implements the analysis of outputs to determine the inputs that the neuron will respond to with a spike. The spike-triggered average is an application of this process as it looks back at the stimuli preceding a spike to determine information about the sensitivity and response of the neuron. In addition to spike-triggered average, a calculation known as spike-triggered covariance can be used to analyze neuronal responses. Spike-triggered covariance (STC) can be used to identify multi-dimensional inputs to a neuron and is especially useful in linear-nonlinear Poisson models that will be discussed later in this section. STC uses the covariance, variability between two factors, of stimuli that trigger spikes in a neuron to determine a neuron’s response characteristics to multi-dimensional stimuli.</p>
+<p>The basic model for reverse correlation is a Linear Single Input Single Output system (LSISOS). Such linear systems assume the two principles of homogeneity. First, the neuron will not undergo processes such as habituation and will always respond in the same way to the stimulus. Second, superposition: the response from multiple stimuli will be equal to the sum of the individual stimuli. In this model, the LSISOS response is the sum of the spikes scaled to time. Similar to spike-triggered averages, it is best to input a white noise stimulus and then cross-correlate it with its output, which will give you the spike-triggered average. In cross-correlation, the higher the similarity between the two values (the stimulus value and the output value), the greater the correlation value (the spike-triggered average).</p>
+<p>The LSISOS model assumes a linear activity of neurons that is not entirely accurate due to neuron characteristics such as a spike threshold and a refractory period. A new model, known as the linear-nonlinear-Poisson model takes these factors into account. There are three stages to this model: linear stage, nonlinear stage, and the Poisson spike generator stage. The linear stage considers how a neuron responds to a specific feature in a spatio-temporal linear sense. The second stage takes the linear output and input through a nonlinear function to give a neuron’s instantaneous spike rate. The nonlinear function can either be a logistic curve or a rectified linear (ReLU) function. The final step translates the output of the initial steps into spikes using an inhomogeneous Poisson process. The final result from the Poisson generator demonstrates the areas of the stimulus where a spike is more likely to occur.<br />
+Reverse correlation is a technique used for understanding what neurons are responding to, and the spike-triggered averages discussed earlier are one example of how reverse correlation is implemented.</p>
+<div class="figure"><span id="fig:STC-fig"></span>
+<img src="images/spikeTriggeredCovariance.png" alt="Spike-triggered covariance shows how two different stimuli dimensions can be calculated together."  />
+<p class="caption">
+Figure 4.8: Spike-triggered covariance shows how two different stimuli dimensions can be calculated together.
+</p>
+</div>
+</div>
+<div id="summary-2" class="section level2">
+<h2><span class="header-section-number">4.7</span> Summary</h2>
+<p>Reverse correlation and all the concepts that play a role in this widely implemented technique, from different modes of spike statistics to various types of stimuli, can be an intimidating topic in computational neuroscience. Analyzing the relationship between inputs and outputs to understand the effect each has on the activity of a neuron is the root of this topic. These analyses can move in both directions: input to output, or output to input. One can manipulate the stimulus and measure the resulting spike train through various statistical methods, or one could use reverse correlation by utilizing the known output of a spike to look back and understand the input necessary to create such a response. These analyses are working on grasping what stimuli the neuron does, or does not, “like”. In other words, they help us predict the neuron’s responses.</p>
+<p><strong>Exercise 3 (<em>Challenge!</em>)</strong>
+Match each concept to the Python function.</p>
+<p>Concepts:</p>
+<ul>
+<li>Fano Factor</li>
+<li>Spike Count Rate</li>
+<li>Interspike Interval</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Function 1</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">prob <span class="op">=</span> <span class="dv">45</span><span class="op">/</span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">spikeMatrix <span class="op">=</span> np.zeros((<span class="dv">1000</span>,<span class="dv">1000</span>))</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> prob:</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">      spikeMatrix[i,j] <span class="op">=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">spikeCountRates <span class="op">=</span> np.<span class="bu">sum</span>(spikeMatrix, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">plt.hist(spikeCountRates, <span class="dv">40</span>, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>)</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">plt.xlabel(<span class="st">&quot;Average firing rate (Hz)&quot;</span>)</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">plt.ylabel(<span class="st">&quot;Frequency&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Function 2</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">np.var(spikeCountRates) <span class="op">/</span> np.mean(spikeCountRates)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Function 3</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">spikeCountRates <span class="op">=</span> np.<span class="bu">sum</span>(spikeMatrix, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">totalSpikes <span class="op">=</span> <span class="bu">int</span>(np.<span class="bu">sum</span>(spikeMatrix, axis<span class="op">=</span><span class="va">None</span>))</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">isi <span class="op">=</span> np.zeros(totalSpikes <span class="op">-</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">count <span class="op">=</span> <span class="dv">-1</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">  spikes <span class="op">=</span> np.nonzero(spikeMatrix[i,:])[<span class="dv">0</span>]</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(spikes)<span class="op">-</span><span class="dv">1</span>):</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">    count <span class="op">+=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">    isi[count] <span class="op">=</span> spikes[j<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> spikes[j]</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">plt.hist(isi, <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">plt.xlabel(<span class="st">&quot;ISI (ms)&quot;</span>)</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">plt.ylabel(<span class="st">&quot;Frequency&quot;</span>)</a></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Ch2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Ch4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

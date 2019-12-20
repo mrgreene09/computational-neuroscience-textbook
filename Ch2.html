@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Hodgkin and Huxley Model | Computational Neuroscience</title>
+  <meta name="description" content="TBD" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Hodgkin and Huxley Model | Computational Neuroscience" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="TBD" />
+  <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Hodgkin and Huxley Model | Computational Neuroscience" />
+  
+  <meta name="twitter:description" content="TBD" />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Students of NS/PY 357 Bates College" />
+
+
+<meta name="date" content="2019-12-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Ch1.html"/>
+<link rel="next" href="Ch3.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-book-is-free-as-in-pizza"><i class="fa fa-check"></i><b>1.1</b> This book is free (as in pizza)</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i><b>1.5</b> Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> What is Computational Neuroscience?</a><ul>
+<li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>2.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#levels-of-organization"><i class="fa fa-check"></i><b>2.4</b> Levels of organization</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>2.5</b> Applications of computational neuroscience</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>2.6</b> The future of computational neuroscience</a></li>
+<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.7</b> Summary</a></li>
+<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#exercises"><i class="fa fa-check"></i><b>2.8</b> Exercises:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> Hodgkin and Huxley Model</a><ul>
+<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>3.3</b> What is an action potential?</a></li>
+<li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>3.4</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>3.5</b> The Hodgkin and Huxley model</a></li>
+<li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#spike-trains"><i class="fa fa-check"></i><b>4.3</b> Spike Trains</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#spike-statistics"><i class="fa fa-check"></i><b>4.4</b> Spike Statistics</a></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#spike-triggered-average"><i class="fa fa-check"></i><b>4.5</b> Spike-triggered Average</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#reverse-correlation"><i class="fa fa-check"></i><b>4.6</b> Reverse Correlation</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Neural Networks</a><ul>
+<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-list"><i class="fa fa-check"></i><b>5.1</b> Vocabulary List:</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introductionbackground"><i class="fa fa-check"></i><b>5.2</b> Introduction/Background</a></li>
+<li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#different-types-of-learning"><i class="fa fa-check"></i><b>5.3</b> Different Types of Learning</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>5.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#perceptron"><i class="fa fa-check"></i><b>5.5</b> Perceptron</a></li>
+<li class="chapter" data-level="5.6" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Decoding</a><ul>
+<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-3"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-3"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#imaging-techniques"><i class="fa fa-check"></i><b>6.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="Ch5.html"><a href="Ch5.html#eeg"><i class="fa fa-check"></i><b>6.3.1</b> EEG</a></li>
+<li class="chapter" data-level="6.3.2" data-path="Ch5.html"><a href="Ch5.html#meg"><i class="fa fa-check"></i><b>6.3.2</b> MEG</a></li>
+<li class="chapter" data-level="6.3.3" data-path="Ch5.html"><a href="Ch5.html#fmri"><i class="fa fa-check"></i><b>6.3.3</b> fMRI</a></li>
+<li class="chapter" data-level="6.3.4" data-path="Ch5.html"><a href="Ch5.html#ecog"><i class="fa fa-check"></i><b>6.3.4</b> ECOG</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#introduction-to-decoding"><i class="fa fa-check"></i><b>6.4</b> Introduction to Decoding</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#what-is-a-classifier"><i class="fa fa-check"></i><b>6.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="Ch5.html"><a href="Ch5.html#correlation-classifiers"><i class="fa fa-check"></i><b>6.5.1</b> Correlation classifiers</a></li>
+<li class="chapter" data-level="6.5.2" data-path="Ch5.html"><a href="Ch5.html#distance-based-classifiers"><i class="fa fa-check"></i><b>6.5.2</b> Distance-based classifiers</a></li>
+<li class="chapter" data-level="6.5.3" data-path="Ch5.html"><a href="Ch5.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>6.5.3</b> Boundary-based classifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#cross-validation"><i class="fa fa-check"></i><b>6.6</b> Cross validation</a></li>
+<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#conclusion"><i class="fa fa-check"></i><b>6.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> References</a><ul>
+<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#chapter-1"><i class="fa fa-check"></i><b>7.1</b> Chapter 1</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#chapter-2"><i class="fa fa-check"></i><b>7.2</b> Chapter 2</a></li>
+<li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#chapter-3"><i class="fa fa-check"></i><b>7.3</b> Chapter 3</a></li>
+<li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#chapter-4"><i class="fa fa-check"></i><b>7.4</b> Chapter 4</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#chapter-5"><i class="fa fa-check"></i><b>7.5</b> Chapter 5</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Glossary</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computational Neuroscience</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Ch2" class="section level1">
+<h1><span class="header-section-number">3</span> Hodgkin and Huxley Model</h1>
+<div id="vocabulary-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Vocabulary</h2>
+<ul>
+<li>Depolarization</li>
+<li>Positive Feedback</li>
+<li>Hyperpolarization</li>
+<li>Negative Feedback</li>
+<li>Membrane Potential</li>
+<li>Sodium-Potassium Pump</li>
+<li>Nernst Potential</li>
+<li>Reversal Potential</li>
+<li>Equilibrium Potential</li>
+<li>Driving Force</li>
+<li>Conductance</li>
+<li>Leak Current</li>
+<li>Leaky Integrate and Fire Model</li>
+<li>Absolute Refractory Period</li>
+<li>Gating variable</li>
+</ul>
+</div>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">3.2</span> Introduction</h2>
+<p>Before you read this chapter, we would like to draw your attention to this <a href="https://www.youtube.com/watch?v=dzj95jHuPiw">video</a>. We call this a Zombie Squid because the squid is in fact dead; however, it is recently deceased. Since the squid passed shortly before, Adenosine triphosphate (ATP) energy stores are still available to the squid’s muscles. When the soy sauce, which has a lot of sodium chloride (salt) in it, is poured onto the squid, the salt in the soy sauce causes a voltage change which causes the squid’s muscles to contract. Thus, we have a Zombie Squid.</p>
+<p>So why is the Zombie Squid important? The Hodgkin-Huxley Model, said to have started the field of computational neuroscience, all hinges on the giant axons of squid. In the 1950s Alan Hodgkin and Andrew Huxley built a model that shows us how computers can successfully predict certain aspects of the brain that cannot be directly studied. The two even won a Nobel Prize in Physiology or Medicine in 1963 with Sir John Carew Eccles for their model. The Hodgkin-Huxley Model is now the basis of all conductance-based models. As a result, we can now understand how an action potential works, and why it is an all-or-none event.</p>
+<p>While Hodgkin and Huxley created their model in the 1950s, the first recording of an action potential was done by Edgar Adrian in the 1920s. However, the first person to realize that neurons communicate via electrical signals came much earlier in 1791, when Luigi Galvani found that electricity from lightning or primitive batteries can cause a dead frog’s leg muscle to contract. This led to a good amount of Frankenstein-like science with interested parties running electricity through dead bodies in an attempt to bring them back to life. However, the next truly scientific discovery came from Hermann Helmholtz in the 19th century. Helmholtz found that he could measure the speed of muscles contracting when he stimulated the nerve linked to that specific muscle. The Hodgkin-Huxley Model was then created once Adrian noted that not only were action potentials discrete, but the firing rate (spike per second) increased as stimulation to the nerve increased.</p>
+<p><strong>Exercise:</strong> Briefly explain how the Zombie Squid moves. Why is this important to understand?</p>
+</div>
+<div id="what-is-an-action-potential" class="section level2">
+<h2><span class="header-section-number">3.3</span> What is an action potential?</h2>
+<div class="figure"><span id="fig:channel1-fig"></span>
+<img src="images/channel1.png" alt="A cell at rest has more potassium ions intracellular than extracellular and more sodium ions extracellular than intracellular. There is a negative net charge within the cell being maintained by the  voltage gradient."  />
+<p class="caption">
+Figure 3.1: A cell at rest has more potassium ions intracellular than extracellular and more sodium ions extracellular than intracellular. There is a negative net charge within the cell being maintained by the voltage gradient.
+</p>
+</div>
+<div class="figure"><span id="fig:channel2-fig"></span>
+<img src="images/channel2.png" alt="When the cell becomes depolarized sodium ions enter the cell. The charge within the cell becomes more positive."  />
+<p class="caption">
+Figure 3.2: When the cell becomes depolarized sodium ions enter the cell. The charge within the cell becomes more positive.
+</p>
+</div>
+<div class="figure"><span id="fig:channel3-fig"></span>
+<img src="images/channel3.png" alt="When the cell repolarizes potassium ions leave the cell. The charge within the cell go from positive to negative as it goes back to the resting state."  />
+<p class="caption">
+Figure 3.3: When the cell repolarizes potassium ions leave the cell. The charge within the cell go from positive to negative as it goes back to the resting state.
+</p>
+</div>
+<div class="figure"><span id="fig:actionPotential-fig"></span>
+<img src="images/actionPotential.png" alt="Example of an action potential."  />
+<p class="caption">
+Figure 3.4: Example of an action potential.
+</p>
+</div>
+<p>Before going into ways of modelling action potentials, let’s further explore what an action potential is. Within a cell, there are more sodium ions outside the membrane, which have a positive charge. Because there are less positive ions inside the cell compared to the outside, the inside of the cell has a negative resting potential. When there is a spike of voltage, that causes both voltage-gated sodium and potassium channels–meaning that these channels activate and inactivate at certain voltages–to activate on a neuron’s membrane. However, the sodium channels open much faster than the potassium channels. The flow of sodium ions into the cell causes the membrane potential to become more positive. This process of positive ions flowing into the cell is called <strong>depolarization</strong>. When depolarization happens, it causes additional sodium channels to open, which causes further depolarization—this phenomenon is called <strong>positive feedback</strong>, and the positive feedback starts if the depolarization hits a set threshold. In other words, a positive feedback loop is a process that perpetuates itself. The positive feedback loop ends once voltage-gated potassium channels also open at the peak of the action potential and potassium begins flowing out of the cell and ending depolarization, we call this <strong>repolarization</strong>. When the voltage is below the resting potential, we call this undershoot <strong>hyperpolarization</strong>, which is when the membrane potential decreases towards a move negative value via potassium ions flowing out. As the voltage-gated potassium channels open and the voltage-gated sodium channels to close or become inactivated, there is now <strong>negative feedback</strong>. Negative feedback is a process by which an initial change is opposed by a force caused by the initial change. In this situation, the positive feedback causes a spike in membrane potential and the negative feedback stabilizes.</p>
+<strong>Exercise:</strong>
+<div class="figure"><span id="fig:actionPotentialEx-fig"></span>
+<img src="images/actionPotentialExercise.png" alt="Here is a diagram that shows different stages of an action potential. Use the knowledge we learned in the last section, identify the stages on the graph. How are these stages relate to positive/negative feedback? What kinds of channels are open/closed during the respective stages?"  />
+<p class="caption">
+Figure 3.5: Here is a diagram that shows different stages of an action potential. Use the knowledge we learned in the last section, identify the stages on the graph. How are these stages relate to positive/negative feedback? What kinds of channels are open/closed during the respective stages?
+</p>
+</div>
+<p><strong>Exercise:</strong> Explain how depolarization and hyperpolarization relate to positive/negative feedback.</p>
+</div>
+<div id="nernst-equilibrium-potential" class="section level2">
+<h2><span class="header-section-number">3.4</span> Nernst equilibrium potential</h2>
+<p>The electrical activity generated in a neuron is a result of ions flowing across the neuron’s membrane which is caused by the following two principles: opposite charges attract, and concentration gradients seek to equalize. This potential difference is referred to as the <strong>membrane potential</strong>. In order for ions to flow, a concentration gradient must be established because the difference in concentration across the membrane leads it to pass either into the neuron or out of the neuron. This is accomplished by the <strong>sodium-potassium pump</strong>, which uses just below 10% of your body’s daily energy to pump three sodium ions out of the neuron for every two potassium ions pumped in, thus forming two respective concentration gradients.</p>
+<p>With the concentration gradient established, the sodium and potassium ions will flow down the concentration gradients when their respective channels open, generating an electrical current that propagates down the axon. We must also take into account the fact that each ion possesses a charge–or charges in the case of Ca++ and Mg++–and that as this charge is built up on one side of the cell, this will generate an electrical force that will begin to repel ions with similar charge as they try to flow down their concentration gradient. When the force of the concentration gradient matches the electrical force attracting or repelling the ion, this is known as the <strong>Nernst potential</strong> for that ion, also referred to as the <strong>reversal potential</strong>. This means that means that both sodium and potassium possess their own respective Nernst potentials. Nernst potentials are especially important because they allow us to calculate the membrane voltage when a particular ion is in equilibrium, which helps to define the role it plays in an action potential.</p>
+<p>The Nernst potential for an ion can be derived from the following equation: <span class="math display">\[E_{ion} = \frac{RT}{zF}ln(\frac{[out]}{[in]}) \]</span></p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Expression
+</th>
+<th style="text-align:left;">
+Meaning
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+E_ion
+</td>
+<td style="text-align:left;">
+Nernst Potential
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Gas constant: 8.314 J/mol*K
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ln()
+</td>
+<td style="text-align:left;">
+Natural log
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+z
+</td>
+<td style="text-align:left;">
+Valance
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Temperature in Kelvin
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+Faraday’s constant: 96485.336512 C/mol
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[out]
+</td>
+<td style="text-align:left;">
+Concentration of ions outside the membrane
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[in]
+</td>
+<td style="text-align:left;">
+Concentration of ions inside the membrane
+</td>
+</tr>
+</tbody>
+</table>
+<p>While the Nernst potential will give the equilibrium point for a single ion, it also has a relation to the <strong>equilibrium potential</strong> or the resting potential the membrane, which is potential at which there is no net flow of ions, leading to a halt in the flow of electric current. The equilibrium potential is really a weighted average of all of the Nernst potentials and is modeled by the Goldman-Hodgkin-Katz equation which is shown below: <span class="math display">\[V_{m} = \frac{RT}{F}ln(\frac{P_{K}[K+]_{out}+P_{Na}[Na+]_{out}+P_{Cl}[Cl-]_{in}}{P_{K}[K+]_{in}+P_{Na}[Na+]_{in}+P_{Cl}[Cl-]_{out}}) \]</span></p>
+<p>This equation utilizes the membrane permeability, <em>P</em>, in conjunction with the concentration of each ion inside and outside of the cell to produce the equilibrium potential of a membrane. Using this equation alongside the Nernst potential, the <strong>driving force</strong>, which is a representation of the pressure for an ion to move in or out of the cell, can be calculated using the following equation: <span class="math display">\[DF = V_{m}-E_{ion} \]</span></p>
+<p>The Nernst Potential, the Goldman-Hodgkin-Katz equation, and the driving force present necessary calculations that allow for better understanding of the flow of ions in relation to an action potential.</p>
+<p><strong>Exercise:</strong> Why does depolarization not continue indefinitely once voltage-gated Na+ channels have opened?</p>
+<p><strong>Exercise:</strong> Briefly explain the concept of driving force.</p>
+<p><strong>Exercise:</strong> Explain the difference between the membrane potential, Nernst potential and equilibrium potential.</p>
+</div>
+<div id="the-hodgkin-and-huxley-model" class="section level2">
+<h2><span class="header-section-number">3.5</span> The Hodgkin and Huxley model</h2>
+<div style="float:left;width:564px">
+<div class="figure"><span id="fig:hodgkinHuxley-fig"></span>
+<img src="images/HodgkinHuxley.png" alt="Alan Hodgkin (left) and Andrew Huxley (right)."  />
+<p class="caption">
+Figure 3.6: Alan Hodgkin (left) and Andrew Huxley (right).
+</p>
+</div>
+</div>
+<p>Alan Hodgkin (pictured left) and Andrew Huxley (pictured right) were two Cambridge University undergraduates who eventually found themselves working in a marine biology laboratory with the axon of a giant squid. The two men were able to derive the necessary information for their influential model of an action potential using the massive axon of the giant squid.</p>
+<p>Hodgkin and Huxley developed a series of equations that could accurately predict and depict action potentials. Their work is a cornerstone for computational modeling as computer modelling can now be used to mimic the biological properties of a neuron that we are unable to directly observe.</p>
+<p>Really the Hodgkin-Huxley Model is just an elaboration on the Integrate and Fire Model. The Integrate and Fire model was generated by French neuroscientist Louis Lapicque, who in 1907 sought to generate a mathematical model that could be used to predict and graph an action potential. In his efforts to understand action potentials, Lapicque chose to model the flow of ions as a single <strong>leak current</strong>.</p>
+<p>Hodgkin and Huxley took the single conductance term from the Integrate and Fire Model is broken up into three separate conductance terms, each relating to a different ion channel. These conductance terms are known as <strong>gating variables</strong> and are labeled <em>m</em>, <em>n</em>, and <em>h</em>. Voltage-gated sodium channel activation is modeled by the letter <em>ms</em>. Voltage-gated sodium channels have three subunits, as these three subunits are involved in the channels activation, <em>m</em> is raised to the third power. Voltage-gated sodium channel also inactivate at the peak of the action potential and this variable is modeled by the letter <em>h</em>. The combination of <em>m</em> and <em>h</em> gives rise to the conductance of Voltage-gated sodium channel which is modeled below: <span class="math display">\[\bar{g}_{Na}m^{3}h(V(t)-E_{Na}) \]</span>
+Voltage-gated potassium channels are modeled by the letter <em>n</em>. Voltage-gated potassium channels have four subunits, and thus the gating variable, <em>n</em>, is raised to the fourth power. The conductance of Voltage-gated potassium channels is modeled below: <span class="math display">\[\bar{g}_{K}n^{4}(V(t)-E_{K} \]</span>
+The final conductance taken into account by Hodgkin and Huxley is the leak potential of all the ions. The Leak conductance is taken into account for the instance when all ion channels are open. This conductance is represented below: <span class="math display">\[\bar{g}_{L}(V(t)-E_{L}) \]</span>
+These three conductance variables are combined together to form the Hodgkin-Huxley equation which is written as follows: <span class="math display">\[C\frac{dV}{dt}=I_{e}(t)-[(\bar{g}_{Na}m^{3}h(V(t)-E_{Na}))+(\bar{g}_{K}n^{4}(V(t)-E_{K}))+(\bar{g}_{L}(V(t)-E_{L}))] \]</span></p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Expression
+</th>
+<th style="text-align:left;">
+Meaning
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<em>n</em>
+</td>
+<td style="text-align:left;">
+Activation of potassium channels
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<em>m</em>
+</td>
+<td style="text-align:left;">
+Activation of sodium channels
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<em>h</em>
+</td>
+<td style="text-align:left;">
+Inactivation of sodium channels
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<em>C</em>
+</td>
+<td style="text-align:left;">
+Capacitance
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(I_{injected}\)</span>
+</td>
+<td style="text-align:left;">
+Injected current
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\bar{g}_{Na}\)</span>
+</td>
+<td style="text-align:left;">
+Maximum sodium conductance
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\bar{g}_{K}\)</span>
+</td>
+<td style="text-align:left;">
+Maximum potassium conductance
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\bar{g}_{L}\)</span>
+</td>
+<td style="text-align:left;">
+Maximum leak conductance
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<em>V</em>
+</td>
+<td style="text-align:left;">
+Membrane voltage
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(E_{Na}\)</span>
+</td>
+<td style="text-align:left;">
+Sodium Nernst potential
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(E_{K}\)</span>
+</td>
+<td style="text-align:left;">
+Potassium Nernst potential
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(E_{L}\)</span>
+</td>
+<td style="text-align:left;">
+Leak Nernst potential
+</td>
+</tr>
+</tbody>
+</table>
+Additionally, we can calculate the value of each gating variable over different voltages and times: <span class="math display">\[m\frac{dV}{dt} = \alpha_{m}(V)(1-m)-\beta_{m}(V)m \]</span>
+Both <em>n</em> and <em>h</em> can be substituted for <em>m</em> in the above equation in order to calculate values for each gating variable. Additionally, note the <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> in the equation are rate constants that govern the opening and closing (respectively), of their channels. Here are their values:<br />
+<span class="math display">\[ \alpha_{n}(V_{m}) = \frac{0.01(V_{m}+55)}{1-exp(-0.1(V_{m}+55))} \]</span>
+<span class="math display">\[\alpha_{m}(V_{m}) = \frac{0.1(V_{m}+40)}{1-exp(-0.1(V_{m}+40))}\]</span>
+<span class="math display">\[\alpha_{h}(V_{m}) = 0.07exp(-0.05(V_{m}+65)) \]</span>
+<span class="math display">\[\beta_{n}(V_m) = 0.125exp(-0.0125(V_{m}+65)) \]</span>
+<span class="math display">\[\beta_{m}(V_{m}) = 4exp(-0.0556(V_{m}+65)) \]</span>
+<span class="math display">\[\beta_{h}(V_{m}) = \frac{1}{1+exp(-0.1(V_{m}+35))} \]</span>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Expression
+</th>
+<th style="text-align:left;">
+Meaning
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\alpha_{n}\)</span>
+</td>
+<td style="text-align:left;">
+Rate constant for potassium channel activation (open)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\alpha_{m}\)</span>
+</td>
+<td style="text-align:left;">
+Rate constant for sodium channel activation (open)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\alpha_{h}\)</span>
+</td>
+<td style="text-align:left;">
+Rate constant for sodium channel inactivation (open)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\beta_{n}\)</span>
+</td>
+<td style="text-align:left;">
+Rate constant for potassium channel activation (close)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\beta_{m}\)</span>
+</td>
+<td style="text-align:left;">
+Rate constant for sodium channel activation (close)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\beta_{h}\)</span>
+</td>
+<td style="text-align:left;">
+Rate constant for sodium channel inactivation (close)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="summary-1" class="section level2">
+<h2><span class="header-section-number">3.6</span> Summary</h2>
+<p>An action potential is the electro-chemical signal that propagates down a neuron. Action potentials are facilitated by the electrochemical gradient that is maintained through the action of the Sodium-Potassium Pump. The role that each ion plays within the action potential can be determined through the use of the Nernst Equation, which allows us to understand the movement of a specific ion at a specific membrane voltage. Understanding the role of ions, is important, but this is not how we actually graph an action potential. One of the first modules developed to graph an action potential was the integrate and fire module. This equation disregarded all of the biomechanical features of an action potential and focused on the subthreshold membrane dynamics of a neuron. This model was relatively effective, until Hodgkin and Huxley reassessed it and changed the single leak resistance in integrate and fire to three separate resistance terms. Hodgkin and Huxley in doing this created an equation that more thoroughly analyzed and depicted the very action potential that is displayed to this day.</p>
+<p>##Exercises:##
+Here is a code that models the Hodgkin-Huxley model. Fill in the blanks and try to understand what each line of code does. Why does the code calculate <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> values first?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Define model parameters</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">dt          <span class="op">=</span> <span class="fl">0.1</span> <span class="co"># time step (ms)</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">tFinal      <span class="op">=</span> <span class="dv">1000</span> <span class="co"># total time of run (ms)</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">tStimStart  <span class="op">=</span> <span class="dv">250</span> <span class="co"># time to start injecting current (ms)</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">tStimEnd    <span class="op">=</span> <span class="dv">750</span> <span class="co"># time to end injecting current (ms)</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">c           <span class="op">=</span> <span class="dv">10</span> <span class="co"># capacitance per unit area (nF/mm^2)</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">gMaxL       <span class="op">=</span> <span class="dv">3</span> <span class="co"># leak maximal conductance per unit area (mS/mm^2)</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">EL          <span class="op">=</span> <span class="fl">-54.387</span> <span class="co"># leak conductance reversal potential (mV)</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">gMaxK       <span class="op">=</span> <span class="dv">360</span> <span class="co"># maximal K conductance per unit area (mS/mm^2)</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">EK          <span class="op">=</span> <span class="dv">-77</span> <span class="co"># K conductance reversal potential (mV)</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">gMaxNa      <span class="op">=</span> <span class="dv">1200</span> <span class="co"># maximal Na conductance per unit area (mS/mm^2)</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">ENa         <span class="op">=</span> <span class="dv">50</span> <span class="co"># Na conductance reversal potential (mV)</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co"># set up data structures to hold relevant variable vectors</span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">timeVec <span class="op">=</span> np.zeros(<span class="dv">0</span>, tFinal, dt)</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">voltageVec <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVec))</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20">Ivector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVec))</a>
+<a class="sourceLine" id="cb1-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co"># Fill in the BLANK!</span></a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">mVec <span class="op">=</span> np.zeros(     )</a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">hVec <span class="op">=</span> np.zeros(     )</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">nVec <span class="op">=</span> np.zeros(     )</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb1-27" data-line-number="27"><span class="co"># assign the initial value of each variable</span></a>
+<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co"># For initial voltage, we set the resting potential to -65 mV</span></a>
+<a class="sourceLine" id="cb1-29" data-line-number="29">voltageVec[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">-65</span></a>
+<a class="sourceLine" id="cb1-30" data-line-number="30">Ie <span class="op">=</span> <span class="dv">200</span></a>
+<a class="sourceLine" id="cb1-31" data-line-number="31">mVec[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.0529</span></a>
+<a class="sourceLine" id="cb1-32" data-line-number="32">mVec[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.5961</span></a>
+<a class="sourceLine" id="cb1-33" data-line-number="33">nVec[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.3177</span></a>
+<a class="sourceLine" id="cb1-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb1-35" data-line-number="35"><span class="co"># For-loop to integrate equations into model</span></a>
+<a class="sourceLine" id="cb1-36" data-line-number="36"><span class="co"># Can you see why we are subtracting 1 here?</span></a>
+<a class="sourceLine" id="cb1-37" data-line-number="37"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(    ):</a>
+<a class="sourceLine" id="cb1-38" data-line-number="38">  <span class="co"># Calculate alpha values for m, h, and n</span></a>
+<a class="sourceLine" id="cb1-39" data-line-number="39">  <span class="co"># These functions are fit from empirical data</span></a>
+<a class="sourceLine" id="cb1-40" data-line-number="40">  alpha_m <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> (voltageVec[i]<span class="op">+</span><span class="dv">40</span>)<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>np.exp(<span class="op">-</span><span class="fl">0.1</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">40</span>)))</a>
+<a class="sourceLine" id="cb1-41" data-line-number="41">  alpha_h <span class="op">=</span> <span class="fl">0.07</span> <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.05</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">65</span>))</a>
+<a class="sourceLine" id="cb1-42" data-line-number="42">  alpha_n <span class="op">=</span> <span class="fl">0.01</span> <span class="op">*</span> (voltageVec[i]<span class="op">+</span><span class="dv">55</span>) <span class="op">/</span> (<span class="dv">1</span><span class="op">-</span>np.exp(<span class="op">-</span><span class="fl">0.1</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">55</span>)))</a>
+<a class="sourceLine" id="cb1-43" data-line-number="43">  </a>
+<a class="sourceLine" id="cb1-44" data-line-number="44">  <span class="co"># Calculate beta values</span></a>
+<a class="sourceLine" id="cb1-45" data-line-number="45">  beta_m <span class="op">=</span> <span class="dv">4</span><span class="op">*</span>np.exp(<span class="op">-</span><span class="fl">0.05556</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">65</span>))</a>
+<a class="sourceLine" id="cb1-46" data-line-number="46">  beta_h <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span><span class="op">+</span>np.exp(<span class="op">-</span><span class="fl">0.1</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">35</span>)))</a>
+<a class="sourceLine" id="cb1-47" data-line-number="47">  beta_n <span class="op">=</span> <span class="fl">0.125</span> <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.01125</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">55</span>))</a>
+<a class="sourceLine" id="cb1-48" data-line-number="48">  </a>
+<a class="sourceLine" id="cb1-49" data-line-number="49">  <span class="co"># Calculate tau values for m, h, and n</span></a>
+<a class="sourceLine" id="cb1-50" data-line-number="50">  tau_m <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (alpha_m <span class="op">+</span> beta_m)</a>
+<a class="sourceLine" id="cb1-51" data-line-number="51">  tau_h <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (alpha_h <span class="op">+</span> beta_h)</a>
+<a class="sourceLine" id="cb1-52" data-line-number="52">  tau_n <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (alpha_n <span class="op">+</span> beta_n)</a>
+<a class="sourceLine" id="cb1-53" data-line-number="53">  </a>
+<a class="sourceLine" id="cb1-54" data-line-number="54">  <span class="co"># Calculate inf values for m, h, and n</span></a>
+<a class="sourceLine" id="cb1-55" data-line-number="55">  infM <span class="op">=</span> alpha_m <span class="op">/</span> (alpha_m <span class="op">+</span> beta_m)</a>
+<a class="sourceLine" id="cb1-56" data-line-number="56">  infH <span class="op">=</span> alpha_h <span class="op">/</span> (alpha_h <span class="op">+</span> beta_h)</a>
+<a class="sourceLine" id="cb1-57" data-line-number="57">  infN <span class="op">=</span> alpha_n <span class="op">/</span> (alpha_n <span class="op">+</span> beta_n)</a>
+<a class="sourceLine" id="cb1-58" data-line-number="58">  </a>
+<a class="sourceLine" id="cb1-59" data-line-number="59">  <span class="co"># Calculate and store values in m, h, and n vectors</span></a>
+<a class="sourceLine" id="cb1-60" data-line-number="60">  mVec[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> infM <span class="op">+</span> (mVec[i] <span class="op">-</span> infM) <span class="op">*</span> np.exp(<span class="op">-</span>dt<span class="op">/</span>tau_m)</a>
+<a class="sourceLine" id="cb1-61" data-line-number="61">  hVec[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> infH <span class="op">+</span> (hVec[i] <span class="op">-</span> infH) <span class="op">*</span> np.exp(<span class="op">-</span>dt<span class="op">/</span>tau_h)</a>
+<a class="sourceLine" id="cb1-62" data-line-number="62">  nVec[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> infN <span class="op">+</span> (nVec[i] <span class="op">-</span> infN) <span class="op">*</span> np.exp(<span class="op">-</span>dt<span class="op">/</span>tau_n)</a>
+<a class="sourceLine" id="cb1-63" data-line-number="63">  </a>
+<a class="sourceLine" id="cb1-64" data-line-number="64">  <span class="co"># Calculate and store values in the tau voltage vector</span></a>
+<a class="sourceLine" id="cb1-65" data-line-number="65">  tauVec <span class="op">=</span> c<span class="op">/</span>(gMaxK<span class="op">*</span>nVec[i]<span class="op">**</span><span class="dv">4</span><span class="op">+</span>gMaxNa<span class="op">*</span>mVec[i]<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> hVec[i]<span class="op">+</span>gMaxL)</a>
+<a class="sourceLine" id="cb1-66" data-line-number="66">  vInf <span class="op">=</span> (gMaxK<span class="op">*</span>nVec[i]<span class="op">**</span><span class="dv">4</span> <span class="op">*</span> EK <span class="op">+</span> gMaxNa<span class="op">*</span>mVec[i]<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> hVec[i]<span class="op">*</span>ENa <span class="op">+</span> gMaxL<span class="op">*</span>EL <span class="op">+</span> IVector[i])</a>
+<a class="sourceLine" id="cb1-67" data-line-number="67">  <span class="op">/</span> (gMaxK<span class="op">*</span>nVec[i]<span class="op">**</span><span class="dv">4</span><span class="op">+</span>gMaxNa<span class="op">*</span>mVec[i]<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> hVec[i]<span class="op">+</span>gMaxL)</a>
+<a class="sourceLine" id="cb1-68" data-line-number="68">  voltageVec[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> vInf <span class="op">+</span> (voltageVec[i]<span class="op">-</span>vInf) <span class="op">*</span> np.exp(<span class="op">-</span>dt<span class="op">/</span>tauVec[i])</a></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Ch1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Ch3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
