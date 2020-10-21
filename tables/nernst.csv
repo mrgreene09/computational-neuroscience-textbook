@@ -1,9 +1,0 @@
-﻿Expression,Meaning
-E_ion,Nernst Potential
-R,Gas constant: 8.314 J/mol*K
-ln(),Natural log
-z,Valance
-T,Temperature in Kelvin
-F,Faraday's constant: 96485.336512 C/mol
-[out],Concentration of ions outside the membrane
-[in],Concentration of ions inside the membrane
