@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Introduction to Python | Computational Neuroscience</title>
+  <meta name="description" content="TBD" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Introduction to Python | Computational Neuroscience" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="TBD" />
+  <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Introduction to Python | Computational Neuroscience" />
+  
+  <meta name="twitter:description" content="TBD" />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Students of NS/PY 357 Bates College" />
+
+
+<meta name="date" content="2020-10-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="Ch2.html"/>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-book-is-free-as-in-pizza"><i class="fa fa-check"></i><b>1.1</b> This book is free (as in pizza)</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors-version-0.0"><i class="fa fa-check"></i><b>1.5</b> Authors: Version 0.0</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#authors-version-1.0"><i class="fa fa-check"></i><b>1.6</b> Authors: Version 1.0</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a><ul>
+<li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.4</b> Example Python Problems</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.5</b> Conceptual Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.6</b> Coding Exercises for Learning Python</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a><ul>
+<li class="chapter" data-level="3.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#levels-of-organization"><i class="fa fa-check"></i><b>3.4</b> Levels of organization</a></li>
+<li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.5</b> Applications of computational neuroscience</a></li>
+<li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.6</b> The future of computational neuroscience</a></li>
+<li class="chapter" data-level="3.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises:</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a><ul>
+<li class="chapter" data-level="4.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>4.3</b> What is an action potential?</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.4</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.5</b> Leaky Integrate and Fire Model</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.7.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.7.2</b> Coding Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a><ul>
+<li class="chapter" data-level="5.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>5.3</b> The Hodgkin and Huxley model</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a><ul>
+<li class="chapter" data-level="6.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#spike-trains"><i class="fa fa-check"></i><b>6.3</b> Spike Trains</a></li>
+<li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#spike-statistics"><i class="fa fa-check"></i><b>6.4</b> Spike Statistics</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
+<li class="chapter" data-level="6.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>6.6</b> Exercises</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.6.1</b> Conceptual Problems</a></li>
+<li class="chapter" data-level="6.6.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.6.2</b> Coding Problems</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="7.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#spike-triggered-average"><i class="fa fa-check"></i><b>7.3</b> Spike-triggered Average</a></li>
+<li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#reverse-correlation"><i class="fa fa-check"></i><b>7.4</b> Reverse Correlation</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>7.6</b> Exercises</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="7.6.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a><ul>
+<li class="chapter" data-level="8.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="8.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="Ch7.html"><a href="Ch7.html#eeg"><i class="fa fa-check"></i><b>8.3.1</b> EEG</a></li>
+<li class="chapter" data-level="8.3.2" data-path="Ch7.html"><a href="Ch7.html#meg"><i class="fa fa-check"></i><b>8.3.2</b> MEG</a></li>
+<li class="chapter" data-level="8.3.3" data-path="Ch7.html"><a href="Ch7.html#fmri"><i class="fa fa-check"></i><b>8.3.3</b> fMRI</a></li>
+<li class="chapter" data-level="8.3.4" data-path="Ch7.html"><a href="Ch7.html#ecog"><i class="fa fa-check"></i><b>8.3.4</b> ECOG</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="Ch7.html"><a href="Ch7.html#introduction-to-decoding"><i class="fa fa-check"></i><b>8.4</b> Introduction to Decoding</a></li>
+<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="Ch7.html"><a href="Ch7.html#correlation-classifiers"><i class="fa fa-check"></i><b>8.5.1</b> Correlation classifiers</a></li>
+<li class="chapter" data-level="8.5.2" data-path="Ch7.html"><a href="Ch7.html#distance-based-classifiers"><i class="fa fa-check"></i><b>8.5.2</b> Distance-based classifiers</a></li>
+<li class="chapter" data-level="8.5.3" data-path="Ch7.html"><a href="Ch7.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>8.5.3</b> Boundary-based classifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="Ch7.html"><a href="Ch7.html#cross-validation"><i class="fa fa-check"></i><b>8.6</b> Cross validation</a></li>
+<li class="chapter" data-level="8.7" data-path="Ch7.html"><a href="Ch7.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a><ul>
+<li class="chapter" data-level="9.1" data-path="Ch8.html"><a href="Ch8.html#vocabulary-list"><i class="fa fa-check"></i><b>9.1</b> Vocabulary List:</a></li>
+<li class="chapter" data-level="9.2" data-path="Ch8.html"><a href="Ch8.html#introductionbackground"><i class="fa fa-check"></i><b>9.2</b> Introduction/Background</a></li>
+<li class="chapter" data-level="9.3" data-path="Ch8.html"><a href="Ch8.html#different-types-of-learning"><i class="fa fa-check"></i><b>9.3</b> Different Types of Learning</a></li>
+<li class="chapter" data-level="9.4" data-path="Ch8.html"><a href="Ch8.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>9.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
+<li class="chapter" data-level="9.5" data-path="Ch8.html"><a href="Ch8.html#perceptron"><i class="fa fa-check"></i><b>9.5</b> Perceptron</a></li>
+<li class="chapter" data-level="9.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Ch9.html"><a href="Ch9.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
+<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a><ul>
+<li class="chapter" data-level="11.1" data-path="Ch10.html"><a href="Ch10.html#chapter-1-preface"><i class="fa fa-check"></i><b>11.1</b> Chapter 1: Preface</a></li>
+<li class="chapter" data-level="11.2" data-path="Ch10.html"><a href="Ch10.html#chapter-2-introduction-to-python"><i class="fa fa-check"></i><b>11.2</b> Chapter 2: Introduction to Python</a></li>
+<li class="chapter" data-level="11.3" data-path="Ch10.html"><a href="Ch10.html#chapter-3-what-is-computational-neuroscience"><i class="fa fa-check"></i><b>11.3</b> Chapter 3: What is Computational Neuroscience?</a></li>
+<li class="chapter" data-level="11.4" data-path="Ch10.html"><a href="Ch10.html#chapter-4-passive-membrane-models"><i class="fa fa-check"></i><b>11.4</b> Chapter 4: Passive Membrane Models</a></li>
+<li class="chapter" data-level="11.5" data-path="Ch10.html"><a href="Ch10.html#chapter-5-hodgkin-and-huxley"><i class="fa fa-check"></i><b>11.5</b> Chapter 5: Hodgkin and Huxley</a></li>
+<li class="chapter" data-level="11.6" data-path="Ch10.html"><a href="Ch10.html#chapter-6-firing-rates"><i class="fa fa-check"></i><b>11.6</b> Chapter 6: Firing Rates</a></li>
+<li class="chapter" data-level="11.7" data-path="Ch10.html"><a href="Ch10.html#chapter-7-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>11.7</b> Chapter 7: Reverse Correlation and Receptive Field Mapping</a></li>
+<li class="chapter" data-level="11.8" data-path="Ch10.html"><a href="Ch10.html#chapter-8-decoding"><i class="fa fa-check"></i><b>11.8</b> Chapter 8: Decoding</a></li>
+<li class="chapter" data-level="11.9" data-path="Ch10.html"><a href="Ch10.html#chapter-9-neural-networks"><i class="fa fa-check"></i><b>11.9</b> Chapter 9: Neural Networks</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a><ul>
+<li class="chapter" data-level="12.1" data-path="Ch11.html"><a href="Ch11.html#chapter-1-introduction-to-python"><i class="fa fa-check"></i><b>12.1</b> Chapter 1: Introduction to Python</a></li>
+<li class="chapter" data-level="12.2" data-path="Ch11.html"><a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience"><i class="fa fa-check"></i><b>12.2</b> Chapter 2: Introduction to Computational Neuroscience</a></li>
+<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions"><i class="fa fa-check"></i><b>12.3.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.3.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions"><i class="fa fa-check"></i><b>12.3.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-1"><i class="fa fa-check"></i><b>12.4.1</b> Conceptual Questions:</a></li>
+<li class="chapter" data-level="12.4.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-1"><i class="fa fa-check"></i><b>12.4.2</b> Coding Questions:</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-2"><i class="fa fa-check"></i><b>12.5.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.5.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-2"><i class="fa fa-check"></i><b>12.5.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-3"><i class="fa fa-check"></i><b>12.6.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.6.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-3"><i class="fa fa-check"></i><b>12.6.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="Ch11.html"><a href="Ch11.html#chapter-7-decoding"><i class="fa fa-check"></i><b>12.7</b> Chapter 7: Decoding</a></li>
+<li class="chapter" data-level="12.8" data-path="Ch11.html"><a href="Ch11.html#chapter-8-neural-networks"><i class="fa fa-check"></i><b>12.8</b> Chapter 8: Neural Networks</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computational Neuroscience</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Ch1" class="section level1">
+<h1><span class="header-section-number">2</span> Introduction to Python</h1>
+<div id="vocabulary" class="section level2">
+<h2><span class="header-section-number">2.1</span> Vocabulary</h2>
+</div>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">2.2</span> Introduction</h2>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">2.3</span> Summary</h2>
+</div>
+<div id="example-python-problems" class="section level2">
+<h2><span class="header-section-number">2.4</span> Example Python Problems</h2>
+<p><strong>Example 1</strong>:<br />
+Programming is essentially simplifying steps of a task to an alien that doesn’t understand how humans think. You need to be specific, detailed, and consistent in the format. The computer has a few basic commands it can do, so you need to be creative about how you’ll lay out the steps. With this in mind how would you explain to a computer how to get pizza from Commons?</p>
+<p>Solution (outline):</p>
+<ul>
+<li>You would first need to give the computer directions to Commons</li>
+<li>Scan its ID to enter Commons from the west facing door</li>
+<li>Proceed to the first scanning station, scan its ID, and wait in line</li>
+<li>Proceed to the pizza station which is on the left side of the building</li>
+<li>Look at the types of pizza there are and decide which one it wants</li>
+<li>Ask the Commons employee for the pizza it wants</li>
+<li>Take its box and follow the signs to exit</li>
+<li>Scan out and exit through the east facing doors</li>
+</ul>
+<p><strong>Example 2</strong>:<br />
+The type() function tells you what type of data a certain variable is. Predict what Python will return for the following commands:</p>
+<p>a.) type (“hello world”)<br />
+b.) type(747)<br />
+c.) type(3.14)</p>
+<p>Solution:</p>
+<p>a.) string<br />
+b.) integer<br />
+c.) float</p>
+<p><strong>Example 3:</strong><br />
+Python is a simple programming language and doesn’t naturally come with all of the functions you might need. However, there is no reason to worry. Because Python is so ubiquitous, you can find downloadable packages of code to perform things you might otherwise sink hours into programming. One of these packages is numpy which performs many mathematical calculations that Python doesn’t come equipped with. Here are some examples of numpy functions:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="Ch1.html#cb1-1"></a><span class="co"># exponential</span></span>
+<span id="cb1-2"><a href="Ch1.html#cb1-2"></a>numpy.exp(x)</span>
+<span id="cb1-3"><a href="Ch1.html#cb1-3"></a></span>
+<span id="cb1-4"><a href="Ch1.html#cb1-4"></a><span class="co"># square root</span></span>
+<span id="cb1-5"><a href="Ch1.html#cb1-5"></a>numpy.sqrt(x)</span>
+<span id="cb1-6"><a href="Ch1.html#cb1-6"></a></span>
+<span id="cb1-7"><a href="Ch1.html#cb1-7"></a><span class="co"># natural log</span></span>
+<span id="cb1-8"><a href="Ch1.html#cb1-8"></a>numpy.log(x)</span></code></pre></div>
+<p>In order to use these functions you must first import the package into your notebook which can simply be done with the import function:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="Ch1.html#cb2-1"></a><span class="im">import</span> numpy</span></code></pre></div>
+<p><strong>Example 4:</strong>
+Write code to do the following and print them:</p>
+<p>a.) <span class="math inline">\(e^8\)</span><br />
+b.) <span class="math inline">\(\sqrt{55+31}\)</span><br />
+c.) <span class="math inline">\(\ln(664/41)\)</span></p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="Ch1.html#cb3-1"></a><span class="co"># part a</span></span>
+<span id="cb3-2"><a href="Ch1.html#cb3-2"></a><span class="bu">print</span>(numpy.exp(<span class="dv">8</span>))</span>
+<span id="cb3-3"><a href="Ch1.html#cb3-3"></a></span>
+<span id="cb3-4"><a href="Ch1.html#cb3-4"></a><span class="co"># part b</span></span>
+<span id="cb3-5"><a href="Ch1.html#cb3-5"></a><span class="bu">print</span>(numpy.sqrt(<span class="dv">55</span><span class="op">+</span><span class="dv">31</span>))</span>
+<span id="cb3-6"><a href="Ch1.html#cb3-6"></a></span>
+<span id="cb3-7"><a href="Ch1.html#cb3-7"></a><span class="co"># part c</span></span>
+<span id="cb3-8"><a href="Ch1.html#cb3-8"></a><span class="bu">print</span>(numpy.log(<span class="dv">664</span><span class="op">/</span><span class="dv">41</span>))</span></code></pre></div>
+<p><strong>Example 5:</strong>
+“If” statements are rather straightforward. You tell Python what to do <em>if</em> a particular circumstance is true. For example:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="Ch1.html#cb4-1"></a><span class="co"># pick a random integer between 1 and 10</span></span>
+<span id="cb4-2"><a href="Ch1.html#cb4-2"></a>x <span class="op">=</span> np.random.randint(<span class="dv">10</span>)</span>
+<span id="cb4-3"><a href="Ch1.html#cb4-3"></a></span>
+<span id="cb4-4"><a href="Ch1.html#cb4-4"></a><span class="co"># print &quot;okie dokie&quot; for if x is small, but print &quot;nokie dokie&quot;</span></span>
+<span id="cb4-5"><a href="Ch1.html#cb4-5"></a><span class="co"># for larger values</span></span>
+<span id="cb4-6"><a href="Ch1.html#cb4-6"></a><span class="cf">if</span> <span class="dv">4</span><span class="op">&gt;</span>x:</span>
+<span id="cb4-7"><a href="Ch1.html#cb4-7"></a>  <span class="bu">print</span>(<span class="st">&quot;okie dokie&quot;</span>)</span>
+<span id="cb4-8"><a href="Ch1.html#cb4-8"></a><span class="cf">else</span>:</span>
+<span id="cb4-9"><a href="Ch1.html#cb4-9"></a>  <span class="bu">print</span>(<span class="st">&quot;nokie dokie&quot;</span>)</span></code></pre></div>
+<p>In this example we are using the numpy.random.randint function to generate a random number between 0-9 and storing it in the variable x. This is because the numpy.random.randint function begins counting at 0 and is not inclusive of the last digit. The if statement then tells Python that if the randomly generated number is less than four print okie dokie and if not print nokie dokie. You can run this code multiple times and see the changes.</p>
+<p><strong>Example 6:</strong>
+Now try it yourself. Imagine you’re playing the lottery and your numbers are 3, 22, 55, and 31 and numbers are selected between 0 and 150, you win if any of your numbers are selected. Write an “if” statement that returns “I’m loaded!!!” if your numbers are not selected, print “better luck next time”.</p>
+<ul>
+<li>Hint: the “==” symbols are used to show equivalency.</li>
+<li>“Or” is a function that can be used in conjunction with “if” statements.</li>
+</ul>
+<p>Solution:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="Ch1.html#cb5-1"></a><span class="co"># print a random integer between 1 and 56</span></span>
+<span id="cb5-2"><a href="Ch1.html#cb5-2"></a>x <span class="op">=</span> numpy.random.randint(<span class="dv">57</span>)</span>
+<span id="cb5-3"><a href="Ch1.html#cb5-3"></a></span>
+<span id="cb5-4"><a href="Ch1.html#cb5-4"></a><span class="co"># check to see if x is a winning number</span></span>
+<span id="cb5-5"><a href="Ch1.html#cb5-5"></a><span class="cf">if</span> x<span class="op">==</span><span class="dv">3</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">22</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">55</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">31</span>:</span>
+<span id="cb5-6"><a href="Ch1.html#cb5-6"></a>  <span class="bu">print</span>(<span class="st">&quot;I&#39;m loaded!&quot;</span>)</span>
+<span id="cb5-7"><a href="Ch1.html#cb5-7"></a><span class="cf">else</span>:</span>
+<span id="cb5-8"><a href="Ch1.html#cb5-8"></a>  <span class="bu">print</span>(<span class="st">&quot;Better luck next time!&quot;</span>)</span>
+<span id="cb5-9"><a href="Ch1.html#cb5-9"></a></span>
+<span id="cb5-10"><a href="Ch1.html#cb5-10"></a><span class="co"># check what number was chosen  </span></span>
+<span id="cb5-11"><a href="Ch1.html#cb5-11"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<p><strong>Example 7:</strong>
+Imagine you are cleaning up at the end of your birthday party. You are tired and hungry from a long day of having fun. You are wondering how many slices of pizza are left in each of the 5 pizza boxes, and you decide to write an algorithm that will look through each pizza box and count the number of remaining slices.</p>
+<p>Follow the comments below to understand what each line of this code does:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="Ch1.html#cb6-1"></a><span class="co"># We are importing the package numpy which has built in functions </span></span>
+<span id="cb6-2"><a href="Ch1.html#cb6-2"></a><span class="co"># that will make coding easier and more efficient.</span></span>
+<span id="cb6-3"><a href="Ch1.html#cb6-3"></a><span class="im">import</span> numpy</span>
+<span id="cb6-4"><a href="Ch1.html#cb6-4"></a></span>
+<span id="cb6-5"><a href="Ch1.html#cb6-5"></a><span class="co"># We are defining the total number of pizza boxes that we need </span></span>
+<span id="cb6-6"><a href="Ch1.html#cb6-6"></a><span class="co"># to examine.</span></span>
+<span id="cb6-7"><a href="Ch1.html#cb6-7"></a>totalBoxes <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb6-8"><a href="Ch1.html#cb6-8"></a></span>
+<span id="cb6-9"><a href="Ch1.html#cb6-9"></a><span class="co"># Start counting the number of pizza slices. Since we haven&#39;t </span></span>
+<span id="cb6-10"><a href="Ch1.html#cb6-10"></a><span class="co"># started counting, we will start at zero.</span></span>
+<span id="cb6-11"><a href="Ch1.html#cb6-11"></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-12"><a href="Ch1.html#cb6-12"></a></span>
+<span id="cb6-13"><a href="Ch1.html#cb6-13"></a><span class="co"># Here we are initializing the for loop. We are telling Python </span></span>
+<span id="cb6-14"><a href="Ch1.html#cb6-14"></a><span class="co"># to look at each box in the range of totalBoxes.</span></span>
+<span id="cb6-15"><a href="Ch1.html#cb6-15"></a><span class="cf">for</span> box <span class="kw">in</span> <span class="bu">range</span>(totalBoxes):</span>
+<span id="cb6-16"><a href="Ch1.html#cb6-16"></a>  <span class="co"># We’ve indented here because we are working inside the for loop.</span></span>
+<span id="cb6-17"><a href="Ch1.html#cb6-17"></a>  </span>
+<span id="cb6-18"><a href="Ch1.html#cb6-18"></a>  <span class="co"># The numpy.random.randint() function is selecting a random </span></span>
+<span id="cb6-19"><a href="Ch1.html#cb6-19"></a>  <span class="co"># number between 0 and 16 (we use 17 because the numpy random </span></span>
+<span id="cb6-20"><a href="Ch1.html#cb6-20"></a>  <span class="co"># function is not inclusive of the last digit). This will </span></span>
+<span id="cb6-21"><a href="Ch1.html#cb6-21"></a>  <span class="co"># represent the number of slices left in this box.</span></span>
+<span id="cb6-22"><a href="Ch1.html#cb6-22"></a>  slices <span class="op">=</span> numpy.random.randint(<span class="dv">0</span>, high<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb6-23"><a href="Ch1.html#cb6-23"></a>  </span>
+<span id="cb6-24"><a href="Ch1.html#cb6-24"></a>  <span class="co"># We are telling Python that if there is at least one slice in</span></span>
+<span id="cb6-25"><a href="Ch1.html#cb6-25"></a>  <span class="co"># the box, we should increase the count and print the number of </span></span>
+<span id="cb6-26"><a href="Ch1.html#cb6-26"></a>  <span class="co"># slices found.</span></span>
+<span id="cb6-27"><a href="Ch1.html#cb6-27"></a>  <span class="cf">if</span> slices <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb6-28"><a href="Ch1.html#cb6-28"></a>    count <span class="op">+=</span> slices</span>
+<span id="cb6-29"><a href="Ch1.html#cb6-29"></a>    <span class="bu">print</span>(<span class="st">&#39;I have found </span><span class="sc">{}</span><span class="st"> slices!&#39;</span>.<span class="bu">format</span>(count))</span>
+<span id="cb6-30"><a href="Ch1.html#cb6-30"></a>  </span>
+<span id="cb6-31"><a href="Ch1.html#cb6-31"></a>  <span class="co"># &quot;Else&quot; tells Python what to do if there is no pizza in this box.</span></span>
+<span id="cb6-32"><a href="Ch1.html#cb6-32"></a>  <span class="cf">else</span>:</span>
+<span id="cb6-33"><a href="Ch1.html#cb6-33"></a>  </span>
+<span id="cb6-34"><a href="Ch1.html#cb6-34"></a>    <span class="co">#Print is indented inside the else statement because you want to </span></span>
+<span id="cb6-35"><a href="Ch1.html#cb6-35"></a>    <span class="co"># print (&quot;Nooooooo!!!&quot;) if the else statement needs to be used.</span></span>
+<span id="cb6-36"><a href="Ch1.html#cb6-36"></a></span>
+<span id="cb6-37"><a href="Ch1.html#cb6-37"></a>    <span class="bu">print</span>(<span class="st">&quot;Nooooooo!!!&quot;</span>)</span></code></pre></div>
+</div>
+<div id="conceptual-exercises-for-learning-python" class="section level2">
+<h2><span class="header-section-number">2.5</span> Conceptual Exercises for Learning Python</h2>
+<ol style="list-style-type: decimal">
+<li><p>How does Python read code?</p></li>
+<li><p>Compare and contrast the function of brackets and parentheses.</p></li>
+<li><p>How is a tuple different than a list, and given their respective scenarios what characters should be used?</p></li>
+<li><p>Why is indentation important when using writing code in Python, and how can it affect your cell outcome?</p></li>
+<li><p>Describe the four most common data types (int, float, bool, str) that variables can be assigned to and describe each one.</p></li>
+</ol>
+</div>
+<div id="coding-exercises-for-learning-python" class="section level2">
+<h2><span class="header-section-number">2.6</span> Coding Exercises for Learning Python</h2>
+<ol style="list-style-type: decimal">
+<li>Define two variables, one called varOne that represents the value 20 and one calledvarTwo that represents the value 5:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Creating a new variable called addVar, write a code that will add varOne andvarTwo.</li>
+<li>Creating a new variable called divVar, write a code that will divide varOne andvarTwo.</li>
+<li>Finally, multiply your two new values (from parts a + b), and assign this to the variable multVar.
+Hint: use basic addition, divison, and multiplication commands rather than making your own function.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Using the variable name L1:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Create a list of five different food items and print the list.</li>
+<li>Write a line of Python code that will print only the 3rd and 5th food in your list from part a.</li>
+</ol>
+<p>Using variable name L2:
+c. Create a second list with three sport names and print the list.
+d. Write a line of Python code that will sort your list from part c alphabetically.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Create a vector from 5 to 15 (non-inclusive) in increments of 2. Then write a line of code that will print the square of each value in the vector.</p></li>
+<li><p>Create a matrix of zeros with 3 rows and 6 columns. Then, create a 2x4 matrix where the first row lists ice cream flavors and the second row lists soda flavors.</p></li>
+<li><p>Write a for loop that will start at the lowest temperature you experienced this week and end at the highest temperature you experienced (in one degree increments). Inside your loop, use an if…else statement that prints whether each temperature is even or odd.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Ch2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
