@@ -1,0 +1,13 @@
+﻿Expression,Meaning
+*n*,Activation of potassium channels
+*m*,Activation of sodium channels
+*h*,Inactivation of sodium channels
+*C*,Capacitance
+$I_{injected}$,Injected current
+$\bar{g}_{Na}$,Maximum sodium conductance
+$\bar{g}_{K}$,Maximum potassium conductance
+$\bar{g}_{L}$,Maximum leak conductance
+*V*,Membrane voltage
+$E_{Na}$,Sodium Nernst potential
+$E_{K}$,Potassium Nernst potential
+$E_{L}$,Leak Nernst potential

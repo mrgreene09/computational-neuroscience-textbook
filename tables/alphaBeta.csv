@@ -1,0 +1,7 @@
+﻿Expression,Meaning
+$\alpha_{n}$,Rate constant for potassium channel activation (open)
+$\alpha_{m}$,Rate constant for sodium channel activation (open)
+$\alpha_{h}$,Rate constant for sodium channel inactivation (open)
+$\beta_{n}$,Rate constant for potassium channel activation (close)
+$\beta_{m}$,Rate constant for sodium channel activation (close)
+$\beta_{h}$,Rate constant for sodium channel inactivation (close)

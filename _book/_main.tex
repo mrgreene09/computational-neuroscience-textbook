@@ -1,0 +1,479 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Computational Neuroscience},
+  pdfauthor={Students of NS/PY 357 Bates College},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+
+\title{Computational Neuroscience}
+\author{Students of NS/PY 357 Bates College}
+\date{2020-10-21}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{preface}{%
+\chapter{Preface}\label{preface}}
+
+What you are about to read is an open textbook written for (and by) students of Computational Neuroscience at Bates College. This is version 1.0 of a living document that will be revised, reused, and appended over the course of many generations of this course. As the instructor of this course, I want to briefly outline \emph{my} motivations for undertaking this project in hopes that this idea may spread.
+
+\hypertarget{this-book-is-free-as-in-pizza}{%
+\section{This book is free (as in pizza)}\label{this-book-is-free-as-in-pizza}}
+
+It is broadly accepted that \href{https://collegecost.ed.gov/}{college affordability} is a key challenge for the U.S. in the 21st century. One of the drivers of increased college cost is the increased cost of course textbooks. Over the past 40 years, textbook prices have risen over \href{https://www.slideshare.net/kcangial/teaching-in-the-open-bates-college}{1200\% over the last 40 years} -- much higher than the rate of inflation, and higher even than housing or healthcare! By creating a free textbook, we are broadening the participation of students in computational neuroscience.
+
+While this was true when we began this project in 2019, it is even more true as we face a global pandemic and recession in 2020. I am very happy to be opening up knowledge on this topic as the world seems more closed. As the class reflected on their work, a number of additional novel reasons for this project emerged: reducing the environmental impact of creating and shipping paper textbooks, and the health implications of sharing physical textbooks during a pandemic.
+
+\hypertarget{this-book-is-free-as-in-speech}{%
+\section{This book is free (as in speech)}\label{this-book-is-free-as-in-speech}}
+
+As important as cost-free textbooks is, equally important are the freedoms that openness provides. We are opening this resource for reuse, revision, and redistribution. We welcome others to remix into other works. It is my belief that the availability of high-quality resources allows for creativity and innovation to spring up in others. My teaching and scholarship has benefited greatly from openly available sources, and I feel that my success as an academic is to pay this forward.
+
+\hypertarget{this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks}{%
+\section{This book can be revised and disseminated more rapidly than traditional textbooks}\label{this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks}}
+
+Part of the impetus of this book came from a frustration in finding a traditional textbook that was appropriate for my undergraduate, 300-level course in computational neuroscience. Many of the books, though excellent, assumed a graduate-level sophistication in mathematics. Nearly all were missing some of the most modern topics. Computational neuroscience is a rapidly-evolving field, so an open textbook allows for more rapid editing, addition, and dissemination than is afforded by a traditional publishing model.
+
+\hypertarget{this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends}{%
+\section{This book creates a public record of learning that exists after the semester ends}\label{this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends}}
+
+Part of the educational journey is making the leap between being a \emph{consumer} of knowledge to being a \emph{generator} of knowledge. It is oft-said but nonetheless true statement that one truly learns by teaching. This assignment places students in the role of teacher, making the content come alive by explaining it in their own words. All too often, the writing that we do in college is in the form of the ``disposable assignment'' - one that students will spend a few hours working on, that I will spend a few hours reading and grading, and then is thrown away. Writing an open textbook is more of a renewable assignment - one that will have value in the world long after the semester is over.
+
+We hope that you enjoy this book. Please feel free to reach out to me if you have any questions or comments about our work: \href{mailto:mgreene2@bates.edu}{\nolinkurl{mgreene2@bates.edu}}.
+
+\hypertarget{authors-version-0.0}{%
+\section{Authors: Version 0.0}\label{authors-version-0.0}}
+
+Juliet Bockhorst (2022)\\
+Abraham Brownell (2020)\\
+Paloma Noriega Burrill (2021)\\
+Catherine Crossin (2020)\\
+Leo Crossman (2020)\\
+Logan Douglas (2020)\\
+Nick Antonellis (2021)\\
+Robin Kass (2020)\\
+Sasha Cadariu (2021)\\
+Wuyue Zhou (2021)
+
+\includegraphics{images/class.jpg}
+
+\hypertarget{authors-version-1.0}{%
+\section{Authors: Version 1.0}\label{authors-version-1.0}}
+
+Ciaran Bardong (2022)\\
+Camden Bibro (2022)\\
+Natalie Brewer (2021)\\
+Yueh Chuah (2022)\\
+Alexis Fifield (2021)\\
+Neeshi Hullavarad (2022)\\
+Jahmari Josiah (2021)\\
+Johnny Loftus (2022)\\
+Adam Mann (2021)\\
+Amina Mohamed (2022)\\
+Alexia Perugini (2022)\\
+Shanzeh Rauf (2021)\\
+Peter Riley (2022)\\
+Sobie Sobolewski (2022)\\
+Riley Strathmann (2022)\\
+Dessy Yang (2022)
+
+\includegraphics{images/class2020.png}
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+\hypertarget{Ch1}{%
+\chapter{Introduction to Python}\label{Ch1}}
+
+Placeholder
+
+\hypertarget{vocabulary}{%
+\section{Vocabulary}\label{vocabulary}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\hypertarget{example-python-problems}{%
+\section{Example Python Problems}\label{example-python-problems}}
+
+\hypertarget{conceptual-exercises-for-learning-python}{%
+\section{Conceptual Exercises for Learning Python}\label{conceptual-exercises-for-learning-python}}
+
+\hypertarget{coding-exercises-for-learning-python}{%
+\section{Coding Exercises for Learning Python}\label{coding-exercises-for-learning-python}}
+
+\hypertarget{Ch2}{%
+\chapter{What is Computational Neuroscience?}\label{Ch2}}
+
+Placeholder
+
+\hypertarget{vocabulary}{%
+\section{Vocabulary}\label{vocabulary}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{what-is-computational-neuroscience}{%
+\section{What is computational neuroscience?}\label{what-is-computational-neuroscience}}
+
+\hypertarget{levels-of-organization}{%
+\section{Levels of organization}\label{levels-of-organization}}
+
+\hypertarget{applications-of-computational-neuroscience}{%
+\section{Applications of computational neuroscience}\label{applications-of-computational-neuroscience}}
+
+\hypertarget{the-future-of-computational-neuroscience}{%
+\section{The future of computational neuroscience}\label{the-future-of-computational-neuroscience}}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\hypertarget{exercises}{%
+\section{Exercises:}\label{exercises}}
+
+\hypertarget{Ch3}{%
+\chapter{Passive Membrane Models}\label{Ch3}}
+
+Placeholder
+
+\hypertarget{vocabulary}{%
+\section{Vocabulary}\label{vocabulary}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{what-is-an-action-potential}{%
+\section{What is an action potential?}\label{what-is-an-action-potential}}
+
+\hypertarget{nernst-equilibrium-potential}{%
+\section{Nernst equilibrium potential}\label{nernst-equilibrium-potential}}
+
+\hypertarget{leaky-integrate-and-fire-model}{%
+\section{Leaky Integrate and Fire Model}\label{leaky-integrate-and-fire-model}}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\hypertarget{exercises}{%
+\section{Exercises}\label{exercises}}
+
+\hypertarget{conceptual-exercises}{%
+\subsection{Conceptual Exercises}\label{conceptual-exercises}}
+
+\hypertarget{coding-exercises}{%
+\subsection{Coding Exercises}\label{coding-exercises}}
+
+\hypertarget{Ch4}{%
+\chapter{Hodgkin and Huxley Model}\label{Ch4}}
+
+Placeholder
+
+\hypertarget{vocabulary}{%
+\section{Vocabulary}\label{vocabulary}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{the-hodgkin-and-huxley-model}{%
+\section{The Hodgkin and Huxley model}\label{the-hodgkin-and-huxley-model}}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\hypertarget{exercises}{%
+\section{Exercises:}\label{exercises}}
+
+\hypertarget{conceptual-exercises}{%
+\subsection{Conceptual Exercises:}\label{conceptual-exercises}}
+
+\hypertarget{coding-exercises}{%
+\subsection{Coding Exercises:}\label{coding-exercises}}
+
+\hypertarget{Ch5}{%
+\chapter{Firing Rates}\label{Ch5}}
+
+Placeholder
+
+\hypertarget{vocabulary}{%
+\section{Vocabulary}\label{vocabulary}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{spike-trains}{%
+\section{Spike Trains}\label{spike-trains}}
+
+\hypertarget{spike-statistics}{%
+\section{Spike Statistics}\label{spike-statistics}}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\hypertarget{exercises}{%
+\section{Exercises}\label{exercises}}
+
+\hypertarget{conceptual-problems}{%
+\subsection{Conceptual Problems}\label{conceptual-problems}}
+
+\hypertarget{coding-problems}{%
+\subsection{Coding Problems}\label{coding-problems}}
+
+\hypertarget{Ch6}{%
+\chapter{Reverse Correlation and Receptive Field Mapping}\label{Ch6}}
+
+Placeholder
+
+\hypertarget{vocabulary}{%
+\section{Vocabulary}\label{vocabulary}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{spike-triggered-average}{%
+\section{Spike-triggered Average}\label{spike-triggered-average}}
+
+\hypertarget{reverse-correlation}{%
+\section{Reverse Correlation}\label{reverse-correlation}}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\hypertarget{exercises}{%
+\section{Exercises}\label{exercises}}
+
+\hypertarget{conceptual-exercises}{%
+\subsection{Conceptual Exercises}\label{conceptual-exercises}}
+
+\hypertarget{coding-exercises}{%
+\subsection{Coding Exercises}\label{coding-exercises}}
+
+\hypertarget{Ch7}{%
+\chapter{Decoding}\label{Ch7}}
+
+Placeholder
+
+\hypertarget{vocabulary}{%
+\section{Vocabulary}\label{vocabulary}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{imaging-techniques}{%
+\section{Imaging Techniques}\label{imaging-techniques}}
+
+\hypertarget{eeg}{%
+\subsection{EEG}\label{eeg}}
+
+\hypertarget{meg}{%
+\subsection{MEG}\label{meg}}
+
+\hypertarget{fmri}{%
+\subsection{fMRI}\label{fmri}}
+
+\hypertarget{ecog}{%
+\subsection{ECOG}\label{ecog}}
+
+\hypertarget{introduction-to-decoding}{%
+\section{Introduction to Decoding}\label{introduction-to-decoding}}
+
+\hypertarget{what-is-a-classifier}{%
+\section{What is a classifier?}\label{what-is-a-classifier}}
+
+\hypertarget{correlation-classifiers}{%
+\subsection{Correlation classifiers}\label{correlation-classifiers}}
+
+\hypertarget{distance-based-classifiers}{%
+\subsection{Distance-based classifiers}\label{distance-based-classifiers}}
+
+\hypertarget{boundary-based-classifiers}{%
+\subsection{Boundary-based classifiers}\label{boundary-based-classifiers}}
+
+\hypertarget{cross-validation}{%
+\section{Cross validation}\label{cross-validation}}
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+\hypertarget{Ch8}{%
+\chapter{Neural Networks}\label{Ch8}}
+
+Placeholder
+
+\hypertarget{vocabulary-list}{%
+\section{Vocabulary List:}\label{vocabulary-list}}
+
+\hypertarget{introductionbackground}{%
+\section{Introduction/Background}\label{introductionbackground}}
+
+\hypertarget{different-types-of-learning}{%
+\section{Different Types of Learning}\label{different-types-of-learning}}
+
+\hypertarget{mcculloch-pitt-mcp-neurons}{%
+\section{McCulloch-Pitt (MCP) Neurons}\label{mcculloch-pitt-mcp-neurons}}
+
+\hypertarget{perceptron}{%
+\section{Perceptron}\label{perceptron}}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\hypertarget{Ch9}{%
+\chapter{Glossary}\label{Ch9}}
+
+Placeholder
+
+\hypertarget{Ch10}{%
+\chapter{References}\label{Ch10}}
+
+Placeholder
+
+\hypertarget{chapter-1-preface}{%
+\section{Chapter 1: Preface}\label{chapter-1-preface}}
+
+\hypertarget{chapter-2-introduction-to-python}{%
+\section{Chapter 2: Introduction to Python}\label{chapter-2-introduction-to-python}}
+
+\hypertarget{chapter-3-what-is-computational-neuroscience}{%
+\section{Chapter 3: What is Computational Neuroscience?}\label{chapter-3-what-is-computational-neuroscience}}
+
+\hypertarget{chapter-4-passive-membrane-models}{%
+\section{Chapter 4: Passive Membrane Models}\label{chapter-4-passive-membrane-models}}
+
+\hypertarget{chapter-5-hodgkin-and-huxley}{%
+\section{Chapter 5: Hodgkin and Huxley}\label{chapter-5-hodgkin-and-huxley}}
+
+\hypertarget{chapter-6-firing-rates}{%
+\section{Chapter 6: Firing Rates}\label{chapter-6-firing-rates}}
+
+\hypertarget{chapter-7-reverse-correlation-and-receptive-field-mapping}{%
+\section{Chapter 7: Reverse Correlation and Receptive Field Mapping}\label{chapter-7-reverse-correlation-and-receptive-field-mapping}}
+
+\hypertarget{chapter-8-decoding}{%
+\section{Chapter 8: Decoding}\label{chapter-8-decoding}}
+
+\hypertarget{chapter-9-neural-networks}{%
+\section{Chapter 9: Neural Networks}\label{chapter-9-neural-networks}}
+
+\hypertarget{Ch11}{%
+\chapter{Answers to Exercises}\label{Ch11}}
+
+Placeholder
+
+\hypertarget{chapter-1-introduction-to-python}{%
+\section{Chapter 1: Introduction to Python}\label{chapter-1-introduction-to-python}}
+
+\hypertarget{chapter-2-introduction-to-computational-neuroscience}{%
+\section{Chapter 2: Introduction to Computational Neuroscience}\label{chapter-2-introduction-to-computational-neuroscience}}
+
+\hypertarget{chapter-3-passive-membrane-models}{%
+\section{Chapter 3: Passive Membrane Models}\label{chapter-3-passive-membrane-models}}
+
+\hypertarget{conceptual-questions}{%
+\subsection{Conceptual Questions}\label{conceptual-questions}}
+
+\hypertarget{coding-questions}{%
+\subsection{Coding Questions}\label{coding-questions}}
+
+\hypertarget{chapter-4-hodgkin-and-huxley}{%
+\section{Chapter 4: Hodgkin and Huxley}\label{chapter-4-hodgkin-and-huxley}}
+
+\hypertarget{conceptual-questions-1}{%
+\subsection{Conceptual Questions:}\label{conceptual-questions-1}}
+
+\hypertarget{coding-questions-1}{%
+\subsection{Coding Questions:}\label{coding-questions-1}}
+
+\hypertarget{chapter-5-firing-rates}{%
+\section{Chapter 5: Firing Rates}\label{chapter-5-firing-rates}}
+
+\hypertarget{conceptual-questions-2}{%
+\subsection{Conceptual Questions}\label{conceptual-questions-2}}
+
+\hypertarget{coding-questions-2}{%
+\subsection{Coding Questions}\label{coding-questions-2}}
+
+\hypertarget{chapter-6-reverse-correlation-and-receptive-field-mapping}{%
+\section{Chapter 6: Reverse Correlation and Receptive Field Mapping}\label{chapter-6-reverse-correlation-and-receptive-field-mapping}}
+
+\hypertarget{conceptual-questions-3}{%
+\subsection{Conceptual Questions}\label{conceptual-questions-3}}
+
+\hypertarget{coding-questions-3}{%
+\subsection{Coding Questions}\label{coding-questions-3}}
+
+\hypertarget{chapter-7-decoding}{%
+\section{Chapter 7: Decoding}\label{chapter-7-decoding}}
+
+\hypertarget{chapter-8-neural-networks}{%
+\section{Chapter 8: Neural Networks}\label{chapter-8-neural-networks}}
+
+\end{document}

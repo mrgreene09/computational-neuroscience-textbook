@@ -1,0 +1,125 @@
+# Glossary {#Ch9}
+
+* Absolute Refractory Period: The point from the beginning of the action potential to the peak. In this time frame, it is not physiologically possible for the neuron to fire a second time. In this time period, the sodium channels are open and remain open until the peak of the graph. These channels can not immediately re-open, and due to this, it would not be possible for the membrane to depolarize a second time.  
+
+* Activation Function: Allows for a neuron to make a decision (produce an output) along some continuous interval to adjust weights to learn.  
+
+* Algorithm: An algorithm is a process to define why the model is appropriate and how the logical strategy will be carried out.  
+
+* Back Propagation: Correction signals that run backwards from the output units to the hidden units and then are summed according to the hidden-to-output weights.  
+
+* Bottom-up Processing: Bottom-up organization refers to the reverse process, collecting data and then organizing it to create a theory.  
+
+* Classifier: A type of supervised learning that learns from training data and makes predictions on test data. Specific types of classifiers include:  
+  + Distance-based classifier
+  + Boundary-based classifier  
+  
+
+* Coefficient of Variation: Standard deviation divided by the mean of a set of data.  
+
+* Computational Neuroscience: Computational neuroscience is an interdisciplinary field that applies the principles of mathematics, philosophy, and computer science to study the inner workings of the brain.  
+
+* Computational Theory: Computational Theory a characterization of the system’s goal.  
+
+* Conductance: Allows the flow of charge.  
+
+* Cost: Calculation in Backpropagation using the Mean Squared Error: $MSE = \frac{1}{n}\sum_{i=1}^{n} (Y_{i}-Yhat_{i})^2$.  Used to change weights with the goal of minimizing cost at each iteration.  
+
+* Cross-validation: A decoding scheme that repeatedly partitions the data set into a test set and the remaining data into a training set and makes predictions for every test set until predictions are made for every data point in the data set.  
+
+* Curse of dimensionality: As we move up to in dimensions and start calculating distances in hyperplanes, these operations become exponentially less efficient. 
+
+* Decoding: Field of neuroscience aimed at using action potential data in a single neuron or neural networks to identify the stimuli that caused the neural activity. 
+
+* Depolarization: This process of positive ions flowing into the cell.  
+
+* Driving Force: The pressure for an ion to move in or out of the cell.  
+
+* Emergent Phenomena: An emergent phenomenon is a case in which new mechanisms arise from the addition of a sufficient number of the same functional part.  
+
+* Equilibrium Potential: The membrane potential at which the flow of electric current from all types of ions into and out of the cell is balanced, so there is no net current and the membrane potential is not caused to change.  
+
+* Fano Factor: The fano factor is used to measure the spike variability in a spike train. It is calculated by the variance of the number of spikes divided by the mean number of spikes in a given time interval.  
+
+* Gating variable: The Fire Model is broken up into three separate conductance terms, each relating to a different ion channel called the m, h, and n variables.  
+
+* Hardware and Implementation: Hardware implementation is the physical machinery that realizes the algorithm.  
+
+* Hebbian Learning: One of the core levels of organization within the brain is the synapse. The synapse consists of a pre-synaptic cell, which sends a message to another neuron, or the post-synaptic cell. When many of these messages are sent between two cells, the connection between the two of them is strengthened. This is a theory of “synaptic plasticity” which can be applied through theoretical models within the field of neuroscience.  
+
+* Hidden Layers: Additional layers used when an output is not linearly separable (like XOR); these layers of neurons are chained together via multiple nonlinearities from the various units to solve the problem. Each of these hidden layers–as well as the output layer–will have its own activation function.  
+
+* Hyperpolarization: To decrease the membrane potential towards a more negative value through outward electrical current. 
+
+* Imaging techniques: There are multiple types of imaging techniques commonly employed by researchers to obtain data and recordings from participants.  The techniques include: 
+  + EEG
+  + MEG
+  + fMRI
+  + ECOG  
+  
+
+* Interspike Interval: The time interval between every pair of spikes.  
+
+* Leak Current: Leak currents are the passive membranes that are dependent on the membrane potential to drive the electrical potentials of the permeable ions and concentration gradient.  
+
+* Linear discriminant analysis: Type of decision-based classifier algorithm that maximizes that distance between centroid means.  
+
+* Linear support vector machine (LSVM): type of decision-based classifier algorithm that creates a boundary that maximizes the distance between the hard examples in the training set (known as the support vectors); LSVM works well with high dimensional data.
+
+* Linearly Separable: Different classes of outputs in space that can be separated with a single decision surface.  
+
+* McCulloch-Pitts (MCP) Neuron: Initial neural network model designed by McCulloch and Pitts that takes multiple inputs with associated weights to produce a single output.  
+
+* Membrane Potential: The potential difference across the cell membrane.  
+
+* Multivariate pattern analysis (MVPA): Method utilized for all the imaging techniques as a broad form of decoding that factors in the relationship between variables so they are not treated as independent variables.
+
+* Negative Feedback: A process by which an initial change is opposed by a force caused by the initial change.  
+
+* Nernst Potential (Reversal Potential): The membrane potential at which the flow of a particular ion is in a dynamic equilibrium, meaning the outflow is precisely matched by the inflow of that ion.  
+
+* Neural Networks: Computing model comprised of basic processing elements strung together that take an input and give an appropriate output and can become increasingly layered to conquer more complex concepts and problems.  
+
+* Perceptron: An algorithm for transforming inputs to outputs with the corresponding weights, bias, and the activation function.  
+
+* Peri-Stimulus Time Histogram: Average time-dependent rate of action potentials (or spike rate) measured during a stimulus over a period of time.  
+
+* Poisson Process: Probabilistic production of events, such as spikes, at any point in time with equal probability per unit time.  
+
+* Positive Feedback: A process by which depolarization of the cell causes further depolarization. More generally, a positive feedback loop is a process that perpetuates itself.  
+
+* Rank measure: A type of decoding that ranks the probability for all labels and measures the distance between the predicted label and the top.  
+
+* Reconstructionism: Reconstructionism is similar to reductionism, except with the added step of reconstructing the reduced parts.  
+
+* Reductionism: Reductionism is breaking larger concepts or models down into smaller parts.  
+
+* Reinforcement Learning: Learning shaped through interactions with the environment through reward and punishment.  
+
+* Relative Refractory Period: The point after the absolute refractory period when a second stimulus, that is above a threshold, can elicit a second action potential without allowing the membrane to hyperpolarize back to its resting membrane potential.  
+
+* Representation: The representational scheme is the description of the functional elements that are used in the computation.  
+
+* Reverse Correlation: Process which implements the analysis of outputs to determine the inputs that the neuron will respond to with a spike.  
+
+* Sigmoid Activation Function: One type of non-linear activation function that determines the output, whose function is defined to be $f(x) = \frac{1}{(1+e^-x)}$  
+
+* Sodium-Potassium Pump: Uses just below 10% of your body’s daily energy to pump three sodium ions out of the neuron for every two potassium ions pumped in, thus forming two respective concentration gradients.  
+
+* Spike Count Rate: The number of spikes per time interval.  
+
+* Spike Train: A sequence of recorded times at which a neuron fires an action potential.  
+
+* Spike Triggered Average: The average value of the stimulus during some time interval before a spike occurs.  
+
+* Step Function: One type of activation function that takes returns a binary output of 0 or 1.  
+
+* Supervised Learning: Learning situations where inputs and expected outputs are given information to predict future solutions.  
+
+* Top-down Processing: Top-down organization refers to the idea of designing a machine for an express predisposed class.  
+
+* Turing Machine: The Turing Machine is a theory created by Alan Turing involving an infinite strip of paper with binary cells which can be used to compute any questions theoretically.  
+
+* Unsupervised Learning: Learning that occurs in the absence of a teacher with expected outputs; a student simply looks at patterns and tries to maximize correlations or find a basic understanding or pattern.  
+
+* White Noise: A random variation where the value at each time point is independent of all other points and so can be employed in these instances to provide a receptive field without bias. 

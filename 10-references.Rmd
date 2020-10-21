@@ -1,0 +1,120 @@
+# References {#Ch10}
+
+*** Denotes references of particular interest.  
+
+## Chapter 1: Preface  
+
+## Chapter 2: Introduction to Python  
+
+## Chapter 3: What is Computational Neuroscience?    
+Anderson, B. (2014). *Computational Neuroscience and Cognitive Modelling: A Student's Introduction to Methods and Procedures*: SAGE Publications.  
+
+Hodges, A. (2009). Alan Turing and the Turing Test. Epstein, R., Roberts G., & Beber, G. (Ed.) *Parsing the Turing Test: Philosophical and Methodological issues in the Quest for the Thinking Computer*. (pp. 13-22). Springer.  
+
+Lytton, W. W. (2002). *From Computer to Brain: Foundations of Computational Neuroscience*: Springer.  
+
+Markram, H. (2006). The Blue Brain Project. *Nature Reviews Neuroscience*, 7(2),
+153-160. doi:10.1038/nrn1848  
+
+*** Marr, D. (1982). The Philosophy and the Approach. *Vision*. San Francisco:
+Freeman.  
+
+O’Reilly, R., &amp; Munakata, Y. (2000). *Computational Explorations in Cognitive Neuroscience Understanding the Mind by Simulating the Brain.* MIT Press.  
+
+P. Trappenberg, T. (2002). *Fundamentals of Computational Neuroscience*: Oxford University Press UK.  
+
+*** Pessoa, L. (2017). Do Intelligent Robots Need Emotion? *Trends in Cognitive Sciences*, 21(11), 817-819. doi:https://doi.org/10.1016/j.tics.2017.06.010  
+
+Selfridge, O. G. (1955, March). Pattern recognition and modern computers. In *Proceedings of the March 1-3, 1955, Western Joint Computer Conference* (pp. 91-93). ACM.  
+
+Studios, BBC, director. The Chinese Room Experiment - The Hunt for AI.
+YouTube, YouTube, 17 Sept. 2015, [www.youtube.com/watch?v=D0MD4sRHj1M.](www.youtube.com/watch?v=D0MD4sRHj1M.)
+
+## Chapter 4: Passive Membrane Models  
+
+## Chapter 5: Hodgkin and Huxley  
+
+Anderson, B. (2014). *Computational Neuroscience and Cognitive Modelling: A Student's Introduction to Methods and Procedures*: SAGE Publications.  
+
+Dayan, P. A., L. F. (2005). *Theoretical Neuroscience: Computational and Mathematical Modeling of Neural Systems* (T. M. Press Ed.).  
+
+Discovery. “Dancing Zombie Squid Explained.” YouTube, YouTube, 10 Aug. 2011, www.youtube.com/watch?v=JGPfSSUlReM.  
+
+Lytton, W. W. (2002). *From Computer to Brain: Foundations of Computational Neuroscience*: Springer.  
+
+Mallot, H. A. (2013). *Computational Neuroscience* (S. International Ed.). Switzerland.  
+
+P. Trappenberg, T. (2002). *Fundamentals of Computational Neuroscience*: Oxford University Press UK.  
+
+Sterratt, D. G., Bruce; Gillies, Andrew; Willshaw, David. (2011). *Principles of Computational Modelling in Neuroscience* (Cambridge University Press ed.).
+
+
+## Chapter 6: Firing Rates  
+
+Background: Spike Trains as Point Processes. (n.d.). Retrieved October 10, 2019, 
+from [http://www.stat.cmu.edu/~kass/contrib.html#background](http://www.stat.cmu.edu/~kass/contrib.html#background).
+
+Jaeger, D., Jung, R., & Springer. (2015). “Spike Train.” *Encyclopedia of Computational Neuroscience*: Springer.
+
+
+## Chapter 7: Reverse Correlation and Receptive Field Mapping  
+
+Mallot, H. A. (2015). “Chapter 2 Receptive Fields and the Specificity of Neuronal Firing.” *Computational Neuroscience: A First Course*. Berlin: Springer.
+
+Dayan, P., & Abbott, L. F. (2001). “1.3 What Makes a Neuron Fire?” *Theoretical Neuroscience: Computational and Mathematical Modeling of Neural Systems*: MIT Press.
+
+Ringach, D., & Shapley, R. (2004). Reverse correlation in neurophysiology. *Cognitive Science*, 28(2), 147–166. doi: 10.1207/s15516709cog2802_2
+
+Schwartz, O., Pillow, J. W., Rust, N. C., & Simoncelli, E. P. (2006). Spike-triggered neural characterization. *Journal of Vision*, 6(4), 13. doi: 10.1167/6.4.13
+
+Rieke, F. (1999). *Spikes: exploring the neural code*. Cambridge, MA: MIT Press.
+
+Chichilnisky, E. J. “A Simple White Noise Analysis of Neuronal Light Responses.” *Network: Computation in Neural Systems*, vol. 12, no. 2, 2001, pp. 199–213., doi:10.1080/713663221.
+
+Gerstner, Wulfram. “8.1 Noise Input.” 8.1 Noise Input | *Neuronal Dynamics Online Book*, neuronaldynamics.epfl.ch/online/Ch8.S1.html.
+
+
+## Chapter 8: Decoding   
+
+Glover, G. H. (2011). Overview of Functional Magnetic Resonance Imaging. *Neurosurgery Clinics of North America*, 22(2), 133–139. doi: 10.1016/j.nec.2010.11.001  
+
+Grootswagers, T., Wardle, S. G., & Carlson, T. A. (2017). Decoding Dynamic Brain Patterns from Evoked Responses: A Tutorial on Multivariate Pattern Analysis Applied to Time Series Neuroimaging Data. *Journal of Cognitive Neuroscience*, 29(4), 677–697. doi: 10.1162/jocn_a_01068  
+
+Haxby, J. V. (2012). Multivariate pattern analysis of fMRI: The early beginnings. *NeuroImage*, 62(2), 852–855. doi: 10.1016/j.neuroimage.2012.03.016
+
+Lecture 2: k-nearest neighbors. (n.d.). Retrieved from http://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote02_kNN.html.
+
+Kriegeskorte, N., & Kreiman, G. (2012). *Visual population codes: toward a common multivariate framework for cell recording and functional imaging*. Cambridge, MA: MIT Press.  
+
+Singh, S. (2014). Magnetoencephalography: Basic principles. *Annals of Indian Academy of Neurology*, 17(5), 107. doi: 10.4103/0972-2327.128676
+
+
+## Chapter 9: Neural Networks    
+
+3Blue1Brown. [“Backpropagation Calculus | Deep Learning, Chapter 4.”](www.youtube.com/watch?v=tIeHLnjs5U8&feature=youtu.be) YouTube,YouTube, Nov. 2017.
+
+Anderson, B. (2014). *Computational Neuroscience and Cognitive Modelling: A Student's Introduction to Methods and Procedures*: SAGE Publications.  
+
+Baker, Bowen. “Emergent Tool Use from Multi-Agent Interaction.” OpenAI, OpenAI, 29 Oct. 2019, openai.com/blog/emergent-tool-use/.  
+
+Glosser.ca. (2013). Colored neural network. Wikimedia.
+
+Kang, N. (2017). Introducing Deep Learning and Neural Networks — Deep Learning for Rookies. Towards Data Science.
+
+Kang, N. (2017). Multi-Layer Neural Networks with Sigmoid Function— Deep Learning for Rookies. Towards Data Science.
+
+*** Lettvin, J. Y., Maturana, H. R., McCulloch, W. S., & Pitts, W. H. (1959). What the Frog's Eye Tells the Frog's Brain. *Proceedings of the IRE*, 47(11), 1940-1951. doi:10.1109/JRPROC.1959.287207
+
+Lytton, W. W. (2002). *From Computer to Brain: Foundations of Computational Neuroscience*: Springer.
+
+Mallot, H. A. (2013). *Computational Neuroscience* (S. International Ed.). Switzerland.
+
+Murphy, K. P. (2012). *Introduction Machine Learning: A Probabilistic Perspective (Adaptive Computation and Machine Learning series)* (1st ed.).
+
+P. Trappenberg, T. (2002). *Fundamentals of Computational Neuroscience*: Oxford University Press UK.
+
+Silver, David, et al. “AlphaZero: Shedding New Light on the Grand Games of Chess, Shogi and Go.” Deepmind, Dec. 2018, deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go.
+
+Tesla. “Full Self-Driving.” YouTube,YouTube,www.youtube.com/watch?v=tlThdr3O5Qo.
+
+

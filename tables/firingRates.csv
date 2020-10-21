@@ -1,0 +1,4 @@
+Name,Algorithm,Input,Output
+Spike Count Rate,Calculate the number of spikes per time interval,![](~/Dropbox/teaching/computationalNeuroscience/book/images/spikeTable0.png),![](~/Dropbox/teaching/computationalNeuroscience/book/images/spikeTable1.png)
+Spike Density,Use a single neuron to compute different trials,![](~/Dropbox/teaching/computationalNeuroscience/book/images/spikeTable2.png),![](~/Dropbox/teaching/computationalNeuroscience/book/images/spikeTable3.png)
+Population Density,Use different neurons during a single trial,![](~/Dropbox/teaching/computationalNeuroscience/book/images/spikeTable4.png),![](~/Dropbox/teaching/computationalNeuroscience/book/images/spikeTable5.png)
