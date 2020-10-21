@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Decoding | Computational Neuroscience</title>
+  <title>6 Firing Rates | Computational Neuroscience</title>
   <meta name="description" content="TBD" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Decoding | Computational Neuroscience" />
+  <meta property="og:title" content="6 Firing Rates | Computational Neuroscience" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Decoding | Computational Neuroscience" />
+  <meta name="twitter:title" content="6 Firing Rates | Computational Neuroscience" />
   
   <meta name="twitter:description" content="TBD" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Students of NS/PY 357 Bates College" />
 
 
-<meta name="date" content="2019-12-20" />
+<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,13 +33,14 @@
   
 <link rel="prev" href="Ch4.html"/>
 <link rel="next" href="Ch6.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,13 +48,15 @@
 
 
 
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -62,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -130,69 +135,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i><b>1.5</b> Authors</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors-version-0.0"><i class="fa fa-check"></i><b>1.5</b> Authors: Version 0.0</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#authors-version-1.0"><i class="fa fa-check"></i><b>1.6</b> Authors: Version 1.0</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> What is Computational Neuroscience?</a><ul>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a><ul>
 <li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
 <li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
-<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>2.3</b> What is computational neuroscience?</a></li>
-<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#levels-of-organization"><i class="fa fa-check"></i><b>2.4</b> Levels of organization</a></li>
-<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>2.5</b> Applications of computational neuroscience</a></li>
-<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>2.6</b> The future of computational neuroscience</a></li>
-<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.7</b> Summary</a></li>
-<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#exercises"><i class="fa fa-check"></i><b>2.8</b> Exercises:</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.4</b> Example Python Problems</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.5</b> Conceptual Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.6</b> Coding Exercises for Learning Python</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> Hodgkin and Huxley Model</a><ul>
-<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>3.3</b> What is an action potential?</a></li>
-<li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>3.4</b> Nernst equilibrium potential</a></li>
-<li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>3.5</b> The Hodgkin and Huxley model</a></li>
-<li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a><ul>
+<li class="chapter" data-level="3.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#levels-of-organization"><i class="fa fa-check"></i><b>3.4</b> Levels of organization</a></li>
+<li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.5</b> Applications of computational neuroscience</a></li>
+<li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.6</b> The future of computational neuroscience</a></li>
+<li class="chapter" data-level="3.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Reverse Correlation and Receptive Field Mapping</a><ul>
-<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#spike-trains"><i class="fa fa-check"></i><b>4.3</b> Spike Trains</a></li>
-<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#spike-statistics"><i class="fa fa-check"></i><b>4.4</b> Spike Statistics</a></li>
-<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#spike-triggered-average"><i class="fa fa-check"></i><b>4.5</b> Spike-triggered Average</a></li>
-<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#reverse-correlation"><i class="fa fa-check"></i><b>4.6</b> Reverse Correlation</a></li>
-<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a><ul>
+<li class="chapter" data-level="4.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>4.3</b> What is an action potential?</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.4</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.5</b> Leaky Integrate and Fire Model</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.7.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.7.2</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Neural Networks</a><ul>
-<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-list"><i class="fa fa-check"></i><b>5.1</b> Vocabulary List:</a></li>
-<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introductionbackground"><i class="fa fa-check"></i><b>5.2</b> Introduction/Background</a></li>
-<li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#different-types-of-learning"><i class="fa fa-check"></i><b>5.3</b> Different Types of Learning</a></li>
-<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>5.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
-<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#perceptron"><i class="fa fa-check"></i><b>5.5</b> Perceptron</a></li>
-<li class="chapter" data-level="5.6" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Decoding</a><ul>
-<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-3"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-3"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
-<li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#imaging-techniques"><i class="fa fa-check"></i><b>6.3</b> Imaging Techniques</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="Ch5.html"><a href="Ch5.html#eeg"><i class="fa fa-check"></i><b>6.3.1</b> EEG</a></li>
-<li class="chapter" data-level="6.3.2" data-path="Ch5.html"><a href="Ch5.html#meg"><i class="fa fa-check"></i><b>6.3.2</b> MEG</a></li>
-<li class="chapter" data-level="6.3.3" data-path="Ch5.html"><a href="Ch5.html#fmri"><i class="fa fa-check"></i><b>6.3.3</b> fMRI</a></li>
-<li class="chapter" data-level="6.3.4" data-path="Ch5.html"><a href="Ch5.html#ecog"><i class="fa fa-check"></i><b>6.3.4</b> ECOG</a></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a><ul>
+<li class="chapter" data-level="5.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>5.3</b> The Hodgkin and Huxley model</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#introduction-to-decoding"><i class="fa fa-check"></i><b>6.4</b> Introduction to Decoding</a></li>
-<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#what-is-a-classifier"><i class="fa fa-check"></i><b>6.5</b> What is a classifier?</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="Ch5.html"><a href="Ch5.html#correlation-classifiers"><i class="fa fa-check"></i><b>6.5.1</b> Correlation classifiers</a></li>
-<li class="chapter" data-level="6.5.2" data-path="Ch5.html"><a href="Ch5.html#distance-based-classifiers"><i class="fa fa-check"></i><b>6.5.2</b> Distance-based classifiers</a></li>
-<li class="chapter" data-level="6.5.3" data-path="Ch5.html"><a href="Ch5.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>6.5.3</b> Boundary-based classifiers</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#cross-validation"><i class="fa fa-check"></i><b>6.6</b> Cross validation</a></li>
-<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#conclusion"><i class="fa fa-check"></i><b>6.7</b> Conclusion</a></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a><ul>
+<li class="chapter" data-level="6.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#spike-trains"><i class="fa fa-check"></i><b>6.3</b> Spike Trains</a></li>
+<li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#spike-statistics"><i class="fa fa-check"></i><b>6.4</b> Spike Statistics</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
+<li class="chapter" data-level="6.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>6.6</b> Exercises</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.6.1</b> Conceptual Problems</a></li>
+<li class="chapter" data-level="6.6.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.6.2</b> Coding Problems</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> References</a><ul>
-<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#chapter-1"><i class="fa fa-check"></i><b>7.1</b> Chapter 1</a></li>
-<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#chapter-2"><i class="fa fa-check"></i><b>7.2</b> Chapter 2</a></li>
-<li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#chapter-3"><i class="fa fa-check"></i><b>7.3</b> Chapter 3</a></li>
-<li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#chapter-4"><i class="fa fa-check"></i><b>7.4</b> Chapter 4</a></li>
-<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#chapter-5"><i class="fa fa-check"></i><b>7.5</b> Chapter 5</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Glossary</a></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="7.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#spike-triggered-average"><i class="fa fa-check"></i><b>7.3</b> Spike-triggered Average</a></li>
+<li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#reverse-correlation"><i class="fa fa-check"></i><b>7.4</b> Reverse Correlation</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>7.6</b> Exercises</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="7.6.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a><ul>
+<li class="chapter" data-level="8.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="8.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="Ch7.html"><a href="Ch7.html#eeg"><i class="fa fa-check"></i><b>8.3.1</b> EEG</a></li>
+<li class="chapter" data-level="8.3.2" data-path="Ch7.html"><a href="Ch7.html#meg"><i class="fa fa-check"></i><b>8.3.2</b> MEG</a></li>
+<li class="chapter" data-level="8.3.3" data-path="Ch7.html"><a href="Ch7.html#fmri"><i class="fa fa-check"></i><b>8.3.3</b> fMRI</a></li>
+<li class="chapter" data-level="8.3.4" data-path="Ch7.html"><a href="Ch7.html#ecog"><i class="fa fa-check"></i><b>8.3.4</b> ECOG</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="Ch7.html"><a href="Ch7.html#introduction-to-decoding"><i class="fa fa-check"></i><b>8.4</b> Introduction to Decoding</a></li>
+<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="Ch7.html"><a href="Ch7.html#correlation-classifiers"><i class="fa fa-check"></i><b>8.5.1</b> Correlation classifiers</a></li>
+<li class="chapter" data-level="8.5.2" data-path="Ch7.html"><a href="Ch7.html#distance-based-classifiers"><i class="fa fa-check"></i><b>8.5.2</b> Distance-based classifiers</a></li>
+<li class="chapter" data-level="8.5.3" data-path="Ch7.html"><a href="Ch7.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>8.5.3</b> Boundary-based classifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="Ch7.html"><a href="Ch7.html#cross-validation"><i class="fa fa-check"></i><b>8.6</b> Cross validation</a></li>
+<li class="chapter" data-level="8.7" data-path="Ch7.html"><a href="Ch7.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a><ul>
+<li class="chapter" data-level="9.1" data-path="Ch8.html"><a href="Ch8.html#vocabulary-list"><i class="fa fa-check"></i><b>9.1</b> Vocabulary List:</a></li>
+<li class="chapter" data-level="9.2" data-path="Ch8.html"><a href="Ch8.html#introductionbackground"><i class="fa fa-check"></i><b>9.2</b> Introduction/Background</a></li>
+<li class="chapter" data-level="9.3" data-path="Ch8.html"><a href="Ch8.html#different-types-of-learning"><i class="fa fa-check"></i><b>9.3</b> Different Types of Learning</a></li>
+<li class="chapter" data-level="9.4" data-path="Ch8.html"><a href="Ch8.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>9.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
+<li class="chapter" data-level="9.5" data-path="Ch8.html"><a href="Ch8.html#perceptron"><i class="fa fa-check"></i><b>9.5</b> Perceptron</a></li>
+<li class="chapter" data-level="9.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Ch9.html"><a href="Ch9.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
+<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a><ul>
+<li class="chapter" data-level="11.1" data-path="Ch10.html"><a href="Ch10.html#chapter-1-preface"><i class="fa fa-check"></i><b>11.1</b> Chapter 1: Preface</a></li>
+<li class="chapter" data-level="11.2" data-path="Ch10.html"><a href="Ch10.html#chapter-2-introduction-to-python"><i class="fa fa-check"></i><b>11.2</b> Chapter 2: Introduction to Python</a></li>
+<li class="chapter" data-level="11.3" data-path="Ch10.html"><a href="Ch10.html#chapter-3-what-is-computational-neuroscience"><i class="fa fa-check"></i><b>11.3</b> Chapter 3: What is Computational Neuroscience?</a></li>
+<li class="chapter" data-level="11.4" data-path="Ch10.html"><a href="Ch10.html#chapter-4-passive-membrane-models"><i class="fa fa-check"></i><b>11.4</b> Chapter 4: Passive Membrane Models</a></li>
+<li class="chapter" data-level="11.5" data-path="Ch10.html"><a href="Ch10.html#chapter-5-hodgkin-and-huxley"><i class="fa fa-check"></i><b>11.5</b> Chapter 5: Hodgkin and Huxley</a></li>
+<li class="chapter" data-level="11.6" data-path="Ch10.html"><a href="Ch10.html#chapter-6-firing-rates"><i class="fa fa-check"></i><b>11.6</b> Chapter 6: Firing Rates</a></li>
+<li class="chapter" data-level="11.7" data-path="Ch10.html"><a href="Ch10.html#chapter-7-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>11.7</b> Chapter 7: Reverse Correlation and Receptive Field Mapping</a></li>
+<li class="chapter" data-level="11.8" data-path="Ch10.html"><a href="Ch10.html#chapter-8-decoding"><i class="fa fa-check"></i><b>11.8</b> Chapter 8: Decoding</a></li>
+<li class="chapter" data-level="11.9" data-path="Ch10.html"><a href="Ch10.html#chapter-9-neural-networks"><i class="fa fa-check"></i><b>11.9</b> Chapter 9: Neural Networks</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a><ul>
+<li class="chapter" data-level="12.1" data-path="Ch11.html"><a href="Ch11.html#chapter-1-introduction-to-python"><i class="fa fa-check"></i><b>12.1</b> Chapter 1: Introduction to Python</a></li>
+<li class="chapter" data-level="12.2" data-path="Ch11.html"><a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience"><i class="fa fa-check"></i><b>12.2</b> Chapter 2: Introduction to Computational Neuroscience</a></li>
+<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions"><i class="fa fa-check"></i><b>12.3.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.3.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions"><i class="fa fa-check"></i><b>12.3.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-1"><i class="fa fa-check"></i><b>12.4.1</b> Conceptual Questions:</a></li>
+<li class="chapter" data-level="12.4.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-1"><i class="fa fa-check"></i><b>12.4.2</b> Coding Questions:</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-2"><i class="fa fa-check"></i><b>12.5.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.5.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-2"><i class="fa fa-check"></i><b>12.5.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-3"><i class="fa fa-check"></i><b>12.6.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.6.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-3"><i class="fa fa-check"></i><b>12.6.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="Ch11.html"><a href="Ch11.html#chapter-7-decoding"><i class="fa fa-check"></i><b>12.7</b> Chapter 7: Decoding</a></li>
+<li class="chapter" data-level="12.8" data-path="Ch11.html"><a href="Ch11.html#chapter-8-neural-networks"><i class="fa fa-check"></i><b>12.8</b> Chapter 8: Neural Networks</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -211,238 +278,243 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="Ch5" class="section level1">
-<h1><span class="header-section-number">6</span> Decoding</h1>
-<div id="vocabulary-3" class="section level2">
+<h1><span class="header-section-number">6</span> Firing Rates</h1>
+<div id="vocabulary" class="section level2">
 <h2><span class="header-section-number">6.1</span> Vocabulary</h2>
-<ul>
-<li>Imaging techniques
-<ul>
-<li>EEG</li>
-<li>MEG</li>
-<li>fMRI</li>
-<li>ECOG</li>
-</ul></li>
-<li>Multivariate Pattern Analysis (MVPA)</li>
-<li>Decoding</li>
-<li>Classifier
-<ul>
-<li>Correlation classifier</li>
-<li>Distance-based classifier</li>
-<li>Boundary-based classifier</li>
-</ul></li>
-<li>Curse of dimensionality</li>
-<li>Linear discriminant analysis</li>
-<li>Linear support vector machine (LSVM)</li>
-<li>Cross-validation</li>
-<li>Rank measure</li>
-</ul>
 </div>
-<div id="introduction-3" class="section level2">
+<div id="introduction" class="section level2">
 <h2><span class="header-section-number">6.2</span> Introduction</h2>
-<p>In our previous chapter on reverse correlation, we discussed how we may utilize spike trains to look back and understand the input necessary to create such a response in a neuron. We discussed the ability to not only correlate an output with a specific stimulus but additionally the capability to decode raw brain data measured via EEG, MEG, fMRI, and ECOG. In other words, for some given neuronal signals, what stimulus was provided to that neuron which caused it to fire? In this chapter, we will introduce several methods of neural decoding. In particular, we will detail the specifics of several classifiers pertinent to decoding, as well as their various benefits and constraints.</p>
 </div>
-<div id="imaging-techniques" class="section level2">
-<h2><span class="header-section-number">6.3</span> Imaging Techniques</h2>
-<p>For decoding problems, there are numerous different types of data that could be analyzed. The simplest recording of a single neuron will give a spike train that contains 0s and 1s, or we can average the rate across time bins to generate a continuous curve to study. Although it might be easier to just focus on one neuron, usually data are drawn from a population of neurons. In some cases, a pseudo population of data is constructed from a single-neuron recording in order to reduce noise or assess group activity. As a type of supervised learning, in decoding problems, both the input and output are given, but this input can vary in its appearance. There are multiple types of imaging techniques commonly employed by researchers to obtain data and recordings from participants. We will discuss four of the main techniques here: EEG, MEG, fMRI, and ECOG.</p>
-<div id="eeg" class="section level3">
-<h3><span class="header-section-number">6.3.1</span> EEG</h3>
-<div style="float:right;width:306px">
-<div class="figure"><span id="fig:eeg-fig"></span>
-<img src="images/EEG.png" alt="Raw output of EEG recording"  />
+<div id="spike-trains" class="section level2">
+<h2><span class="header-section-number">6.3</span> Spike Trains</h2>
+<div style="float:right;width:561px">
+<div class="figure"><span id="fig:spikeTrain-fig"></span>
+<img src="images/spikeTrain.png" alt="Example of a spike train. Graph A shows the recorded stimulus and graph B shows the recorded actions potentials during the stimulus."  />
 <p class="caption">
-Figure 6.1: Raw output of EEG recording
+Figure 6.1: Example of a spike train. Graph A shows the recorded stimulus and graph B shows the recorded actions potentials during the stimulus.
 </p>
 </div>
 </div>
-<p>Electroencephalography (EEG) is a method by which the electrical signals produced by action potentials across a large population of neurons are recorded to distinguish areas of activation in the brain. In an EEG setup, electrodes are placed around the scalp in a non-invasive manner to record voltage fluctuations. EEGs often record such fluctuation every millisecond, allowing for strong temporal resolution. However, since the electrodes are placed on the outside of the scalp there is difficulty with the spatial resolution of the recording. The actual output will be a sequence of voltage values over time from each electrode. This output can be decoded with multivariate pattern analysis (MVPA) where all the relationships between time points can be factored in the analysis. <strong>MVPA</strong> is able to be utilized for all the imaging techniques discussed in this chapter as a broad form of decoding that factors in the relationship between variables so they are not treated as independent variables. Overall, EEG is a cheap, non-invasive imaging method that is implemented in many laboratories.</p>
+<p>Assume that we measured a neuron firing in response to a sensory stimulus, and we recorded its voltage changes and displayed the signal in an oscilloscope. How should we analyze the information encoded in these action potentials? As we mentioned before, the action potential is an all-or-none event. This binary characteristic gives us a way to simplify the complicated voltage response curve: for every time point in our measurement, if there is a spike firing, denote its value as 1; if not, denote it as 0. After the recording, we get a sequence of 0s and 1s in a time-dependent order. We commonly refer to this sequence as a spike train, shown in Figure 1, part B.</p>
+<p>Since all action potentials fire to the same voltage level, there is no difference in their intensities. Thus, in order to have action potentials that convey meaningful information, neurons can only vary on timing of firing, including varying firing rates or varying the time intervals between each firing. Although this seems super-simplified, our spike train contains mostly the information we need to analyze if we want to know what causes the original neuron to fire. In order to systematically analyze these data in spike trains, we first need to define some statistics.</p>
 </div>
-<div id="meg" class="section level3">
-<h3><span class="header-section-number">6.3.2</span> MEG</h3>
-<div style="float:right;width:306px">
-<div class="figure"><span id="fig:meg-fig"></span>
-<img src="images/MEG.png" alt="Image of a participant in a MEG scanner."  />
+<div id="spike-statistics" class="section level2">
+<h2><span class="header-section-number">6.4</span> Spike Statistics</h2>
+<p>Now we have a sequence of 0s and 1s which represent neural firing, the next step is to calculate the <strong>spike count rate</strong>, which is the number of spikes divided over a given time interval. This parameter directly shows the firing rate, but it cannot reflect variation. Assume that we have two neurons that have the same spike count rate. One is a regular-firing neuron and the spikes are evenly distributed along the time axis, while the other is a bursting neuron that fires sets of spikes with longer intervals between individual sets. How can we distinguish between these two spike trains? Here, we want to introduce another parameter called the <strong>interspike interval (ISI)</strong> or in other words, the time interval between every pair of spikes. In Figure 2, there is a histogram that shows the distribution of ISIs from an artificial spike train. The ISI histogram can be characterized by <strong>coefficient of variation (CV)</strong>, which is the standard deviation of ISIs divided by the mean of it. Apart from that, we can also use the <strong>Fano factor</strong> to measure the spike variability. It is calculated by the variance of the number of spikes divided by the mean number of spikes in a given time interval. Compare to CV, Fano factor is less dependent on the intervals between spikes but more on the number of spikes in a given time bin. If the underlying firing rate varies or the spike firing in irregular time points, both CV and Fano factor increase. Thus, CV and Fano factors are useful secondary statistics that helps to measure variability in spike trains.</p>
+<div class="figure"><span id="fig:poissonISI-fig"></span>
+<img src="images/poissonISI.png" alt="Distribution of ISIs from a randomly firing artificial neuron."  />
 <p class="caption">
-Figure 6.2: Image of a participant in a MEG scanner.
+Figure 6.2: Distribution of ISIs from a randomly firing artificial neuron.
+</p>
+</div>
+<p>We can do a lot with a single spike train. However, in vivo, neural responses are highly variable and the response of a neuron to the same stimulus may even vary from trial to trial. Effectively, to account for the cross-trial variability, we need to analyze results from multiple trials to get a better estimate of the average neural response. A <strong>peristimulus time histogram (PSTH)</strong> can be generated by averaging across trials. The most direct method is to put trials in small time windows that correspond to each time point and calculate the spike count rate in window for each time point. By implementing this process, each time point is assigned an average rate, and by plotting we get a continuous frequency curve. One example is shown in the Exercise 1, in the “spike density” section, in which spikes are averaged in time windows, and then averaged across trials. In this case, all trials are run on the same neuron, which reduces the cross-trial variability and increases the time resolution. The response, however, may be affected by adaptation. Furthermore, we can also assess the firing pattern of a population of neurons by calculating the average spike counting rate for all the time points, and then averaging across trials. At this point, different trials are run on different neurons, and the generated response curve accounts for the response pattern of a population of neurons in the area that was tested. This method, while it generates better time resolution, omits the possible variability across neurons in the population.
+Choosing different time windows influences the characteristics of the frequency curve, as shown in Figure 3. In general, PSTH is essential because it transforms a discontinuous spike train into continuous response curves, which allows us to calculate the correlation between stimulus and response. This will be further elaborated upon in the later sections.</p>
+<p><strong>Exercise 1:</strong> What are the pros and cons for each type of histogram?</p>
+<div class="figure"><span id="fig:firingRateTable-fig"></span>
+<img src="images/firingRateTable.png" alt="PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output."  />
+<p class="caption">
+Figure 6.3: PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output.
+</p>
+</div>
+<div class="figure"><span id="fig:firingRate1-fig"></span>
+<img src="images/firingRate1.png" alt="PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output."  />
+<p class="caption">
+Figure 6.4: PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output.
+</p>
+</div>
+<p>Sometimes, instead of collecting data from real neurons, we need to simulate spike trains from given statistics. The artificial spike trains can be compared with real data, or used to reconstruct possible firing patterns with a given stimulus. Here, we will discuss the homogeneous Poisson process, or the simplest way of generating artificial spike train. The homogeneous <strong>Poisson process</strong> entails that for every small interval on the timeline, the probability of an event happening (in our case, action potential) will be proportional to the length of the time interval, while the proportionality constant <em>r</em> is fixed. To understand this abstract definition, think about a timeline whereby at each time point, we throw a coin and record the head as 1. Try to visualize that timeline. We agree that all 1s will be randomly spread along the timeline, and the interval between when we get a pair of heads, varies along the timeline. This will look very similar to an artificial spike train generated by the Poisson process, whose distribution can be expressed by the following formula: <span class="math display">\[p(q\ spikes\ in\ \Delta{t}) = e^{-\lambda}\frac{\lambda^{n}}{n!} \]</span></p>
+<div class="figure"><span id="fig:poisson-fig"></span>
+<img src="images/PoissonSpike.png" alt="An artificial spike train generated by Poisson process and its ISI distribution. Notice that the spikes are randomly distributed along the time axis, and the ISI histogram has an exponential distribution."  />
+<p class="caption">
+Figure 6.5: An artificial spike train generated by Poisson process and its ISI distribution. Notice that the spikes are randomly distributed along the time axis, and the ISI histogram has an exponential distribution.
+</p>
+</div>
+<p><strong>Worked Example:</strong><br />
+For this example, we will consider data collected by Robert Cat from a neuron located in an alien’s posterior inferior temporal cortex responding to a rapidly-changing color stimulus. Dr. Cat recorded the neuron at 1000 Hz for ten seconds and created a Boolean vector (<em>spikes</em>) where 1 signifies a spike. Create a program that calculates the neuron’s spike count rate, and then create a plot of the spike count rate versus time.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="Ch5.html#cb20-1"></a><span class="co"># First, import the necessary libraries</span></span>
+<span id="cb20-2"><a href="Ch5.html#cb20-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb20-3"><a href="Ch5.html#cb20-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb20-4"><a href="Ch5.html#cb20-4"></a></span>
+<span id="cb20-5"><a href="Ch5.html#cb20-5"></a><span class="co"># Calculate the total number of spikes and store them in totalSpikes</span></span>
+<span id="cb20-6"><a href="Ch5.html#cb20-6"></a><span class="co"># Because the vector is binary, the sum of the 1s and 0s gives the total</span></span>
+<span id="cb20-7"><a href="Ch5.html#cb20-7"></a>totalSpikes <span class="op">=</span> np.<span class="bu">sum</span>(spikes)</span>
+<span id="cb20-8"><a href="Ch5.html#cb20-8"></a></span>
+<span id="cb20-9"><a href="Ch5.html#cb20-9"></a><span class="co"># Calculate the neuron’s spike count rate, and store it in spikeRate</span></span>
+<span id="cb20-10"><a href="Ch5.html#cb20-10"></a><span class="co"># We divide by 10 because we want our rate to be in the unit of spikes/second (Hz)</span></span>
+<span id="cb20-11"><a href="Ch5.html#cb20-11"></a>spikeRate <span class="op">=</span> totalSpikes <span class="op">/</span> <span class="dv">10</span></span>
+<span id="cb20-12"><a href="Ch5.html#cb20-12"></a></span>
+<span id="cb20-13"><a href="Ch5.html#cb20-13"></a><span class="co"># Print the spike count rate</span></span>
+<span id="cb20-14"><a href="Ch5.html#cb20-14"></a><span class="bu">print</span>(<span class="st">&#39;The spike count rate is: </span><span class="sc">{}</span><span class="st"> Hz&#39;</span>.<span class="bu">format</span>(spikeRate))</span></code></pre></div>
+<p><strong>Worked Example:</strong><br />
+Next, we will examine how to calculate the rate as an average across 50 trials of the same neuron Dr. Cat obtained responding to the same stimulus using the spike density rate. In this experiment, each trial was one second long, and measurements were taken at 1000 Hz. Dr. Cat noticed in their research that the neuron fired at an average of 50 Hz for the first 300 ms of the recording and an average of 15 Hz for the remaining 700 ms. First, simulate the neuron in Dr. Cat’s experiment and then, using this information, plot spike density rate versus time.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="Ch5.html#cb21-1"></a><span class="co"># As usual, we&#39;ll begin by importing the necessary libraries</span></span>
+<span id="cb21-2"><a href="Ch5.html#cb21-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb21-3"><a href="Ch5.html#cb21-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb21-4"><a href="Ch5.html#cb21-4"></a></span>
+<span id="cb21-5"><a href="Ch5.html#cb21-5"></a><span class="co"># Define the two average spiking rates as probabilities</span></span>
+<span id="cb21-6"><a href="Ch5.html#cb21-6"></a>p1 <span class="op">=</span> <span class="dv">50</span><span class="op">/</span><span class="dv">1000</span> <span class="co"># on average, 50 spikes in the 1000 time points</span></span>
+<span id="cb21-7"><a href="Ch5.html#cb21-7"></a>p2 <span class="op">=</span> <span class="dv">15</span><span class="op">/</span><span class="dv">1000</span> <span class="co"># on average, 15 spikes in the 1000 time points</span></span>
+<span id="cb21-8"><a href="Ch5.html#cb21-8"></a></span>
+<span id="cb21-9"><a href="Ch5.html#cb21-9"></a><span class="co"># In order to create the data, we will create a matrix that</span></span>
+<span id="cb21-10"><a href="Ch5.html#cb21-10"></a><span class="co"># is numTrials by numTimePoints in size. We will initialize</span></span>
+<span id="cb21-11"><a href="Ch5.html#cb21-11"></a><span class="co"># it with zeros and then fill in the spikes later.</span></span>
+<span id="cb21-12"><a href="Ch5.html#cb21-12"></a>dataMat <span class="op">=</span> np.zeros((<span class="dv">50</span>, <span class="dv">1000</span>))</span>
+<span id="cb21-13"><a href="Ch5.html#cb21-13"></a></span>
+<span id="cb21-14"><a href="Ch5.html#cb21-14"></a><span class="co"># Here, we will create a nested loop. The outer loop will </span></span>
+<span id="cb21-15"><a href="Ch5.html#cb21-15"></a><span class="co"># loop through the 50 trials. The inner loop will loop through</span></span>
+<span id="cb21-16"><a href="Ch5.html#cb21-16"></a><span class="co"># the time points and use a random number generator to determine</span></span>
+<span id="cb21-17"><a href="Ch5.html#cb21-17"></a><span class="co"># the placement of each spike.</span></span>
+<span id="cb21-18"><a href="Ch5.html#cb21-18"></a></span>
+<span id="cb21-19"><a href="Ch5.html#cb21-19"></a><span class="co"># Data creation loop of 50 trials</span></span>
+<span id="cb21-20"><a href="Ch5.html#cb21-20"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>):</span>
+<span id="cb21-21"><a href="Ch5.html#cb21-21"></a></span>
+<span id="cb21-22"><a href="Ch5.html#cb21-22"></a>  <span class="co"># In each of the 50 trials, loop through 1000 time points</span></span>
+<span id="cb21-23"><a href="Ch5.html#cb21-23"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb21-24"><a href="Ch5.html#cb21-24"></a>  </span>
+<span id="cb21-25"><a href="Ch5.html#cb21-25"></a>    <span class="co"># At each time point, we want the neuron to fire with </span></span>
+<span id="cb21-26"><a href="Ch5.html#cb21-26"></a>    <span class="co"># probability p1 in the first 300 ms, and probability p2</span></span>
+<span id="cb21-27"><a href="Ch5.html#cb21-27"></a>    <span class="co"># for the remainder of the trial.</span></span>
+<span id="cb21-28"><a href="Ch5.html#cb21-28"></a>    </span>
+<span id="cb21-29"><a href="Ch5.html#cb21-29"></a>    <span class="co"># To do this, we will first create a conditional to determine</span></span>
+<span id="cb21-30"><a href="Ch5.html#cb21-30"></a>    <span class="co"># whether or not we are in the first 300 ms. If so, we will </span></span>
+<span id="cb21-31"><a href="Ch5.html#cb21-31"></a>    <span class="co"># use p1, and if not, we will use p2.</span></span>
+<span id="cb21-32"><a href="Ch5.html#cb21-32"></a>    <span class="cf">if</span> i <span class="op">&lt;</span> <span class="dv">300</span>:</span>
+<span id="cb21-33"><a href="Ch5.html#cb21-33"></a>      p <span class="op">=</span> p1</span>
+<span id="cb21-34"><a href="Ch5.html#cb21-34"></a>    <span class="cf">else</span>:</span>
+<span id="cb21-35"><a href="Ch5.html#cb21-35"></a>      p <span class="op">=</span> p2</span>
+<span id="cb21-36"><a href="Ch5.html#cb21-36"></a>    </span>
+<span id="cb21-37"><a href="Ch5.html#cb21-37"></a>    <span class="co"># At each time point, we flip a random coin using np.random.rand().</span></span>
+<span id="cb21-38"><a href="Ch5.html#cb21-38"></a>    <span class="co"># This generates a random value between 0 and 1. If this value</span></span>
+<span id="cb21-39"><a href="Ch5.html#cb21-39"></a>    <span class="co"># is less than our target probability, the neuron will fire.</span></span>
+<span id="cb21-40"><a href="Ch5.html#cb21-40"></a>    <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> p:</span>
+<span id="cb21-41"><a href="Ch5.html#cb21-41"></a>      dataMat[j, i] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb21-42"><a href="Ch5.html#cb21-42"></a>      </span>
+<span id="cb21-43"><a href="Ch5.html#cb21-43"></a>    <span class="co"># Note that we do not need an &quot;else&quot; here because the rest of the</span></span>
+<span id="cb21-44"><a href="Ch5.html#cb21-44"></a>    <span class="co"># matrix is already 0.</span></span>
+<span id="cb21-45"><a href="Ch5.html#cb21-45"></a>    </span>
+<span id="cb21-46"><a href="Ch5.html#cb21-46"></a><span class="co"># Now that we have created our data, we can calculate the spike </span></span>
+<span id="cb21-47"><a href="Ch5.html#cb21-47"></a><span class="co"># density rate.</span></span>
+<span id="cb21-48"><a href="Ch5.html#cb21-48"></a></span>
+<span id="cb21-49"><a href="Ch5.html#cb21-49"></a><span class="co"># Sum all the trials to plot the total number of spikes in each </span></span>
+<span id="cb21-50"><a href="Ch5.html#cb21-50"></a><span class="co"># time bin, and store them in counts (HINT: we wish to sum over </span></span>
+<span id="cb21-51"><a href="Ch5.html#cb21-51"></a><span class="co"># all the rows, and numpy denotes rows before columns. This is</span></span>
+<span id="cb21-52"><a href="Ch5.html#cb21-52"></a><span class="co"># the reason we use axis=0 (i.e. the first axis))</span></span>
+<span id="cb21-53"><a href="Ch5.html#cb21-53"></a>counts <span class="op">=</span> np.<span class="bu">sum</span>(dataMat, axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb21-54"><a href="Ch5.html#cb21-54"></a></span>
+<span id="cb21-55"><a href="Ch5.html#cb21-55"></a><span class="co"># Now, we need to translate these counts into a rate by dividing</span></span>
+<span id="cb21-56"><a href="Ch5.html#cb21-56"></a><span class="co"># by the number of trials and the dt</span></span>
+<span id="cb21-57"><a href="Ch5.html#cb21-57"></a>density <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">1000</span>)) <span class="op">*</span> counts<span class="op">/</span><span class="dv">50</span></span>
+<span id="cb21-58"><a href="Ch5.html#cb21-58"></a></span>
+<span id="cb21-59"><a href="Ch5.html#cb21-59"></a><span class="co"># In order to create a plot, we need to create a vector of time</span></span>
+<span id="cb21-60"><a href="Ch5.html#cb21-60"></a><span class="co"># points to plot it against</span></span>
+<span id="cb21-61"><a href="Ch5.html#cb21-61"></a>time <span class="op">=</span> np.arange(<span class="dv">1000</span>)</span>
+<span id="cb21-62"><a href="Ch5.html#cb21-62"></a></span>
+<span id="cb21-63"><a href="Ch5.html#cb21-63"></a><span class="co"># Create spike density vs. time graph</span></span>
+<span id="cb21-64"><a href="Ch5.html#cb21-64"></a>plt.figure()</span>
+<span id="cb21-65"><a href="Ch5.html#cb21-65"></a>plt.plot(time, density)</span>
+<span id="cb21-66"><a href="Ch5.html#cb21-66"></a>plt.xlabel(<span class="st">&#39;Time in ms&#39;</span>)</span>
+<span id="cb21-67"><a href="Ch5.html#cb21-67"></a>plt.ylabel(<span class="st">&#39;Spike density (Spikes per second)&#39;</span>)</span></code></pre></div>
+The resulting plot looks like this:
+<div style="float:left;width:564px">
+<div class="figure"><span id="fig:spikeDensity-fig"></span>
+<img src="images/spikeDensity.png" alt="Spike density rate over 50 trials"  />
+<p class="caption">
+Figure 6.6: Spike density rate over 50 trials
 </p>
 </div>
 </div>
-<p>Magnetoencephalography (MEG) is a brain recording technique similar to EEG. MEG measures the small magnetic fields produced by a population of neurons being activated together, demonstrating areas of the brain that are being highly stimulated. For a MEG scan, the machine encompasses the exterior of the participant’s head and must be completed in a magnetically shielded room as the magnetic fields produced by the brain are quite small. Similar to EEG, the output will be a time-series data that is conducive to strong temporal resolution as data is being recorded every millisecond. In this case, instead of voltage over time as in EEG, MEG will give a recording of magnetic flux over time. Since the machine is recording from outside the skull the spatial resolution and only providing data on the activation at each location the spatial resolution is weaker. MEG is more expensive than EEG but provides similar, temporally accurate, data on the activation of regions of the brain.</p>
 </div>
-<div id="fmri" class="section level3">
-<h3><span class="header-section-number">6.3.3</span> fMRI</h3>
-<div style="float:right;width:272px">
-<div class="figure"><span id="fig:fmri-fig"></span>
-<img src="images/fmri.png" alt="Image of an fMRI scan with red sections indicating areas of the brain that are more active than the control condition."  />
-<p class="caption">
-Figure 6.3: Image of an fMRI scan with red sections indicating areas of the brain that are more active than the control condition.
-</p>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">6.5</span> Summary</h2>
 </div>
+<div id="exercises" class="section level2">
+<h2><span class="header-section-number">6.6</span> Exercises</h2>
+<div id="conceptual-problems" class="section level3">
+<h3><span class="header-section-number">6.6.1</span> Conceptual Problems</h3>
+<ol style="list-style-type: decimal">
+<li>Define the spike count rate. What are the advantages and disadvantages of defining rate as a spike count?<br />
+</li>
+<li>Define the spike density rate. What are the advantages and disadvantages of defining rate as a spike density?<br />
+</li>
+<li>Define firing rates as population density. What are the advantages and disadvantages of defining rate as population activity?<br />
+</li>
+<li>What are the qualifications for a Poisson spike train?</li>
+</ol>
 </div>
-<p>Functional magnetic resonance imaging (fMRI) is a system that shows where oxygenated blood is focused in the brain, indicating which regions of the brain are most active. Oxygenated and deoxygenated blood have different magnetic properties allowing researchers to differentiate the two in an MRI scanner. Participants are placed in a machine that encompasses their head for the procedure to take place. fMRI scans, while external, are still able to achieve strong spatial resolution through the use of voxels. Voxels are small three dimensional sections that the brain is divided up into, and the color assigned to each voxel represents its level of activation as compared to a standard baseline. All voxels are active the majority of the time, so the output of the scan is focused on which voxels are more activated during a specific task of interest compared to this control activation. The product of an fMRI scan is an image of the participant’s brain with regions of higher relative activation indicated with color. These colored regions indicate the presence of more oxygenated blood, as greater activation requires more oxygenated blood to sustain it. Despite its successes in spatial resolution, fMRI scans have poor temporal resolution as they take six to ten seconds for blood-oxygen-level-dependent (BOLD) contrast to show changes after something happens. fMRI provides descriptive, easily interpretable imaging, but requires expensive machinery with poor temporal resolution.</p>
-</div>
-<div id="ecog" class="section level3">
-<h3><span class="header-section-number">6.3.4</span> ECOG</h3>
-<div style="float:right;width:306px">
-<div class="figure"><span id="fig:ecog-fig"></span>
-<img src="images/ecog.png" alt="Image depicting electrodes placed on cortex for ECOG imaging."  />
-<p class="caption">
-Figure 6.4: Image depicting electrodes placed on cortex for ECOG imaging.
-</p>
-</div>
-</div>
-<p>Electrocorticography (ECOG) is a brain imaging technique that is not utilized often as it requires electrodes to be placed on the exposed surface of the cortex of a participant’s brain. The electrodes record electrical activity in the brain, similar to EEG. However, due to the proximal location of the electrodes, ECOG is able to record with both extremely accurate spatial and temporal resolution. ECOG introduces questions regarding ethics and treatment on humans as it requires exposing the surface of the brain. Therefore, ECOG is typically only implemented on participants with epilepsy who require the placement of electrodes on their brain to record from the region where their seizures are centralized. Due to its similarity to EEG, the ECOG output would also be tracking voltage over time from each electrode. ECOG is able to provide critical data but is a difficult and extreme procedure.</p>
-<p><strong>Features Exercise:</strong> What features can be used in decoding different types of data? Fill in the chart below with corresponding features for each type of data. The first one has been done for you.</p>
-<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Data.Type
-</th>
-<th style="text-align:left;">
-Features
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Single neurons
-</td>
-<td style="text-align:left;">
-Firing rate, spike counts
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Population of neurons
-</td>
-<td style="text-align:left;">
-.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EEG signals
-</td>
-<td style="text-align:left;">
-.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-fMRI
-</td>
-<td style="text-align:left;">
-.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-.
-</td>
-<td style="text-align:left;">
-.
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="introduction-to-decoding" class="section level2">
-<h2><span class="header-section-number">6.4</span> Introduction to Decoding</h2>
-<p>With all these data from the various brain imaging techniques in hand, we want to <strong>decode</strong> the data–in other words, we want to detect the activity pattern buried in the random, noisy neural firing data and analyze if different stimuli lead to different activity patterns. If by analyzing activity patterns we can “predict” the stimulus that causes the activation and if the accuracy of “prediction” is higher than just random guessing, we can say that we successfully decoded the information in our brain activity recording. The word “prediction” is in quotation marks because we are not foretelling future events, but instead checking the answer key to see if our solution is correct.</p>
-<p>Depending on the imaging techniques we used in the data acquisition phase, there are multiple ways to present and analyze data. Popular brain imaging techniques like EEG, MEG, fMRI, and ECOG all give recordings for a population of neurons, and it is the experimenter’s choice to focus more on the group level or on local variance. It might be the case that whole-brain EEG data was implemented to analyze event-related brain activation, or it could be that occipital and frontal electrodes were selected to measure their correlation. Another example comes from the field of fMRI, where current interests shifted from the classical approach that explores the involvement of brain regions in certain activities to revealing the representational pattern within functional regions. Depending on the purpose of the study, different classifiers can be selected to categorize the data. <strong>Classifiers</strong> are algorithms that make predictions for test data based on a “learned” pattern from the training set. Here are some types of classifiers generally used in decoding.</p>
-</div>
-<div id="what-is-a-classifier" class="section level2">
-<h2><span class="header-section-number">6.5</span> What is a classifier?</h2>
-<p>In order to decode brain data, we will need a classifier, which allows us to learn from labeled data and make predictions on test data from its experience with the labeled data. We will discuss three types of classifiers which each have their own strengths and weaknesses. Note that all of the classifiers we will talk about fall under the category of supervised learning, as they all make decisions based on labeled training data.</p>
-<div id="correlation-classifiers" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Correlation classifiers</h3>
-<p>The first classifier we will examine is the simple, yet powerful correlation classifier, which works well for multivariate classifications. In a correlation classifier, the mean of each class is observed and correlated with each input feature. The class most correlated with the test item is the classifier’s predicted output. James Haxby does a great job <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3389290/pdf/nihms363224.pdf">explaining some of the more intricate details</a> to be aware of when implementing a correlation classifier. In practice, we consider each neuron individually as a test point and split the rest into training data. Next, we find all of the training trials for each class and calculate its respective mean. We then find the correlation coefficients between the training data and our test point and assign our predicted class to be the category with the highest correlation. We can then determine the accuracy of this classifier by evaluating the percentage of correctly classified test points.</p>
-</div>
-<div id="distance-based-classifiers" class="section level3">
-<h3><span class="header-section-number">6.5.2</span> Distance-based classifiers</h3>
-<p>The second classifier we will discuss is the distance-based classifier, which bases its decision making on the distance calculated from the test point to the training point. One popular example of a distance-based classifier is the <a href="http://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote02_kNN.html">k-nearest neighbors</a> (KNN) algorithm, where <em>k</em> is the number of training points that are closest to our test point. Each training point yields one vote to decide the class for each test point. The class with the most votes is then the resulting classification of that test point. Note that <em>k</em> is conventionally odd to ensure a majority class. To perform the algorithm, we first sample each of our training points. For each of these points, we calculate the distance to the test point. These distances are then sorted to ensure picking the k-smallest distances i.e. nearest neighbors. Finally, we take the most frequent class to be the predicted class of our test point. Before we move on to our next classifier, we must touch on one of the major pitfalls of distance-based classifiers: the curse of dimensionality. Distance-based algorithms work great in low dimensions where it is computationally inexpensive to calculate distances. The <strong>curse of dimensionality</strong> pertains to the fact that, as we move up in dimensions, the distances between all points to one another grow very large and the variability among distances becomes small. Therefore, your data must grow exponentially as dimensions are increased in order to sample enough of the space for these dimensions to be meaningful. It is for this reason that when working with high dimensional data, a distance-based classifier may not be the best choice.</p>
-</div>
-<div id="boundary-based-classifiers" class="section level3">
-<h3><span class="header-section-number">6.5.3</span> Boundary-based classifiers</h3>
-<p>The last of the three primary classifiers we will discuss are boundary-based classifiers, which produce some line or curve separating classes in two dimensions, a 2D plane to separate classes in three dimensions, or an abstract boundary (hyperplane) in higher dimensions. One example of a decision-based classifier is the Linear Support Vector Machine, which functions similarly to Linear Discriminant Analysis. <strong>Linear Discriminant Analysis</strong> works by asking what is the best line/hyperplane we can draw to separate the centroid means of our classes, whereas a <strong>Linear Support Vector Machine (LSVM)</strong> instead draws a boundary between the hard examples in the training set. We mentioned that distance-based classifiers are not a good choice of a classifier for higher-dimensional data. Conversely, LSVMs work well with high dimensional data; instead of calculating large distances between points, we only require a single hyperplane separating classes. Data points falling on either side of the hyperplane can be used to predict test point classes. In an LSVM algorithm, we aim to maximize the margin between the training points and the hyperplane via a cost function. Similarly to our neural network weight updating, when our LSVM misclassifies a data point, the weights determining our hyperplane are adjusted by this cost function.</p>
-<p>One question you may be asking yourself based on the last chapter, “Wait–what about neural networks? We just learned that they can make decisions based on labeled input data!” This is a natural question to ask and the answer is in fact, yes–neural networks can function as a classification algorithm. However, when creating a classifier, the setup of a neural network is a significant hassle in terms of parameter tuning (layer size, layer count, learning rate, etc). When possible, it makes more sense to work with one of the previously discussed trivial classifiers, which are more lightweight than a neural network and work “out of the box.”</p>
-</div>
-</div>
-<div id="cross-validation" class="section level2">
-<h2><span class="header-section-number">6.6</span> Cross validation</h2>
-<p>We talked about that decoding means to make predictions on the test set based on the pattern from the training set. It is worth mentioning that both the test set and the training set, although all from experimental data, should be <em>clearly separated</em> during learning and predicting. Otherwise, you will fall into the circular logical fallacy. Formally this is done by <strong>cross-validation</strong>, a scheme that partitions the data set into the test set and the remaining data into the training set, and then predictions can be made on the test set. The training and predicting processes repeat several times to obtain a prediction for every data point. This may sound paradoxical since we mentioned that it is problematic to use A to predict A, but here since the test and training sets are clearly separated for every round of prediction, and the predicted results are <em>never used</em> for training, we are not falling into this logical trap.</p>
-<p>Cross-validation is a decoding strategy that includes some subtypes like leave-one-out cross-validation, which is an extreme case in the cross-validation family. This method leaves exactly one sample to be the testing set and uses all other samples as the training set. It is worth noticing that when data are classified into multiple groups, one sample must be left out for every group. This is to prevent unbalancing in the training set, as an unbalanced training set may lead to a biased model. This method, while having the best chance to generalize to new examples, also requires very high computational power. A less demanding method is the k-fold cross-validation where <em>k</em> splits are made and <em>(k-1)</em> groups are assigned to the training set. The remaining group serves as the test set. The training and predicting repeats k times, and it is generally faster than leave-one-out-cross-validation in terms of computing power. The effectiveness of the classifier is evaluated by accuracy, which is usually computed as the average correctness across all samples. Lastly, another method is the <strong>rank measure</strong>, which ranks the probability for all labels and measures the distance between the predicted label and the top. Sometimes it is worth noticing that higher accuracy does not mean better classification. Assume that based on some brain data we want to classify patients into two groups: “children who have ADHD” and “children who do not have ADHD”. It is better to misclassify children without ADHD into the ADHD group, compared to classifying children with ADHD to the control group, as the latter one may be more deleterious.</p>
-<div class="figure"><span id="fig:decoding-fig"></span>
-<img src="images/decoding.png" alt="The Logical Flow of Cross Validation. Notice that the loop continues until every group of data served as the test group."  />
-<p class="caption">
-Figure 6.5: The Logical Flow of Cross Validation. Notice that the loop continues until every group of data served as the test group.
-</p>
-</div>
-<p><strong>Case study exercise:</strong> A group of researchers is studying object recognition in the inferior temporal cortex using ECOG and decoding. The neurons are not all equally responsive because an electrode array was not making full contact with the participant. What issues might this cause in decoding data? Discuss how you might fix this problem.</p>
-</div>
-<div id="conclusion" class="section level2">
-<h2><span class="header-section-number">6.7</span> Conclusion</h2>
-<p>When performing neural decoding, we are aiming to determine what information about the stimulus is available in the electrical activity of neurons. There are many areas in which decoding can be applied and used to make predictions about what people are thinking, dreaming, seeing, or hearing. In the fast-moving field of Computational Neuroscience, we will likely see great strides made in decoding in all of these areas. It is paramount to our interests as Neuroscientists to be mindful of certain ethical questions as this progress is made. In China, we already see the persecution of both the Uyghur and Hong Kong populations through government-sponsored facial recognition. This abuse of facial recognition technology is a strong indicator that these decoding techniques may similarly be used in the future by malevolent actors. One potential dystopian scenario based on these methods might include crime prediction and imprisonment solely based on brain activity. It is our responsibility to be mindful of how this technology is introduced to the field, as well as the world.</p>
-<p><strong>Ethics exercise:</strong> Some say that decoding could allow scientists to “read minds”. Here is <a href="https://www.sciencemag.org/news/2018/01/mind-reading-algorithm-can-decode-pictures-your-head">one article</a> that refers to decoding as “mind-reading”. In light of this, what might be some ethical issues regarding the various applications of decoding? How could we potentially protect against these issues?</p>
-<p><strong>Coding exercise:</strong> The code below codes for two separate clusters of data with means at 0.05 (blue) and 0.95 (red) which is plotted in a scatter plot.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="im">import</span> numpy <span class="im">as</span> np</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">np.random.seed(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">m1 <span class="op">=</span> np.array([<span class="fl">0.05</span>, <span class="fl">0.05</span>])</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">m2 <span class="op">=</span> np.array([<span class="fl">0.95</span>, <span class="fl">0.95</span>])</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">sigma <span class="op">=</span> np.eye(<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">data1 <span class="op">=</span> np.random.multivariate_normal(m1, sigma, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">data2 <span class="op">=</span> np.random.multivariate_normal(m2, sigma, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">plt.figure()</a>
-<a class="sourceLine" id="cb9-10" data-line-number="10">plt.scatter(data1[:,<span class="dv">0</span>], data1[:,<span class="dv">1</span>], c<span class="op">=</span><span class="st">&#39;blue&#39;</span>)</a>
-<a class="sourceLine" id="cb9-11" data-line-number="11">plt.scatter(data2[:,<span class="dv">0</span>], data2[:,<span class="dv">1</span>], c<span class="op">=</span><span class="st">&#39;red&#39;</span>)</a></code></pre></div>
-<p><img src="images/scatterplot.png" /><!-- --></p>
-<p>Based on this scatter plot and the code above, fill in the following code. The code should generate a test point from either group m1 (the blue scatter plot) or m2 (the red scatter plot). Then the distance between the generated test points and the two means should be found using the pdist() function. You can look up the pdist() function to learn more about it and its arguments. This should be done in a for loop with 100 steps. The code additionally computes the accuracy of the decoding. This part is mostly written for you but remember to initialize the data structure and write the conditional to help determine accuracy.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Importing pdist function</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> pdist</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co"># Initiate data structure for accuracy</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">accuracy <span class="op">=</span> np.zeros(   )</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">mat1 <span class="op">=</span> np.zeros(   )</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">mat2 <span class="op">=</span> np.zeros(   )</a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co"># Loop to classify which group the test point is in</span></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(   ):</a>
-<a class="sourceLine" id="cb10-11" data-line-number="11">  <span class="co"># Conditional to randomly pick a point from m1 or m2</span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12">  <span class="cf">if</span> np.random.rand()     :</a>
-<a class="sourceLine" id="cb10-13" data-line-number="13">    myMean <span class="op">=</span> </a>
-<a class="sourceLine" id="cb10-14" data-line-number="14">    realClass <span class="op">=</span> </a>
-<a class="sourceLine" id="cb10-15" data-line-number="15">  <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb10-16" data-line-number="16">    myMean <span class="op">=</span></a>
-<a class="sourceLine" id="cb10-17" data-line-number="17">    realClass <span class="op">=</span></a>
-<a class="sourceLine" id="cb10-18" data-line-number="18">    </a>
-<a class="sourceLine" id="cb10-19" data-line-number="19">  <span class="co"># Define test point</span></a>
-<a class="sourceLine" id="cb10-20" data-line-number="20">  myPoint <span class="op">=</span> np.random.multivariate_normal(   ,   ,   )</a>
-<a class="sourceLine" id="cb10-21" data-line-number="21">  </a>
-<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co"># Calculate the distance to m1 and m2 (row 0: myPoint; row 1: m1 or m2)</span></a>
-<a class="sourceLine" id="cb10-23" data-line-number="23">mat1[<span class="dv">0</span>,:] <span class="op">=</span> </a>
-<a class="sourceLine" id="cb10-24" data-line-number="24">mat1[<span class="dv">1</span>,:] <span class="op">=</span> </a>
-<a class="sourceLine" id="cb10-25" data-line-number="25">mat2[<span class="dv">0</span>,:] <span class="op">=</span> </a>
-<a class="sourceLine" id="cb10-26" data-line-number="26">mat2[<span class="dv">1</span>,:] <span class="op">=</span> </a>
-<a class="sourceLine" id="cb10-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb10-28" data-line-number="28">dist1 <span class="op">=</span> pdist(   )</a>
-<a class="sourceLine" id="cb10-29" data-line-number="29">dist2 <span class="op">=</span> pdist(   )</a>
-<a class="sourceLine" id="cb10-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb10-31" data-line-number="31"><span class="co"># Conditional to assign predicted class to be the class w/ smallest distance</span></a>
-<a class="sourceLine" id="cb10-32" data-line-number="32"><span class="cf">if</span> dist1   dist2:</a>
-<a class="sourceLine" id="cb10-33" data-line-number="33"></a>
-<a class="sourceLine" id="cb10-34" data-line-number="34"><span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb10-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb10-36" data-line-number="36"><span class="co"># Conditional to determine trial accuracy</span></a>
-<a class="sourceLine" id="cb10-37" data-line-number="37"><span class="cf">if</span>           :</a>
-<a class="sourceLine" id="cb10-38" data-line-number="38">  accuracy[i] <span class="op">=</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb10-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb10-40" data-line-number="40"><span class="co"># Calculate mean accuracy</span></a>
-<a class="sourceLine" id="cb10-41" data-line-number="41">meanAcc <span class="op">=</span> np.<span class="bu">sum</span>(accuracy)<span class="op">/</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb10-42" data-line-number="42"><span class="bu">print</span>(meanAcc)</a></code></pre></div>
+<div id="coding-problems" class="section level3">
+<h3><span class="header-section-number">6.6.2</span> Coding Problems</h3>
+<ol style="list-style-type: decimal">
+<li><em>Part a.</em> Create a Poisson spike train to simulate a neuron that fires for 2000 ms at an average rate of 50 Hz. The Poisson distribution is a useful concept to create random spike locations within a time frame (2000 ms in this case) that produce an average desired frequency (50 Hz in this case). The randomness can be achieved by using the np.random.rand() function, which generates a random value uniformly sampled between 0 and 1. If this random value is less than the specified probability of firing, than the code will generate a 1 indicating a spike. Otherwise, the spike train will contain zeros.<br />
+<em>Part b</em> Using the following code template, add a counting variable to measure the number of spikes produced in the simulation. Use this total spike count to calculate the final spike count rate (spikes/second, or Hz) and see how it compares to the desired frequency of 50 Hz (50 spikes/second).</li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="Ch5.html#cb22-1"></a><span class="co"># Import the necessary libraries</span></span>
+<span id="cb22-2"><a href="Ch5.html#cb22-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb22-3"><a href="Ch5.html#cb22-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-4"><a href="Ch5.html#cb22-4"></a></span>
+<span id="cb22-5"><a href="Ch5.html#cb22-5"></a><span class="co"># Initialize data structures</span></span>
+<span id="cb22-6"><a href="Ch5.html#cb22-6"></a><span class="co"># Hint: your simulation runs for 2000 ms</span></span>
+<span id="cb22-7"><a href="Ch5.html#cb22-7"></a>timeVec <span class="op">=</span></span>
+<span id="cb22-8"><a href="Ch5.html#cb22-8"></a></span>
+<span id="cb22-9"><a href="Ch5.html#cb22-9"></a><span class="co"># Hint: you may express your desired rate as a nSpikes / 1000 ms probability</span></span>
+<span id="cb22-10"><a href="Ch5.html#cb22-10"></a>probability <span class="op">=</span> </span>
+<span id="cb22-11"><a href="Ch5.html#cb22-11"></a></span>
+<span id="cb22-12"><a href="Ch5.html#cb22-12"></a><span class="co"># Hint: you want the default value to be zero</span></span>
+<span id="cb22-13"><a href="Ch5.html#cb22-13"></a>spikes <span class="op">=</span></span>
+<span id="cb22-14"><a href="Ch5.html#cb22-14"></a></span>
+<span id="cb22-15"><a href="Ch5.html#cb22-15"></a><span class="co"># Loop through each time point - fill in missing code</span></span>
+<span id="cb22-16"><a href="Ch5.html#cb22-16"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>():</span>
+<span id="cb22-17"><a href="Ch5.html#cb22-17"></a>  <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> probability:</span>
+<span id="cb22-18"><a href="Ch5.html#cb22-18"></a>    <span class="co"># fill in this key line</span></span>
+<span id="cb22-19"><a href="Ch5.html#cb22-19"></a>    </span>
+<span id="cb22-20"><a href="Ch5.html#cb22-20"></a><span class="co"># Compute the spike count rate here</span></span>
+<span id="cb22-21"><a href="Ch5.html#cb22-21"></a>spikeCountRate <span class="op">=</span> </span>
+<span id="cb22-22"><a href="Ch5.html#cb22-22"></a></span>
+<span id="cb22-23"><a href="Ch5.html#cb22-23"></a><span class="co"># Print the spike count rate</span></span>
+<span id="cb22-24"><a href="Ch5.html#cb22-24"></a><span class="bu">print</span>(<span class="st">&#39;The firing rate was: </span><span class="sc">{}</span><span class="st"> Hz&#39;</span>.<span class="bu">format</span>(spikeCountRate))</span>
+<span id="cb22-25"><a href="Ch5.html#cb22-25"></a></span>
+<span id="cb22-26"><a href="Ch5.html#cb22-26"></a><span class="co"># Create a figure of the spike train</span></span>
+<span id="cb22-27"><a href="Ch5.html#cb22-27"></a>plt.figure()</span>
+<span id="cb22-28"><a href="Ch5.html#cb22-28"></a>plt.plot(timeVec, spikes)</span>
+<span id="cb22-29"><a href="Ch5.html#cb22-29"></a>plt.title(<span class="st">&#39;Spikes versus Time&#39;</span>)</span>
+<span id="cb22-30"><a href="Ch5.html#cb22-30"></a>plt.xlabel(<span class="st">&#39;Time (ms)&#39;</span>)</span>
+<span id="cb22-31"><a href="Ch5.html#cb22-31"></a>plt.ylabel(<span class="st">&#39;Spikes&#39;</span>)</span></code></pre></div>
+<p><em>Part c</em> Using your spike train, compute a histogram of interspike intervals (ISIs). To do this, it will be helpful to find the locations of your spikes in your spike train. The function np.where() will do this (hint: you will only need the first value returned in the tuple). Hint: you will have 1 fewer ISI than number of spikes in your spike train.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><em>Part a</em> Using the same Poisson process as above, simulate an experiment in which 40 trials of 2000 ms are created and place all trials into a single array. Fill in the code snippet below to create your array and plot a raster plot of all trials.</li>
+</ol>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="Ch5.html#cb23-1"></a><span class="co"># Import necessary libraries</span></span>
+<span id="cb23-2"><a href="Ch5.html#cb23-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-3"><a href="Ch5.html#cb23-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-4"><a href="Ch5.html#cb23-4"></a></span>
+<span id="cb23-5"><a href="Ch5.html#cb23-5"></a><span class="co">#fill in the time vector and the spike frequency value of 50 Hz</span></span>
+<span id="cb23-6"><a href="Ch5.html#cb23-6"></a>timeVec <span class="op">=</span> </span>
+<span id="cb23-7"><a href="Ch5.html#cb23-7"></a>p1 <span class="op">=</span> </span>
+<span id="cb23-8"><a href="Ch5.html#cb23-8"></a></span>
+<span id="cb23-9"><a href="Ch5.html#cb23-9"></a><span class="co">#Allocate space for the 40 trials x 2000 ms array</span></span>
+<span id="cb23-10"><a href="Ch5.html#cb23-10"></a>allTrials <span class="op">=</span> </span>
+<span id="cb23-11"><a href="Ch5.html#cb23-11"></a></span>
+<span id="cb23-12"><a href="Ch5.html#cb23-12"></a><span class="co">#Create a Poisson spike generator, that loops 40 times for all 40 trials</span></span>
+<span id="cb23-13"><a href="Ch5.html#cb23-13"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>():</span>
+<span id="cb23-14"><a href="Ch5.html#cb23-14"></a></span>
+<span id="cb23-15"><a href="Ch5.html#cb23-15"></a>    <span class="co"># For each trial, use an inner loop to represent all 2000 time points</span></span>
+<span id="cb23-16"><a href="Ch5.html#cb23-16"></a>    <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">range</span>():</span>
+<span id="cb23-17"><a href="Ch5.html#cb23-17"></a></span>
+<span id="cb23-18"><a href="Ch5.html#cb23-18"></a><span class="co"># Create the raster plot</span></span>
+<span id="cb23-19"><a href="Ch5.html#cb23-19"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(): <span class="co"># How many trials are we running? </span></span>
+<span id="cb23-20"><a href="Ch5.html#cb23-20"></a>    spikes, <span class="op">=</span>  <span class="co">#Fill in Spikes to represent every spike found in the allTrials matrix. Index the jth trial only. </span></span>
+<span id="cb23-21"><a href="Ch5.html#cb23-21"></a>    </span>
+<span id="cb23-22"><a href="Ch5.html#cb23-22"></a>    spikeTimes <span class="op">=</span> timeVec[spikes] </span>
+<span id="cb23-23"><a href="Ch5.html#cb23-23"></a>    theseSpikes <span class="op">=</span> np.ones(<span class="bu">len</span>(spikes))<span class="op">*</span>j<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb23-24"><a href="Ch5.html#cb23-24"></a>    </span>
+<span id="cb23-25"><a href="Ch5.html#cb23-25"></a>    plt.scatter(spikeTimes, theseSpikes, s<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="st">&#39;k&#39;</span>)</span>
+<span id="cb23-26"><a href="Ch5.html#cb23-26"></a></span>
+<span id="cb23-27"><a href="Ch5.html#cb23-27"></a><span class="co">#Fill in the labels of the x, y axis</span></span>
+<span id="cb23-28"><a href="Ch5.html#cb23-28"></a>plt.title()</span>
+<span id="cb23-29"><a href="Ch5.html#cb23-29"></a>plt.xlabel() </span>
+<span id="cb23-30"><a href="Ch5.html#cb23-30"></a>plt.ylabel()</span></code></pre></div>
+<p><em>Part b</em> Now compute the Fano factor for your spike array. This may be done in one line of code using the built-in functions for variance and mean from the numpy library.</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -454,13 +526,15 @@ Figure 6.5: The Logical Flow of Cross Validation. Notice that the loop continues
 <a href="Ch6.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -468,12 +542,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -488,9 +561,16 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
 }
 });
 });

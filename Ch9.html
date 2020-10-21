@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Introduction to Python | Computational Neuroscience</title>
+  <title>10 Glossary | Computational Neuroscience</title>
   <meta name="description" content="TBD" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Introduction to Python | Computational Neuroscience" />
+  <meta property="og:title" content="10 Glossary | Computational Neuroscience" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Introduction to Python | Computational Neuroscience" />
+  <meta name="twitter:title" content="10 Glossary | Computational Neuroscience" />
   
   <meta name="twitter:description" content="TBD" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="Ch2.html"/>
+<link rel="prev" href="Ch8.html"/>
+<link rel="next" href="Ch10.html"/>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -277,184 +277,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ch1" class="section level1">
-<h1><span class="header-section-number">2</span> Introduction to Python</h1>
-<div id="vocabulary" class="section level2">
-<h2><span class="header-section-number">2.1</span> Vocabulary</h2>
-</div>
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">2.2</span> Introduction</h2>
-</div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">2.3</span> Summary</h2>
-</div>
-<div id="example-python-problems" class="section level2">
-<h2><span class="header-section-number">2.4</span> Example Python Problems</h2>
-<p><strong>Example 1</strong>:<br />
-Programming is essentially simplifying steps of a task to an alien that doesn’t understand how humans think. You need to be specific, detailed, and consistent in the format. The computer has a few basic commands it can do, so you need to be creative about how you’ll lay out the steps. With this in mind how would you explain to a computer how to get pizza from Commons?</p>
-<p>Solution (outline):</p>
+<div id="Ch9" class="section level1">
+<h1><span class="header-section-number">10</span> Glossary</h1>
 <ul>
-<li>You would first need to give the computer directions to Commons</li>
-<li>Scan its ID to enter Commons from the west facing door</li>
-<li>Proceed to the first scanning station, scan its ID, and wait in line</li>
-<li>Proceed to the pizza station which is on the left side of the building</li>
-<li>Look at the types of pizza there are and decide which one it wants</li>
-<li>Ask the Commons employee for the pizza it wants</li>
-<li>Take its box and follow the signs to exit</li>
-<li>Scan out and exit through the east facing doors</li>
-</ul>
-<p><strong>Example 2</strong>:<br />
-The type() function tells you what type of data a certain variable is. Predict what Python will return for the following commands:</p>
-<p>a.) type (“hello world”)<br />
-b.) type(747)<br />
-c.) type(3.14)</p>
-<p>Solution:</p>
-<p>a.) string<br />
-b.) integer<br />
-c.) float</p>
-<p><strong>Example 3:</strong><br />
-Python is a simple programming language and doesn’t naturally come with all of the functions you might need. However, there is no reason to worry. Because Python is so ubiquitous, you can find downloadable packages of code to perform things you might otherwise sink hours into programming. One of these packages is numpy which performs many mathematical calculations that Python doesn’t come equipped with. Here are some examples of numpy functions:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="Ch1.html#cb1-1"></a><span class="co"># exponential</span></span>
-<span id="cb1-2"><a href="Ch1.html#cb1-2"></a>numpy.exp(x)</span>
-<span id="cb1-3"><a href="Ch1.html#cb1-3"></a></span>
-<span id="cb1-4"><a href="Ch1.html#cb1-4"></a><span class="co"># square root</span></span>
-<span id="cb1-5"><a href="Ch1.html#cb1-5"></a>numpy.sqrt(x)</span>
-<span id="cb1-6"><a href="Ch1.html#cb1-6"></a></span>
-<span id="cb1-7"><a href="Ch1.html#cb1-7"></a><span class="co"># natural log</span></span>
-<span id="cb1-8"><a href="Ch1.html#cb1-8"></a>numpy.log(x)</span></code></pre></div>
-<p>In order to use these functions you must first import the package into your notebook which can simply be done with the import function:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="Ch1.html#cb2-1"></a><span class="im">import</span> numpy</span></code></pre></div>
-<p><strong>Example 4:</strong>
-Write code to do the following and print them:</p>
-<p>a.) <span class="math inline">\(e^8\)</span><br />
-b.) <span class="math inline">\(\sqrt{55+31}\)</span><br />
-c.) <span class="math inline">\(\ln(664/41)\)</span></p>
-<p>Solution:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="Ch1.html#cb3-1"></a><span class="co"># part a</span></span>
-<span id="cb3-2"><a href="Ch1.html#cb3-2"></a><span class="bu">print</span>(numpy.exp(<span class="dv">8</span>))</span>
-<span id="cb3-3"><a href="Ch1.html#cb3-3"></a></span>
-<span id="cb3-4"><a href="Ch1.html#cb3-4"></a><span class="co"># part b</span></span>
-<span id="cb3-5"><a href="Ch1.html#cb3-5"></a><span class="bu">print</span>(numpy.sqrt(<span class="dv">55</span><span class="op">+</span><span class="dv">31</span>))</span>
-<span id="cb3-6"><a href="Ch1.html#cb3-6"></a></span>
-<span id="cb3-7"><a href="Ch1.html#cb3-7"></a><span class="co"># part c</span></span>
-<span id="cb3-8"><a href="Ch1.html#cb3-8"></a><span class="bu">print</span>(numpy.log(<span class="dv">664</span><span class="op">/</span><span class="dv">41</span>))</span></code></pre></div>
-<p><strong>Example 5:</strong>
-“If” statements are rather straightforward. You tell Python what to do <em>if</em> a particular circumstance is true. For example:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="Ch1.html#cb4-1"></a><span class="co"># pick a random integer between 1 and 10</span></span>
-<span id="cb4-2"><a href="Ch1.html#cb4-2"></a>x <span class="op">=</span> np.random.randint(<span class="dv">10</span>)</span>
-<span id="cb4-3"><a href="Ch1.html#cb4-3"></a></span>
-<span id="cb4-4"><a href="Ch1.html#cb4-4"></a><span class="co"># print &quot;okie dokie&quot; for if x is small, but print &quot;nokie dokie&quot;</span></span>
-<span id="cb4-5"><a href="Ch1.html#cb4-5"></a><span class="co"># for larger values</span></span>
-<span id="cb4-6"><a href="Ch1.html#cb4-6"></a><span class="cf">if</span> <span class="dv">4</span><span class="op">&gt;</span>x:</span>
-<span id="cb4-7"><a href="Ch1.html#cb4-7"></a>  <span class="bu">print</span>(<span class="st">&quot;okie dokie&quot;</span>)</span>
-<span id="cb4-8"><a href="Ch1.html#cb4-8"></a><span class="cf">else</span>:</span>
-<span id="cb4-9"><a href="Ch1.html#cb4-9"></a>  <span class="bu">print</span>(<span class="st">&quot;nokie dokie&quot;</span>)</span></code></pre></div>
-<p>In this example we are using the numpy.random.randint function to generate a random number between 0-9 and storing it in the variable x. This is because the numpy.random.randint function begins counting at 0 and is not inclusive of the last digit. The if statement then tells Python that if the randomly generated number is less than four print okie dokie and if not print nokie dokie. You can run this code multiple times and see the changes.</p>
-<p><strong>Example 6:</strong>
-Now try it yourself. Imagine you’re playing the lottery and your numbers are 3, 22, 55, and 31 and numbers are selected between 0 and 150, you win if any of your numbers are selected. Write an “if” statement that returns “I’m loaded!!!” if your numbers are not selected, print “better luck next time”.</p>
+<li><p>Absolute Refractory Period: The point from the beginning of the action potential to the peak. In this time frame, it is not physiologically possible for the neuron to fire a second time. In this time period, the sodium channels are open and remain open until the peak of the graph. These channels can not immediately re-open, and due to this, it would not be possible for the membrane to depolarize a second time.</p></li>
+<li><p>Activation Function: Allows for a neuron to make a decision (produce an output) along some continuous interval to adjust weights to learn.</p></li>
+<li><p>Algorithm: An algorithm is a process to define why the model is appropriate and how the logical strategy will be carried out.</p></li>
+<li><p>Back Propagation: Correction signals that run backwards from the output units to the hidden units and then are summed according to the hidden-to-output weights.</p></li>
+<li><p>Bottom-up Processing: Bottom-up organization refers to the reverse process, collecting data and then organizing it to create a theory.</p></li>
+<li><p>Classifier: A type of supervised learning that learns from training data and makes predictions on test data. Specific types of classifiers include:</p>
 <ul>
-<li>Hint: the “==” symbols are used to show equivalency.</li>
-<li>“Or” is a function that can be used in conjunction with “if” statements.</li>
+<li>Distance-based classifier</li>
+<li>Boundary-based classifier</li>
+</ul></li>
+<li><p>Coefficient of Variation: Standard deviation divided by the mean of a set of data.</p></li>
+<li><p>Computational Neuroscience: Computational neuroscience is an interdisciplinary field that applies the principles of mathematics, philosophy, and computer science to study the inner workings of the brain.</p></li>
+<li><p>Computational Theory: Computational Theory a characterization of the system’s goal.</p></li>
+<li><p>Conductance: Allows the flow of charge.</p></li>
+<li><p>Cost: Calculation in Backpropagation using the Mean Squared Error: <span class="math inline">\(MSE = \frac{1}{n}\sum_{i=1}^{n} (Y_{i}-Yhat_{i})^2\)</span>. Used to change weights with the goal of minimizing cost at each iteration.</p></li>
+<li><p>Cross-validation: A decoding scheme that repeatedly partitions the data set into a test set and the remaining data into a training set and makes predictions for every test set until predictions are made for every data point in the data set.</p></li>
+<li><p>Curse of dimensionality: As we move up to in dimensions and start calculating distances in hyperplanes, these operations become exponentially less efficient.</p></li>
+<li><p>Decoding: Field of neuroscience aimed at using action potential data in a single neuron or neural networks to identify the stimuli that caused the neural activity.</p></li>
+<li><p>Depolarization: This process of positive ions flowing into the cell.</p></li>
+<li><p>Driving Force: The pressure for an ion to move in or out of the cell.</p></li>
+<li><p>Emergent Phenomena: An emergent phenomenon is a case in which new mechanisms arise from the addition of a sufficient number of the same functional part.</p></li>
+<li><p>Equilibrium Potential: The membrane potential at which the flow of electric current from all types of ions into and out of the cell is balanced, so there is no net current and the membrane potential is not caused to change.</p></li>
+<li><p>Fano Factor: The fano factor is used to measure the spike variability in a spike train. It is calculated by the variance of the number of spikes divided by the mean number of spikes in a given time interval.</p></li>
+<li><p>Gating variable: The Fire Model is broken up into three separate conductance terms, each relating to a different ion channel called the m, h, and n variables.</p></li>
+<li><p>Hardware and Implementation: Hardware implementation is the physical machinery that realizes the algorithm.</p></li>
+<li><p>Hebbian Learning: One of the core levels of organization within the brain is the synapse. The synapse consists of a pre-synaptic cell, which sends a message to another neuron, or the post-synaptic cell. When many of these messages are sent between two cells, the connection between the two of them is strengthened. This is a theory of “synaptic plasticity” which can be applied through theoretical models within the field of neuroscience.</p></li>
+<li><p>Hidden Layers: Additional layers used when an output is not linearly separable (like XOR); these layers of neurons are chained together via multiple nonlinearities from the various units to solve the problem. Each of these hidden layers–as well as the output layer–will have its own activation function.</p></li>
+<li><p>Hyperpolarization: To decrease the membrane potential towards a more negative value through outward electrical current.</p></li>
+<li><p>Imaging techniques: There are multiple types of imaging techniques commonly employed by researchers to obtain data and recordings from participants. The techniques include:</p>
+<ul>
+<li>EEG</li>
+<li>MEG</li>
+<li>fMRI</li>
+<li>ECOG</li>
+</ul></li>
+<li><p>Interspike Interval: The time interval between every pair of spikes.</p></li>
+<li><p>Leak Current: Leak currents are the passive membranes that are dependent on the membrane potential to drive the electrical potentials of the permeable ions and concentration gradient.</p></li>
+<li><p>Linear discriminant analysis: Type of decision-based classifier algorithm that maximizes that distance between centroid means.</p></li>
+<li><p>Linear support vector machine (LSVM): type of decision-based classifier algorithm that creates a boundary that maximizes the distance between the hard examples in the training set (known as the support vectors); LSVM works well with high dimensional data.</p></li>
+<li><p>Linearly Separable: Different classes of outputs in space that can be separated with a single decision surface.</p></li>
+<li><p>McCulloch-Pitts (MCP) Neuron: Initial neural network model designed by McCulloch and Pitts that takes multiple inputs with associated weights to produce a single output.</p></li>
+<li><p>Membrane Potential: The potential difference across the cell membrane.</p></li>
+<li><p>Multivariate pattern analysis (MVPA): Method utilized for all the imaging techniques as a broad form of decoding that factors in the relationship between variables so they are not treated as independent variables.</p></li>
+<li><p>Negative Feedback: A process by which an initial change is opposed by a force caused by the initial change.</p></li>
+<li><p>Nernst Potential (Reversal Potential): The membrane potential at which the flow of a particular ion is in a dynamic equilibrium, meaning the outflow is precisely matched by the inflow of that ion.</p></li>
+<li><p>Neural Networks: Computing model comprised of basic processing elements strung together that take an input and give an appropriate output and can become increasingly layered to conquer more complex concepts and problems.</p></li>
+<li><p>Perceptron: An algorithm for transforming inputs to outputs with the corresponding weights, bias, and the activation function.</p></li>
+<li><p>Peri-Stimulus Time Histogram: Average time-dependent rate of action potentials (or spike rate) measured during a stimulus over a period of time.</p></li>
+<li><p>Poisson Process: Probabilistic production of events, such as spikes, at any point in time with equal probability per unit time.</p></li>
+<li><p>Positive Feedback: A process by which depolarization of the cell causes further depolarization. More generally, a positive feedback loop is a process that perpetuates itself.</p></li>
+<li><p>Rank measure: A type of decoding that ranks the probability for all labels and measures the distance between the predicted label and the top.</p></li>
+<li><p>Reconstructionism: Reconstructionism is similar to reductionism, except with the added step of reconstructing the reduced parts.</p></li>
+<li><p>Reductionism: Reductionism is breaking larger concepts or models down into smaller parts.</p></li>
+<li><p>Reinforcement Learning: Learning shaped through interactions with the environment through reward and punishment.</p></li>
+<li><p>Relative Refractory Period: The point after the absolute refractory period when a second stimulus, that is above a threshold, can elicit a second action potential without allowing the membrane to hyperpolarize back to its resting membrane potential.</p></li>
+<li><p>Representation: The representational scheme is the description of the functional elements that are used in the computation.</p></li>
+<li><p>Reverse Correlation: Process which implements the analysis of outputs to determine the inputs that the neuron will respond to with a spike.</p></li>
+<li><p>Sigmoid Activation Function: One type of non-linear activation function that determines the output, whose function is defined to be <span class="math inline">\(f(x) = \frac{1}{(1+e^-x)}\)</span></p></li>
+<li><p>Sodium-Potassium Pump: Uses just below 10% of your body’s daily energy to pump three sodium ions out of the neuron for every two potassium ions pumped in, thus forming two respective concentration gradients.</p></li>
+<li><p>Spike Count Rate: The number of spikes per time interval.</p></li>
+<li><p>Spike Train: A sequence of recorded times at which a neuron fires an action potential.</p></li>
+<li><p>Spike Triggered Average: The average value of the stimulus during some time interval before a spike occurs.</p></li>
+<li><p>Step Function: One type of activation function that takes returns a binary output of 0 or 1.</p></li>
+<li><p>Supervised Learning: Learning situations where inputs and expected outputs are given information to predict future solutions.</p></li>
+<li><p>Top-down Processing: Top-down organization refers to the idea of designing a machine for an express predisposed class.</p></li>
+<li><p>Turing Machine: The Turing Machine is a theory created by Alan Turing involving an infinite strip of paper with binary cells which can be used to compute any questions theoretically.</p></li>
+<li><p>Unsupervised Learning: Learning that occurs in the absence of a teacher with expected outputs; a student simply looks at patterns and tries to maximize correlations or find a basic understanding or pattern.</p></li>
+<li><p>White Noise: A random variation where the value at each time point is independent of all other points and so can be employed in these instances to provide a receptive field without bias.</p></li>
 </ul>
-<p>Solution:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="Ch1.html#cb5-1"></a><span class="co"># print a random integer between 1 and 56</span></span>
-<span id="cb5-2"><a href="Ch1.html#cb5-2"></a>x <span class="op">=</span> numpy.random.randint(<span class="dv">57</span>)</span>
-<span id="cb5-3"><a href="Ch1.html#cb5-3"></a></span>
-<span id="cb5-4"><a href="Ch1.html#cb5-4"></a><span class="co"># check to see if x is a winning number</span></span>
-<span id="cb5-5"><a href="Ch1.html#cb5-5"></a><span class="cf">if</span> x<span class="op">==</span><span class="dv">3</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">22</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">55</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">31</span>:</span>
-<span id="cb5-6"><a href="Ch1.html#cb5-6"></a>  <span class="bu">print</span>(<span class="st">&quot;I&#39;m loaded!&quot;</span>)</span>
-<span id="cb5-7"><a href="Ch1.html#cb5-7"></a><span class="cf">else</span>:</span>
-<span id="cb5-8"><a href="Ch1.html#cb5-8"></a>  <span class="bu">print</span>(<span class="st">&quot;Better luck next time!&quot;</span>)</span>
-<span id="cb5-9"><a href="Ch1.html#cb5-9"></a></span>
-<span id="cb5-10"><a href="Ch1.html#cb5-10"></a><span class="co"># check what number was chosen  </span></span>
-<span id="cb5-11"><a href="Ch1.html#cb5-11"></a><span class="bu">print</span>(x)</span></code></pre></div>
-<p><strong>Example 7:</strong>
-Imagine you are cleaning up at the end of your birthday party. You are tired and hungry from a long day of having fun. You are wondering how many slices of pizza are left in each of the 5 pizza boxes, and you decide to write an algorithm that will look through each pizza box and count the number of remaining slices.</p>
-<p>Follow the comments below to understand what each line of this code does:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="Ch1.html#cb6-1"></a><span class="co"># We are importing the package numpy which has built in functions </span></span>
-<span id="cb6-2"><a href="Ch1.html#cb6-2"></a><span class="co"># that will make coding easier and more efficient.</span></span>
-<span id="cb6-3"><a href="Ch1.html#cb6-3"></a><span class="im">import</span> numpy</span>
-<span id="cb6-4"><a href="Ch1.html#cb6-4"></a></span>
-<span id="cb6-5"><a href="Ch1.html#cb6-5"></a><span class="co"># We are defining the total number of pizza boxes that we need </span></span>
-<span id="cb6-6"><a href="Ch1.html#cb6-6"></a><span class="co"># to examine.</span></span>
-<span id="cb6-7"><a href="Ch1.html#cb6-7"></a>totalBoxes <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb6-8"><a href="Ch1.html#cb6-8"></a></span>
-<span id="cb6-9"><a href="Ch1.html#cb6-9"></a><span class="co"># Start counting the number of pizza slices. Since we haven&#39;t </span></span>
-<span id="cb6-10"><a href="Ch1.html#cb6-10"></a><span class="co"># started counting, we will start at zero.</span></span>
-<span id="cb6-11"><a href="Ch1.html#cb6-11"></a>count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-12"><a href="Ch1.html#cb6-12"></a></span>
-<span id="cb6-13"><a href="Ch1.html#cb6-13"></a><span class="co"># Here we are initializing the for loop. We are telling Python </span></span>
-<span id="cb6-14"><a href="Ch1.html#cb6-14"></a><span class="co"># to look at each box in the range of totalBoxes.</span></span>
-<span id="cb6-15"><a href="Ch1.html#cb6-15"></a><span class="cf">for</span> box <span class="kw">in</span> <span class="bu">range</span>(totalBoxes):</span>
-<span id="cb6-16"><a href="Ch1.html#cb6-16"></a>  <span class="co"># We’ve indented here because we are working inside the for loop.</span></span>
-<span id="cb6-17"><a href="Ch1.html#cb6-17"></a>  </span>
-<span id="cb6-18"><a href="Ch1.html#cb6-18"></a>  <span class="co"># The numpy.random.randint() function is selecting a random </span></span>
-<span id="cb6-19"><a href="Ch1.html#cb6-19"></a>  <span class="co"># number between 0 and 16 (we use 17 because the numpy random </span></span>
-<span id="cb6-20"><a href="Ch1.html#cb6-20"></a>  <span class="co"># function is not inclusive of the last digit). This will </span></span>
-<span id="cb6-21"><a href="Ch1.html#cb6-21"></a>  <span class="co"># represent the number of slices left in this box.</span></span>
-<span id="cb6-22"><a href="Ch1.html#cb6-22"></a>  slices <span class="op">=</span> numpy.random.randint(<span class="dv">0</span>, high<span class="op">=</span><span class="dv">17</span>)</span>
-<span id="cb6-23"><a href="Ch1.html#cb6-23"></a>  </span>
-<span id="cb6-24"><a href="Ch1.html#cb6-24"></a>  <span class="co"># We are telling Python that if there is at least one slice in</span></span>
-<span id="cb6-25"><a href="Ch1.html#cb6-25"></a>  <span class="co"># the box, we should increase the count and print the number of </span></span>
-<span id="cb6-26"><a href="Ch1.html#cb6-26"></a>  <span class="co"># slices found.</span></span>
-<span id="cb6-27"><a href="Ch1.html#cb6-27"></a>  <span class="cf">if</span> slices <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb6-28"><a href="Ch1.html#cb6-28"></a>    count <span class="op">+=</span> slices</span>
-<span id="cb6-29"><a href="Ch1.html#cb6-29"></a>    <span class="bu">print</span>(<span class="st">&#39;I have found </span><span class="sc">{}</span><span class="st"> slices!&#39;</span>.<span class="bu">format</span>(count))</span>
-<span id="cb6-30"><a href="Ch1.html#cb6-30"></a>  </span>
-<span id="cb6-31"><a href="Ch1.html#cb6-31"></a>  <span class="co"># &quot;Else&quot; tells Python what to do if there is no pizza in this box.</span></span>
-<span id="cb6-32"><a href="Ch1.html#cb6-32"></a>  <span class="cf">else</span>:</span>
-<span id="cb6-33"><a href="Ch1.html#cb6-33"></a>  </span>
-<span id="cb6-34"><a href="Ch1.html#cb6-34"></a>    <span class="co">#Print is indented inside the else statement because you want to </span></span>
-<span id="cb6-35"><a href="Ch1.html#cb6-35"></a>    <span class="co"># print (&quot;Nooooooo!!!&quot;) if the else statement needs to be used.</span></span>
-<span id="cb6-36"><a href="Ch1.html#cb6-36"></a></span>
-<span id="cb6-37"><a href="Ch1.html#cb6-37"></a>    <span class="bu">print</span>(<span class="st">&quot;Nooooooo!!!&quot;</span>)</span></code></pre></div>
-</div>
-<div id="conceptual-exercises-for-learning-python" class="section level2">
-<h2><span class="header-section-number">2.5</span> Conceptual Exercises for Learning Python</h2>
-<ol style="list-style-type: decimal">
-<li><p>How does Python read code?</p></li>
-<li><p>Compare and contrast the function of brackets and parentheses.</p></li>
-<li><p>How is a tuple different than a list, and given their respective scenarios what characters should be used?</p></li>
-<li><p>Why is indentation important when using writing code in Python, and how can it affect your cell outcome?</p></li>
-<li><p>Describe the four most common data types (int, float, bool, str) that variables can be assigned to and describe each one.</p></li>
-</ol>
-</div>
-<div id="coding-exercises-for-learning-python" class="section level2">
-<h2><span class="header-section-number">2.6</span> Coding Exercises for Learning Python</h2>
-<ol style="list-style-type: decimal">
-<li>Define two variables, one called varOne that represents the value 20 and one calledvarTwo that represents the value 5:</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>Creating a new variable called addVar, write a code that will add varOne andvarTwo.</li>
-<li>Creating a new variable called divVar, write a code that will divide varOne andvarTwo.</li>
-<li>Finally, multiply your two new values (from parts a + b), and assign this to the variable multVar.
-Hint: use basic addition, divison, and multiplication commands rather than making your own function.</li>
-</ol>
-<ol start="2" style="list-style-type: decimal">
-<li>Using the variable name L1:</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>Create a list of five different food items and print the list.</li>
-<li>Write a line of Python code that will print only the 3rd and 5th food in your list from part a.</li>
-</ol>
-<p>Using variable name L2:
-c. Create a second list with three sport names and print the list.
-d. Write a line of Python code that will sort your list from part c alphabetically.</p>
-<ol start="3" style="list-style-type: decimal">
-<li><p>Create a vector from 5 to 15 (non-inclusive) in increments of 2. Then write a line of code that will print the square of each value in the vector.</p></li>
-<li><p>Create a matrix of zeros with 3 rows and 6 columns. Then, create a 2x4 matrix where the first row lists ice cream flavors and the second row lists soda flavors.</p></li>
-<li><p>Write a for loop that will start at the lowest temperature you experienced this week and end at the highest temperature you experienced (in one degree increments). Inside your loop, use an if…else statement that prints whether each temperature is even or odd.</p></li>
-</ol>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Ch2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Ch8.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Ch10.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Hodgkin and Huxley Model | Computational Neuroscience</title>
+  <title>3 What is Computational Neuroscience? | Computational Neuroscience</title>
   <meta name="description" content="TBD" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Hodgkin and Huxley Model | Computational Neuroscience" />
+  <meta property="og:title" content="3 What is Computational Neuroscience? | Computational Neuroscience" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Hodgkin and Huxley Model | Computational Neuroscience" />
+  <meta name="twitter:title" content="3 What is Computational Neuroscience? | Computational Neuroscience" />
   
   <meta name="twitter:description" content="TBD" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Students of NS/PY 357 Bates College" />
 
 
-<meta name="date" content="2019-12-20" />
+<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,13 +33,14 @@
   
 <link rel="prev" href="Ch1.html"/>
 <link rel="next" href="Ch3.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,13 +48,15 @@
 
 
 
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -62,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -130,69 +135,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i><b>1.5</b> Authors</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors-version-0.0"><i class="fa fa-check"></i><b>1.5</b> Authors: Version 0.0</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#authors-version-1.0"><i class="fa fa-check"></i><b>1.6</b> Authors: Version 1.0</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> What is Computational Neuroscience?</a><ul>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a><ul>
 <li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
 <li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
-<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>2.3</b> What is computational neuroscience?</a></li>
-<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#levels-of-organization"><i class="fa fa-check"></i><b>2.4</b> Levels of organization</a></li>
-<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>2.5</b> Applications of computational neuroscience</a></li>
-<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>2.6</b> The future of computational neuroscience</a></li>
-<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.7</b> Summary</a></li>
-<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#exercises"><i class="fa fa-check"></i><b>2.8</b> Exercises:</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.4</b> Example Python Problems</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.5</b> Conceptual Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.6</b> Coding Exercises for Learning Python</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> Hodgkin and Huxley Model</a><ul>
-<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>3.3</b> What is an action potential?</a></li>
-<li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>3.4</b> Nernst equilibrium potential</a></li>
-<li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>3.5</b> The Hodgkin and Huxley model</a></li>
-<li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a><ul>
+<li class="chapter" data-level="3.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#levels-of-organization"><i class="fa fa-check"></i><b>3.4</b> Levels of organization</a></li>
+<li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.5</b> Applications of computational neuroscience</a></li>
+<li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.6</b> The future of computational neuroscience</a></li>
+<li class="chapter" data-level="3.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Reverse Correlation and Receptive Field Mapping</a><ul>
-<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#spike-trains"><i class="fa fa-check"></i><b>4.3</b> Spike Trains</a></li>
-<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#spike-statistics"><i class="fa fa-check"></i><b>4.4</b> Spike Statistics</a></li>
-<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#spike-triggered-average"><i class="fa fa-check"></i><b>4.5</b> Spike-triggered Average</a></li>
-<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#reverse-correlation"><i class="fa fa-check"></i><b>4.6</b> Reverse Correlation</a></li>
-<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a><ul>
+<li class="chapter" data-level="4.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>4.3</b> What is an action potential?</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.4</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.5</b> Leaky Integrate and Fire Model</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.7.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.7.2</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Neural Networks</a><ul>
-<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-list"><i class="fa fa-check"></i><b>5.1</b> Vocabulary List:</a></li>
-<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introductionbackground"><i class="fa fa-check"></i><b>5.2</b> Introduction/Background</a></li>
-<li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#different-types-of-learning"><i class="fa fa-check"></i><b>5.3</b> Different Types of Learning</a></li>
-<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>5.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
-<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#perceptron"><i class="fa fa-check"></i><b>5.5</b> Perceptron</a></li>
-<li class="chapter" data-level="5.6" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Decoding</a><ul>
-<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-3"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-3"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
-<li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#imaging-techniques"><i class="fa fa-check"></i><b>6.3</b> Imaging Techniques</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="Ch5.html"><a href="Ch5.html#eeg"><i class="fa fa-check"></i><b>6.3.1</b> EEG</a></li>
-<li class="chapter" data-level="6.3.2" data-path="Ch5.html"><a href="Ch5.html#meg"><i class="fa fa-check"></i><b>6.3.2</b> MEG</a></li>
-<li class="chapter" data-level="6.3.3" data-path="Ch5.html"><a href="Ch5.html#fmri"><i class="fa fa-check"></i><b>6.3.3</b> fMRI</a></li>
-<li class="chapter" data-level="6.3.4" data-path="Ch5.html"><a href="Ch5.html#ecog"><i class="fa fa-check"></i><b>6.3.4</b> ECOG</a></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a><ul>
+<li class="chapter" data-level="5.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>5.3</b> The Hodgkin and Huxley model</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#introduction-to-decoding"><i class="fa fa-check"></i><b>6.4</b> Introduction to Decoding</a></li>
-<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#what-is-a-classifier"><i class="fa fa-check"></i><b>6.5</b> What is a classifier?</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="Ch5.html"><a href="Ch5.html#correlation-classifiers"><i class="fa fa-check"></i><b>6.5.1</b> Correlation classifiers</a></li>
-<li class="chapter" data-level="6.5.2" data-path="Ch5.html"><a href="Ch5.html#distance-based-classifiers"><i class="fa fa-check"></i><b>6.5.2</b> Distance-based classifiers</a></li>
-<li class="chapter" data-level="6.5.3" data-path="Ch5.html"><a href="Ch5.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>6.5.3</b> Boundary-based classifiers</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#cross-validation"><i class="fa fa-check"></i><b>6.6</b> Cross validation</a></li>
-<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#conclusion"><i class="fa fa-check"></i><b>6.7</b> Conclusion</a></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a><ul>
+<li class="chapter" data-level="6.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#spike-trains"><i class="fa fa-check"></i><b>6.3</b> Spike Trains</a></li>
+<li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#spike-statistics"><i class="fa fa-check"></i><b>6.4</b> Spike Statistics</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
+<li class="chapter" data-level="6.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>6.6</b> Exercises</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.6.1</b> Conceptual Problems</a></li>
+<li class="chapter" data-level="6.6.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.6.2</b> Coding Problems</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> References</a><ul>
-<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#chapter-1"><i class="fa fa-check"></i><b>7.1</b> Chapter 1</a></li>
-<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#chapter-2"><i class="fa fa-check"></i><b>7.2</b> Chapter 2</a></li>
-<li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#chapter-3"><i class="fa fa-check"></i><b>7.3</b> Chapter 3</a></li>
-<li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#chapter-4"><i class="fa fa-check"></i><b>7.4</b> Chapter 4</a></li>
-<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#chapter-5"><i class="fa fa-check"></i><b>7.5</b> Chapter 5</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Glossary</a></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="7.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#spike-triggered-average"><i class="fa fa-check"></i><b>7.3</b> Spike-triggered Average</a></li>
+<li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#reverse-correlation"><i class="fa fa-check"></i><b>7.4</b> Reverse Correlation</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>7.6</b> Exercises</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="7.6.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a><ul>
+<li class="chapter" data-level="8.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="8.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="Ch7.html"><a href="Ch7.html#eeg"><i class="fa fa-check"></i><b>8.3.1</b> EEG</a></li>
+<li class="chapter" data-level="8.3.2" data-path="Ch7.html"><a href="Ch7.html#meg"><i class="fa fa-check"></i><b>8.3.2</b> MEG</a></li>
+<li class="chapter" data-level="8.3.3" data-path="Ch7.html"><a href="Ch7.html#fmri"><i class="fa fa-check"></i><b>8.3.3</b> fMRI</a></li>
+<li class="chapter" data-level="8.3.4" data-path="Ch7.html"><a href="Ch7.html#ecog"><i class="fa fa-check"></i><b>8.3.4</b> ECOG</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="Ch7.html"><a href="Ch7.html#introduction-to-decoding"><i class="fa fa-check"></i><b>8.4</b> Introduction to Decoding</a></li>
+<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="Ch7.html"><a href="Ch7.html#correlation-classifiers"><i class="fa fa-check"></i><b>8.5.1</b> Correlation classifiers</a></li>
+<li class="chapter" data-level="8.5.2" data-path="Ch7.html"><a href="Ch7.html#distance-based-classifiers"><i class="fa fa-check"></i><b>8.5.2</b> Distance-based classifiers</a></li>
+<li class="chapter" data-level="8.5.3" data-path="Ch7.html"><a href="Ch7.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>8.5.3</b> Boundary-based classifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="Ch7.html"><a href="Ch7.html#cross-validation"><i class="fa fa-check"></i><b>8.6</b> Cross validation</a></li>
+<li class="chapter" data-level="8.7" data-path="Ch7.html"><a href="Ch7.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a><ul>
+<li class="chapter" data-level="9.1" data-path="Ch8.html"><a href="Ch8.html#vocabulary-list"><i class="fa fa-check"></i><b>9.1</b> Vocabulary List:</a></li>
+<li class="chapter" data-level="9.2" data-path="Ch8.html"><a href="Ch8.html#introductionbackground"><i class="fa fa-check"></i><b>9.2</b> Introduction/Background</a></li>
+<li class="chapter" data-level="9.3" data-path="Ch8.html"><a href="Ch8.html#different-types-of-learning"><i class="fa fa-check"></i><b>9.3</b> Different Types of Learning</a></li>
+<li class="chapter" data-level="9.4" data-path="Ch8.html"><a href="Ch8.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>9.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
+<li class="chapter" data-level="9.5" data-path="Ch8.html"><a href="Ch8.html#perceptron"><i class="fa fa-check"></i><b>9.5</b> Perceptron</a></li>
+<li class="chapter" data-level="9.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Ch9.html"><a href="Ch9.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
+<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a><ul>
+<li class="chapter" data-level="11.1" data-path="Ch10.html"><a href="Ch10.html#chapter-1-preface"><i class="fa fa-check"></i><b>11.1</b> Chapter 1: Preface</a></li>
+<li class="chapter" data-level="11.2" data-path="Ch10.html"><a href="Ch10.html#chapter-2-introduction-to-python"><i class="fa fa-check"></i><b>11.2</b> Chapter 2: Introduction to Python</a></li>
+<li class="chapter" data-level="11.3" data-path="Ch10.html"><a href="Ch10.html#chapter-3-what-is-computational-neuroscience"><i class="fa fa-check"></i><b>11.3</b> Chapter 3: What is Computational Neuroscience?</a></li>
+<li class="chapter" data-level="11.4" data-path="Ch10.html"><a href="Ch10.html#chapter-4-passive-membrane-models"><i class="fa fa-check"></i><b>11.4</b> Chapter 4: Passive Membrane Models</a></li>
+<li class="chapter" data-level="11.5" data-path="Ch10.html"><a href="Ch10.html#chapter-5-hodgkin-and-huxley"><i class="fa fa-check"></i><b>11.5</b> Chapter 5: Hodgkin and Huxley</a></li>
+<li class="chapter" data-level="11.6" data-path="Ch10.html"><a href="Ch10.html#chapter-6-firing-rates"><i class="fa fa-check"></i><b>11.6</b> Chapter 6: Firing Rates</a></li>
+<li class="chapter" data-level="11.7" data-path="Ch10.html"><a href="Ch10.html#chapter-7-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>11.7</b> Chapter 7: Reverse Correlation and Receptive Field Mapping</a></li>
+<li class="chapter" data-level="11.8" data-path="Ch10.html"><a href="Ch10.html#chapter-8-decoding"><i class="fa fa-check"></i><b>11.8</b> Chapter 8: Decoding</a></li>
+<li class="chapter" data-level="11.9" data-path="Ch10.html"><a href="Ch10.html#chapter-9-neural-networks"><i class="fa fa-check"></i><b>11.9</b> Chapter 9: Neural Networks</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a><ul>
+<li class="chapter" data-level="12.1" data-path="Ch11.html"><a href="Ch11.html#chapter-1-introduction-to-python"><i class="fa fa-check"></i><b>12.1</b> Chapter 1: Introduction to Python</a></li>
+<li class="chapter" data-level="12.2" data-path="Ch11.html"><a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience"><i class="fa fa-check"></i><b>12.2</b> Chapter 2: Introduction to Computational Neuroscience</a></li>
+<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions"><i class="fa fa-check"></i><b>12.3.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.3.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions"><i class="fa fa-check"></i><b>12.3.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-1"><i class="fa fa-check"></i><b>12.4.1</b> Conceptual Questions:</a></li>
+<li class="chapter" data-level="12.4.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-1"><i class="fa fa-check"></i><b>12.4.2</b> Coding Questions:</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-2"><i class="fa fa-check"></i><b>12.5.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.5.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-2"><i class="fa fa-check"></i><b>12.5.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-3"><i class="fa fa-check"></i><b>12.6.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.6.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-3"><i class="fa fa-check"></i><b>12.6.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="Ch11.html"><a href="Ch11.html#chapter-7-decoding"><i class="fa fa-check"></i><b>12.7</b> Chapter 7: Decoding</a></li>
+<li class="chapter" data-level="12.8" data-path="Ch11.html"><a href="Ch11.html#chapter-8-neural-networks"><i class="fa fa-check"></i><b>12.8</b> Chapter 8: Neural Networks</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -211,433 +278,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="Ch2" class="section level1">
-<h1><span class="header-section-number">3</span> Hodgkin and Huxley Model</h1>
-<div id="vocabulary-1" class="section level2">
+<h1><span class="header-section-number">3</span> What is Computational Neuroscience?</h1>
+<div id="vocabulary" class="section level2">
 <h2><span class="header-section-number">3.1</span> Vocabulary</h2>
 <ul>
-<li>Depolarization</li>
-<li>Positive Feedback</li>
-<li>Hyperpolarization</li>
-<li>Negative Feedback</li>
-<li>Membrane Potential</li>
-<li>Sodium-Potassium Pump</li>
-<li>Nernst Potential</li>
-<li>Reversal Potential</li>
-<li>Equilibrium Potential</li>
-<li>Driving Force</li>
-<li>Conductance</li>
-<li>Leak Current</li>
-<li>Leaky Integrate and Fire Model</li>
-<li>Absolute Refractory Period</li>
-<li>Gating variable</li>
+<li>Algorithm</li>
+<li>Bottom-up processing</li>
+<li>Computational neuroscience</li>
+<li>Computational theory</li>
+<li>Emergent phenomena</li>
+<li>Hardware and implementation</li>
+<li>Hebbian learning</li>
+<li>Reconstruction</li>
+<li>Reductionism</li>
+<li>Reductionism</li>
+<li>Representation</li>
+<li>Top-down processing</li>
+<li>Turing machine</li>
 </ul>
 </div>
-<div id="introduction-1" class="section level2">
+<div id="introduction" class="section level2">
 <h2><span class="header-section-number">3.2</span> Introduction</h2>
-<p>Before you read this chapter, we would like to draw your attention to this <a href="https://www.youtube.com/watch?v=dzj95jHuPiw">video</a>. We call this a Zombie Squid because the squid is in fact dead; however, it is recently deceased. Since the squid passed shortly before, Adenosine triphosphate (ATP) energy stores are still available to the squid’s muscles. When the soy sauce, which has a lot of sodium chloride (salt) in it, is poured onto the squid, the salt in the soy sauce causes a voltage change which causes the squid’s muscles to contract. Thus, we have a Zombie Squid.</p>
-<p>So why is the Zombie Squid important? The Hodgkin-Huxley Model, said to have started the field of computational neuroscience, all hinges on the giant axons of squid. In the 1950s Alan Hodgkin and Andrew Huxley built a model that shows us how computers can successfully predict certain aspects of the brain that cannot be directly studied. The two even won a Nobel Prize in Physiology or Medicine in 1963 with Sir John Carew Eccles for their model. The Hodgkin-Huxley Model is now the basis of all conductance-based models. As a result, we can now understand how an action potential works, and why it is an all-or-none event.</p>
-<p>While Hodgkin and Huxley created their model in the 1950s, the first recording of an action potential was done by Edgar Adrian in the 1920s. However, the first person to realize that neurons communicate via electrical signals came much earlier in 1791, when Luigi Galvani found that electricity from lightning or primitive batteries can cause a dead frog’s leg muscle to contract. This led to a good amount of Frankenstein-like science with interested parties running electricity through dead bodies in an attempt to bring them back to life. However, the next truly scientific discovery came from Hermann Helmholtz in the 19th century. Helmholtz found that he could measure the speed of muscles contracting when he stimulated the nerve linked to that specific muscle. The Hodgkin-Huxley Model was then created once Adrian noted that not only were action potentials discrete, but the firing rate (spike per second) increased as stimulation to the nerve increased.</p>
-<p><strong>Exercise:</strong> Briefly explain how the Zombie Squid moves. Why is this important to understand?</p>
-</div>
-<div id="what-is-an-action-potential" class="section level2">
-<h2><span class="header-section-number">3.3</span> What is an action potential?</h2>
-<div class="figure"><span id="fig:channel1-fig"></span>
-<img src="images/channel1.png" alt="A cell at rest has more potassium ions intracellular than extracellular and more sodium ions extracellular than intracellular. There is a negative net charge within the cell being maintained by the  voltage gradient."  />
+<div style="float:right;position: relative; top: -80px;">
+<div class="figure">
+<img src="images/table.png" alt=" "  />
 <p class="caption">
-Figure 3.1: A cell at rest has more potassium ions intracellular than extracellular and more sodium ions extracellular than intracellular. There is a negative net charge within the cell being maintained by the voltage gradient.
-</p>
-</div>
-<div class="figure"><span id="fig:channel2-fig"></span>
-<img src="images/channel2.png" alt="When the cell becomes depolarized sodium ions enter the cell. The charge within the cell becomes more positive."  />
-<p class="caption">
-Figure 3.2: When the cell becomes depolarized sodium ions enter the cell. The charge within the cell becomes more positive.
-</p>
-</div>
-<div class="figure"><span id="fig:channel3-fig"></span>
-<img src="images/channel3.png" alt="When the cell repolarizes potassium ions leave the cell. The charge within the cell go from positive to negative as it goes back to the resting state."  />
-<p class="caption">
-Figure 3.3: When the cell repolarizes potassium ions leave the cell. The charge within the cell go from positive to negative as it goes back to the resting state.
-</p>
-</div>
-<div class="figure"><span id="fig:actionPotential-fig"></span>
-<img src="images/actionPotential.png" alt="Example of an action potential."  />
-<p class="caption">
-Figure 3.4: Example of an action potential.
-</p>
-</div>
-<p>Before going into ways of modelling action potentials, let’s further explore what an action potential is. Within a cell, there are more sodium ions outside the membrane, which have a positive charge. Because there are less positive ions inside the cell compared to the outside, the inside of the cell has a negative resting potential. When there is a spike of voltage, that causes both voltage-gated sodium and potassium channels–meaning that these channels activate and inactivate at certain voltages–to activate on a neuron’s membrane. However, the sodium channels open much faster than the potassium channels. The flow of sodium ions into the cell causes the membrane potential to become more positive. This process of positive ions flowing into the cell is called <strong>depolarization</strong>. When depolarization happens, it causes additional sodium channels to open, which causes further depolarization—this phenomenon is called <strong>positive feedback</strong>, and the positive feedback starts if the depolarization hits a set threshold. In other words, a positive feedback loop is a process that perpetuates itself. The positive feedback loop ends once voltage-gated potassium channels also open at the peak of the action potential and potassium begins flowing out of the cell and ending depolarization, we call this <strong>repolarization</strong>. When the voltage is below the resting potential, we call this undershoot <strong>hyperpolarization</strong>, which is when the membrane potential decreases towards a move negative value via potassium ions flowing out. As the voltage-gated potassium channels open and the voltage-gated sodium channels to close or become inactivated, there is now <strong>negative feedback</strong>. Negative feedback is a process by which an initial change is opposed by a force caused by the initial change. In this situation, the positive feedback causes a spike in membrane potential and the negative feedback stabilizes.</p>
-<strong>Exercise:</strong>
-<div class="figure"><span id="fig:actionPotentialEx-fig"></span>
-<img src="images/actionPotentialExercise.png" alt="Here is a diagram that shows different stages of an action potential. Use the knowledge we learned in the last section, identify the stages on the graph. How are these stages relate to positive/negative feedback? What kinds of channels are open/closed during the respective stages?"  />
-<p class="caption">
-Figure 3.5: Here is a diagram that shows different stages of an action potential. Use the knowledge we learned in the last section, identify the stages on the graph. How are these stages relate to positive/negative feedback? What kinds of channels are open/closed during the respective stages?
-</p>
-</div>
-<p><strong>Exercise:</strong> Explain how depolarization and hyperpolarization relate to positive/negative feedback.</p>
-</div>
-<div id="nernst-equilibrium-potential" class="section level2">
-<h2><span class="header-section-number">3.4</span> Nernst equilibrium potential</h2>
-<p>The electrical activity generated in a neuron is a result of ions flowing across the neuron’s membrane which is caused by the following two principles: opposite charges attract, and concentration gradients seek to equalize. This potential difference is referred to as the <strong>membrane potential</strong>. In order for ions to flow, a concentration gradient must be established because the difference in concentration across the membrane leads it to pass either into the neuron or out of the neuron. This is accomplished by the <strong>sodium-potassium pump</strong>, which uses just below 10% of your body’s daily energy to pump three sodium ions out of the neuron for every two potassium ions pumped in, thus forming two respective concentration gradients.</p>
-<p>With the concentration gradient established, the sodium and potassium ions will flow down the concentration gradients when their respective channels open, generating an electrical current that propagates down the axon. We must also take into account the fact that each ion possesses a charge–or charges in the case of Ca++ and Mg++–and that as this charge is built up on one side of the cell, this will generate an electrical force that will begin to repel ions with similar charge as they try to flow down their concentration gradient. When the force of the concentration gradient matches the electrical force attracting or repelling the ion, this is known as the <strong>Nernst potential</strong> for that ion, also referred to as the <strong>reversal potential</strong>. This means that means that both sodium and potassium possess their own respective Nernst potentials. Nernst potentials are especially important because they allow us to calculate the membrane voltage when a particular ion is in equilibrium, which helps to define the role it plays in an action potential.</p>
-<p>The Nernst potential for an ion can be derived from the following equation: <span class="math display">\[E_{ion} = \frac{RT}{zF}ln(\frac{[out]}{[in]}) \]</span></p>
-<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Expression
-</th>
-<th style="text-align:left;">
-Meaning
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-E_ion
-</td>
-<td style="text-align:left;">
-Nernst Potential
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R
-</td>
-<td style="text-align:left;">
-Gas constant: 8.314 J/mol*K
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ln()
-</td>
-<td style="text-align:left;">
-Natural log
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-z
-</td>
-<td style="text-align:left;">
-Valance
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-T
-</td>
-<td style="text-align:left;">
-Temperature in Kelvin
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:left;">
-Faraday’s constant: 96485.336512 C/mol
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-[out]
-</td>
-<td style="text-align:left;">
-Concentration of ions outside the membrane
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-[in]
-</td>
-<td style="text-align:left;">
-Concentration of ions inside the membrane
-</td>
-</tr>
-</tbody>
-</table>
-<p>While the Nernst potential will give the equilibrium point for a single ion, it also has a relation to the <strong>equilibrium potential</strong> or the resting potential the membrane, which is potential at which there is no net flow of ions, leading to a halt in the flow of electric current. The equilibrium potential is really a weighted average of all of the Nernst potentials and is modeled by the Goldman-Hodgkin-Katz equation which is shown below: <span class="math display">\[V_{m} = \frac{RT}{F}ln(\frac{P_{K}[K+]_{out}+P_{Na}[Na+]_{out}+P_{Cl}[Cl-]_{in}}{P_{K}[K+]_{in}+P_{Na}[Na+]_{in}+P_{Cl}[Cl-]_{out}}) \]</span></p>
-<p>This equation utilizes the membrane permeability, <em>P</em>, in conjunction with the concentration of each ion inside and outside of the cell to produce the equilibrium potential of a membrane. Using this equation alongside the Nernst potential, the <strong>driving force</strong>, which is a representation of the pressure for an ion to move in or out of the cell, can be calculated using the following equation: <span class="math display">\[DF = V_{m}-E_{ion} \]</span></p>
-<p>The Nernst Potential, the Goldman-Hodgkin-Katz equation, and the driving force present necessary calculations that allow for better understanding of the flow of ions in relation to an action potential.</p>
-<p><strong>Exercise:</strong> Why does depolarization not continue indefinitely once voltage-gated Na+ channels have opened?</p>
-<p><strong>Exercise:</strong> Briefly explain the concept of driving force.</p>
-<p><strong>Exercise:</strong> Explain the difference between the membrane potential, Nernst potential and equilibrium potential.</p>
-</div>
-<div id="the-hodgkin-and-huxley-model" class="section level2">
-<h2><span class="header-section-number">3.5</span> The Hodgkin and Huxley model</h2>
-<div style="float:left;width:564px">
-<div class="figure"><span id="fig:hodgkinHuxley-fig"></span>
-<img src="images/HodgkinHuxley.png" alt="Alan Hodgkin (left) and Andrew Huxley (right)."  />
-<p class="caption">
-Figure 3.6: Alan Hodgkin (left) and Andrew Huxley (right).
 </p>
 </div>
 </div>
-<p>Alan Hodgkin (pictured left) and Andrew Huxley (pictured right) were two Cambridge University undergraduates who eventually found themselves working in a marine biology laboratory with the axon of a giant squid. The two men were able to derive the necessary information for their influential model of an action potential using the massive axon of the giant squid.</p>
-<p>Hodgkin and Huxley developed a series of equations that could accurately predict and depict action potentials. Their work is a cornerstone for computational modeling as computer modelling can now be used to mimic the biological properties of a neuron that we are unable to directly observe.</p>
-<p>Really the Hodgkin-Huxley Model is just an elaboration on the Integrate and Fire Model. The Integrate and Fire model was generated by French neuroscientist Louis Lapicque, who in 1907 sought to generate a mathematical model that could be used to predict and graph an action potential. In his efforts to understand action potentials, Lapicque chose to model the flow of ions as a single <strong>leak current</strong>.</p>
-<p>Hodgkin and Huxley took the single conductance term from the Integrate and Fire Model is broken up into three separate conductance terms, each relating to a different ion channel. These conductance terms are known as <strong>gating variables</strong> and are labeled <em>m</em>, <em>n</em>, and <em>h</em>. Voltage-gated sodium channel activation is modeled by the letter <em>ms</em>. Voltage-gated sodium channels have three subunits, as these three subunits are involved in the channels activation, <em>m</em> is raised to the third power. Voltage-gated sodium channel also inactivate at the peak of the action potential and this variable is modeled by the letter <em>h</em>. The combination of <em>m</em> and <em>h</em> gives rise to the conductance of Voltage-gated sodium channel which is modeled below: <span class="math display">\[\bar{g}_{Na}m^{3}h(V(t)-E_{Na}) \]</span>
-Voltage-gated potassium channels are modeled by the letter <em>n</em>. Voltage-gated potassium channels have four subunits, and thus the gating variable, <em>n</em>, is raised to the fourth power. The conductance of Voltage-gated potassium channels is modeled below: <span class="math display">\[\bar{g}_{K}n^{4}(V(t)-E_{K} \]</span>
-The final conductance taken into account by Hodgkin and Huxley is the leak potential of all the ions. The Leak conductance is taken into account for the instance when all ion channels are open. This conductance is represented below: <span class="math display">\[\bar{g}_{L}(V(t)-E_{L}) \]</span>
-These three conductance variables are combined together to form the Hodgkin-Huxley equation which is written as follows: <span class="math display">\[C\frac{dV}{dt}=I_{e}(t)-[(\bar{g}_{Na}m^{3}h(V(t)-E_{Na}))+(\bar{g}_{K}n^{4}(V(t)-E_{K}))+(\bar{g}_{L}(V(t)-E_{L}))] \]</span></p>
-<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Expression
-</th>
-<th style="text-align:left;">
-Meaning
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-<em>n</em>
-</td>
-<td style="text-align:left;">
-Activation of potassium channels
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<em>m</em>
-</td>
-<td style="text-align:left;">
-Activation of sodium channels
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<em>h</em>
-</td>
-<td style="text-align:left;">
-Inactivation of sodium channels
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<em>C</em>
-</td>
-<td style="text-align:left;">
-Capacitance
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(I_{injected}\)</span>
-</td>
-<td style="text-align:left;">
-Injected current
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\bar{g}_{Na}\)</span>
-</td>
-<td style="text-align:left;">
-Maximum sodium conductance
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\bar{g}_{K}\)</span>
-</td>
-<td style="text-align:left;">
-Maximum potassium conductance
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\bar{g}_{L}\)</span>
-</td>
-<td style="text-align:left;">
-Maximum leak conductance
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<em>V</em>
-</td>
-<td style="text-align:left;">
-Membrane voltage
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(E_{Na}\)</span>
-</td>
-<td style="text-align:left;">
-Sodium Nernst potential
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(E_{K}\)</span>
-</td>
-<td style="text-align:left;">
-Potassium Nernst potential
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(E_{L}\)</span>
-</td>
-<td style="text-align:left;">
-Leak Nernst potential
-</td>
-</tr>
-</tbody>
-</table>
-Additionally, we can calculate the value of each gating variable over different voltages and times: <span class="math display">\[m\frac{dV}{dt} = \alpha_{m}(V)(1-m)-\beta_{m}(V)m \]</span>
-Both <em>n</em> and <em>h</em> can be substituted for <em>m</em> in the above equation in order to calculate values for each gating variable. Additionally, note the <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> in the equation are rate constants that govern the opening and closing (respectively), of their channels. Here are their values:<br />
-<span class="math display">\[ \alpha_{n}(V_{m}) = \frac{0.01(V_{m}+55)}{1-exp(-0.1(V_{m}+55))} \]</span>
-<span class="math display">\[\alpha_{m}(V_{m}) = \frac{0.1(V_{m}+40)}{1-exp(-0.1(V_{m}+40))}\]</span>
-<span class="math display">\[\alpha_{h}(V_{m}) = 0.07exp(-0.05(V_{m}+65)) \]</span>
-<span class="math display">\[\beta_{n}(V_m) = 0.125exp(-0.0125(V_{m}+65)) \]</span>
-<span class="math display">\[\beta_{m}(V_{m}) = 4exp(-0.0556(V_{m}+65)) \]</span>
-<span class="math display">\[\beta_{h}(V_{m}) = \frac{1}{1+exp(-0.1(V_{m}+35))} \]</span>
-<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Expression
-</th>
-<th style="text-align:left;">
-Meaning
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\alpha_{n}\)</span>
-</td>
-<td style="text-align:left;">
-Rate constant for potassium channel activation (open)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\alpha_{m}\)</span>
-</td>
-<td style="text-align:left;">
-Rate constant for sodium channel activation (open)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\alpha_{h}\)</span>
-</td>
-<td style="text-align:left;">
-Rate constant for sodium channel inactivation (open)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\beta_{n}\)</span>
-</td>
-<td style="text-align:left;">
-Rate constant for potassium channel activation (close)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\beta_{m}\)</span>
-</td>
-<td style="text-align:left;">
-Rate constant for sodium channel activation (close)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\beta_{h}\)</span>
-</td>
-<td style="text-align:left;">
-Rate constant for sodium channel inactivation (close)
-</td>
-</tr>
-</tbody>
-</table>
+<p>Look at this picture of a desk on the page in front of you. As you look at it, your brain is somehow able to turn the raw sense data coming from your eyes into a judgment about the identity of the object in the image. If we want to build a machine that can demonstrate a similar capacity to judge — then we need to be able to model and understand the mechanisms that are at work when we see the desk. We are now left with at least two questions: <em>(1) How might we create a computer program that performs the same cognitive tasks as us humans?</em> And (2) <em>What can such as program tell us about the mechanisms at work in our own human brains?</em> While these questions may not be exhaustive of the concerns of computational neuroscience, they should at least give you a taste of some of the issues the discipline grapples with on a regular basis.<br />
+For more information please <a href="https://www.cell.com/trends/cognitive-sciences/pdf/S1364-6613(17)30134-1.pdf">explore.</a></p>
 </div>
-<div id="summary-1" class="section level2">
-<h2><span class="header-section-number">3.6</span> Summary</h2>
-<p>An action potential is the electro-chemical signal that propagates down a neuron. Action potentials are facilitated by the electrochemical gradient that is maintained through the action of the Sodium-Potassium Pump. The role that each ion plays within the action potential can be determined through the use of the Nernst Equation, which allows us to understand the movement of a specific ion at a specific membrane voltage. Understanding the role of ions, is important, but this is not how we actually graph an action potential. One of the first modules developed to graph an action potential was the integrate and fire module. This equation disregarded all of the biomechanical features of an action potential and focused on the subthreshold membrane dynamics of a neuron. This model was relatively effective, until Hodgkin and Huxley reassessed it and changed the single leak resistance in integrate and fire to three separate resistance terms. Hodgkin and Huxley in doing this created an equation that more thoroughly analyzed and depicted the very action potential that is displayed to this day.</p>
-<p>##Exercises:##
-Here is a code that models the Hodgkin-Huxley model. Fill in the blanks and try to understand what each line of code does. Why does the code calculate <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> values first?</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="im">import</span> numpy <span class="im">as</span> np</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Define model parameters</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">dt          <span class="op">=</span> <span class="fl">0.1</span> <span class="co"># time step (ms)</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">tFinal      <span class="op">=</span> <span class="dv">1000</span> <span class="co"># total time of run (ms)</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">tStimStart  <span class="op">=</span> <span class="dv">250</span> <span class="co"># time to start injecting current (ms)</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">tStimEnd    <span class="op">=</span> <span class="dv">750</span> <span class="co"># time to end injecting current (ms)</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">c           <span class="op">=</span> <span class="dv">10</span> <span class="co"># capacitance per unit area (nF/mm^2)</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">gMaxL       <span class="op">=</span> <span class="dv">3</span> <span class="co"># leak maximal conductance per unit area (mS/mm^2)</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">EL          <span class="op">=</span> <span class="fl">-54.387</span> <span class="co"># leak conductance reversal potential (mV)</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">gMaxK       <span class="op">=</span> <span class="dv">360</span> <span class="co"># maximal K conductance per unit area (mS/mm^2)</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">EK          <span class="op">=</span> <span class="dv">-77</span> <span class="co"># K conductance reversal potential (mV)</span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">gMaxNa      <span class="op">=</span> <span class="dv">1200</span> <span class="co"># maximal Na conductance per unit area (mS/mm^2)</span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">ENa         <span class="op">=</span> <span class="dv">50</span> <span class="co"># Na conductance reversal potential (mV)</span></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co"># set up data structures to hold relevant variable vectors</span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">timeVec <span class="op">=</span> np.zeros(<span class="dv">0</span>, tFinal, dt)</a>
-<a class="sourceLine" id="cb1-19" data-line-number="19">voltageVec <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVec))</a>
-<a class="sourceLine" id="cb1-20" data-line-number="20">Ivector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVec))</a>
-<a class="sourceLine" id="cb1-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co"># Fill in the BLANK!</span></a>
-<a class="sourceLine" id="cb1-23" data-line-number="23">mVec <span class="op">=</span> np.zeros(     )</a>
-<a class="sourceLine" id="cb1-24" data-line-number="24">hVec <span class="op">=</span> np.zeros(     )</a>
-<a class="sourceLine" id="cb1-25" data-line-number="25">nVec <span class="op">=</span> np.zeros(     )</a>
-<a class="sourceLine" id="cb1-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb1-27" data-line-number="27"><span class="co"># assign the initial value of each variable</span></a>
-<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co"># For initial voltage, we set the resting potential to -65 mV</span></a>
-<a class="sourceLine" id="cb1-29" data-line-number="29">voltageVec[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">-65</span></a>
-<a class="sourceLine" id="cb1-30" data-line-number="30">Ie <span class="op">=</span> <span class="dv">200</span></a>
-<a class="sourceLine" id="cb1-31" data-line-number="31">mVec[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.0529</span></a>
-<a class="sourceLine" id="cb1-32" data-line-number="32">mVec[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.5961</span></a>
-<a class="sourceLine" id="cb1-33" data-line-number="33">nVec[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.3177</span></a>
-<a class="sourceLine" id="cb1-34" data-line-number="34"></a>
-<a class="sourceLine" id="cb1-35" data-line-number="35"><span class="co"># For-loop to integrate equations into model</span></a>
-<a class="sourceLine" id="cb1-36" data-line-number="36"><span class="co"># Can you see why we are subtracting 1 here?</span></a>
-<a class="sourceLine" id="cb1-37" data-line-number="37"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(    ):</a>
-<a class="sourceLine" id="cb1-38" data-line-number="38">  <span class="co"># Calculate alpha values for m, h, and n</span></a>
-<a class="sourceLine" id="cb1-39" data-line-number="39">  <span class="co"># These functions are fit from empirical data</span></a>
-<a class="sourceLine" id="cb1-40" data-line-number="40">  alpha_m <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> (voltageVec[i]<span class="op">+</span><span class="dv">40</span>)<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>np.exp(<span class="op">-</span><span class="fl">0.1</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">40</span>)))</a>
-<a class="sourceLine" id="cb1-41" data-line-number="41">  alpha_h <span class="op">=</span> <span class="fl">0.07</span> <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.05</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">65</span>))</a>
-<a class="sourceLine" id="cb1-42" data-line-number="42">  alpha_n <span class="op">=</span> <span class="fl">0.01</span> <span class="op">*</span> (voltageVec[i]<span class="op">+</span><span class="dv">55</span>) <span class="op">/</span> (<span class="dv">1</span><span class="op">-</span>np.exp(<span class="op">-</span><span class="fl">0.1</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">55</span>)))</a>
-<a class="sourceLine" id="cb1-43" data-line-number="43">  </a>
-<a class="sourceLine" id="cb1-44" data-line-number="44">  <span class="co"># Calculate beta values</span></a>
-<a class="sourceLine" id="cb1-45" data-line-number="45">  beta_m <span class="op">=</span> <span class="dv">4</span><span class="op">*</span>np.exp(<span class="op">-</span><span class="fl">0.05556</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">65</span>))</a>
-<a class="sourceLine" id="cb1-46" data-line-number="46">  beta_h <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span><span class="op">+</span>np.exp(<span class="op">-</span><span class="fl">0.1</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">35</span>)))</a>
-<a class="sourceLine" id="cb1-47" data-line-number="47">  beta_n <span class="op">=</span> <span class="fl">0.125</span> <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.01125</span><span class="op">*</span>(voltageVec[i]<span class="op">+</span><span class="dv">55</span>))</a>
-<a class="sourceLine" id="cb1-48" data-line-number="48">  </a>
-<a class="sourceLine" id="cb1-49" data-line-number="49">  <span class="co"># Calculate tau values for m, h, and n</span></a>
-<a class="sourceLine" id="cb1-50" data-line-number="50">  tau_m <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (alpha_m <span class="op">+</span> beta_m)</a>
-<a class="sourceLine" id="cb1-51" data-line-number="51">  tau_h <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (alpha_h <span class="op">+</span> beta_h)</a>
-<a class="sourceLine" id="cb1-52" data-line-number="52">  tau_n <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (alpha_n <span class="op">+</span> beta_n)</a>
-<a class="sourceLine" id="cb1-53" data-line-number="53">  </a>
-<a class="sourceLine" id="cb1-54" data-line-number="54">  <span class="co"># Calculate inf values for m, h, and n</span></a>
-<a class="sourceLine" id="cb1-55" data-line-number="55">  infM <span class="op">=</span> alpha_m <span class="op">/</span> (alpha_m <span class="op">+</span> beta_m)</a>
-<a class="sourceLine" id="cb1-56" data-line-number="56">  infH <span class="op">=</span> alpha_h <span class="op">/</span> (alpha_h <span class="op">+</span> beta_h)</a>
-<a class="sourceLine" id="cb1-57" data-line-number="57">  infN <span class="op">=</span> alpha_n <span class="op">/</span> (alpha_n <span class="op">+</span> beta_n)</a>
-<a class="sourceLine" id="cb1-58" data-line-number="58">  </a>
-<a class="sourceLine" id="cb1-59" data-line-number="59">  <span class="co"># Calculate and store values in m, h, and n vectors</span></a>
-<a class="sourceLine" id="cb1-60" data-line-number="60">  mVec[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> infM <span class="op">+</span> (mVec[i] <span class="op">-</span> infM) <span class="op">*</span> np.exp(<span class="op">-</span>dt<span class="op">/</span>tau_m)</a>
-<a class="sourceLine" id="cb1-61" data-line-number="61">  hVec[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> infH <span class="op">+</span> (hVec[i] <span class="op">-</span> infH) <span class="op">*</span> np.exp(<span class="op">-</span>dt<span class="op">/</span>tau_h)</a>
-<a class="sourceLine" id="cb1-62" data-line-number="62">  nVec[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> infN <span class="op">+</span> (nVec[i] <span class="op">-</span> infN) <span class="op">*</span> np.exp(<span class="op">-</span>dt<span class="op">/</span>tau_n)</a>
-<a class="sourceLine" id="cb1-63" data-line-number="63">  </a>
-<a class="sourceLine" id="cb1-64" data-line-number="64">  <span class="co"># Calculate and store values in the tau voltage vector</span></a>
-<a class="sourceLine" id="cb1-65" data-line-number="65">  tauVec <span class="op">=</span> c<span class="op">/</span>(gMaxK<span class="op">*</span>nVec[i]<span class="op">**</span><span class="dv">4</span><span class="op">+</span>gMaxNa<span class="op">*</span>mVec[i]<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> hVec[i]<span class="op">+</span>gMaxL)</a>
-<a class="sourceLine" id="cb1-66" data-line-number="66">  vInf <span class="op">=</span> (gMaxK<span class="op">*</span>nVec[i]<span class="op">**</span><span class="dv">4</span> <span class="op">*</span> EK <span class="op">+</span> gMaxNa<span class="op">*</span>mVec[i]<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> hVec[i]<span class="op">*</span>ENa <span class="op">+</span> gMaxL<span class="op">*</span>EL <span class="op">+</span> IVector[i])</a>
-<a class="sourceLine" id="cb1-67" data-line-number="67">  <span class="op">/</span> (gMaxK<span class="op">*</span>nVec[i]<span class="op">**</span><span class="dv">4</span><span class="op">+</span>gMaxNa<span class="op">*</span>mVec[i]<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> hVec[i]<span class="op">+</span>gMaxL)</a>
-<a class="sourceLine" id="cb1-68" data-line-number="68">  voltageVec[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> vInf <span class="op">+</span> (voltageVec[i]<span class="op">-</span>vInf) <span class="op">*</span> np.exp(<span class="op">-</span>dt<span class="op">/</span>tauVec[i])</a></code></pre></div>
+<div id="what-is-computational-neuroscience" class="section level2">
+<h2><span class="header-section-number">3.3</span> What is computational neuroscience?</h2>
+<p><strong>Computational neuroscience</strong> is an interdisciplinary field that applies the principles of mathematics, philosophy, and computer science to study the inner workings of the brain. Computer models are critical to computational neuroscience, because they allow experiments to be conducted in a highly controlled and replicable fashion. In this context, a “model” is a simplified and simulated version of a system that tries to guess how the actual (simulated) system would behave in the real world.</p>
+<p>For example, suppose a computational neuroscientist wants to understand how the human brain begins to make sense of sounds. A computer model could be constructed for this purpose, because many disparate aspects of the hearing parts of the brain have been measured. Such measurements would make constructing a useful computer model possible, because they would constrain the design model. In other words, our researcher could design a model where the simulated features match the measurements of the corresponding real features of the brain. This model could be useful, because our researcher has access to all the features of the computer model—including those that could not be easily and ethically measured in the actual human brain. This utility would be borne out in plausible inferences about currently unmeasured properties and behaviors of the brain.</p>
+<p>While it is true that the inferences we’ve just discussed can not be made with complete certainty, they can be instrumental in guiding future research as new technology (and sources of funding) become available. Even if a given model ends up not holding up to future data, the model could still prove useful for developing artificial intelligences.
+With the potential of computer models of the brain in mind, it may be tempting to think you could build a model that truly “understands” in the same way that a person does. The question of whether or not such a model is possible is a matter of much debate, so suffice it to say we will only briefly survey the issues here.</p>
+<p>On the side arguing that a computer model could never truly understand something (e.g. the Chinese language) the way a human does is the philosopher John Searle. Searle makes use of his famous <a href="https://www.youtube.com/watch?v=D0MD4sRHj1M">“Chinese Room Argument”</a> to suggest that merely following a set of rules to produce a desired result from a given input is not enough to count as true understanding. For example, Searle would argue that using a big book of rules for writing Chinese answers that respond to Chinese questions is not the same thing as having a natural conversation in Chinese.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>This may seem intuitively true, but many of Searle’s opponents<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> argue that Searle’s alleged argument is only intuitively true. That is to say that Searle is merely provoking intuitions rather than supplying premises or facts that lead to his desired conclusion.</p>
+<p>The motivations for this debate could be explained in terms of the level of organization at which Searle and his opponents appear to be thinking.</p>
+<p>While Searle published his paper on the “Chinese Room Argument” in 1980, the conversation of whether computers would be able to fully understand humans had been ongoing for many decades prior. In 1936, Alan Turing, created the theory of the Turing test to find when there was an equivalence between artificial intelligence and humans. Turing found the limitations of computation by understanding the limitations of humanity, and thus he created the <a href="https://www.turing.org.uk/publications/testbook.html"><strong>Turing Machine.</strong></a> This machine paved way for the turing test, that tested whether a human could determine whether they were interacting with another machine or another human. Hence, the question of how to tell when artificial intelligence will be comparable to human intelligence is an ongoing problem today.</p>
+<div class="figure"><span id="fig:conway-fig"></span>
+<img src="images/conway.png" alt="Example of Conway's Game of Life"  />
+<p class="caption">
+Figure 3.1: Example of Conway’s Game of Life
+</p>
+</div>
+</div>
+<div id="levels-of-organization" class="section level2">
+<h2><span class="header-section-number">3.4</span> Levels of organization</h2>
+<p>In 1982, David Marr, introduced a new approach to analysis. He believed that there were three levels in the model of the brain. The first level is the <strong>computational theory</strong>, , which is a description of the information going into the system, and the corresponding output desired from the system. An example of this is addition. The input is two numbers, and the desired output is the sum of those numbers. The second level consists of the representational scheme and the algorithm. The <strong>representational scheme</strong> is the description of the functional elements that are used in the computation, while the <strong>algorithm</strong> is the set of operations that are performed with or by those elements in order to carry out the transformation specified by the computational theory. One example is a cookbook recipe; this will define a step by step process (an algorithm) for how to produce a product given a set of clearly defined ingredients (a representational scheme). The third level is <strong>hardware implementation</strong>, which refers to the physical machinery that realizes the algorithm.</p>
+<p>The goal of computational neuroscience is to be able to replicate the functions of the brain, such as the one you just performed, in a non-organic setting. One of the ways to do this is through computer programming software, such as the application Python.</p>
+<p>Consider the following basic code:</p>
+<div class="figure">
+<img src="images/code.png" alt=" "  />
+<p class="caption">
+</p>
+</div>
+<p>Here is an example of an addition problem coded in Python. We can see the input, the algorithm which is transforming the input, and then the correct output of 4. Given the properties of coding software such as Python, which takes input, and runs it through a set algorithm. Is this similar to the way we humans do it? If so, how? If not, why not?</p>
+</div>
+<div id="applications-of-computational-neuroscience" class="section level2">
+<h2><span class="header-section-number">3.5</span> Applications of computational neuroscience</h2>
+<p>As we delve deeper into Computational Neuroscience, we will find that the field has a variety of potential applications when it comes to understanding how cognition happens. Computational Neuroscience, perhaps most importantly, allows us to create models of our cognitive processes, such that they are able to capture the basis of complex phenomena in a simple way. The brain is an extremely complex organ, and while we may not always understand all of its architecture and functionality, by using methods of Computational Neuroscience we are able to abstract certain notions to the extent that they become comprehensible. In doing so, we develop the ability to understand interactions between neurons in the brain and begin seeing the nature of certain causal relationships. Furthermore, we can begin to predict how complex systems in the brain will behave when presented with particular stimuli. This may all seem rather abstract, so let’s think of an example we often take for granted: Vision. How is it that we are capable of recognizing a variety of highly specific things and distinguishing them from one another? What constitutes recognition and the neural processes behind it? How do we decide what deserves recognition and what doesn’t? Why is it so difficult to replicate these seemingly innate processes in a robot? All these questions can be addressed using Computational Neuroscience. We must, however, keep one thing in mind. When creating models, the correct level of simplicity is difficult if not impossible to discern. So, it is important to engage in criticism and scrutiny when developing the simplest and most efficient model one can think of.</p>
+<div style="float:right;width:419px">
+<div class="figure"><span id="fig:flock-fig"></span>
+<img src="images/birds.png" alt="One example of emergent phenomena are the flight patterns of geese. One goose alone flies as it wishes but a collection of geese come together to form a v-shaped pattern that affects the overall movement of the geese."  />
+<p class="caption">
+Figure 3.2: One example of emergent phenomena are the flight patterns of geese. One goose alone flies as it wishes but a collection of geese come together to form a v-shaped pattern that affects the overall movement of the geese.
+</p>
+</div>
+</div>
+<p>You may be saying to yourself, “Ok, well all this is great in theory, but where do we begin?”. We start by trying to establish <strong>Emergent Phenomena.</strong> Emergent Phenomena allow us to reframe composite systems such that we are able to understand their underlying mechanisms in simpler terms. To clarify, an Emergent Phenomenon can highlight both the mechanics and the nature of a particular system. For instance, a normal car cannot function properly unless it has four wheels. However, the car also derives part of its “car-ness” from the fact that it has four wheels. There are two primary schools of thought in this domain: <strong>Reductionism</strong> and <strong>Reconstructionism.</strong> Reductionism is the idea that in order to understand a given complex system, we must be able to reduce it to its simplest form, while Reconstructionism claims that we go in the opposite direction and reconstruct the system such that we are able to capture its complexity. After all, when we create models of the brain, it is not sufficient to explain their architecture. We must also show how the architecture gives rise to certain relationships and interactions. To do this, we can design our models using one of the following approaches: <strong>Top-down processing</strong> or <strong>Bottom-up processing.</strong> Top-down processing makes us design our models with a certain purpose, or goal in mind. Bottom-up processing leads us to establish a base of information or data before creating the model, and then creating the model and its purpose off of what we have collected.</p>
+</div>
+<div id="the-future-of-computational-neuroscience" class="section level2">
+<h2><span class="header-section-number">3.6</span> The future of computational neuroscience</h2>
+<div style="float:left; width:419px">
+<div class="figure"><span id="fig:context-fig"></span>
+<img src="images/context.png" alt="This image can be approached in two different ways. For bottom-up processing, we can see the letters first and then figure out the words. For top-down processing, we can see the words and decide what each letter is."  />
+<p class="caption">
+Figure 3.3: This image can be approached in two different ways. For bottom-up processing, we can see the letters first and then figure out the words. For top-down processing, we can see the words and decide what each letter is.
+</p>
+</div>
+</div>
+<p>Given all this information, what is the future of Computational Neuroscience? Interest in the field is increasing steadily and everyday the range of its possible applications grows. In 2013, the Obama administration began the BRAIN initiative, a program designed to facilitate the development of innovative technologies that allow for a well-rounded and versatile understanding of brain function. In 2005, a Swiss team of scientists began another initiative called the Blue Brain project whereby they reconstructed the mammalian brain using simulations in order to generate a comprehension of the basic underlying principles of brain function and architecture. Computational Neuroscience becomes more relevant everyday and allows us to tackle difficult issues like the complexities of <strong>Hebbian Learning</strong> and Neural Networks. The implications of the field are perhaps unparalleled by any other fields of scientific inquiry, in that they may hold the answers to the creation of true Artificial Intelligence and the understanding of Consciousness and perception in the human brain.</p>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">3.7</span> Summary</h2>
+<div style="float:right;width:408px">
+<div class="figure"><span id="fig:connectome-fig"></span>
+<img src="images/connectome.png" alt="Applying Hebbian theory to computational neuroscience allows us to envision the connections between various neurons in the brain, displayed here is what is called a 'connectome'."  />
+<p class="caption">
+Figure 3.4: Applying Hebbian theory to computational neuroscience allows us to envision the connections between various neurons in the brain, displayed here is what is called a ‘connectome’.
+</p>
+</div>
+</div>
+<p>Every person has a brain, but that doesn’t mean we understand what the brain is, or what it does. The brain is a complex organism with many facets to understand, and to fully comprehend; one must understand the mechanics and the reasoning behind each component. Whether studying in a top-down process, or a bottom-up process, one must keep in mind Marr’s three levels of investigation: computational theory, representation and algorithm, and hardware and implementation. Computers and brains are different organisms, but by studying them alongside one another, a deeper understanding can be elicited. Turing introduced the world to the concept of using humans as a test of how to understand artificial intelligence, but we can now use artificial intelligence to understand the brain as well.</p>
+</div>
+<div id="exercises" class="section level2">
+<h2><span class="header-section-number">3.8</span> Exercises:</h2>
+<ol style="list-style-type: decimal">
+<li>Try out <a href="https://bitstorm.org/gameoflife/">Conway’s Game of Life</a> at <a href="https://bitstorm.org/gameoflife/" class="uri">https://bitstorm.org/gameoflife/</a> to explore more into the implications of the Turing Machine and computer simulations.<br />
+</li>
+<li>What are at least two methods you could use to add two two integers such as 5 and 5? Now consider how you solved these two problems. Which of Marr’s levels was changing?<br />
+</li>
+<li>Explain the difference between the top-down and bottom-up philosophy.<br />
+</li>
+<li>Which better explains and represents cognitive phenomena: the top-down approach, or the bottom-up approach?<br />
+</li>
+<li>Characterize the concept of emergent phenomena. Is human sentience that kind of phenomenon?<br />
+</li>
+<li>Does artificial intelligence have to have emotions to be sentient?</li>
+</ol>
 
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>See <a href="https://plato.stanford.edu/entries/chinese-room/" class="uri">https://plato.stanford.edu/entries/chinese-room/</a> for more on this thought experiment.<a href="Ch2.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>E.g. Dennett, Thagard, and Pinker to name a few.<a href="Ch2.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -648,13 +409,15 @@ Here is a code that models the Hodgkin-Huxley model. Fill in the blanks and try 
 <a href="Ch3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -662,12 +425,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -682,9 +444,16 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
 }
 });
 });

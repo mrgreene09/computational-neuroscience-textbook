@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience</title>
+  <title>4 Passive Membrane Models | Computational Neuroscience</title>
   <meta name="description" content="TBD" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience" />
+  <meta property="og:title" content="4 Passive Membrane Models | Computational Neuroscience" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience" />
+  <meta name="twitter:title" content="4 Passive Membrane Models | Computational Neuroscience" />
   
   <meta name="twitter:description" content="TBD" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Students of NS/PY 357 Bates College" />
 
 
-<meta name="date" content="2019-12-20" />
+<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,13 +33,14 @@
   
 <link rel="prev" href="Ch2.html"/>
 <link rel="next" href="Ch4.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,13 +48,15 @@
 
 
 
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -62,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -130,69 +135,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i><b>1.5</b> Authors</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors-version-0.0"><i class="fa fa-check"></i><b>1.5</b> Authors: Version 0.0</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#authors-version-1.0"><i class="fa fa-check"></i><b>1.6</b> Authors: Version 1.0</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> What is Computational Neuroscience?</a><ul>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a><ul>
 <li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
 <li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
-<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>2.3</b> What is computational neuroscience?</a></li>
-<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#levels-of-organization"><i class="fa fa-check"></i><b>2.4</b> Levels of organization</a></li>
-<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>2.5</b> Applications of computational neuroscience</a></li>
-<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>2.6</b> The future of computational neuroscience</a></li>
-<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.7</b> Summary</a></li>
-<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#exercises"><i class="fa fa-check"></i><b>2.8</b> Exercises:</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.4</b> Example Python Problems</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.5</b> Conceptual Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.6</b> Coding Exercises for Learning Python</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> Hodgkin and Huxley Model</a><ul>
-<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>3.3</b> What is an action potential?</a></li>
-<li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>3.4</b> Nernst equilibrium potential</a></li>
-<li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>3.5</b> The Hodgkin and Huxley model</a></li>
-<li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a><ul>
+<li class="chapter" data-level="3.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#levels-of-organization"><i class="fa fa-check"></i><b>3.4</b> Levels of organization</a></li>
+<li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.5</b> Applications of computational neuroscience</a></li>
+<li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.6</b> The future of computational neuroscience</a></li>
+<li class="chapter" data-level="3.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.8" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Reverse Correlation and Receptive Field Mapping</a><ul>
-<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#spike-trains"><i class="fa fa-check"></i><b>4.3</b> Spike Trains</a></li>
-<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#spike-statistics"><i class="fa fa-check"></i><b>4.4</b> Spike Statistics</a></li>
-<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#spike-triggered-average"><i class="fa fa-check"></i><b>4.5</b> Spike-triggered Average</a></li>
-<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#reverse-correlation"><i class="fa fa-check"></i><b>4.6</b> Reverse Correlation</a></li>
-<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a><ul>
+<li class="chapter" data-level="4.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>4.3</b> What is an action potential?</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.4</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.5</b> Leaky Integrate and Fire Model</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.7.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.7.2</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Neural Networks</a><ul>
-<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-list"><i class="fa fa-check"></i><b>5.1</b> Vocabulary List:</a></li>
-<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introductionbackground"><i class="fa fa-check"></i><b>5.2</b> Introduction/Background</a></li>
-<li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#different-types-of-learning"><i class="fa fa-check"></i><b>5.3</b> Different Types of Learning</a></li>
-<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>5.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
-<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#perceptron"><i class="fa fa-check"></i><b>5.5</b> Perceptron</a></li>
-<li class="chapter" data-level="5.6" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Decoding</a><ul>
-<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-3"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-3"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
-<li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#imaging-techniques"><i class="fa fa-check"></i><b>6.3</b> Imaging Techniques</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="Ch5.html"><a href="Ch5.html#eeg"><i class="fa fa-check"></i><b>6.3.1</b> EEG</a></li>
-<li class="chapter" data-level="6.3.2" data-path="Ch5.html"><a href="Ch5.html#meg"><i class="fa fa-check"></i><b>6.3.2</b> MEG</a></li>
-<li class="chapter" data-level="6.3.3" data-path="Ch5.html"><a href="Ch5.html#fmri"><i class="fa fa-check"></i><b>6.3.3</b> fMRI</a></li>
-<li class="chapter" data-level="6.3.4" data-path="Ch5.html"><a href="Ch5.html#ecog"><i class="fa fa-check"></i><b>6.3.4</b> ECOG</a></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a><ul>
+<li class="chapter" data-level="5.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>5.3</b> The Hodgkin and Huxley model</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#introduction-to-decoding"><i class="fa fa-check"></i><b>6.4</b> Introduction to Decoding</a></li>
-<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#what-is-a-classifier"><i class="fa fa-check"></i><b>6.5</b> What is a classifier?</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="Ch5.html"><a href="Ch5.html#correlation-classifiers"><i class="fa fa-check"></i><b>6.5.1</b> Correlation classifiers</a></li>
-<li class="chapter" data-level="6.5.2" data-path="Ch5.html"><a href="Ch5.html#distance-based-classifiers"><i class="fa fa-check"></i><b>6.5.2</b> Distance-based classifiers</a></li>
-<li class="chapter" data-level="6.5.3" data-path="Ch5.html"><a href="Ch5.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>6.5.3</b> Boundary-based classifiers</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#cross-validation"><i class="fa fa-check"></i><b>6.6</b> Cross validation</a></li>
-<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#conclusion"><i class="fa fa-check"></i><b>6.7</b> Conclusion</a></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a><ul>
+<li class="chapter" data-level="6.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#spike-trains"><i class="fa fa-check"></i><b>6.3</b> Spike Trains</a></li>
+<li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#spike-statistics"><i class="fa fa-check"></i><b>6.4</b> Spike Statistics</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
+<li class="chapter" data-level="6.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>6.6</b> Exercises</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.6.1</b> Conceptual Problems</a></li>
+<li class="chapter" data-level="6.6.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.6.2</b> Coding Problems</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> References</a><ul>
-<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#chapter-1"><i class="fa fa-check"></i><b>7.1</b> Chapter 1</a></li>
-<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#chapter-2"><i class="fa fa-check"></i><b>7.2</b> Chapter 2</a></li>
-<li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#chapter-3"><i class="fa fa-check"></i><b>7.3</b> Chapter 3</a></li>
-<li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#chapter-4"><i class="fa fa-check"></i><b>7.4</b> Chapter 4</a></li>
-<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#chapter-5"><i class="fa fa-check"></i><b>7.5</b> Chapter 5</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Glossary</a></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="7.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#spike-triggered-average"><i class="fa fa-check"></i><b>7.3</b> Spike-triggered Average</a></li>
+<li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#reverse-correlation"><i class="fa fa-check"></i><b>7.4</b> Reverse Correlation</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>7.6</b> Exercises</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="7.6.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a><ul>
+<li class="chapter" data-level="8.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="8.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="Ch7.html"><a href="Ch7.html#eeg"><i class="fa fa-check"></i><b>8.3.1</b> EEG</a></li>
+<li class="chapter" data-level="8.3.2" data-path="Ch7.html"><a href="Ch7.html#meg"><i class="fa fa-check"></i><b>8.3.2</b> MEG</a></li>
+<li class="chapter" data-level="8.3.3" data-path="Ch7.html"><a href="Ch7.html#fmri"><i class="fa fa-check"></i><b>8.3.3</b> fMRI</a></li>
+<li class="chapter" data-level="8.3.4" data-path="Ch7.html"><a href="Ch7.html#ecog"><i class="fa fa-check"></i><b>8.3.4</b> ECOG</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="Ch7.html"><a href="Ch7.html#introduction-to-decoding"><i class="fa fa-check"></i><b>8.4</b> Introduction to Decoding</a></li>
+<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="Ch7.html"><a href="Ch7.html#correlation-classifiers"><i class="fa fa-check"></i><b>8.5.1</b> Correlation classifiers</a></li>
+<li class="chapter" data-level="8.5.2" data-path="Ch7.html"><a href="Ch7.html#distance-based-classifiers"><i class="fa fa-check"></i><b>8.5.2</b> Distance-based classifiers</a></li>
+<li class="chapter" data-level="8.5.3" data-path="Ch7.html"><a href="Ch7.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>8.5.3</b> Boundary-based classifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="Ch7.html"><a href="Ch7.html#cross-validation"><i class="fa fa-check"></i><b>8.6</b> Cross validation</a></li>
+<li class="chapter" data-level="8.7" data-path="Ch7.html"><a href="Ch7.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a><ul>
+<li class="chapter" data-level="9.1" data-path="Ch8.html"><a href="Ch8.html#vocabulary-list"><i class="fa fa-check"></i><b>9.1</b> Vocabulary List:</a></li>
+<li class="chapter" data-level="9.2" data-path="Ch8.html"><a href="Ch8.html#introductionbackground"><i class="fa fa-check"></i><b>9.2</b> Introduction/Background</a></li>
+<li class="chapter" data-level="9.3" data-path="Ch8.html"><a href="Ch8.html#different-types-of-learning"><i class="fa fa-check"></i><b>9.3</b> Different Types of Learning</a></li>
+<li class="chapter" data-level="9.4" data-path="Ch8.html"><a href="Ch8.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>9.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
+<li class="chapter" data-level="9.5" data-path="Ch8.html"><a href="Ch8.html#perceptron"><i class="fa fa-check"></i><b>9.5</b> Perceptron</a></li>
+<li class="chapter" data-level="9.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Ch9.html"><a href="Ch9.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
+<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a><ul>
+<li class="chapter" data-level="11.1" data-path="Ch10.html"><a href="Ch10.html#chapter-1-preface"><i class="fa fa-check"></i><b>11.1</b> Chapter 1: Preface</a></li>
+<li class="chapter" data-level="11.2" data-path="Ch10.html"><a href="Ch10.html#chapter-2-introduction-to-python"><i class="fa fa-check"></i><b>11.2</b> Chapter 2: Introduction to Python</a></li>
+<li class="chapter" data-level="11.3" data-path="Ch10.html"><a href="Ch10.html#chapter-3-what-is-computational-neuroscience"><i class="fa fa-check"></i><b>11.3</b> Chapter 3: What is Computational Neuroscience?</a></li>
+<li class="chapter" data-level="11.4" data-path="Ch10.html"><a href="Ch10.html#chapter-4-passive-membrane-models"><i class="fa fa-check"></i><b>11.4</b> Chapter 4: Passive Membrane Models</a></li>
+<li class="chapter" data-level="11.5" data-path="Ch10.html"><a href="Ch10.html#chapter-5-hodgkin-and-huxley"><i class="fa fa-check"></i><b>11.5</b> Chapter 5: Hodgkin and Huxley</a></li>
+<li class="chapter" data-level="11.6" data-path="Ch10.html"><a href="Ch10.html#chapter-6-firing-rates"><i class="fa fa-check"></i><b>11.6</b> Chapter 6: Firing Rates</a></li>
+<li class="chapter" data-level="11.7" data-path="Ch10.html"><a href="Ch10.html#chapter-7-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>11.7</b> Chapter 7: Reverse Correlation and Receptive Field Mapping</a></li>
+<li class="chapter" data-level="11.8" data-path="Ch10.html"><a href="Ch10.html#chapter-8-decoding"><i class="fa fa-check"></i><b>11.8</b> Chapter 8: Decoding</a></li>
+<li class="chapter" data-level="11.9" data-path="Ch10.html"><a href="Ch10.html#chapter-9-neural-networks"><i class="fa fa-check"></i><b>11.9</b> Chapter 9: Neural Networks</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a><ul>
+<li class="chapter" data-level="12.1" data-path="Ch11.html"><a href="Ch11.html#chapter-1-introduction-to-python"><i class="fa fa-check"></i><b>12.1</b> Chapter 1: Introduction to Python</a></li>
+<li class="chapter" data-level="12.2" data-path="Ch11.html"><a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience"><i class="fa fa-check"></i><b>12.2</b> Chapter 2: Introduction to Computational Neuroscience</a></li>
+<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions"><i class="fa fa-check"></i><b>12.3.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.3.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions"><i class="fa fa-check"></i><b>12.3.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-1"><i class="fa fa-check"></i><b>12.4.1</b> Conceptual Questions:</a></li>
+<li class="chapter" data-level="12.4.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-1"><i class="fa fa-check"></i><b>12.4.2</b> Coding Questions:</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-2"><i class="fa fa-check"></i><b>12.5.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.5.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-2"><i class="fa fa-check"></i><b>12.5.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-3"><i class="fa fa-check"></i><b>12.6.1</b> Conceptual Questions</a></li>
+<li class="chapter" data-level="12.6.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-3"><i class="fa fa-check"></i><b>12.6.2</b> Coding Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="Ch11.html"><a href="Ch11.html#chapter-7-decoding"><i class="fa fa-check"></i><b>12.7</b> Chapter 7: Decoding</a></li>
+<li class="chapter" data-level="12.8" data-path="Ch11.html"><a href="Ch11.html#chapter-8-neural-networks"><i class="fa fa-check"></i><b>12.8</b> Chapter 8: Neural Networks</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -211,217 +278,607 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="Ch3" class="section level1">
-<h1><span class="header-section-number">4</span> Reverse Correlation and Receptive Field Mapping</h1>
-<div id="vocabulary-2" class="section level2">
+<h1><span class="header-section-number">4</span> Passive Membrane Models</h1>
+<div id="vocabulary" class="section level2">
 <h2><span class="header-section-number">4.1</span> Vocabulary</h2>
 <ul>
-<li>Poisson process<br />
-</li>
-<li>Spike train<br />
-</li>
-<li>Peri-stimulus time histogram<br />
-</li>
-<li>Spike count rate<br />
-</li>
-<li>Interspike interval<br />
-</li>
-<li>Fano factor<br />
-</li>
-<li>Coefficient of variation<br />
-</li>
-<li>Spike-triggered average<br />
-</li>
-<li>White noise</li>
-<li>Reverse correlation</li>
+<li>Depolarization</li>
+<li>Positive Feedback</li>
+<li>Hyperpolarization</li>
+<li>Negative Feedback</li>
+<li>Membrane Potential</li>
+<li>Sodium-Potassium Pump</li>
+<li>Nernst Potential</li>
+<li>Reversal Potential</li>
+<li>Equilibrium Potential</li>
+<li>Driving Force</li>
+<li>Conductance</li>
+<li>Leak Current</li>
+<li>Leaky Integrate and Fire Model</li>
 </ul>
 </div>
-<div id="introduction-2" class="section level2">
+<div id="introduction" class="section level2">
 <h2><span class="header-section-number">4.2</span> Introduction</h2>
-<p>Throughout our everyday lives, we receive an enormous amount of sensory inputs from our surrounding environment: the color of the clouds before sunset, the melody played by an old record player, the smell of apple pie, or the taste of your favorite dish. Our brain, with its incredible computational capacity, successfully encodes all these sensory inputs from different modalities to something we can perceive and understand, in the language of neurons. Our discussion from previous chapters noted that the language of neurons–or the neural code–consists of action potentials that are all-or-none events, and we learned how neurons fire an action potential. In this chapter, we are going to talk about why neuron fires and how to characterize and analyze these action potentials using spike trains. Based on this, we are going to discuss ways to study the relationship between outside stimuli and neural responses.</p>
 </div>
-<div id="spike-trains" class="section level2">
-<h2><span class="header-section-number">4.3</span> Spike Trains</h2>
-<div style="float:right;width:561px">
-<div class="figure"><span id="fig:spikeTrain-fig"></span>
-<img src="images/spikeTrain.png" alt="Example of a spike train. Graph A shows the recorded stimulus and graph B shows the recorded actions potentials during the stimulus."  />
+<div id="what-is-an-action-potential" class="section level2">
+<h2><span class="header-section-number">4.3</span> What is an action potential?</h2>
+<p>Before going into ways of modeling action potentials, let’s further explore what an action potential is. Within a cell, there are more sodium ions outside the membrane, which have a positive charge. Because there are less positive ions inside the cell compared to the outside, the inside of the cell has a negative resting potential. When there is a spike of voltage, that causes both voltage-gated sodium and potassium channels–meaning that these channels activate and inactivate at certain voltages–to activate on a neuron’s membrane. However, the sodium channels open much faster than the potassium channels. The flow of sodium ions into the cell causes the membrane potential to become more positive. This process of positive ions flowing into the cell is called <strong>depolarization</strong>. When depolarization happens, it causes additional sodium channels to open, which causes further depolarization—this phenomenon is called <strong>positive feedback</strong>, and the positive feedback starts if the depolarization hits a set threshold. In other words, a positive feedback loop is a process that perpetuates itself. The positive feedback loop ends once voltage-gated potassium channels also open at the peak of the action potential and potassium begins flowing out of the cell and ending depolarization, we call this <strong>repolarization</strong>. When the voltage is below the resting potential, we call this undershoot <strong>hyperpolarization</strong>, which is when the membrane potential decreases towards a move negative value via potassium ions flowing out. As the voltage-gated potassium channels open and the voltage-gated sodium channels to close or become inactivated, there is now <strong>negative feedback</strong>. Negative feedback is a process by which an initial change is opposed by a force caused by the initial change. In this situation, the positive feedback causes a spike in membrane potential and the negative feedback stabilizes.</p>
+<div class="figure"><span id="fig:channel1-fig"></span>
+<img src="images/channel1.png" alt="A cell at rest has more potassium ions intracellular than extracellular and more sodium ions extracellular than intracellular. There is a negative net charge within the cell being maintained by the  voltage gradient."  />
 <p class="caption">
-Figure 4.1: Example of a spike train. Graph A shows the recorded stimulus and graph B shows the recorded actions potentials during the stimulus.
+Figure 4.1: A cell at rest has more potassium ions intracellular than extracellular and more sodium ions extracellular than intracellular. There is a negative net charge within the cell being maintained by the voltage gradient.
+</p>
+</div>
+<div class="figure"><span id="fig:channel2-fig"></span>
+<img src="images/channel2.png" alt="When the cell becomes depolarized sodium ions enter the cell. The charge within the cell becomes more positive."  />
+<p class="caption">
+Figure 4.2: When the cell becomes depolarized sodium ions enter the cell. The charge within the cell becomes more positive.
+</p>
+</div>
+<div class="figure"><span id="fig:channel3-fig"></span>
+<img src="images/channel3.png" alt="When the cell repolarizes potassium ions leave the cell. The charge within the cell go from positive to negative as it goes back to the resting state."  />
+<p class="caption">
+Figure 4.3: When the cell repolarizes potassium ions leave the cell. The charge within the cell go from positive to negative as it goes back to the resting state.
+</p>
+</div>
+<div class="figure"><span id="fig:actionPotential-fig"></span>
+<img src="images/actionPotential.png" alt="Example of an action potential."  />
+<p class="caption">
+Figure 4.4: Example of an action potential.
 </p>
 </div>
 </div>
-<p>Assume that we measured a neuron firing in response to a sensory stimulus, and we recorded its voltage changes and displayed the signal in an oscilloscope. How should we analyze the information encoded in these action potentials? As we mentioned before, the action potential is an all-or-none event. This binary characteristic gives us a way to simplify the complicated voltage response curve: for every time point in our measurement, if there is a spike firing, denote its value as 1; if not, denote it as 0. After the recording, we get a sequence of 0s and 1s in a time-dependent order. We commonly refer to this sequence as a spike train, shown in Figure 1, part B.</p>
-<p>Since all action potentials fire to the same voltage level, there is no difference in their intensities. Thus, in order to have action potentials that convey meaningful information, neurons can only vary on timing of firing, including varying firing rates or varying the time intervals between each firing. Although this seems super-simplified, our spike train contains mostly the information we need to analyze if we want to know what causes the original neuron to fire. In order to systematically analyze these data in spike trains, we first need to define some statistics.</p>
-</div>
-<div id="spike-statistics" class="section level2">
-<h2><span class="header-section-number">4.4</span> Spike Statistics</h2>
-<p>Now we have a sequence of 0s and 1s which represent neural firing, the next step is to calculate the <strong>spike count rate</strong>, which is the number of spikes divided over a given time interval. This parameter directly shows the firing rate, but it cannot reflect variation. Assume that we have two neurons that have the same spike count rate. One is a regular-firing neuron and the spikes are evenly distributed along the time axis, while the other is a bursting neuron that fires sets of spikes with longer intervals between individual sets. How can we distinguish between these two spike trains? Here, we want to introduce another parameter called the <strong>interspike interval (ISI)</strong> or in other words, the time interval between every pair of spikes. In Figure 2, there is a histogram that shows the distribution of ISIs from an artificial spike train. The ISI histogram can be characterized by <strong>coefficient of variation (CV)</strong>, which is the standard deviation of ISIs divided by the mean of it. Apart from that, we can also use the <strong>Fano factor</strong> to measure the spike variability. It is calculated by the variance of the number of spikes divided by the mean number of spikes in a given time interval. Compare to CV, Fano factor is less dependent on the intervals between spikes but more on the number of spikes in a given time bin. If the underlying firing rate varies or the spike firing in irregular time points, both CV and Fano factor increase. Thus, CV and Fano factors are useful secondary statistics that helps to measure variability in spike trains.</p>
-<div class="figure"><span id="fig:poissonISI-fig"></span>
-<img src="images/poissonISI.png" alt="Distribution of ISIs from a randomly firing artificial neuron."  />
-<p class="caption">
-Figure 4.2: Distribution of ISIs from a randomly firing artificial neuron.
-</p>
-</div>
-<p>We can do a lot with a single spike train. However, in vivo, neural responses are highly variable and the response of a neuron to the same stimulus may even vary from trial to trial. Effectively, to account for the cross-trial variability, we need to analyze results from multiple trials to get a better estimate of the average neural response. A <strong>peristimulus time histogram (PSTH)</strong> can be generated by averaging across trials. The most direct method is to put trials in small time windows that correspond to each time point and calculate the spike count rate in window for each time point. By implementing this process, each time point is assigned an average rate, and by plotting we get a continuous frequency curve. One example is shown in the Exercise 1, in the “spike density” section, in which spikes are averaged in time windows, and then averaged across trials. In this case, all trials are run on the same neuron, which reduces the cross-trial variability and increases the time resolution. The response, however, may be affected by adaptation. Furthermore, we can also assess the firing pattern of a population of neurons by calculating the average spike counting rate for all the time points, and then averaging across trials. At this point, different trials are run on different neurons, and the generated response curve accounts for the response pattern of a population of neurons in the area that was tested. This method, while it generates better time resolution, omits the possible variability across neurons in the population.
-Choosing different time windows influences the characteristics of the frequency curve, as shown in Figure 3. In general, PSTH is essential because it transforms a discontinuous spike train into continuous response curves, which allows us to calculate the correlation between stimulus and response. This will be further elaborated upon in the later sections.</p>
-<p><strong>Exercise 1:</strong> What are the pros and cons for each type of histogram?</p>
-<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<div id="nernst-equilibrium-potential" class="section level2">
+<h2><span class="header-section-number">4.4</span> Nernst equilibrium potential</h2>
+<p>The electrical activity generated in a neuron is a result of ions flowing across the neuron’s membrane which is caused by the following two principles: opposite charges attract, and concentration gradients seek to equalize. This potential difference is referred to as the <strong>membrane potential</strong>. In order for ions to flow, a concentration gradient must be established because the difference in concentration across the membrane leads it to pass either into the neuron or out of the neuron. This is accomplished by the <strong>sodium-potassium pump</strong>, which uses just below 10% of your body’s daily energy to pump three sodium ions out of the neuron for every two potassium ions pumped in, thus forming two respective concentration gradients.</p>
+<p>With the concentration gradient established, the sodium and potassium ions will flow down the concentration gradients when their respective channels open, generating an electrical current that propagates down the axon. We must also take into account the fact that each ion possesses a charge–or charges in the case of Ca++ and Mg++–and that as this charge is built up on one side of the cell, this will generate an electrical force that will begin to repel ions with similar charge as they try to flow down their concentration gradient. When the force of the concentration gradient matches the electrical force attracting or repelling the ion, this is known as the <strong>Nernst potential</strong> for that ion, also referred to as the <strong>reversal potential</strong>. This means that means that both sodium and potassium possess their own respective Nernst potentials. Nernst potentials are especially important because they allow us to calculate the membrane voltage when a particular ion is in equilibrium, which helps to define the role it plays in an action potential.</p>
+<p>The Nernst potential for an ion can be derived from the following equation: <span class="math display">\[E_{ion} = \frac{RT}{zF}ln(\frac{[out]}{[in]}) \]</span></p>
+<table>
 <thead>
-<tr>
-<th style="text-align:left;">
-Name
-</th>
-<th style="text-align:left;">
-Algorithm
-</th>
-<th style="text-align:left;">
-Input
-</th>
-<th style="text-align:left;">
-Output
-</th>
+<tr class="header">
+<th>Expression</th>
+<th>Meaning</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Spike Count Rate
-</td>
-<td style="text-align:left;">
-Calculate the number of spikes per time interval
-</td>
-<td style="text-align:left;">
-<img src="images/spikeTable0.png" />
-</td>
-<td style="text-align:left;">
-<img src="images/spikeTable1.png" />
-</td>
+<tr class="odd">
+<td><span class="math inline">\(E_{ion}\)</span></td>
+<td>Nernst potential</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Spike Density
-</td>
-<td style="text-align:left;">
-Use a single neuron to compute different trials
-</td>
-<td style="text-align:left;">
-<img src="images/spikeTable2.png" />
-</td>
-<td style="text-align:left;">
-<img src="images/spikeTable3.png" />
-</td>
+<tr class="even">
+<td>R</td>
+<td>Gas constant: 8.314 <span class="math inline">\(J/mol \cdot K\)</span></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Population Density
-</td>
-<td style="text-align:left;">
-Use different neurons during a single trial
-</td>
-<td style="text-align:left;">
-<img src="images/spikeTable4.png" />
-</td>
-<td style="text-align:left;">
-<img src="images/spikeTable5.png" />
-</td>
+<tr class="odd">
+<td>ln()</td>
+<td>Natural log</td>
+</tr>
+<tr class="even">
+<td>z</td>
+<td>Valence</td>
+</tr>
+<tr class="odd">
+<td>T</td>
+<td>Temperature in Kelvin</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>Faraday constant: 96485.3 C/mol</td>
+</tr>
+<tr class="odd">
+<td>[out]</td>
+<td>Extracellular ion concentration</td>
+</tr>
+<tr class="even">
+<td>[in]</td>
+<td>Intracellular ion concentration</td>
 </tr>
 </tbody>
 </table>
-<img src="images/firingRate1.png" />
-<div class="figure"><span id="fig:firingRate-fig"></span>
-<img src="images/firingRate2.png" alt="PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output."  />
-<p class="caption">
-Figure 4.3: PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output.
-</p>
-</div>
-<p>Sometimes, instead of collecting data from real neurons, we need to simulate spike trains from given statistics. The artificial spike trains can be compared with real data, or used to reconstruct possible firing patterns with a given stimulus. Here, we will discuss the homogeneous Poisson process, or the simplest way of generating artificial spike train. The homogeneous <strong>Poisson process</strong> entails that for every small interval on the timeline, the probability of an event happening (in our case, action potential) will be proportional to the length of the time interval, while the proportionality constant <em>r</em> is fixed. To understand this abstract definition, think about a timeline whereby at each time point, we throw a coin and record the head as 1. Try to visualize that timeline. We agree that all 1s will be randomly spread along the timeline, and the interval between when we get a pair of heads, varies along the timeline. This will look very similar to an artificial spike train generated by the Poisson process, whose distribution can be expressed by the following formula: <span class="math display">\[p(q\ spikes\ in\ \Delta{t}) = e^{-\lambda}\frac{\lambda^{n}}{n!} \]</span></p>
-<img src="images/PoissonSpike.png" />
-<div class="figure"><span id="fig:poisson-fig"></span>
-<img src="images/ISIdistribution.png" alt="An artificial spike train generated by Poisson process and its ISI distribution. Notice that the spikes are randomly distributed along the time axis, and the ISI histogram has an exponential distribution."  />
-<p class="caption">
-Figure 4.4: An artificial spike train generated by Poisson process and its ISI distribution. Notice that the spikes are randomly distributed along the time axis, and the ISI histogram has an exponential distribution.
-</p>
-</div>
-<p><strong>Exercise 2</strong>: Explain the qualifications for a poisson spike train?</p>
-</div>
-<div id="spike-triggered-average" class="section level2">
-<h2><span class="header-section-number">4.5</span> Spike-triggered Average</h2>
-<p>An essential tool for describing neurons, and how they respond to certain stimuli, is the <strong>spike-triggered average (STA)</strong>. The STA is the average value of the stimulus during some time interval before a spike occurs. Researchers record a neuron’s activity as it responds to various stimuli. First, the researchers must determine the amount of time before a spike they want to analyze. Once the data has been obtained and the time step determined, the value of the one-time step before a spike is recorded, and averaged across trials. This value ultimately characterizes the level of stimulus necessary for the neuron to fire. It is important to note that the spike-triggered average is measuring the average level of the stimulus, not of the neuron. This calculation is based on the probability of a neuron spiking due to stimuli activity to occur in the recent past.</p>
-<div class="figure"><span id="fig:STA-fig"></span>
-<img src="images/spikeTriggeredAverage.png" alt="The spike triggered average can be used to calculate both the stimulus and the spike train."  />
-<p class="caption">
-Figure 4.5: The spike triggered average can be used to calculate both the stimulus and the spike train.
-</p>
-</div>
-<div style="float:left;width:312px">
-<div class="figure"><span id="fig:whiteNoise-fig"></span>
-<img src="images/whiteNoise.png" alt="Example of a white noise stimulus using gray scale."  />
-<p class="caption">
-Figure 4.6: Example of a white noise stimulus using gray scale.
-</p>
-</div>
-</div>
-<p>The spike-triggered average can be utilized to determine the receptive fields of individual neurons. However, when using the STA to determine receptive fields, the stimulus presented to the recording neuron must be sufficiently random. If it isn’t, any correlation in stimuli will be presented in the generated receptive field, thus skewing the result. A <strong>white noise</strong>, is a type of stimulus with random variation where the value at each time point is independent of all other points. White noise can be employed in these instances to provide a receptive field without bias. White noise stimuli can look different based on the neuron and the system being observed, from a series of random auditory frequencies to randomly generated pixels stimulating the visual cortex. For each set of stimuli, the value at each time point does not correlate with the values around it. For more information on spike-triggered average analyses, especially concerning receptive fields,<a href="https://jov.arvojournals.org/article.aspx?articleid=2193104">read this experiment.</a></p>
-</div>
-<div id="reverse-correlation" class="section level2">
-<h2><span class="header-section-number">4.6</span> Reverse Correlation</h2>
-<div class="figure"><span id="fig:STA2-fig"></span>
-<img src="images/reverseCorrelation.png" alt="Reverse correlation encompasses both spike triggered averages and spike triggered covariance."  />
-<p class="caption">
-Figure 4.7: Reverse correlation encompasses both spike triggered averages and spike triggered covariance.
-</p>
-</div>
-<p>When analyzing neurons and neuronal responses, there are two main factors: the inputs (controlled by researchers), and the outputs (measured by researchers). The process of <strong>reverse correlation</strong> implements the analysis of outputs to determine the inputs that the neuron will respond to with a spike. The spike-triggered average is an application of this process as it looks back at the stimuli preceding a spike to determine information about the sensitivity and response of the neuron. In addition to spike-triggered average, a calculation known as spike-triggered covariance can be used to analyze neuronal responses. Spike-triggered covariance (STC) can be used to identify multi-dimensional inputs to a neuron and is especially useful in linear-nonlinear Poisson models that will be discussed later in this section. STC uses the covariance, variability between two factors, of stimuli that trigger spikes in a neuron to determine a neuron’s response characteristics to multi-dimensional stimuli.</p>
-<p>The basic model for reverse correlation is a Linear Single Input Single Output system (LSISOS). Such linear systems assume the two principles of homogeneity. First, the neuron will not undergo processes such as habituation and will always respond in the same way to the stimulus. Second, superposition: the response from multiple stimuli will be equal to the sum of the individual stimuli. In this model, the LSISOS response is the sum of the spikes scaled to time. Similar to spike-triggered averages, it is best to input a white noise stimulus and then cross-correlate it with its output, which will give you the spike-triggered average. In cross-correlation, the higher the similarity between the two values (the stimulus value and the output value), the greater the correlation value (the spike-triggered average).</p>
-<p>The LSISOS model assumes a linear activity of neurons that is not entirely accurate due to neuron characteristics such as a spike threshold and a refractory period. A new model, known as the linear-nonlinear-Poisson model takes these factors into account. There are three stages to this model: linear stage, nonlinear stage, and the Poisson spike generator stage. The linear stage considers how a neuron responds to a specific feature in a spatio-temporal linear sense. The second stage takes the linear output and input through a nonlinear function to give a neuron’s instantaneous spike rate. The nonlinear function can either be a logistic curve or a rectified linear (ReLU) function. The final step translates the output of the initial steps into spikes using an inhomogeneous Poisson process. The final result from the Poisson generator demonstrates the areas of the stimulus where a spike is more likely to occur.<br />
-Reverse correlation is a technique used for understanding what neurons are responding to, and the spike-triggered averages discussed earlier are one example of how reverse correlation is implemented.</p>
-<div class="figure"><span id="fig:STC-fig"></span>
-<img src="images/spikeTriggeredCovariance.png" alt="Spike-triggered covariance shows how two different stimuli dimensions can be calculated together."  />
-<p class="caption">
-Figure 4.8: Spike-triggered covariance shows how two different stimuli dimensions can be calculated together.
-</p>
-</div>
-</div>
-<div id="summary-2" class="section level2">
-<h2><span class="header-section-number">4.7</span> Summary</h2>
-<p>Reverse correlation and all the concepts that play a role in this widely implemented technique, from different modes of spike statistics to various types of stimuli, can be an intimidating topic in computational neuroscience. Analyzing the relationship between inputs and outputs to understand the effect each has on the activity of a neuron is the root of this topic. These analyses can move in both directions: input to output, or output to input. One can manipulate the stimulus and measure the resulting spike train through various statistical methods, or one could use reverse correlation by utilizing the known output of a spike to look back and understand the input necessary to create such a response. These analyses are working on grasping what stimuli the neuron does, or does not, “like”. In other words, they help us predict the neuron’s responses.</p>
-<p><strong>Exercise 3 (<em>Challenge!</em>)</strong>
-Match each concept to the Python function.</p>
-<p>Concepts:</p>
+<p>While the Nernst potential will give the equilibrium point for a single ion, it also has a relation to the <strong>equilibrium potential</strong> or the resting potential the membrane, which is potential at which there is no net flow of ions, leading to a halt in the flow of electric current. The equilibrium potential is really a weighted average of all of the Nernst potentials and is modeled by the Goldman-Hodgkin-Katz equation which is shown below: <span class="math display">\[V_{m} = \frac{RT}{F}ln(\frac{P_{K}[K+]_{out}+P_{Na}[Na+]_{out}+P_{Cl}[Cl-]_{in}}{P_{K}[K+]_{in}+P_{Na}[Na+]_{in}+P_{Cl}[Cl-]_{out}}) \]</span></p>
+<p>This equation utilizes the membrane permeability, <em>P</em>, in conjunction with the concentration of each ion inside and outside of the cell to produce the equilibrium potential of a membrane. Using this equation alongside the Nernst potential, the <strong>driving force</strong>, which is a representation of the pressure for an ion to move in or out of the cell, can be calculated using the following equation: <span class="math display">\[DF = V_{m}-E_{ion} \]</span></p>
+<p>The Nernst Potential, the Goldman-Hodgkin-Katz equation, and the driving force present necessary calculations that allow for better understanding of the flow of ions in relation to an action potential.</p>
+<p><strong>Worked Example:</strong><br />
+Consider the following table of ion concentrations and relative permeabilities:</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ion</th>
+<th>Intracellular concentration (mM)</th>
+<th>Extracellular concentration (mM)</th>
+<th>Permeability</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>K+</td>
+<td>150</td>
+<td>4</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Na+</td>
+<td>15</td>
+<td>145</td>
+<td>0.05</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Cl-</td>
+<td>10</td>
+<td>110</td>
+<td>0.45</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>If the extracellular concentration of Na+ was increased by a factor of ten:<br />
+a. What is the new Nernst potential for sodium?<br />
+b. What is the resting potential of the neuron?</p>
+<p><em>Solution, part a</em><br />
+The Nernst equation is: <span class="math inline">\(E_{ion} = \frac{RT}{zF}ln\frac{[ion]_{outside}}{[ion]_{inside}}\)</span> in which:</p>
 <ul>
-<li>Fano Factor</li>
-<li>Spike Count Rate</li>
-<li>Interspike Interval</li>
+<li>R is the ideal gas constant: 8.314 <span class="math inline">\(kg \cdot m^2 \cdot K^{1} \cdot mol^{-1}s^{-2}\)</span></li>
+<li>T is the temperature in Kelvin: (310 K at human temperature)</li>
+<li>z is the valence. Here, we use +1 because the Na+ ion has a charge of +1.</li>
+<li>F is Faraday’s constant: 96.49 <span class="math inline">\(kJ \cdot V^{-1} \cdot mol^{-1}\)</span></li>
+<li>Extracellular sodium is increased by a factor of 10: <span class="math inline">\([Na+]_{outside}\)</span> = 10 * 145 mM = 1450 mM.</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Function 1</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">prob <span class="op">=</span> <span class="dv">45</span><span class="op">/</span><span class="dv">1000</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">spikeMatrix <span class="op">=</span> np.zeros((<span class="dv">1000</span>,<span class="dv">1000</span>))</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> prob:</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">      spikeMatrix[i,j] <span class="op">=</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">spikeCountRates <span class="op">=</span> np.<span class="bu">sum</span>(spikeMatrix, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">plt.hist(spikeCountRates, <span class="dv">40</span>, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>)</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">plt.xlabel(<span class="st">&quot;Average firing rate (Hz)&quot;</span>)</a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">plt.ylabel(<span class="st">&quot;Frequency&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Function 2</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">np.var(spikeCountRates) <span class="op">/</span> np.mean(spikeCountRates)</a></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Function 3</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">spikeCountRates <span class="op">=</span> np.<span class="bu">sum</span>(spikeMatrix, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">totalSpikes <span class="op">=</span> <span class="bu">int</span>(np.<span class="bu">sum</span>(spikeMatrix, axis<span class="op">=</span><span class="va">None</span>))</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">isi <span class="op">=</span> np.zeros(totalSpikes <span class="op">-</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">count <span class="op">=</span> <span class="dv">-1</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">  spikes <span class="op">=</span> np.nonzero(spikeMatrix[i,:])[<span class="dv">0</span>]</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(spikes)<span class="op">-</span><span class="dv">1</span>):</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">    count <span class="op">+=</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">    isi[count] <span class="op">=</span> spikes[j<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> spikes[j]</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb4-12" data-line-number="12">plt.hist(isi, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">plt.xlabel(<span class="st">&quot;ISI (ms)&quot;</span>)</a>
-<a class="sourceLine" id="cb4-14" data-line-number="14">plt.ylabel(<span class="st">&quot;Frequency&quot;</span>)</a></code></pre></div>
+<p>From these values:<br />
+<span class="math display">\[E_{Na+} = \frac{8.314 \cdot 310}{1 \cdot 96.49} \cdot \ln \frac{1450}{15}\]</span>
+<span class="math display">\[E_{Na+} = \frac{2577.34}{96.49} \cdot \ln(96.67)\]</span>
+<span class="math display">\[E_{Na+} = 26.7109545 * (4.5713031) = 122.1 mV\]</span>
+Therefore, if the extracellular concentration of sodium was increased tenfold, the new Nernst potential for sodium would be <strong>122.1 mV</strong>.</p>
+<p><em>Solution, part b</em>:<br />
+We will use the Goldman Hodgkin Katz (GHK) equation to find the resting potential of the neuron:<br />
+<span class="math display">\[V_{m} = \frac{RT}{F}ln(\frac{P_{K}[K+]_{out}+P_{Na}[Na+]_{out}+P_{Cl}[Cl-]_{in}}{P_{K}[K+]_{in}+P_{Na}[Na+]_{in}+P_{Cl}[Cl-]_{out}}) \]</span></p>
+<p>From the values given above:<br />
+<span class="math display">\[V_{rest} = \frac{8.314 \cdot 310}{1 \cdot 96.49} \cdot \ln \frac{(.05*1450)+(1*4)+(.45*10)}{(.05*15)+(1*150)+(.45*110)}\]</span><br />
+<span class="math display">\[V_{rest} = \frac{2577.34}{96.49} \cdot \ln \frac{72.5+4+4.5}{75+150+49.5}\]</span>
+<span class="math display">\[V_{rest} = 26.71099545 \cdot \ln \frac{81}{200.25} = -24.18 mV\]</span><br />
+If the extracellular concentration of sodium was increased by a factor of 10, the neuron’s resting potential would be -24.2 mV instead of -70 mV.</p>
+<p><strong>Worked Example:</strong>
+Consider the unicorn neuron’s resting potential. Due to their mythical identity and magic, the resting potential for a unicorn neuron is different than that of humans. Unlike humans, unicorns have a <em>magic ion</em> that alters their resting potentials. The relevant ion concentrations and permeabilities are found in the table below:</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ion</th>
+<th>Intracellular concentration (mM)</th>
+<th>Extracellular concentration (mM)</th>
+<th>Permeability</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>K+</td>
+<td>150</td>
+<td>4</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Na+</td>
+<td>15</td>
+<td>145</td>
+<td>0.05</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Cl-</td>
+<td>10</td>
+<td>110</td>
+<td>0.45</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Magic+</td>
+<td>200</td>
+<td>30</td>
+<td>1.1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li>What is the Nernst potential for the magic ion of the unicorn neuron, assuming magic+ moves just as other ions do?<br />
+</li>
+<li>What is the resting potential of the unicorn neuron?</li>
+</ol>
+<p><em>Solution, part a</em>:<br />
+The Nernst equation is: <span class="math inline">\(E_{ion} = \frac{RT}{zF}ln\frac{[ion]_{outside}}{[ion]_{inside}}\)</span> in which:</p>
+<ul>
+<li>R is the ideal gas constant: 8.314 <span class="math inline">\(kg \cdot m^2 \cdot K^{1} \cdot mol^{-1}s^{-2}\)</span></li>
+<li>T is the temperature in Kelvin: (310 K at human temperature)</li>
+<li>z is the valence. Here, we use +1 because the Magic+ ion has a charge of +1.</li>
+<li>F is Faraday’s constant: 96.49 <span class="math inline">\(kJ \cdot V^{-1} \cdot mol^{-1}\)</span></li>
+<li>Extracellular sodium is increased by a factor of 10: <span class="math inline">\([Na+]_{outside}\)</span> = 10 * 145 mM = 1450 mM.</li>
+</ul>
+<p>From these values:<br />
+<span class="math display">\[E_{Na+} = \frac{8.314 \cdot 310}{1 \cdot 96.49} \cdot \ln \frac{30}{200}\]</span>
+<span class="math display">\[E_{Na+} = \frac{2577.34}{96.49} \cdot -1.90 = -50.8 mV\]</span>
+The Nernst potential of the magic+ ion is -50.8 mV. Thus the ionic and concentration gradients are at equilibrium for the magic+ ion when the potential difference of the neuron is -50.8 mV.</p>
+<p><em>Solution, part b:</em><br />
+Here, we will expand the Goldman Hodgkin Katz equation to include the magic+ ion:<br />
+<span class="math display">\[V_{m} = \frac{RT}{F}ln(\frac{P_{K}[K+]_{out}+P_{Na}[Na+]_{out}+P_{Cl}[Cl-]_{in} +P_{Magic}[Magic+]_{out}}{P_{K}[K+]_{in}+P_{Na}[Na+]_{in}+P_{Cl}[Cl-]_{out}+P_{Magic}[Magic+]_{in}}) \]</span>
+From the values given in part a:<br />
+<span class="math display">\[V_{rest} = \frac{8.314 \cdot 310}{1 \cdot 96.49} \cdot \ln \frac{(.05*1450)+(1*4)+(.45*10)+(1.1*30)}{(.05*15)+(1*150)+(.45*110)+(1.1*200)}\]</span><br />
+<span class="math display">\[V_{rest} = \frac{2577.34}{96.49} \cdot \ln \frac{72.5+4+4.5+33}{75+150+49.5+220}\]</span>
+<span class="math display">\[V_{rest} = \frac{2577.34}{96.49} \cdot \ln \frac{72.5+4+4.5}{75+150+49.5}\]</span></p>
+<p><span class="math display">\[V_{rest} = 26.71099545 \cdot \ln \frac{48.75}{420.25} = -57.3 mV\]</span>
+The resting potential of the unicorn neuron is -57.3 mV. This happens as a result of the permeabilities and concentrations of all four ions in this example, especially as a result of the magic+ ion’s high permeability. This makes the resting potential most similat to its Nernst potential.</p>
+</div>
+<div id="leaky-integrate-and-fire-model" class="section level2">
+<h2><span class="header-section-number">4.5</span> Leaky Integrate and Fire Model</h2>
+<p><strong>Worked Example: Deriving the Integrate and Fire Model</strong><br />
+In the leaky integrate and fire model, we are modeling the membrane as a resistor-capacitor (RC) circuit and injecting into the cell some external current, <span class="math inline">\(I_e\)</span>. By Kirchhoff’s rule, we know that the the sum of all currents sums to zero. This means that the external current is the sum of a resistive current and a capactive current:<br />
+<span class="math display">\[I_e = I_R + I_C\]</span></p>
+<p>The resistive current is the current that flows through ion channels. Therefore, by Ohm’s law, it is the product of the membrane conductance (<span class="math inline">\(g_L\)</span>) and the driving force (the difference between the present membrane potential, <span class="math inline">\(V_m\)</span>, and the resting membrane potential, <span class="math inline">\(E_L\)</span>):
+<span class="math display">\[I_R = g_L(V_m-E_L)\]</span>
+Because the cell is negatively charged with respect to the outside, and because the membrane is very thin, negative charges build up along the inside of the membrane and attract positive charges on the outside. This means that the membrane is acting as a capacitor! The amount of charge (Q) that can be stored by the membrane is given by the capacitance equation:
+<span class="math display">\[C_mV_m = Q\]</span>
+Where <span class="math inline">\(C_m\)</span> is the specific capacitance of the membrane, or its ability to store charge. Therefore, the capacitive current is:
+<span class="math display">\[I_C = \frac{dQ}{dt} = C_m\frac{dV_m}{dt}\]</span>
+Putting this all together, we get:
+<span class="math display">\[ C_m \frac{dV_m}{dt} = I_e - g_L(V_m-E_L)\]</span>
+Ultimately, we want to solve for <span class="math inline">\(V_m\)</span>, so let’s first multiply both sides by <span class="math inline">\(R_m\)</span>.
+<span class="math display">\[ \tau_m \frac{dV_m}{dt} = R_m I_e + E_L-V_m\]</span>
+This is because the time constant, <span class="math inline">\(\tau_m\)</span> is equal to the product of <span class="math inline">\(R_m C_m\)</span>. We need to solve this differential equation for <span class="math inline">\(V_m\)</span>. We can see from the above equation that the change in membrane potential is some fraction of the difference between the present membrane potential <span class="math inline">\(V_m\)</span> and <span class="math inline">\(R_m I_e + E_L\)</span>. Therefore, we know that the membrane will approach <span class="math inline">\(R_m I_e + E_L\)</span> over time. We will therefore define this as the steady-state voltage <span class="math inline">\(V_\infty\)</span>. Therefore, the solution to V(t) is:<br />
+<span class="math display">\[V(t) = V_\infty + (V(0)-V_\infty)e^{\frac{-dt}{\tau_m}}\]</span>
+Where V(0) refers to the previously calculated voltage.</p>
+<p>This is the equation we have been working towards! Let’s perform some hand calculations. This is not efficient by any means, and this illustrates the application and practicality that computer programming has to offer neuroscience.</p>
+<p>Let’s first compute V(t) from a resting potential V(0) of -70 mV when there is no injected current. Recall that:<br />
+<span class="math display">\[V_\infty = R_m I_e +E_L\]</span>
+If there is no injected current (<span class="math inline">\(I_e=0\)</span>), then <span class="math inline">\(V_\infty=E_L = -70 mV\)</span>. Therefore, V(t) is equal to the resting potential when there is no injected current. Let’s use this equation to now calculate V(t) at the moment that <span class="math inline">\(I_e\)</span> is turned on to 0.5 nA. Let’s start with <span class="math inline">\(V_\infty\)</span>:</p>
+<p><span class="math display">\[V_\infty = 10 M \Omega \cdot 0.5 nA - 70 mV = -65 mV\]</span>
+This means that if we left the external stimulation on for a long time, the membrane would reach -65 mV. Let’s put this into the full equation using a <span class="math inline">\(\tau_m = 10 ms\)</span> and a dt of 0.1 ms.</p>
+<p><span class="math display">\[ V(t) = -65 mV + (-70 mV - -65 mV)e^{\frac{-.1}{10 ms}}\]</span>
+<span class="math display">\[V(t) = -65 mV + (-5)*.99 = -69.95 mV\]</span>
+In this way, we can work through, voltage by voltage, using the present voltage to calculate the next. But computers make this process much faster as you will see below.</p>
+<p><strong>Worked Example:</strong><br />
+Johnny Firehydrant has just begun an investigative neurological study, focusing on memory. He has been trying to develop a model of how the hippocampus fires. Johnny’s model will begin with the CA1 neurons. He decided that this was an important place to begin because it receives inputs from CA2 and CA3 regions and it also outputs information to the Entorhinal cortex and the Subiculum; so the behavior of receiving, integrating, and firing is crucial for modelling the hippocampus. Using the leaky integrate-and-fire model of neuron ‘A’, run a simulation for 500 ms in time increments of 0.05 ms starting at the membrane’s resting potential of -70 mV. For the first 100 ms, Johnny is using a 0.5 nA injected current, from 125 ms to 200 ms he injects 1.3 nA, and between 250 ms and 350 ms the injected current is increased to 2.0 nA. You may assume the following values:</p>
+<ul>
+<li><span class="math inline">\(R_m = 10 M\Omega\)</span></li>
+<li><span class="math inline">\(\tau_m = 10 ms\)</span></li>
+<li><span class="math inline">\(V_{threshold} = -55 mV\)</span></li>
+<li><span class="math inline">\(V_{reset} = -75 mV\)</span></li>
+<li><span class="math inline">\(V_{spike} = 20 mV\)</span></li>
+</ul>
+<p>Before we begin, here is a key of symbols and their meaning:</p>
+<ul>
+<li><span class="math inline">\(\tau_m\)</span>: The membrane time constant.</li>
+<li><span class="math inline">\(I_e\)</span>: The external current that is injected into cell.</li>
+<li><span class="math inline">\(E_m\)</span>: The membrane’s resting potential.</li>
+<li><span class="math inline">\(R_m\)</span>: The membrane resistance.</li>
+<li><span class="math inline">\(g_L\)</span>: Leak conductance.</li>
+<li><span class="math inline">\(V_m\)</span>: Membrane potential.</li>
+</ul>
+<p><strong>Step 1:</strong> Import numpy and matplotlib libraries for Python operations. Then assign variables to the parameter values provided above.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="Ch3.html#cb7-1"></a><span class="co"># Import essential libraries</span></span>
+<span id="cb7-2"><a href="Ch3.html#cb7-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="Ch3.html#cb7-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-4"><a href="Ch3.html#cb7-4"></a></span>
+<span id="cb7-5"><a href="Ch3.html#cb7-5"></a><span class="co"># Set simulation parameters</span></span>
+<span id="cb7-6"><a href="Ch3.html#cb7-6"></a>Vthresh <span class="op">=</span> <span class="dv">-55</span>   <span class="co">#mV</span></span>
+<span id="cb7-7"><a href="Ch3.html#cb7-7"></a>Vreset  <span class="op">=</span> <span class="dv">-75</span>   <span class="co">#mV</span></span>
+<span id="cb7-8"><a href="Ch3.html#cb7-8"></a>Vspike  <span class="op">=</span>  <span class="dv">20</span>   <span class="co">#mV</span></span>
+<span id="cb7-9"><a href="Ch3.html#cb7-9"></a>Rm      <span class="op">=</span>  <span class="dv">10</span>   <span class="co">#MOhms</span></span>
+<span id="cb7-10"><a href="Ch3.html#cb7-10"></a>tau     <span class="op">=</span>  <span class="dv">10</span>   <span class="co">#ms</span></span>
+<span id="cb7-11"><a href="Ch3.html#cb7-11"></a>dt      <span class="op">=</span>  <span class="fl">0.05</span> <span class="co">#ms</span></span>
+<span id="cb7-12"><a href="Ch3.html#cb7-12"></a>counter <span class="op">=</span>  <span class="dv">0</span></span></code></pre></div>
+<p><strong>Step 2:</strong> Next, we will set up the data structures for holding our data.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="Ch3.html#cb8-1"></a><span class="co"># Creates a vector of time points from 0 to 499 ms in steps of dt=0.05</span></span>
+<span id="cb8-2"><a href="Ch3.html#cb8-2"></a>timeVector <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">500</span>, dt)</span>
+<span id="cb8-3"><a href="Ch3.html#cb8-3"></a></span>
+<span id="cb8-4"><a href="Ch3.html#cb8-4"></a><span class="co"># Creates a placeholder for our voltages that is the same size as timeVector</span></span>
+<span id="cb8-5"><a href="Ch3.html#cb8-5"></a>voltageVector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVector))</span>
+<span id="cb8-6"><a href="Ch3.html#cb8-6"></a></span>
+<span id="cb8-7"><a href="Ch3.html#cb8-7"></a><span class="co"># Creates a placeholder for the external stimulation vector.</span></span>
+<span id="cb8-8"><a href="Ch3.html#cb8-8"></a><span class="co"># It is also the same size as the time vector.</span></span>
+<span id="cb8-9"><a href="Ch3.html#cb8-9"></a>stimVector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVector))</span></code></pre></div>
+<p><strong>Step 3:</strong> We will now set our initial conditions</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="Ch3.html#cb9-1"></a><span class="co"># Set the initial voltage to be equal to the resting potential</span></span>
+<span id="cb9-2"><a href="Ch3.html#cb9-2"></a>voltageVector[<span class="dv">0</span>] <span class="op">=</span> Vrest</span></code></pre></div>
+<p><strong>Step 4:</strong> At this point you want to arrange Johnny’s applied current pulses according to time. (remember that the dt=0.05, so there are 20 time points per millisecond.)</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="Ch3.html#cb10-1"></a><span class="co"># Sets the external stimulation to 0.5 nA for the first 100 ms</span></span>
+<span id="cb10-2"><a href="Ch3.html#cb10-2"></a>stimVector[<span class="dv">0</span>:<span class="dv">2000</span>] <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb10-3"><a href="Ch3.html#cb10-3"></a></span>
+<span id="cb10-4"><a href="Ch3.html#cb10-4"></a><span class="co"># Sets the external stimulation to 1.3 nA between 125 and 250 ms</span></span>
+<span id="cb10-5"><a href="Ch3.html#cb10-5"></a>stimVector[<span class="dv">2500</span>:<span class="dv">4000</span>]<span class="op">=</span> <span class="fl">1.3</span></span>
+<span id="cb10-6"><a href="Ch3.html#cb10-6"></a></span>
+<span id="cb10-7"><a href="Ch3.html#cb10-7"></a><span class="co"># Sets the external stimulation to 2.0 nA between 250 and 350 ms</span></span>
+<span id="cb10-8"><a href="Ch3.html#cb10-8"></a>stimVector[<span class="dv">5000</span>:<span class="dv">7000</span>] <span class="op">=</span> <span class="fl">2.0</span></span></code></pre></div>
+<p><strong>Step 5:</strong> Use a for-loop to use the present voltage value to compute the next voltage value.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="Ch3.html#cb11-1"></a><span class="co"># This line initiates the loop. &quot;S&quot; counts the number of loops.</span></span>
+<span id="cb11-2"><a href="Ch3.html#cb11-2"></a><span class="co"># We are looping for 1 less than the length of the time vector</span></span>
+<span id="cb11-3"><a href="Ch3.html#cb11-3"></a><span class="co"># because we have already calculated the voltage for the first</span></span>
+<span id="cb11-4"><a href="Ch3.html#cb11-4"></a><span class="co"># iteration.</span></span>
+<span id="cb11-5"><a href="Ch3.html#cb11-5"></a><span class="cf">for</span> S <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(timeVector)<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb11-6"><a href="Ch3.html#cb11-6"></a>  <span class="co"># Vinf is set to equal the resting potential plus the product</span></span>
+<span id="cb11-7"><a href="Ch3.html#cb11-7"></a>  <span class="co"># of the stimulation vector at the Sth time point.</span></span>
+<span id="cb11-8"><a href="Ch3.html#cb11-8"></a>  Vinf<span class="op">=</span> Vrest <span class="op">+</span> Rm <span class="op">*</span> stimVector[S]</span>
+<span id="cb11-9"><a href="Ch3.html#cb11-9"></a>  </span>
+<span id="cb11-10"><a href="Ch3.html#cb11-10"></a>  <span class="co"># The next voltage value is is equal to where we are going (Vinf)</span></span>
+<span id="cb11-11"><a href="Ch3.html#cb11-11"></a>  <span class="co"># plus the product of the different between the present voltage and</span></span>
+<span id="cb11-12"><a href="Ch3.html#cb11-12"></a>  <span class="co"># Vinf (how far we have to go) and e^-t/tau (how far we are going</span></span>
+<span id="cb11-13"><a href="Ch3.html#cb11-13"></a>  <span class="co"># in each step)</span></span>
+<span id="cb11-14"><a href="Ch3.html#cb11-14"></a>  voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Vinf <span class="op">+</span> (voltageVector[S]<span class="op">-</span>Vinf)<span class="op">*</span>np.exp(<span class="op">-</span>dt<span class="op">/</span>tau)</span>
+<span id="cb11-15"><a href="Ch3.html#cb11-15"></a>  </span>
+<span id="cb11-16"><a href="Ch3.html#cb11-16"></a>  <span class="co"># This &#39;if&#39; condition states that if the next voltage is greater than</span></span>
+<span id="cb11-17"><a href="Ch3.html#cb11-17"></a>  <span class="co"># or equal to the threshold, then to run the next section</span></span>
+<span id="cb11-18"><a href="Ch3.html#cb11-18"></a>  <span class="cf">if</span> voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">&gt;=</span> Vthresh:</span>
+<span id="cb11-19"><a href="Ch3.html#cb11-19"></a>     <span class="co"># This states that the next voltage vector will be the Vspike value</span></span>
+<span id="cb11-20"><a href="Ch3.html#cb11-20"></a>     voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Vspike</span>
+<span id="cb11-21"><a href="Ch3.html#cb11-21"></a>     </span>
+<span id="cb11-22"><a href="Ch3.html#cb11-22"></a>     <span class="co"># This &#39;if&#39; statement checks if we are already at Vspike (this is</span></span>
+<span id="cb11-23"><a href="Ch3.html#cb11-23"></a>     <span class="co"># another way we can be above Vthresh)</span></span>
+<span id="cb11-24"><a href="Ch3.html#cb11-24"></a>     <span class="cf">if</span> voltageVector[S] <span class="op">==</span> Vspike:</span>
+<span id="cb11-25"><a href="Ch3.html#cb11-25"></a>      </span>
+<span id="cb11-26"><a href="Ch3.html#cb11-26"></a>        <span class="co"># Set the next voltage equal to the reset value</span></span>
+<span id="cb11-27"><a href="Ch3.html#cb11-27"></a>        voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Vreset</span>
+<span id="cb11-28"><a href="Ch3.html#cb11-28"></a>        </span>
+<span id="cb11-29"><a href="Ch3.html#cb11-29"></a>        <span class="co"># This will count the number of observed spikes so that spike count</span></span>
+<span id="cb11-30"><a href="Ch3.html#cb11-30"></a>        <span class="co"># rate may be calculated later</span></span>
+<span id="cb11-31"><a href="Ch3.html#cb11-31"></a>        counter <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<p><strong>Step 6:</strong> Now, we just have to plot the simulation.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="Ch3.html#cb12-1"></a><span class="co"># This sets the new plot object</span></span>
+<span id="cb12-2"><a href="Ch3.html#cb12-2"></a>plt.figure()</span>
+<span id="cb12-3"><a href="Ch3.html#cb12-3"></a></span>
+<span id="cb12-4"><a href="Ch3.html#cb12-4"></a><span class="co"># This plots the voltage (y-axis) as a function of time (x-axis)</span></span>
+<span id="cb12-5"><a href="Ch3.html#cb12-5"></a>plt.plot(timeVector, voltageVector)</span>
+<span id="cb12-6"><a href="Ch3.html#cb12-6"></a></span>
+<span id="cb12-7"><a href="Ch3.html#cb12-7"></a><span class="co"># This labels the y-axis</span></span>
+<span id="cb12-8"><a href="Ch3.html#cb12-8"></a>plt.ylabel(<span class="st">&#39;Voltage in mV&#39;</span>)</span>
+<span id="cb12-9"><a href="Ch3.html#cb12-9"></a></span>
+<span id="cb12-10"><a href="Ch3.html#cb12-10"></a><span class="co"># This labels the x-axis</span></span>
+<span id="cb12-11"><a href="Ch3.html#cb12-11"></a>plt.xlabel(<span class="st">&#39;Time in ms)</span></span>
+<span id="cb12-12"><a href="Ch3.html#cb12-12"></a></span>
+<span id="cb12-13"><a href="Ch3.html#cb12-13"></a><span class="st"># This sets the title</span></span>
+<span id="cb12-14"><a href="Ch3.html#cb12-14"></a><span class="st">plt.title(&#39;</span>Voltage versus time)</span></code></pre></div>
+The final graph looks like this:<br />
 
+<div class="figure"><span id="fig:integrateFire-fig"></span>
+<img src="images/integrateFire.png" alt="Output of sample code"  />
+<p class="caption">
+Figure 4.5: Output of sample code
+</p>
+</div>
+<p><strong>Step 7:</strong> Explore your simulation<br />
+Now that you have designed an algorithm to plot Johnny’s experiment you are capable of learning a few characteristics of the design. For example, if you are curious about the voltage at a particular time step, you can read it out of the voltage vector. For instance, if you wanted to know the voltage at time point 2540 you would type:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="Ch3.html#cb13-1"></a><span class="bu">print</span>(voltageVector[<span class="dv">2540</span>])</span></code></pre></div>
+<p>If you wanted to change the strength of the applied stimulation, or the duration of each pulse, you may edit these lines:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="Ch3.html#cb14-1"></a>stimVector[<span class="dv">0</span>:<span class="dv">2000</span>] <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb14-2"><a href="Ch3.html#cb14-2"></a>stimVector[<span class="dv">2500</span>:<span class="dv">4000</span>]<span class="op">=</span> <span class="fl">1.3</span></span>
+<span id="cb14-3"><a href="Ch3.html#cb14-3"></a>stimVector[<span class="dv">5000</span>:<span class="dv">7000</span>] <span class="op">=</span> <span class="fl">2.0</span></span></code></pre></div>
+<p><strong>Worked Example:</strong><br />
+Johnny has now developed a general model of how a hippocampal neuron fires. But Mr. Firehydrant wants to know how both the length of the stimulation pulse and the strength of that pulse interact to influence the neuron’s firing. Johnny devises the following stimulation protocol:</p>
+<ul>
+<li>At time zero, the cell is at rest. When the cell is not being stimulated, it is allowed to go back to rest.</li>
+<li>At 0.5 ms, 5 nA of current is injected into the cell for one time step.</li>
+<li>From 50 to 54 ms, 5 nA are injected into the cell.</li>
+<li>At 150 ms, the applied current is turned back on at 15 nA for one time step.</li>
+<li>From 200 ms to 202 ms, the current is held at 15 nA.</li>
+<li>At 250 ms, there is a 30 nA pulse of injected current for one time step.</li>
+<li>From 300 to 301 ms, the applied current is 30 nA.</li>
+</ul>
+<p>This appears more difficult than it is, and much of what you did for the previous example will help here. Graph the cell’s voltage over time as well as the external current over time. Notice how increasing the duration of the current pulse provides an additive effect in bringing the cell’s membrane potential closer to threshold.</p>
+<p>Most of your previous simulation can be recycled in full. You will make changes to two sections: defining your stimulation vector, and in adding a second graph. Here, we set the stimulation protocol.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="Ch3.html#cb15-1"></a><span class="co"># Begin by setting the default stimulation level to 0</span></span>
+<span id="cb15-2"><a href="Ch3.html#cb15-2"></a>stimVector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVector))</span>
+<span id="cb15-3"><a href="Ch3.html#cb15-3"></a></span>
+<span id="cb15-4"><a href="Ch3.html#cb15-4"></a><span class="co"># At 0.5 ms, 0.5 nA of current is injected</span></span>
+<span id="cb15-5"><a href="Ch3.html#cb15-5"></a>stimVector[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb15-6"><a href="Ch3.html#cb15-6"></a></span>
+<span id="cb15-7"><a href="Ch3.html#cb15-7"></a><span class="co"># From 50 to 54 ms, 5 nA are injected into the cell</span></span>
+<span id="cb15-8"><a href="Ch3.html#cb15-8"></a>stimVector[<span class="dv">999</span>:<span class="dv">1080</span>] <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb15-9"><a href="Ch3.html#cb15-9"></a></span>
+<span id="cb15-10"><a href="Ch3.html#cb15-10"></a><span class="co"># At 150 ms, 15 nA is injected for one time step</span></span>
+<span id="cb15-11"><a href="Ch3.html#cb15-11"></a>stimVector[<span class="dv">2999</span>] <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb15-12"><a href="Ch3.html#cb15-12"></a></span>
+<span id="cb15-13"><a href="Ch3.html#cb15-13"></a><span class="co"># From 200-202 ms, the current is held at 15 nA</span></span>
+<span id="cb15-14"><a href="Ch3.html#cb15-14"></a>stimVector[<span class="dv">3999</span>:<span class="dv">4040</span>] <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb15-15"><a href="Ch3.html#cb15-15"></a></span>
+<span id="cb15-16"><a href="Ch3.html#cb15-16"></a><span class="co"># A pulse of 30 nA at 250 ms</span></span>
+<span id="cb15-17"><a href="Ch3.html#cb15-17"></a>stimVector[<span class="dv">4999</span>] <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb15-18"><a href="Ch3.html#cb15-18"></a></span>
+<span id="cb15-19"><a href="Ch3.html#cb15-19"></a><span class="co"># From 300 to 301 ms, the applied current is 30 nA</span></span>
+<span id="cb15-20"><a href="Ch3.html#cb15-20"></a>stimVector[<span class="dv">5999</span>:<span class="dv">6020</span>] <span class="op">=</span> <span class="dv">30</span></span></code></pre></div>
+<p>And this code snippet creates our two plots.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="Ch3.html#cb16-1"></a><span class="co"># This sets the plot object</span></span>
+<span id="cb16-2"><a href="Ch3.html#cb16-2"></a>plt.figure()</span>
+<span id="cb16-3"><a href="Ch3.html#cb16-3"></a></span>
+<span id="cb16-4"><a href="Ch3.html#cb16-4"></a><span class="co"># This defines that we are plotting into the top plot</span></span>
+<span id="cb16-5"><a href="Ch3.html#cb16-5"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># two rows, one column, first graph</span></span>
+<span id="cb16-6"><a href="Ch3.html#cb16-6"></a></span>
+<span id="cb16-7"><a href="Ch3.html#cb16-7"></a><span class="co"># Plots time on the x-axis and current on the y-axis</span></span>
+<span id="cb16-8"><a href="Ch3.html#cb16-8"></a>plt.plot(timeVector, stimVector)</span>
+<span id="cb16-9"><a href="Ch3.html#cb16-9"></a></span>
+<span id="cb16-10"><a href="Ch3.html#cb16-10"></a><span class="co"># Labels the x-axis</span></span>
+<span id="cb16-11"><a href="Ch3.html#cb16-11"></a>plt.xlabel(<span class="st">&#39;Time in ms&#39;</span>)</span>
+<span id="cb16-12"><a href="Ch3.html#cb16-12"></a></span>
+<span id="cb16-13"><a href="Ch3.html#cb16-13"></a><span class="co"># Labels the y-axis</span></span>
+<span id="cb16-14"><a href="Ch3.html#cb16-14"></a>plt.ylabel(<span class="st">&#39;External current in nA&#39;</span>)</span>
+<span id="cb16-15"><a href="Ch3.html#cb16-15"></a></span>
+<span id="cb16-16"><a href="Ch3.html#cb16-16"></a><span class="co"># Titles the plot</span></span>
+<span id="cb16-17"><a href="Ch3.html#cb16-17"></a>plt.title(<span class="st">&#39;External Stimulation vs Time&#39;</span>)</span>
+<span id="cb16-18"><a href="Ch3.html#cb16-18"></a></span>
+<span id="cb16-19"><a href="Ch3.html#cb16-19"></a><span class="co"># This defines that we are plotting into the top plot</span></span>
+<span id="cb16-20"><a href="Ch3.html#cb16-20"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># 2 rows, 1 column, 2nd graph</span></span>
+<span id="cb16-21"><a href="Ch3.html#cb16-21"></a></span>
+<span id="cb16-22"><a href="Ch3.html#cb16-22"></a><span class="co"># Plots time on the x-axis and voltage on the y-axis</span></span>
+<span id="cb16-23"><a href="Ch3.html#cb16-23"></a>plt.plot(timeVector, voltageVector)</span>
+<span id="cb16-24"><a href="Ch3.html#cb16-24"></a></span>
+<span id="cb16-25"><a href="Ch3.html#cb16-25"></a><span class="co"># Labels the x-axis</span></span>
+<span id="cb16-26"><a href="Ch3.html#cb16-26"></a>plt.xlabel(<span class="st">&#39;Time in ms&#39;</span>)</span>
+<span id="cb16-27"><a href="Ch3.html#cb16-27"></a></span>
+<span id="cb16-28"><a href="Ch3.html#cb16-28"></a><span class="co"># Labels the y-axis</span></span>
+<span id="cb16-29"><a href="Ch3.html#cb16-29"></a>plt.ylabel(<span class="st">&#39;Membrane potential in mV&#39;</span>)</span></code></pre></div>
+The plot looks like this:<br />
+
+<div class="figure"><span id="fig:integrateFire2-fig"></span>
+<img src="images/integrateFire2.png" alt="Output of sample code"  />
+<p class="caption">
+Figure 4.6: Output of sample code
+</p>
+</div>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">4.6</span> Summary</h2>
+</div>
+<div id="exercises" class="section level2">
+<h2><span class="header-section-number">4.7</span> Exercises</h2>
+<div id="conceptual-exercises" class="section level3">
+<h3><span class="header-section-number">4.7.1</span> Conceptual Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>Describe the life cycle of an action potential. Be sure to include changes in channels/pumps, ion movement, and voltage.</p></li>
+<li><p>Explain why the resting potential is a steady state and how ion permeability and Nernst potential play a role.</p></li>
+<li><p>What does the Goldman-Hodgkin-Katz (GHK) equation tell you and when should it be used?</p></li>
+<li><p>What are the different ways molecules can move across the membrane of the neuron?</p></li>
+<li><p>Water flow abides by similar rules as ions flowing across a membrane in a neuron. Match each aspect of ion flow to water flow below. Explain your reasoning.</p></li>
+<li><p>Explain how depolarization and hyperpolarization relate to positive/negative feedback.</p></li>
+</ol>
+<div class="figure"><span id="fig:dam-fig"></span>
+<img src="images/SQK_Dam_DSC_3657.jpg" alt="Match each part of the water flow in this dam to ion flow in a neuron."  />
+<p class="caption">
+Figure 4.7: Match each part of the water flow in this dam to ion flow in a neuron.
+</p>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th>Water Concept</th>
+<th>Neural Concept</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Water</td>
+<td>Voltage-gated channel</td>
+</tr>
+<tr class="even">
+<td>Dam</td>
+<td>Ions</td>
+</tr>
+<tr class="odd">
+<td>Jet</td>
+<td>Ion pump</td>
+</tr>
+</tbody>
+</table>
+<ol start="6" style="list-style-type: decimal">
+<li><p>Explain the basic function of the leaky integrate and fire model. Your response should describe both the RC membrane circuit as well as the logical rules governing the model neuron’s firing.</p></li>
+<li><p>Describe one aspect of the leaky integrate and fire model that is not biologically realistic.</p></li>
+<li><p>Briefly explain the concept of driving force.</p></li>
+<li><p>Explain the difference between the membrane potential, Nernst potential and equilibrium potential.</p></li>
+</ol>
+</div>
+<div id="coding-exercises" class="section level3">
+<h3><span class="header-section-number">4.7.2</span> Coding Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>Let us walk through calculating the Nernst potential in Python. 1. Shown below is the Nernst equation that allows us to calculate the Nernst potential (AKA: reversal potential, resting potential) of the crucial ions (Na+, K+, Cl-) in our body that make action potentials possible.<br />
+<span class="math display">\[E_{ion} = \frac{RT}{zF}ln(\frac{[out]}{[in]}) \]</span>
+Okay, I know this equation may seem to be made up of lots of different variables, but it really is not. Let’s break it down together:</li>
+</ol>
+<ul>
+<li>R and F are both constants.</li>
+<li>T is our body temperature.</li>
+<li>So, <span class="math inline">\(\frac{RT}{F}\)</span> is about 26.5 mV.</li>
+<li>z is the charge of the given ion. (<em>Hint: Na+: +1, K+: +1; Cl-: -1</em>)</li>
+<li><em>[out]</em> and <em>[in]</em> refer to the ion concentrations on the extracellular, and intracellular sides of the membrane, respectively.</li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li>Our goal is to create a general Python function that will predict whether the Nernst potential for Na+, K+, or Cl- will be positive or negative. The advantage of writing a function is that we will be able to write one piece of code that can be re-used for each ion by substituting in the relevant values. Right now, we only care about the relative concentrations, so we can just use <strong>1</strong> to represent the side with the lower concentration, and <strong>2</strong> for the side with the higher ion concentration. Use the following steps to construct your function:</li>
+</ol>
+<ul>
+<li>Open a blank Jupyter notebook.<br />
+</li>
+<li>Import the necessary Python libraries. (<em>Hint: numpy is useful for calculation. In Python, ln() implemented in the log() function</em>)<br />
+</li>
+<li>Set up the general function definition. (<em>Hint: Use “def” and “return” to set up a function named “Eion” with three arguments. The constants in the Nernst equation will not affect our results, so we may omit them for now.</em>)<br />
+</li>
+<li>Try out your function for each of the three major ions and print out the results. (<em>Hint: Think about the relative concentration of each ion inside and outside of the neuron during the resting state. Remember that Cl- is tricky!</em>)</li>
+</ul>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Good job! Now, let’s apply your function to calculate more realistic Nernst potentials for Na+, K+, and Cl- given their actual ionic concentrations:</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Ion</th>
+<th>Intracellular concentration (mM)</th>
+<th>Extracellular concentration (mM)</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Na+</td>
+<td>15</td>
+<td>145</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>K+</td>
+<td>150</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Cl-</td>
+<td>10</td>
+<td>110</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Pro-tip: We are still using the same Jupyter notebook as part (a), we do not have to import numpy again! Lazy is good.</p>
+<p>Use the following steps to apply your function:</p>
+<ul>
+<li>Set up the general function. (<em>Hint: alter your Eion function to use the R and F constants as well.</em>)<br />
+</li>
+<li>Use the values from the table in order to print out the Nernst potential for each ion.</li>
+</ul>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Sort the Nernst potentials from smallest to largest. Print the name of the ion that is closest to the neuron’s resting potential (-65 mV).</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>As we previously learned, the resting potential of the neuron can be predicted by the Goldman Hodgkin Katz (GHK) equation as follows:<br />
+<span class="math display">\[V_{m} = \frac{RT}{F}ln(\frac{P_{K}[K+]_{out}+P_{Na}[Na+]_{out}+P_{Cl}[Cl-]_{in}}{P_{K}[K+]_{in}+P_{Na}[Na+]_{in}+P_{Cl}[Cl-]_{out}}) \]</span><br />
+The first part of the equation looks similar to the Nernst equation - great!<br />
+<span class="math display">\[V_{m} = 26.5 \cdot \ln(\frac{P_{K}[K+]_{out}+P_{Na}[Na+]_{out}+P_{Cl}[Cl-]_{in}}{P_{K}[K+]_{in}+P_{Na}[Na+]_{in}+P_{Cl}[Cl-]_{out}}) \]</span></li>
+</ol>
+<p>But what the heck is going on inside the parentheses?</p>
+<p>The resting potential is dependent on and made up of these three ions. Therefore, we are weighting each ion according to its relative permeability value. The relative permeability value reflects the ease with which each ion can pass through the membrane at rest. By convention, we assign <span class="math inline">\(P_{K+}\)</span> to be 1. The membrane is far less permeable to sodium (<span class="math inline">\(P_{Na+} = 0.05\)</span>), and moderately permeable to chloride (<span class="math inline">\(P_{Cl-} = 0.45\)</span>). These values reflect the relative density of leak channels for K+, Na+, and Cl- in the membrane.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Create a general Python function to calculate the resting potential of a neuron from the previously provided values. Use the following steps:</li>
+</ol>
+<ul>
+<li>Import the necessary Python libraries.<br />
+</li>
+<li>Set up the general function. There are six different concentrations that can be considered as input arguments. For simplicity, you may “hard code” the permeability of Na+ and K+ inside your function. Please put Cl- permeability as an argument to your function because you will use it in the next question. (<em>Hint: take a close look at the equation. Cl- is different!</em>)</li>
+</ul>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Early in development (when we were babies), it is found that intracellular concentration of Cl- ions is higher than the extracellular concentration of Cl-. This is due to the delayed expression of Cl- exporters in the membrane. All else being equal, how would this affect the resting potential? Would the neuron be more or less likely to fire an action potential in this state?</li>
+</ol>
+<p>To simplify, assume that <span class="math inline">\(p_{Cl} = 0.1\)</span> because there are fewer exporters. Let’s assume that [ion] and [out] are switched for this problem.</p>
+
+</div>
 </div>
 </div>
             </section>
@@ -433,13 +890,15 @@ Match each concept to the Python function.</p>
 <a href="Ch4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -447,12 +906,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -467,9 +925,16 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
 }
 });
 });
