@@ -4,27 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 What is Computational Neuroscience? | Computational Neuroscience</title>
+  <title>Chapter 3 What is Computational Neuroscience? | Computational Neuroscience</title>
   <meta name="description" content="TBD" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 What is Computational Neuroscience? | Computational Neuroscience" />
+  <meta property="og:title" content="Chapter 3 What is Computational Neuroscience? | Computational Neuroscience" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="TBD" />
   <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 What is Computational Neuroscience? | Computational Neuroscience" />
+  <meta name="twitter:title" content="Chapter 3 What is Computational Neuroscience? | Computational Neuroscience" />
   
   <meta name="twitter:description" content="TBD" />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Students of NS/PY 357 Bates College" />
 
 
-<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +31,8 @@
   
 <link rel="prev" href="Ch1.html"/>
 <link rel="next" href="Ch3.html"/>
-<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,75 +48,14 @@
 
 
 
+<link href="assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.1.0/anchor-sections.js"></script>
 
-<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -130,87 +68,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li><a href="./">Computational Neuroscience</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-book-is-free-as-in-pizza"><i class="fa fa-check"></i><b>1.1</b> This book is free (as in pizza)</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors-version-0.0"><i class="fa fa-check"></i><b>1.5</b> Authors: Version 0.0</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#authors-version-1.0"><i class="fa fa-check"></i><b>1.6</b> Authors: Version 1.0</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#authors-version-2.0"><i class="fa fa-check"></i><b>1.7</b> Authors: Version 2.0</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a><ul>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
 <li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
-<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
-<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.4</b> Example Python Problems</a></li>
-<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.5</b> Conceptual Exercises for Learning Python</a></li>
-<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.6</b> Coding Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#libraries"><i class="fa fa-check"></i><b>2.3</b> Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#data-types"><i class="fa fa-check"></i><b>2.4</b> Data Types</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="Ch1.html"><a href="Ch1.html#string"><i class="fa fa-check"></i><b>2.4.1</b> String</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Ch1.html"><a href="Ch1.html#integers"><i class="fa fa-check"></i><b>2.4.2</b> Integers</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Ch1.html"><a href="Ch1.html#floats"><i class="fa fa-check"></i><b>2.4.3</b> Floats</a></li>
+<li class="chapter" data-level="2.4.4" data-path="Ch1.html"><a href="Ch1.html#lists"><i class="fa fa-check"></i><b>2.4.4</b> Lists</a></li>
+<li class="chapter" data-level="2.4.5" data-path="Ch1.html"><a href="Ch1.html#boolean"><i class="fa fa-check"></i><b>2.4.5</b> Boolean</a></li>
+<li class="chapter" data-level="2.4.6" data-path="Ch1.html"><a href="Ch1.html#arrays"><i class="fa fa-check"></i><b>2.4.6</b> Arrays</a></li>
+<li class="chapter" data-level="2.4.7" data-path="Ch1.html"><a href="Ch1.html#vectors"><i class="fa fa-check"></i><b>2.4.7</b> Vectors</a></li>
+<li class="chapter" data-level="2.4.8" data-path="Ch1.html"><a href="Ch1.html#matrices"><i class="fa fa-check"></i><b>2.4.8</b> Matrices</a></li>
+<li class="chapter" data-level="2.4.9" data-path="Ch1.html"><a href="Ch1.html#variable-assignment"><i class="fa fa-check"></i><b>2.4.9</b> Variable assignment</a></li>
+<li class="chapter" data-level="2.4.10" data-path="Ch1.html"><a href="Ch1.html#f-strings"><i class="fa fa-check"></i><b>2.4.10</b> f-Strings</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a><ul>
-<li class="chapter" data-level="3.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="3.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#for-loops"><i class="fa fa-check"></i><b>2.5</b> For loops</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#if-elif-else-statements"><i class="fa fa-check"></i><b>2.6</b> If-Elif-Else Statements</a></li>
+<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#conditional-statements"><i class="fa fa-check"></i><b>2.7</b> Conditional statements</a></li>
+<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#logic-statements"><i class="fa fa-check"></i><b>2.8</b> Logic statements</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="Ch1.html"><a href="Ch1.html#and-or-not"><i class="fa fa-check"></i><b>2.8.1</b> “And”, “Or”, “Not”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="Ch1.html"><a href="Ch1.html#while-loops"><i class="fa fa-check"></i><b>2.9</b> While loops</a></li>
+<li class="chapter" data-level="2.10" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.10</b> Summary</a></li>
+<li class="chapter" data-level="2.11" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.11</b> Example Python Problems</a></li>
+<li class="chapter" data-level="2.12" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.12</b> Conceptual Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.13" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.13</b> Coding Exercises for Learning Python</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="Ch2.html"><a href="Ch2.html#can-we-make-models-that-understand"><i class="fa fa-check"></i><b>3.3.1</b> Can we make models that understand?</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#levels-of-organization"><i class="fa fa-check"></i><b>3.4</b> Levels of organization</a></li>
 <li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.5</b> Applications of computational neuroscience</a></li>
 <li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.6</b> The future of computational neuroscience</a></li>
-<li class="chapter" data-level="3.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
 <li class="chapter" data-level="3.8" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a><ul>
-<li class="chapter" data-level="4.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="4.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>4.3</b> What is an action potential?</a></li>
-<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.4</b> Nernst equilibrium potential</a></li>
-<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.5</b> Leaky Integrate and Fire Model</a></li>
-<li class="chapter" data-level="4.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
-<li class="chapter" data-level="4.7" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a><ul>
-<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.7.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.7.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#membrane-potentials-and-electrochemical-gradients"><i class="fa fa-check"></i><b>4.3</b> Membrane potentials and electrochemical gradients</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#phases-of-the-action-potential"><i class="fa fa-check"></i><b>4.4</b> Phases of the action potential</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="Ch3.html"><a href="Ch3.html#positive-feedback-and-depolarization"><i class="fa fa-check"></i><b>4.4.1</b> Positive feedback and depolarization</a></li>
+<li class="chapter" data-level="4.4.2" data-path="Ch3.html"><a href="Ch3.html#negative-feedback-and-repolarization"><i class="fa fa-check"></i><b>4.4.2</b> Negative feedback and repolarization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.5</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.6</b> Leaky Integrate and Fire Model</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#passive-membrane-model"><i class="fa fa-check"></i><b>4.7.1</b> Passive membrane model:</a></li>
+<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#an-action-potential-has-six-phases"><i class="fa fa-check"></i><b>4.7.2</b> An action potential has six phases:</a></li>
+<li class="chapter" data-level="4.7.3" data-path="Ch3.html"><a href="Ch3.html#main-features-of-an-action-potential"><i class="fa fa-check"></i><b>4.7.3</b> Main features of an action potential:</a></li>
+<li class="chapter" data-level="4.7.4" data-path="Ch3.html"><a href="Ch3.html#the-flow-of-ions-and-equilibrium-potentials"><i class="fa fa-check"></i><b>4.7.4</b> The flow of ions and equilibrium potentials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="Ch3.html"><a href="Ch3.html#exercises-1"><i class="fa fa-check"></i><b>4.8</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.8.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="4.8.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.8.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a><ul>
-<li class="chapter" data-level="5.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="5.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-3"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introduction-3"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
 <li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>5.3</b> The Hodgkin and Huxley model</a></li>
-<li class="chapter" data-level="5.4" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
-<li class="chapter" data-level="5.5" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
-<li class="chapter" data-level="5.5.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#exercises-2"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="Ch4.html"><a href="Ch4.html#conceptual-exercises-1"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Ch4.html"><a href="Ch4.html#coding-exercises-1"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a><ul>
-<li class="chapter" data-level="6.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="6.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-4"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-4"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
 <li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#spike-trains"><i class="fa fa-check"></i><b>6.3</b> Spike Trains</a></li>
 <li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#spike-statistics"><i class="fa fa-check"></i><b>6.4</b> Spike Statistics</a></li>
-<li class="chapter" data-level="6.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
-<li class="chapter" data-level="6.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>6.6</b> Exercises</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.6.1</b> Conceptual Problems</a></li>
-<li class="chapter" data-level="6.6.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.6.2</b> Coding Problems</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#poisson-processes"><i class="fa fa-check"></i><b>6.5</b> Poisson Processes</a></li>
+<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#summary-4"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.7.1</b> Conceptual Problems</a></li>
+<li class="chapter" data-level="6.7.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.7.2</b> Coding Problems</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a><ul>
-<li class="chapter" data-level="7.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="7.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#vocabulary-5"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#introduction-5"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
 <li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#spike-triggered-average"><i class="fa fa-check"></i><b>7.3</b> Spike-triggered Average</a></li>
 <li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#reverse-correlation"><i class="fa fa-check"></i><b>7.4</b> Reverse Correlation</a></li>
-<li class="chapter" data-level="7.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-<li class="chapter" data-level="7.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>7.6</b> Exercises</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="7.6.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#summary-5"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="Ch6.html"><a href="Ch6.html#exercises-4"><i class="fa fa-check"></i><b>7.6</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="Ch6.html"><a href="Ch6.html#conceptual-exercises-2"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="7.6.2" data-path="Ch6.html"><a href="Ch6.html#coding-exercises-2"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a><ul>
-<li class="chapter" data-level="8.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="8.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
-<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="Ch7.html"><a href="Ch7.html#vocabulary-6"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="8.2" data-path="Ch7.html"><a href="Ch7.html#introduction-6"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="Ch7.html"><a href="Ch7.html#eeg"><i class="fa fa-check"></i><b>8.3.1</b> EEG</a></li>
 <li class="chapter" data-level="8.3.2" data-path="Ch7.html"><a href="Ch7.html#meg"><i class="fa fa-check"></i><b>8.3.2</b> MEG</a></li>
 <li class="chapter" data-level="8.3.3" data-path="Ch7.html"><a href="Ch7.html#fmri"><i class="fa fa-check"></i><b>8.3.3</b> fMRI</a></li>
 <li class="chapter" data-level="8.3.4" data-path="Ch7.html"><a href="Ch7.html#ecog"><i class="fa fa-check"></i><b>8.3.4</b> ECOG</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="Ch7.html"><a href="Ch7.html#introduction-to-decoding"><i class="fa fa-check"></i><b>8.4</b> Introduction to Decoding</a></li>
-<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a>
+<ul>
 <li class="chapter" data-level="8.5.1" data-path="Ch7.html"><a href="Ch7.html#correlation-classifiers"><i class="fa fa-check"></i><b>8.5.1</b> Correlation classifiers</a></li>
 <li class="chapter" data-level="8.5.2" data-path="Ch7.html"><a href="Ch7.html#distance-based-classifiers"><i class="fa fa-check"></i><b>8.5.2</b> Distance-based classifiers</a></li>
 <li class="chapter" data-level="8.5.3" data-path="Ch7.html"><a href="Ch7.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>8.5.3</b> Boundary-based classifiers</a></li>
@@ -218,16 +211,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="Ch7.html"><a href="Ch7.html#cross-validation"><i class="fa fa-check"></i><b>8.6</b> Cross validation</a></li>
 <li class="chapter" data-level="8.7" data-path="Ch7.html"><a href="Ch7.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a><ul>
+<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="Ch8.html"><a href="Ch8.html#vocabulary-list"><i class="fa fa-check"></i><b>9.1</b> Vocabulary List:</a></li>
 <li class="chapter" data-level="9.2" data-path="Ch8.html"><a href="Ch8.html#introductionbackground"><i class="fa fa-check"></i><b>9.2</b> Introduction/Background</a></li>
 <li class="chapter" data-level="9.3" data-path="Ch8.html"><a href="Ch8.html#different-types-of-learning"><i class="fa fa-check"></i><b>9.3</b> Different Types of Learning</a></li>
 <li class="chapter" data-level="9.4" data-path="Ch8.html"><a href="Ch8.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>9.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
 <li class="chapter" data-level="9.5" data-path="Ch8.html"><a href="Ch8.html#perceptron"><i class="fa fa-check"></i><b>9.5</b> Perceptron</a></li>
-<li class="chapter" data-level="9.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+<li class="chapter" data-level="9.6" data-path="Ch8.html"><a href="Ch8.html#summary-6"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="Ch9.html"><a href="Ch9.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
-<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a><ul>
+<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="Ch10.html"><a href="Ch10.html#chapter-1-preface"><i class="fa fa-check"></i><b>11.1</b> Chapter 1: Preface</a></li>
 <li class="chapter" data-level="11.2" data-path="Ch10.html"><a href="Ch10.html#chapter-2-introduction-to-python"><i class="fa fa-check"></i><b>11.2</b> Chapter 2: Introduction to Python</a></li>
 <li class="chapter" data-level="11.3" data-path="Ch10.html"><a href="Ch10.html#chapter-3-what-is-computational-neuroscience"><i class="fa fa-check"></i><b>11.3</b> Chapter 3: What is Computational Neuroscience?</a></li>
@@ -238,28 +233,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.8" data-path="Ch10.html"><a href="Ch10.html#chapter-8-decoding"><i class="fa fa-check"></i><b>11.8</b> Chapter 8: Decoding</a></li>
 <li class="chapter" data-level="11.9" data-path="Ch10.html"><a href="Ch10.html#chapter-9-neural-networks"><i class="fa fa-check"></i><b>11.9</b> Chapter 9: Neural Networks</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a><ul>
+<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="Ch11.html"><a href="Ch11.html#chapter-1-introduction-to-python"><i class="fa fa-check"></i><b>12.1</b> Chapter 1: Introduction to Python</a></li>
 <li class="chapter" data-level="12.2" data-path="Ch11.html"><a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience"><i class="fa fa-check"></i><b>12.2</b> Chapter 2: Introduction to Computational Neuroscience</a></li>
-<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a><ul>
+<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a>
+<ul>
 <li class="chapter" data-level="12.3.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions"><i class="fa fa-check"></i><b>12.3.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.3.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions"><i class="fa fa-check"></i><b>12.3.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a><ul>
+<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a>
+<ul>
 <li class="chapter" data-level="12.4.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-1"><i class="fa fa-check"></i><b>12.4.1</b> Conceptual Questions:</a></li>
 <li class="chapter" data-level="12.4.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-1"><i class="fa fa-check"></i><b>12.4.2</b> Coding Questions:</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a><ul>
+<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a>
+<ul>
 <li class="chapter" data-level="12.5.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-2"><i class="fa fa-check"></i><b>12.5.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.5.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-2"><i class="fa fa-check"></i><b>12.5.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a>
+<ul>
 <li class="chapter" data-level="12.6.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-3"><i class="fa fa-check"></i><b>12.6.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.6.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-3"><i class="fa fa-check"></i><b>12.6.2</b> Coding Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="12.7" data-path="Ch11.html"><a href="Ch11.html#chapter-7-decoding"><i class="fa fa-check"></i><b>12.7</b> Chapter 7: Decoding</a></li>
 <li class="chapter" data-level="12.8" data-path="Ch11.html"><a href="Ch11.html#chapter-8-neural-networks"><i class="fa fa-check"></i><b>12.8</b> Chapter 8: Neural Networks</a></li>
 </ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -277,118 +280,149 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ch2" class="section level1">
-<h1><span class="header-section-number">3</span> What is Computational Neuroscience?</h1>
-<div id="vocabulary" class="section level2">
-<h2><span class="header-section-number">3.1</span> Vocabulary</h2>
+<div id="Ch2" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> What is Computational Neuroscience?<a href="Ch2.html#Ch2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="vocabulary-1" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Vocabulary<a href="Ch2.html#vocabulary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Algorithm</li>
 <li>Bottom-up processing</li>
 <li>Computational neuroscience</li>
 <li>Computational theory</li>
+<li>Decoding model</li>
 <li>Emergent phenomena</li>
 <li>Hardware and implementation</li>
-<li>Hebbian learning</li>
+<li>Model</li>
+<li>Neural decoding</li>
 <li>Reconstruction</li>
 <li>Reductionism</li>
-<li>Reductionism</li>
-<li>Representation</li>
+<li>Representational model</li>
 <li>Top-down processing</li>
-<li>Turing machine</li>
+<li>Turing Machine</li>
+<li>Turing-complete</li>
+<li>Turing test</li>
 </ul>
 </div>
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">3.2</span> Introduction</h2>
+<div id="introduction-1" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Introduction<a href="Ch2.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div style="float:right;position: relative; top: -80px;">
 <div class="figure">
-<img src="images/table.png" alt=" "  />
+<img src="images/table.png" alt=" " width="177" />
 <p class="caption">
 </p>
 </div>
 </div>
-<p>Look at this picture of a desk on the page in front of you. As you look at it, your brain is somehow able to turn the raw sense data coming from your eyes into a judgment about the identity of the object in the image. If we want to build a machine that can demonstrate a similar capacity to judge — then we need to be able to model and understand the mechanisms that are at work when we see the desk. We are now left with at least two questions: <em>(1) How might we create a computer program that performs the same cognitive tasks as us humans?</em> And (2) <em>What can such as program tell us about the mechanisms at work in our own human brains?</em> While these questions may not be exhaustive of the concerns of computational neuroscience, they should at least give you a taste of some of the issues the discipline grapples with on a regular basis.<br />
-For more information please <a href="https://www.cell.com/trends/cognitive-sciences/pdf/S1364-6613(17)30134-1.pdf">explore.</a></p>
+<p>Look at this picture of a desk on the page in front of you. Your brain is somehow able to translate the raw sensory data coming from your eyes into a judgment about the identity of the object in the image. If we want to build a machine that can demonstrate a similar capacity to judge, then we need to be able to model and understand the mechanisms that are at work when we see the image. This leaves us with at least two questions:</p>
+<ul>
+<li>How might we create a computer program that performs the same cognitive tasks as us humans?<br />
+</li>
+<li>What can such a program tell us about the mechanisms at work in our own human brains?</li>
+</ul>
+<p>While these questions may not be exhaustive of all the concerns of computational neuroscience, they should at least give you a taste of some of the issues the discipline grapples with on a regular basis.</p>
 </div>
-<div id="what-is-computational-neuroscience" class="section level2">
-<h2><span class="header-section-number">3.3</span> What is computational neuroscience?</h2>
-<p><strong>Computational neuroscience</strong> is an interdisciplinary field that applies the principles of mathematics, philosophy, and computer science to study the inner workings of the brain. Computer models are critical to computational neuroscience, because they allow experiments to be conducted in a highly controlled and replicable fashion. In this context, a “model” is a simplified and simulated version of a system that tries to guess how the actual (simulated) system would behave in the real world.</p>
-<p>For example, suppose a computational neuroscientist wants to understand how the human brain begins to make sense of sounds. A computer model could be constructed for this purpose, because many disparate aspects of the hearing parts of the brain have been measured. Such measurements would make constructing a useful computer model possible, because they would constrain the design model. In other words, our researcher could design a model where the simulated features match the measurements of the corresponding real features of the brain. This model could be useful, because our researcher has access to all the features of the computer model—including those that could not be easily and ethically measured in the actual human brain. This utility would be borne out in plausible inferences about currently unmeasured properties and behaviors of the brain.</p>
-<p>While it is true that the inferences we’ve just discussed can not be made with complete certainty, they can be instrumental in guiding future research as new technology (and sources of funding) become available. Even if a given model ends up not holding up to future data, the model could still prove useful for developing artificial intelligences.
-With the potential of computer models of the brain in mind, it may be tempting to think you could build a model that truly “understands” in the same way that a person does. The question of whether or not such a model is possible is a matter of much debate, so suffice it to say we will only briefly survey the issues here.</p>
-<p>On the side arguing that a computer model could never truly understand something (e.g. the Chinese language) the way a human does is the philosopher John Searle. Searle makes use of his famous <a href="https://www.youtube.com/watch?v=D0MD4sRHj1M">“Chinese Room Argument”</a> to suggest that merely following a set of rules to produce a desired result from a given input is not enough to count as true understanding. For example, Searle would argue that using a big book of rules for writing Chinese answers that respond to Chinese questions is not the same thing as having a natural conversation in Chinese.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p>This may seem intuitively true, but many of Searle’s opponents<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> argue that Searle’s alleged argument is only intuitively true. That is to say that Searle is merely provoking intuitions rather than supplying premises or facts that lead to his desired conclusion.</p>
-<p>The motivations for this debate could be explained in terms of the level of organization at which Searle and his opponents appear to be thinking.</p>
-<p>While Searle published his paper on the “Chinese Room Argument” in 1980, the conversation of whether computers would be able to fully understand humans had been ongoing for many decades prior. In 1936, Alan Turing, created the theory of the Turing test to find when there was an equivalence between artificial intelligence and humans. Turing found the limitations of computation by understanding the limitations of humanity, and thus he created the <a href="https://www.turing.org.uk/publications/testbook.html"><strong>Turing Machine.</strong></a> This machine paved way for the turing test, that tested whether a human could determine whether they were interacting with another machine or another human. Hence, the question of how to tell when artificial intelligence will be comparable to human intelligence is an ongoing problem today.</p>
-<div class="figure"><span id="fig:conway-fig"></span>
-<img src="images/conway.png" alt="Example of Conway's Game of Life"  />
+<div id="what-is-computational-neuroscience" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> What is computational neuroscience?<a href="Ch2.html#what-is-computational-neuroscience" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Computational neuroscience</strong> is an interdisciplinary field that applies the principles of mathematics, philosophy, and computer science to study the inner workings of the brain. Computer models are critical to computational neuroscience, because they allow experiments to be conducted in a highly controlled and replicable fashion. In this context, a <strong>model</strong> is a simplified version of a system that tries to simulate how that system would behave in the real world.</p>
+<p>For example, suppose a computational neuroscientist wants to understand how the human brain begins to make sense of sounds. They would construct a computer model for this purpose as already many aspects of the hearing parts of the brain have been measured and are ready to use. Such measurements would make constructing a useful computer model possible since they would constrain the design model. In other words, our researcher could design a model where the simulated features match the measurements of the corresponding real features of the brain. This model could be useful because our researcher has access to all the features of the computer model—including those that could not be easily and ethically measured in the actual human brain. This utility would be born out in plausible inferences about currently unmeasured properties and behaviors of the brain.</p>
+<p>Like any other scientific field, inferences can be dynamic as developments are emerging rapidly. New research and new technologies are always pushing the boundaries forward. Being a developing field, even if a model brings us no complete certainty, it can also be worthy in shaping approaches to problems and also help with scientists developing artificial intelligence.</p>
+<div id="can-we-make-models-that-understand" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Can we make models that understand?<a href="Ch2.html#can-we-make-models-that-understand" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Considering the potential computer models of the brain, it may be tempting to think you could build a model that truly “understands” in the same way that a human person does. It seems exciting, think of the possibilities. We could then conduct intricate experiments that we could not perform on human brains. Perhaps we could create sentience? But maybe that might be a confusing way to start since commonly we think that computers are not much more than the devices we commonly use. However, computation in terms of understanding computational neuroscience is more diverse and can be more theoretical than simply typing commands in our laptops. Computation, a very vast field, includes mathematical steps, processes and interpretations which could or could not be calculated with a physical computer machine. It is this definition that leads us to think more broadly about computational neuroscience and what it means to discover, whether we create a brain inside a physical computer or even theoretical machines. “Understanding” as such is one important aspect but what if even when we create a human brain in a computer, that could understand, would we still be able to know how our brains work? What would it mean then for a computer model to “understand”?</p>
+<p>Most notably, Alan Turing started the discussion. He created the <a href="https://www.turing.org.uk/publications/testbook.html"><strong>Turing Machine</strong></a>. It is a theoretical machine that can do any calculation. The machine has a finite number of configurations and an imaginary infinite tape that is read by the machine. The purpose is to solve issues in an “effective procedure”, which means to solve a problem in an effective way, it is mechanical and needs to finish the problem in a finite number of steps <strong>Any problem that can be solved using a Turing Machine is computable</strong>. Many items that can solve computational problems are equivalent to Turing machines, and these are called <strong>Turing-complete</strong>. Computation’s scope goes beyond the physical computer that we are used to.</p>
+<p>This machine paved the way for the <strong>Turing Test</strong>, where a machine that develops language interacts with a person via text and the person has to decide if their correspondent is human or not. If so, we could say that the machine has reached human intelligence. Given the complexity of the topic, it is appropriate to say that establishing when artificial intelligence will be comparable to human intelligence is an ongoing problem today.</p>
+<p>On the side arguing that a computer model could never truly understand something the way a human does is philosopher John Searle. Searle makes use of his famous <a href="https://www.youtube.com/watch?v=D0MD4sRHj1M">“Chinese Room Argument”</a> to suggest that merely following a set of rules to produce a desired result from a given input is not enough to count as true understanding. For example, Searle would argue that using a big book of rules for writing answers in Chinese characters that respond to Chinese questions is not the same thing as having a natural conversation in Chinese—you are performing the function but there is no understanding. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. The system could fake being intelligent and ‘understanding’ while actually being ignorant itself.</p>
+<p>This may seem intuitively true, but many of Searle’s opponents <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> argue that Searle’s argument is only intuitively true. That is to say, Searle is merely provoking intuitions rather than supplying premises or facts that lead to his desired conclusion. Still taking on Searle, we can consider that while the person themselves does not understand Chinese, the system as a whole does. So even though the model could not understand like a human, the aggregate processes could, and functionally that would be the case. This can help us think in computational neuroscience about the different ways we consider the outcomes of research and what computing through our goals would actually look like.</p>
+<p>In the link below, you can play <a href="https://conwaylife.com/wiki/Conway&#39;s_Game_of_Life#:~:text=Conway&#39;s%20Game%20of%20Life%2C%20also,example%20of%20a%20cellular%20automaton."><strong>Conway’s Game of Life</strong></a>. It is a Turing-complete program, that follows all the rules of the machine, it is unending, and has interesting limitations to imitate and calculate life. It is a zero-player game that only starts with the initial configuration and checks itself, just like a Turing Machine, and adjusts as the game goes on until certain conditions have been met.</p>
+<div class="figure"><span style="display:block;" id="fig:conway-fig"></span>
+<img src="images/conway.png" alt="Example of Conway's Game of Life" width="190" />
 <p class="caption">
 Figure 3.1: Example of Conway’s Game of Life
 </p>
 </div>
 </div>
-<div id="levels-of-organization" class="section level2">
-<h2><span class="header-section-number">3.4</span> Levels of organization</h2>
-<p>In 1982, David Marr, introduced a new approach to analysis. He believed that there were three levels in the model of the brain. The first level is the <strong>computational theory</strong>, , which is a description of the information going into the system, and the corresponding output desired from the system. An example of this is addition. The input is two numbers, and the desired output is the sum of those numbers. The second level consists of the representational scheme and the algorithm. The <strong>representational scheme</strong> is the description of the functional elements that are used in the computation, while the <strong>algorithm</strong> is the set of operations that are performed with or by those elements in order to carry out the transformation specified by the computational theory. One example is a cookbook recipe; this will define a step by step process (an algorithm) for how to produce a product given a set of clearly defined ingredients (a representational scheme). The third level is <strong>hardware implementation</strong>, which refers to the physical machinery that realizes the algorithm.</p>
-<p>The goal of computational neuroscience is to be able to replicate the functions of the brain, such as the one you just performed, in a non-organic setting. One of the ways to do this is through computer programming software, such as the application Python.</p>
+</div>
+<div id="levels-of-organization" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Levels of organization<a href="Ch2.html#levels-of-organization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In 1982, David Marr introduced a new approach to analysis. He believed that there were three levels of analysis when considering the model of the brain.</p>
+<ul>
+<li>The <strong>computational</strong>, deals with the problem solving aspect: why we need this model and what it explains. This approach is geared towards problem solving and the logic of our model.</li>
+</ul>
+<p><i>For example, if we are given two boxes, each with a different number of books, and we need to know the total number in both, we know we have to use addition as a strategy. The input is two numbers, and the desired output is the sum of those numbers.</i></p>
+<ul>
+<li>The second level consists of the representational scheme and the algorithm, it is the <i>how</i> part. The <strong>representational scheme</strong> is the way in which we represent the input and the output in whatever system we are implementing the algorithm. The <strong>algorithmic</strong> is the set of operations that are performed with or by those elements in order to carry out the transformation specified by the computational theory.</li>
+</ul>
+<p><i>One example is a cookbook recipe; this will define a step by step process (i.e., an algorithm) for how to produce a product given a set of clearly defined ingredients (i.e., a representational scheme).</i></p>
+<ul>
+<li>The third level is <strong>hardware implementation</strong>, which refers to the physical machinery that realizes the algorithm and the representation in a physical way.</li>
+</ul>
+<p><i>For example, if you try to withdraw money from an ATM, the machine will run the algorithm designed for the purpose. The hardware implementation part comes in when the machine brings the money in the cash dispenser for you to grab.</i></p>
+<p>The goal of computational neuroscience is to be able to model and replicate the functions of the brain in a non-organic setting. One of the ways to do this is through computer programming software, such as the application Python.</p>
 <p>Consider the following basic code:</p>
 <div class="figure">
-<img src="images/code.png" alt=" "  />
+<img src="images/code.png" alt=" " width="157" />
 <p class="caption">
 </p>
 </div>
-<p>Here is an example of an addition problem coded in Python. We can see the input, the algorithm which is transforming the input, and then the correct output of 4. Given the properties of coding software such as Python, which takes input, and runs it through a set algorithm. Is this similar to the way we humans do it? If so, how? If not, why not?</p>
+<p>Here is an example of an arithmetic addition problem coded in Python. We can see the input, the algorithm which is transforming the input, and then the correct output of 4. Given the properties of coding software such as Python, which takes input, and runs it through a set algorithm, is this similar to the way we humans do it? If so, how? If not, why not?</p>
 </div>
-<div id="applications-of-computational-neuroscience" class="section level2">
-<h2><span class="header-section-number">3.5</span> Applications of computational neuroscience</h2>
-<p>As we delve deeper into Computational Neuroscience, we will find that the field has a variety of potential applications when it comes to understanding how cognition happens. Computational Neuroscience, perhaps most importantly, allows us to create models of our cognitive processes, such that they are able to capture the basis of complex phenomena in a simple way. The brain is an extremely complex organ, and while we may not always understand all of its architecture and functionality, by using methods of Computational Neuroscience we are able to abstract certain notions to the extent that they become comprehensible. In doing so, we develop the ability to understand interactions between neurons in the brain and begin seeing the nature of certain causal relationships. Furthermore, we can begin to predict how complex systems in the brain will behave when presented with particular stimuli. This may all seem rather abstract, so let’s think of an example we often take for granted: Vision. How is it that we are capable of recognizing a variety of highly specific things and distinguishing them from one another? What constitutes recognition and the neural processes behind it? How do we decide what deserves recognition and what doesn’t? Why is it so difficult to replicate these seemingly innate processes in a robot? All these questions can be addressed using Computational Neuroscience. We must, however, keep one thing in mind. When creating models, the correct level of simplicity is difficult if not impossible to discern. So, it is important to engage in criticism and scrutiny when developing the simplest and most efficient model one can think of.</p>
+<div id="applications-of-computational-neuroscience" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Applications of computational neuroscience<a href="Ch2.html#applications-of-computational-neuroscience" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As we delve deeper into computational neuroscience, we find that the field has a variety of potential applications when it comes to understanding cognition. Perhaps most distinguished is computational neuroscience’s ability to create models of our cognitive processes, such that they are able to capture the basis of complex phenomena through mathematical models and computer simulations. The brain is an extremely complex organ, and while we may not always understand all its structures and functionality, by using various methods of computational neuroscience, we can abstract certain understandings and model them. In doing so, we develop the ability to understand interactions between neurons in the brain and begin seeing the nature of certain causal and correlational relationships.</p>
+<p>Furthermore, we can begin to predict how complex systems in the brain will behave when presented with particular stimuli. This may all seem rather abstract, so let’s think of an example we often take for granted: Vision. How is it that we are capable of recognizing a variety of highly specific things and can distinguish them from one another? What constitutes recognition and the neural processes behind it? How do we decide what registers as recognition and what doesn’t? Why is it so difficult to replicate these seemingly innate processes in a robot? We can approach these questions and attempt to address them using computational neuroscience. When we think of how to model vision, the first thought is to do it in the most simple manner possible. This makes sense. Whether or not we implement the “right” level of simplicity when creating models is difficult—if not impossible—to discern. It should be acknowledged that the desire to create computational models in the first place stems from our curiosity of understanding the brain. Therefore, we must be cognizant of this and engage any model that is created with criticism and scrutiny.</p>
 <div style="float:right;width:419px">
-<div class="figure"><span id="fig:flock-fig"></span>
-<img src="images/birds.png" alt="One example of emergent phenomena are the flight patterns of geese. One goose alone flies as it wishes but a collection of geese come together to form a v-shaped pattern that affects the overall movement of the geese."  />
+<div class="figure"><span style="display:block;" id="fig:flock-fig"></span>
+<img src="images/birds.png" alt="One example of emergent phenomena are the flight patterns of geese. One goose alone flies as it wishes but a collection of geese come together to form a v-shaped pattern that affects the overall movement of the geese." width="210" />
 <p class="caption">
 Figure 3.2: One example of emergent phenomena are the flight patterns of geese. One goose alone flies as it wishes but a collection of geese come together to form a v-shaped pattern that affects the overall movement of the geese.
 </p>
 </div>
 </div>
-<p>You may be saying to yourself, “Ok, well all this is great in theory, but where do we begin?”. We start by trying to establish <strong>Emergent Phenomena.</strong> Emergent Phenomena allow us to reframe composite systems such that we are able to understand their underlying mechanisms in simpler terms. To clarify, an Emergent Phenomenon can highlight both the mechanics and the nature of a particular system. For instance, a normal car cannot function properly unless it has four wheels. However, the car also derives part of its “car-ness” from the fact that it has four wheels. There are two primary schools of thought in this domain: <strong>Reductionism</strong> and <strong>Reconstructionism.</strong> Reductionism is the idea that in order to understand a given complex system, we must be able to reduce it to its simplest form, while Reconstructionism claims that we go in the opposite direction and reconstruct the system such that we are able to capture its complexity. After all, when we create models of the brain, it is not sufficient to explain their architecture. We must also show how the architecture gives rise to certain relationships and interactions. To do this, we can design our models using one of the following approaches: <strong>Top-down processing</strong> or <strong>Bottom-up processing.</strong> Top-down processing makes us design our models with a certain purpose, or goal in mind. Bottom-up processing leads us to establish a base of information or data before creating the model, and then creating the model and its purpose off of what we have collected.</p>
-</div>
-<div id="the-future-of-computational-neuroscience" class="section level2">
-<h2><span class="header-section-number">3.6</span> The future of computational neuroscience</h2>
+<p>You may be saying to yourself, “Ok, this is great in theory, but where do we begin?” Let’s start by thinking about the big picture. Think about the setup of a system. If we want to understand how it works, we first need to understand how it is organized. This is where a term called <strong>emergent phenomena</strong> comes into play. Emergent phenomenon is the cyclical dissemination of recurrent information from a micro to macro perspective and vice versa. It allows us to reframe composite systems such that we are able to understand their underlying mechanisms in simpler terms. For example, take our understanding of the brain. Known information about the brain alters following the release of new research, which changes depending on the trends in different interests in research. In turn, this changes the research being done, which then modifies our knowledge about the brain. This permits emergent phenomena to highlight both the mechanics and the nature of a particular system. Let’s look at another example.</p>
+<p>What makes something a car? Well, it can be ascertained that most cars have four wheels; this is part of its mechanic. However, that is only one part of the whole. Four wheels do not constitute a car; what allows us to identify one is the essence of “car-ness” that is derived from the singular amalgamation of all its parts. These methods of thinking relate to two primary schools of thought: <strong>Reductionism</strong> and <strong>Reconstructionism.</strong> Reductionism is the idea that in order to understand a given complex system, we must be able to reduce it to its simplest form, while Reconstructionism asserts that understanding a system relies on the ability to reconstruct the system such that we are able to capture its complexity. Think of Reductionism and Constructionism in terms of the brain. Reductionism is akin to studying one neuron, or a group of neurons to derive its function, while Reductionism involves analyzing how the brain functions as one system. This matters because when we create models of the brain, it is not sufficient to only explain its architecture. We must also show how the architecture gives rise to certain relationships and interactions—but how?</p>
+<p>Let’s look at how two different types of models approach this. One type of model, called the <strong>decoding model</strong>, helps us understand the brain’s computational mechanisms by unveiling the information present in various locations of the brain. The idea is that if brain activity is able to be decoded, then information is present. To clarify, <strong>Neural Decoding</strong> is the process of interpreting the information that resides within neuronal activity (i.e., action potentials). You will read more about this in Chapter 7. When that information is considered “representational” of that specific brain region—meaning it carries significance and pertains specifically to that location—we can subsequently analyze the purpose of this information as it is sent and received from different regions of the brain. This information allows us to better understand brain functions and how information is transmitted, which can then be implemented in computational models.</p>
+<p>On the other hand, we could also use <strong>representational models</strong>. These types of models are more all-encompassing than decoding models; they specify what representation looks like within a brain region. Given an exhaustive list of random stimuli, we predict how that region of the brain would respond. Knowing all the possibilities of neuronal responses allows us to predict which stimuli can be decoded.</p>
+<p>Representational models provide greater computational restraints about the predictions made in representational space than decoding models. While representational models do not provide us with a direct path to the creation of a computational model, the predictability of neuronal behavior within representational spaces can lead to the creation of computational models that can respond to novel stimuli. You may have also noticed that these two models themselves do not actually perform the functions or tasks that these computational models ask for. They do not happen to explain the mechanisms behind the tasks, but they provide constraints for the computational models. This is one of the first steps to approaching a fully integrated computational model.</p>
 <div style="float:left; width:419px">
-<div class="figure"><span id="fig:context-fig"></span>
-<img src="images/context.png" alt="This image can be approached in two different ways. For bottom-up processing, we can see the letters first and then figure out the words. For top-down processing, we can see the words and decide what each letter is."  />
+<div class="figure"><span style="display:block;" id="fig:context-fig"></span>
+<img src="images/context.png" alt="This image can be approached in two different ways. For bottom-up processing, we can see the letters first and then figure out the words. For top-down processing, we can see the words and decide what each letter is." width="164" />
 <p class="caption">
 Figure 3.3: This image can be approached in two different ways. For bottom-up processing, we can see the letters first and then figure out the words. For top-down processing, we can see the words and decide what each letter is.
 </p>
 </div>
 </div>
-<p>Given all this information, what is the future of Computational Neuroscience? Interest in the field is increasing steadily and everyday the range of its possible applications grows. In 2013, the Obama administration began the BRAIN initiative, a program designed to facilitate the development of innovative technologies that allow for a well-rounded and versatile understanding of brain function. In 2005, a Swiss team of scientists began another initiative called the Blue Brain project whereby they reconstructed the mammalian brain using simulations in order to generate a comprehension of the basic underlying principles of brain function and architecture. Computational Neuroscience becomes more relevant everyday and allows us to tackle difficult issues like the complexities of <strong>Hebbian Learning</strong> and Neural Networks. The implications of the field are perhaps unparalleled by any other fields of scientific inquiry, in that they may hold the answers to the creation of true Artificial Intelligence and the understanding of Consciousness and perception in the human brain.</p>
+<p>As we can see, these are merely two types of models that vastly differ from one another. There are many more. How did they come to be? They may all be extraordinarily unique in their perspectives, but there is one commonality they all generally share. We design our models using one of two following approaches: <strong>Top-down processing</strong> or <strong>bottom-up processing.</strong> Top-down processing makes us design our models with a certain purpose, or goal in mind. Bottom-up processing leads us to establish a base of information or data before creating the model, and then creating the model and its purpose from what we have collected. As you process this information, think about how decoding models and representational models fit into these schemes.</p>
 </div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">3.7</span> Summary</h2>
+<div id="the-future-of-computational-neuroscience" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> The future of computational neuroscience<a href="Ch2.html#the-future-of-computational-neuroscience" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div style="float:right;width:408px">
-<div class="figure"><span id="fig:connectome-fig"></span>
-<img src="images/connectome.png" alt="Applying Hebbian theory to computational neuroscience allows us to envision the connections between various neurons in the brain, displayed here is what is called a 'connectome'."  />
+<div class="figure"><span style="display:block;" id="fig:connectome-fig"></span>
+<img src="images/connectome.png" alt=" Hebbian learning is the strengthening of connections between postsynaptic and presynaptic neurons based on activity-dependent synaptic activity. Applying Hebbian theory to computational neuroscience allows us to envision the connections between various neurons in the brain, displayed here is what is called a 'connectome'." width="204" />
 <p class="caption">
-Figure 3.4: Applying Hebbian theory to computational neuroscience allows us to envision the connections between various neurons in the brain, displayed here is what is called a ‘connectome’.
+Figure 3.4:  Hebbian learning is the strengthening of connections between postsynaptic and presynaptic neurons based on activity-dependent synaptic activity. Applying Hebbian theory to computational neuroscience allows us to envision the connections between various neurons in the brain, displayed here is what is called a ‘connectome’.
 </p>
 </div>
 </div>
-<p>Every person has a brain, but that doesn’t mean we understand what the brain is, or what it does. The brain is a complex organism with many facets to understand, and to fully comprehend; one must understand the mechanics and the reasoning behind each component. Whether studying in a top-down process, or a bottom-up process, one must keep in mind Marr’s three levels of investigation: computational theory, representation and algorithm, and hardware and implementation. Computers and brains are different organisms, but by studying them alongside one another, a deeper understanding can be elicited. Turing introduced the world to the concept of using humans as a test of how to understand artificial intelligence, but we can now use artificial intelligence to understand the brain as well.</p>
+<p>Given all this information, what is the future of computational neuroscience? Interest in the field is increasing steadily and every day the range of its possible applications grows. In 2013, the Obama administration began the BRAIN initiative, a program designed to facilitate the development of innovative technologies that allow for a well-rounded and versatile understanding of brain function. In 2005, a Swiss team of scientists began another initiative called the Blue Brain project whereby they reconstructed the mammalian brain using simulations to generate a comprehension of the basic underlying principles of brain function and architecture. Computational neuroscience becomes more relevant everyday. Not only does it allow us to tackle difficult issues like the complexities of Hebbian learning and Neural Networks, but it is relevant in everyday applications too. For instance, recent breakthroughs in robotic neuroprosthetic systems may lead to a future in which paralyzed individuals could control prosthetic limbs using tiny implants or wearing electrodes. All of this is due to our detailed understanding of the neural processes involved in motor control; recognizing these processes allows us to create algorithms that can replicate that stimulation. This is merely the beginning. Many fields, including computational neuroscience, are trying to develop our understanding of the brain and many more will.</p>
 </div>
-<div id="exercises" class="section level2">
-<h2><span class="header-section-number">3.8</span> Exercises:</h2>
+<div id="summary-1" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Summary<a href="Ch2.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Every person has a brain, but that does not mean we truly understand what the brain is (We should also think: What does it mean to understand the brain?&gt;), or what it does. It is a complex organ with a multitude of facets to understand. To fully grapple with it, you must understand the mechanics and the reasoning behind each component. Computational thinking is one manner of striving towards this goal.</p>
+<p>Computational neuroscience is a complex field that translates much of what we understand as biological constraints and cognitive processes and uses this to create a model of the brain, employing mathematical models and theoretical analysis to better understand the brain’s functions. The principles that govern computational neuroscience and its abstractions utilize several types of processes and manners of thinking. In this chapter, we examined what computation means, how Marr’s three levels of investigation provide structure for any information processing system; how models are created using top-down or bottom-up processing; how emergent phenomena organize a system; and how machines operate, thanks to Alan Turing. The integration of cognitive neuroscience along with the development of more complex technologies and Artificial Intelligence may be the future to understanding the brain one day. In an era of rapid scientific discoveries, progress is being made daily. Many have been striving to achieve this goal, and many more will continue to do so.</p>
+</div>
+<div id="exercises" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Exercises:<a href="Ch2.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Try out <a href="https://bitstorm.org/gameoflife/">Conway’s Game of Life</a> at <a href="https://bitstorm.org/gameoflife/" class="uri">https://bitstorm.org/gameoflife/</a> to explore more into the implications of the Turing Machine and computer simulations.<br />
-</li>
-<li>What are at least two methods you could use to add two two integers such as 5 and 5? Now consider how you solved these two problems. Which of Marr’s levels was changing?<br />
+<li>Consider at least two methods you could use to add two integers such as 5 and 5. Which of Marr’s levels changes as a result?<br />
 </li>
 <li>Explain the difference between the top-down and bottom-up philosophy.<br />
 </li>
 <li>Which better explains and represents cognitive phenomena: the top-down approach, or the bottom-up approach?<br />
 </li>
-<li>Characterize the concept of emergent phenomena. Is human sentience that kind of phenomenon?<br />
+<li>Characterize the concept of emergent phenomena. Does human sentience embody the phenomenon?<br />
 </li>
-<li>Does artificial intelligence have to have emotions to be sentient?</li>
+<li>Does artificial intelligence have to contain emotions to be sentient?<br />
+</li>
+<li>Would we consider the brain a computer?</li>
 </ol>
 
 </div>
@@ -397,7 +431,7 @@ Figure 3.4: Applying Hebbian theory to computational neuroscience allows us to e
 <hr />
 <ol start="1">
 <li id="fn1"><p>See <a href="https://plato.stanford.edu/entries/chinese-room/" class="uri">https://plato.stanford.edu/entries/chinese-room/</a> for more on this thought experiment.<a href="Ch2.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>E.g. Dennett, Thagard, and Pinker to name a few.<a href="Ch2.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>E.g. Dennett, Thagard, and Pinker to name a few<a href="Ch2.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -410,7 +444,6 @@ Figure 3.4: Applying Hebbian theory to computational neuroscience allows us to e
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
 <script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -429,6 +462,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -437,8 +471,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-WhatIsComp.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -448,7 +482,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Computational Neuroscience.pdf", "Computational Neuroscience.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 },
@@ -459,20 +497,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

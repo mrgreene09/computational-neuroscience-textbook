@@ -4,27 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Firing Rates | Computational Neuroscience</title>
+  <title>Chapter 6 Firing Rates | Computational Neuroscience</title>
   <meta name="description" content="TBD" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Firing Rates | Computational Neuroscience" />
+  <meta property="og:title" content="Chapter 6 Firing Rates | Computational Neuroscience" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="TBD" />
   <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Firing Rates | Computational Neuroscience" />
+  <meta name="twitter:title" content="Chapter 6 Firing Rates | Computational Neuroscience" />
   
   <meta name="twitter:description" content="TBD" />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Students of NS/PY 357 Bates College" />
 
 
-<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +31,8 @@
   
 <link rel="prev" href="Ch4.html"/>
 <link rel="next" href="Ch6.html"/>
-<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,23 +48,24 @@
 
 
 
-
-<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,13 +85,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +104,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -118,6 +118,8 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -130,87 +132,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li><a href="./">Computational Neuroscience</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-book-is-free-as-in-pizza"><i class="fa fa-check"></i><b>1.1</b> This book is free (as in pizza)</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors-version-0.0"><i class="fa fa-check"></i><b>1.5</b> Authors: Version 0.0</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#authors-version-1.0"><i class="fa fa-check"></i><b>1.6</b> Authors: Version 1.0</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#authors-version-2.0"><i class="fa fa-check"></i><b>1.7</b> Authors: Version 2.0</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a><ul>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
 <li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
-<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
-<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.4</b> Example Python Problems</a></li>
-<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.5</b> Conceptual Exercises for Learning Python</a></li>
-<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.6</b> Coding Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#libraries"><i class="fa fa-check"></i><b>2.3</b> Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#data-types"><i class="fa fa-check"></i><b>2.4</b> Data Types</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="Ch1.html"><a href="Ch1.html#string"><i class="fa fa-check"></i><b>2.4.1</b> String</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Ch1.html"><a href="Ch1.html#integers"><i class="fa fa-check"></i><b>2.4.2</b> Integers</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Ch1.html"><a href="Ch1.html#floats"><i class="fa fa-check"></i><b>2.4.3</b> Floats</a></li>
+<li class="chapter" data-level="2.4.4" data-path="Ch1.html"><a href="Ch1.html#lists"><i class="fa fa-check"></i><b>2.4.4</b> Lists</a></li>
+<li class="chapter" data-level="2.4.5" data-path="Ch1.html"><a href="Ch1.html#boolean"><i class="fa fa-check"></i><b>2.4.5</b> Boolean</a></li>
+<li class="chapter" data-level="2.4.6" data-path="Ch1.html"><a href="Ch1.html#arrays"><i class="fa fa-check"></i><b>2.4.6</b> Arrays</a></li>
+<li class="chapter" data-level="2.4.7" data-path="Ch1.html"><a href="Ch1.html#vectors"><i class="fa fa-check"></i><b>2.4.7</b> Vectors</a></li>
+<li class="chapter" data-level="2.4.8" data-path="Ch1.html"><a href="Ch1.html#matrices"><i class="fa fa-check"></i><b>2.4.8</b> Matrices</a></li>
+<li class="chapter" data-level="2.4.9" data-path="Ch1.html"><a href="Ch1.html#variable-assignment"><i class="fa fa-check"></i><b>2.4.9</b> Variable assignment</a></li>
+<li class="chapter" data-level="2.4.10" data-path="Ch1.html"><a href="Ch1.html#f-strings"><i class="fa fa-check"></i><b>2.4.10</b> f-Strings</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a><ul>
-<li class="chapter" data-level="3.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="3.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#for-loops"><i class="fa fa-check"></i><b>2.5</b> For loops</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#if-elif-else-statements"><i class="fa fa-check"></i><b>2.6</b> If-Elif-Else Statements</a></li>
+<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#conditional-statements"><i class="fa fa-check"></i><b>2.7</b> Conditional statements</a></li>
+<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#logic-statements"><i class="fa fa-check"></i><b>2.8</b> Logic statements</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="Ch1.html"><a href="Ch1.html#and-or-not"><i class="fa fa-check"></i><b>2.8.1</b> “And”, “Or”, “Not”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="Ch1.html"><a href="Ch1.html#while-loops"><i class="fa fa-check"></i><b>2.9</b> While loops</a></li>
+<li class="chapter" data-level="2.10" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.10</b> Summary</a></li>
+<li class="chapter" data-level="2.11" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.11</b> Example Python Problems</a></li>
+<li class="chapter" data-level="2.12" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.12</b> Conceptual Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.13" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.13</b> Coding Exercises for Learning Python</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="Ch2.html"><a href="Ch2.html#can-we-make-models-that-understand"><i class="fa fa-check"></i><b>3.3.1</b> Can we make models that understand?</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#levels-of-organization"><i class="fa fa-check"></i><b>3.4</b> Levels of organization</a></li>
 <li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.5</b> Applications of computational neuroscience</a></li>
 <li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.6</b> The future of computational neuroscience</a></li>
-<li class="chapter" data-level="3.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
 <li class="chapter" data-level="3.8" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a><ul>
-<li class="chapter" data-level="4.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="4.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>4.3</b> What is an action potential?</a></li>
-<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.4</b> Nernst equilibrium potential</a></li>
-<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.5</b> Leaky Integrate and Fire Model</a></li>
-<li class="chapter" data-level="4.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
-<li class="chapter" data-level="4.7" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a><ul>
-<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.7.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.7.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#membrane-potentials-and-electrochemical-gradients"><i class="fa fa-check"></i><b>4.3</b> Membrane potentials and electrochemical gradients</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#phases-of-the-action-potential"><i class="fa fa-check"></i><b>4.4</b> Phases of the action potential</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="Ch3.html"><a href="Ch3.html#positive-feedback-and-depolarization"><i class="fa fa-check"></i><b>4.4.1</b> Positive feedback and depolarization</a></li>
+<li class="chapter" data-level="4.4.2" data-path="Ch3.html"><a href="Ch3.html#negative-feedback-and-repolarization"><i class="fa fa-check"></i><b>4.4.2</b> Negative feedback and repolarization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.5</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.6</b> Leaky Integrate and Fire Model</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#passive-membrane-model"><i class="fa fa-check"></i><b>4.7.1</b> Passive membrane model:</a></li>
+<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#an-action-potential-has-six-phases"><i class="fa fa-check"></i><b>4.7.2</b> An action potential has six phases:</a></li>
+<li class="chapter" data-level="4.7.3" data-path="Ch3.html"><a href="Ch3.html#main-features-of-an-action-potential"><i class="fa fa-check"></i><b>4.7.3</b> Main features of an action potential:</a></li>
+<li class="chapter" data-level="4.7.4" data-path="Ch3.html"><a href="Ch3.html#the-flow-of-ions-and-equilibrium-potentials"><i class="fa fa-check"></i><b>4.7.4</b> The flow of ions and equilibrium potentials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="Ch3.html"><a href="Ch3.html#exercises-1"><i class="fa fa-check"></i><b>4.8</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.8.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="4.8.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.8.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a><ul>
-<li class="chapter" data-level="5.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="5.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-3"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introduction-3"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
 <li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>5.3</b> The Hodgkin and Huxley model</a></li>
-<li class="chapter" data-level="5.4" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
-<li class="chapter" data-level="5.5" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
-<li class="chapter" data-level="5.5.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#exercises-2"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="Ch4.html"><a href="Ch4.html#conceptual-exercises-1"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Ch4.html"><a href="Ch4.html#coding-exercises-1"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a><ul>
-<li class="chapter" data-level="6.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="6.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-4"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-4"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
 <li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#spike-trains"><i class="fa fa-check"></i><b>6.3</b> Spike Trains</a></li>
 <li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#spike-statistics"><i class="fa fa-check"></i><b>6.4</b> Spike Statistics</a></li>
-<li class="chapter" data-level="6.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
-<li class="chapter" data-level="6.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>6.6</b> Exercises</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.6.1</b> Conceptual Problems</a></li>
-<li class="chapter" data-level="6.6.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.6.2</b> Coding Problems</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#poisson-processes"><i class="fa fa-check"></i><b>6.5</b> Poisson Processes</a></li>
+<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#summary-4"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.7.1</b> Conceptual Problems</a></li>
+<li class="chapter" data-level="6.7.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.7.2</b> Coding Problems</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a><ul>
-<li class="chapter" data-level="7.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="7.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#vocabulary-5"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#introduction-5"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
 <li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#spike-triggered-average"><i class="fa fa-check"></i><b>7.3</b> Spike-triggered Average</a></li>
 <li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#reverse-correlation"><i class="fa fa-check"></i><b>7.4</b> Reverse Correlation</a></li>
-<li class="chapter" data-level="7.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-<li class="chapter" data-level="7.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>7.6</b> Exercises</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="7.6.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#summary-5"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="Ch6.html"><a href="Ch6.html#exercises-4"><i class="fa fa-check"></i><b>7.6</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="Ch6.html"><a href="Ch6.html#conceptual-exercises-2"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="7.6.2" data-path="Ch6.html"><a href="Ch6.html#coding-exercises-2"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a><ul>
-<li class="chapter" data-level="8.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="8.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
-<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="Ch7.html"><a href="Ch7.html#vocabulary-6"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="8.2" data-path="Ch7.html"><a href="Ch7.html#introduction-6"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="Ch7.html"><a href="Ch7.html#eeg"><i class="fa fa-check"></i><b>8.3.1</b> EEG</a></li>
 <li class="chapter" data-level="8.3.2" data-path="Ch7.html"><a href="Ch7.html#meg"><i class="fa fa-check"></i><b>8.3.2</b> MEG</a></li>
 <li class="chapter" data-level="8.3.3" data-path="Ch7.html"><a href="Ch7.html#fmri"><i class="fa fa-check"></i><b>8.3.3</b> fMRI</a></li>
 <li class="chapter" data-level="8.3.4" data-path="Ch7.html"><a href="Ch7.html#ecog"><i class="fa fa-check"></i><b>8.3.4</b> ECOG</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="Ch7.html"><a href="Ch7.html#introduction-to-decoding"><i class="fa fa-check"></i><b>8.4</b> Introduction to Decoding</a></li>
-<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a>
+<ul>
 <li class="chapter" data-level="8.5.1" data-path="Ch7.html"><a href="Ch7.html#correlation-classifiers"><i class="fa fa-check"></i><b>8.5.1</b> Correlation classifiers</a></li>
 <li class="chapter" data-level="8.5.2" data-path="Ch7.html"><a href="Ch7.html#distance-based-classifiers"><i class="fa fa-check"></i><b>8.5.2</b> Distance-based classifiers</a></li>
 <li class="chapter" data-level="8.5.3" data-path="Ch7.html"><a href="Ch7.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>8.5.3</b> Boundary-based classifiers</a></li>
@@ -218,16 +275,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="Ch7.html"><a href="Ch7.html#cross-validation"><i class="fa fa-check"></i><b>8.6</b> Cross validation</a></li>
 <li class="chapter" data-level="8.7" data-path="Ch7.html"><a href="Ch7.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a><ul>
+<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="Ch8.html"><a href="Ch8.html#vocabulary-list"><i class="fa fa-check"></i><b>9.1</b> Vocabulary List:</a></li>
 <li class="chapter" data-level="9.2" data-path="Ch8.html"><a href="Ch8.html#introductionbackground"><i class="fa fa-check"></i><b>9.2</b> Introduction/Background</a></li>
 <li class="chapter" data-level="9.3" data-path="Ch8.html"><a href="Ch8.html#different-types-of-learning"><i class="fa fa-check"></i><b>9.3</b> Different Types of Learning</a></li>
 <li class="chapter" data-level="9.4" data-path="Ch8.html"><a href="Ch8.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>9.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
 <li class="chapter" data-level="9.5" data-path="Ch8.html"><a href="Ch8.html#perceptron"><i class="fa fa-check"></i><b>9.5</b> Perceptron</a></li>
-<li class="chapter" data-level="9.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+<li class="chapter" data-level="9.6" data-path="Ch8.html"><a href="Ch8.html#summary-6"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="Ch9.html"><a href="Ch9.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
-<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a><ul>
+<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="Ch10.html"><a href="Ch10.html#chapter-1-preface"><i class="fa fa-check"></i><b>11.1</b> Chapter 1: Preface</a></li>
 <li class="chapter" data-level="11.2" data-path="Ch10.html"><a href="Ch10.html#chapter-2-introduction-to-python"><i class="fa fa-check"></i><b>11.2</b> Chapter 2: Introduction to Python</a></li>
 <li class="chapter" data-level="11.3" data-path="Ch10.html"><a href="Ch10.html#chapter-3-what-is-computational-neuroscience"><i class="fa fa-check"></i><b>11.3</b> Chapter 3: What is Computational Neuroscience?</a></li>
@@ -238,28 +297,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.8" data-path="Ch10.html"><a href="Ch10.html#chapter-8-decoding"><i class="fa fa-check"></i><b>11.8</b> Chapter 8: Decoding</a></li>
 <li class="chapter" data-level="11.9" data-path="Ch10.html"><a href="Ch10.html#chapter-9-neural-networks"><i class="fa fa-check"></i><b>11.9</b> Chapter 9: Neural Networks</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a><ul>
+<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="Ch11.html"><a href="Ch11.html#chapter-1-introduction-to-python"><i class="fa fa-check"></i><b>12.1</b> Chapter 1: Introduction to Python</a></li>
 <li class="chapter" data-level="12.2" data-path="Ch11.html"><a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience"><i class="fa fa-check"></i><b>12.2</b> Chapter 2: Introduction to Computational Neuroscience</a></li>
-<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a><ul>
+<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a>
+<ul>
 <li class="chapter" data-level="12.3.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions"><i class="fa fa-check"></i><b>12.3.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.3.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions"><i class="fa fa-check"></i><b>12.3.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a><ul>
+<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a>
+<ul>
 <li class="chapter" data-level="12.4.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-1"><i class="fa fa-check"></i><b>12.4.1</b> Conceptual Questions:</a></li>
 <li class="chapter" data-level="12.4.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-1"><i class="fa fa-check"></i><b>12.4.2</b> Coding Questions:</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a><ul>
+<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a>
+<ul>
 <li class="chapter" data-level="12.5.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-2"><i class="fa fa-check"></i><b>12.5.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.5.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-2"><i class="fa fa-check"></i><b>12.5.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a>
+<ul>
 <li class="chapter" data-level="12.6.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-3"><i class="fa fa-check"></i><b>12.6.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.6.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-3"><i class="fa fa-check"></i><b>12.6.2</b> Coding Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="12.7" data-path="Ch11.html"><a href="Ch11.html#chapter-7-decoding"><i class="fa fa-check"></i><b>12.7</b> Chapter 7: Decoding</a></li>
 <li class="chapter" data-level="12.8" data-path="Ch11.html"><a href="Ch11.html#chapter-8-neural-networks"><i class="fa fa-check"></i><b>12.8</b> Chapter 8: Neural Networks</a></li>
 </ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -277,243 +344,386 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ch5" class="section level1">
-<h1><span class="header-section-number">6</span> Firing Rates</h1>
-<div id="vocabulary" class="section level2">
-<h2><span class="header-section-number">6.1</span> Vocabulary</h2>
+<div id="Ch5" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Firing Rates<a href="Ch5.html#Ch5" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="vocabulary-4" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Vocabulary<a href="Ch5.html#vocabulary-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Interspike interval (ISI)</li>
+<li>Integration window</li>
+<li>Time bin</li>
+<li>Spike train</li>
+<li>Spike count rate</li>
+<li>Coefficient of variation (CV)</li>
+<li>Fano factor</li>
+<li>Poisson process</li>
+<li>Homogeneous poisson process</li>
+<li>Inhomogeneous poisson process</li>
+</ul>
 </div>
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">6.2</span> Introduction</h2>
-</div>
-<div id="spike-trains" class="section level2">
-<h2><span class="header-section-number">6.3</span> Spike Trains</h2>
-<div style="float:right;width:561px">
-<div class="figure"><span id="fig:spikeTrain-fig"></span>
-<img src="images/spikeTrain.png" alt="Example of a spike train. Graph A shows the recorded stimulus and graph B shows the recorded actions potentials during the stimulus."  />
+<div id="introduction-4" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Introduction<a href="Ch5.html#introduction-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the previous two chapters, we have seen manmade models that are built to represent the firing patterns of a neuron. What these models lack, however, is how the level of input changes over time. If we attempt to use the Hodgkin and Huxley model to represent a neuron, we would see a neuron with a constant firing rate, as observed in Figure 6.1 below.</p>
+<div class="figure"><span style="display:block;" id="fig:HHExample-fig"></span>
+<img src="images/HHExample.png" alt="An example of a simulated neuron using the Hodgkin Huxley equation." width="468" />
 <p class="caption">
-Figure 6.1: Example of a spike train. Graph A shows the recorded stimulus and graph B shows the recorded actions potentials during the stimulus.
+Figure 6.1: An example of a simulated neuron using the Hodgkin Huxley equation.
+</p>
+</div>
+<p>If we compared this to an actual neuron’s firing rate, we would see something more similar to Figure 6.2.</p>
+<div style="float:center;width:561px">
+<div class="figure"><span style="display:block;" id="fig:neuralVariability-fig"></span>
+<img src="images/neuralVariability.png" alt="Variability across four repetitions of the same stimulus. Figure taken from Gerstner et al, *Neuronal Dynamics*" width="314" />
+<p class="caption">
+Figure 6.2: Variability across four repetitions of the same stimulus. Figure taken from Gerstner et al, <em>Neuronal Dynamics</em>
 </p>
 </div>
 </div>
-<p>Assume that we measured a neuron firing in response to a sensory stimulus, and we recorded its voltage changes and displayed the signal in an oscilloscope. How should we analyze the information encoded in these action potentials? As we mentioned before, the action potential is an all-or-none event. This binary characteristic gives us a way to simplify the complicated voltage response curve: for every time point in our measurement, if there is a spike firing, denote its value as 1; if not, denote it as 0. After the recording, we get a sequence of 0s and 1s in a time-dependent order. We commonly refer to this sequence as a spike train, shown in Figure 1, part B.</p>
-<p>Since all action potentials fire to the same voltage level, there is no difference in their intensities. Thus, in order to have action potentials that convey meaningful information, neurons can only vary on timing of firing, including varying firing rates or varying the time intervals between each firing. Although this seems super-simplified, our spike train contains mostly the information we need to analyze if we want to know what causes the original neuron to fire. In order to systematically analyze these data in spike trains, we first need to define some statistics.</p>
+<p>As we can see, the most telling difference between the two graphs is that in our Hodgkin-Huxley model, the <strong>interspike interval</strong>, which is the distance between each spike, remains constant. In the measured activity of the real neuron, the interspike interval varies over time. In order to create a model that more accurately depicts the firing rate of a neuron, we need to be able to conceptually measure the firing rate of a neuron over time. In this chapter, we will discuss the three main approaches of measuring the firing rate of a neuron. Knowing how to measure firing rates will further our ability to create models of real neurons. By comparing measured firing rates with Poisson processes, we can model the variability of interspike intervals in real neurons.</p>
 </div>
-<div id="spike-statistics" class="section level2">
-<h2><span class="header-section-number">6.4</span> Spike Statistics</h2>
-<p>Now we have a sequence of 0s and 1s which represent neural firing, the next step is to calculate the <strong>spike count rate</strong>, which is the number of spikes divided over a given time interval. This parameter directly shows the firing rate, but it cannot reflect variation. Assume that we have two neurons that have the same spike count rate. One is a regular-firing neuron and the spikes are evenly distributed along the time axis, while the other is a bursting neuron that fires sets of spikes with longer intervals between individual sets. How can we distinguish between these two spike trains? Here, we want to introduce another parameter called the <strong>interspike interval (ISI)</strong> or in other words, the time interval between every pair of spikes. In Figure 2, there is a histogram that shows the distribution of ISIs from an artificial spike train. The ISI histogram can be characterized by <strong>coefficient of variation (CV)</strong>, which is the standard deviation of ISIs divided by the mean of it. Apart from that, we can also use the <strong>Fano factor</strong> to measure the spike variability. It is calculated by the variance of the number of spikes divided by the mean number of spikes in a given time interval. Compare to CV, Fano factor is less dependent on the intervals between spikes but more on the number of spikes in a given time bin. If the underlying firing rate varies or the spike firing in irregular time points, both CV and Fano factor increase. Thus, CV and Fano factors are useful secondary statistics that helps to measure variability in spike trains.</p>
-<div class="figure"><span id="fig:poissonISI-fig"></span>
-<img src="images/poissonISI.png" alt="Distribution of ISIs from a randomly firing artificial neuron."  />
+<div id="spike-trains" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Spike Trains<a href="Ch5.html#spike-trains" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div style="float:right;width:450px">
+<div class="figure"><span style="display:block;" id="fig:spikeTrain-fig"></span>
+<img src="images/spikeTrain.png" alt="Example of a spike train. Graph A shows the recorded stimulus and graph B shows the recorded actions potentials during the stimulus." width="280" />
 <p class="caption">
-Figure 6.2: Distribution of ISIs from a randomly firing artificial neuron.
+Figure 6.3: Example of a spike train. Graph A shows the recorded stimulus and graph B shows the recorded actions potentials during the stimulus.
 </p>
 </div>
-<p>We can do a lot with a single spike train. However, in vivo, neural responses are highly variable and the response of a neuron to the same stimulus may even vary from trial to trial. Effectively, to account for the cross-trial variability, we need to analyze results from multiple trials to get a better estimate of the average neural response. A <strong>peristimulus time histogram (PSTH)</strong> can be generated by averaging across trials. The most direct method is to put trials in small time windows that correspond to each time point and calculate the spike count rate in window for each time point. By implementing this process, each time point is assigned an average rate, and by plotting we get a continuous frequency curve. One example is shown in the Exercise 1, in the “spike density” section, in which spikes are averaged in time windows, and then averaged across trials. In this case, all trials are run on the same neuron, which reduces the cross-trial variability and increases the time resolution. The response, however, may be affected by adaptation. Furthermore, we can also assess the firing pattern of a population of neurons by calculating the average spike counting rate for all the time points, and then averaging across trials. At this point, different trials are run on different neurons, and the generated response curve accounts for the response pattern of a population of neurons in the area that was tested. This method, while it generates better time resolution, omits the possible variability across neurons in the population.
-Choosing different time windows influences the characteristics of the frequency curve, as shown in Figure 3. In general, PSTH is essential because it transforms a discontinuous spike train into continuous response curves, which allows us to calculate the correlation between stimulus and response. This will be further elaborated upon in the later sections.</p>
-<p><strong>Exercise 1:</strong> What are the pros and cons for each type of histogram?</p>
-<div class="figure"><span id="fig:firingRateTable-fig"></span>
-<img src="images/firingRateTable.png" alt="PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output."  />
+</div>
+<p>Assume that we measured a neuron firing in response to a random sensory stimulus (shown in Figure 6.3a), and we recorded its voltage changes and displayed the signal in an oscilloscope. How should we analyze the information encoded in these action potentials?</p>
+<p>As we’ve previously discussed, action potentials are an all-or-none event. This characteristic allows us to represent spikes in a binary fashion. To do this, we need to remember that the axes of both graph A and B represent voltage over time. When the voltage surpasses the threshold, a spike occurs. The length of time over which the neuron is recorded is called the <strong>integration window</strong>: we will first break up this window into lengths of time small enough that they can only contain one spike. This small increment of time is called a <strong>time bin</strong>. With this in mind, a voltage response curve can be reduced to time-bins that either contain a spike (represented in a binary fashion by a 1) or do not (represented by a 0). This time-dependent sequence of 1s and 0s is referred to as a <strong>spike train</strong>, depicted in graph Figure 6.3b.</p>
+<p>Another characteristic of action potentials is that they are <em>stereotyped</em>: they are consistent with each other in voltage. This means that when neurons communicate with each other, the peak voltage never changes - all the information must be conveyed in the rate or timing of the action potentials. Although we’ve reduced the response of our neuron down to a train of 1s and 0s, we have the information we need to analyze what caused the original neuron to fire. Before being able to analyze the data in these spike trains however, we need to figure out how we plan to represent them.</p>
+<p><strong>Practice Problem 1</strong>:
+For this example, we will consider data collected by Robert Cat from a neuron located in an alien’s posterior inferior temporal cortex responding to a rapidly-changing color stimulus. Dr. Cat recorded the neuron at 1000 Hz for ten seconds and created a Boolean vector (<em>spike train</em>) where 1 signifies a spike. Create a program that calculates the neuron’s spike count rate, and then create a plot of the spike count rate versus time.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="Ch5.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, import the necessary libraries</span></span>
+<span id="cb1-2"><a href="Ch5.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="Ch5.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="Ch5.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="Ch5.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the total number of spikes and store them in totalSpikes</span></span>
+<span id="cb1-6"><a href="Ch5.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Because the vector is binary, the sum of the 1s and 0s gives the total</span></span>
+<span id="cb1-7"><a href="Ch5.html#cb1-7" aria-hidden="true" tabindex="-1"></a>totalSpikes <span class="op">=</span> np.<span class="bu">sum</span>(spikes)</span>
+<span id="cb1-8"><a href="Ch5.html#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="Ch5.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the neuron’s spike count rate, and store it in spikeRate</span></span>
+<span id="cb1-10"><a href="Ch5.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># We divide by 10 because we want our rate to be in the unit of spikes/second (Hz)</span></span>
+<span id="cb1-11"><a href="Ch5.html#cb1-11" aria-hidden="true" tabindex="-1"></a>spikeRate <span class="op">=</span> totalSpikes <span class="op">/</span> <span class="dv">10</span></span>
+<span id="cb1-12"><a href="Ch5.html#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="Ch5.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the spike count rate</span></span>
+<span id="cb1-14"><a href="Ch5.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;The spike count rate is: </span><span class="sc">{}</span><span class="st"> Hz&#39;</span>.<span class="bu">format</span>(spikeRate))</span></code></pre></div>
+</div>
+<div id="spike-statistics" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Spike Statistics<a href="Ch5.html#spike-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are multiple ways to go about representing the spike train data from Figure 6.3B, each with its advantages and disadvantages. Firstly, we can find the <strong>spike count rate</strong> , a measurement of the number of spikes over our length of time. This returns a number expressed in spikes/second, or Hz. The simplicity of this approach allows for easy application of our firing rate to mathematical models such as neural networks. For example, one can take a spike count rate and use it in a <em>Poisson process</em>, , an idea we’ll discuss later. However, the problem with this approach lies in the fact that given our output, we don’t know how the spikes are distributed temporally. In Figure 6.3B, some sections of the graph have dense areas of spikes, while others have longer periods without spikes. Recreating our spike train with this method would eliminate this temporal information. Because of the same principle, this model also fails to capture changes in neuronal activity that might occur when the stimulus is changed during our period of measurement.</p>
+<p>In vitro, the timing of neural responses are highly variable and the response of a neuron to the same stimulus may even vary from trial to trial (Mainen &amp; Sejnowski, 1995). To account for cross-trial variability, we can also analyze results from multiple trials to get a better estimate of the average neural response. This provides us with our second method of analysis: <strong>spike density</strong>. Here, we measure the same neuron over multiple trials of the same length to determine the reliability of spike times. This allows us to maintain the temporal information that our previous method of analysis eliminates. However, neuronal habituation can interfere with repeated trials; when a neuron is exposed to the same stimulus over and over again, neuronal activity typically decreases. One potential solution to this problem is mixing in randomly distributed stimuli into our trials. This method is also difficult to execute in a lab setting, as it can be difficult to keep a neuron around long enough to measure it multiple times.</p>
+<p>Up until now, we’ve been discussing recordings from single neurons. Another method of analyzing neuronal activity is to instead record from a population of neurons that respond to similar stimuli. We refer to this method of analysis as <strong>population density</strong>. In the lab, this is accomplished by electrode arrays that measure each neuron’s response independently, and sampled over one trial. We can then average the activity of these neurons to get a sense of population-wide trends. Here, our output won’t contain information from individual neurons, and it requires that we assume the neurons we record from are all doing the same thing. However, it has biological plausibility in that it might mimic what a postsynaptic neuron “sees”: neurons receive signals from many inputs in vivo. Additionally, since we’re averaging over a population rather than over time, our output also contains the temporal information that the spike count rate does not include. However, this method is also difficult to execute in a lab - tools for multi-neuron recording are relatively recent advancements in the field of neuroscience. Table 6.1 notes the advantages and disadvantages to using each method of computing neuronal firing rate.</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Definition</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Spike count rate</td>
+<td>spikes/time of a single neuron, measured in Hz</td>
+<td>(1) Easier than recording fill population; (2) Easy to use in case of building neural networks</td>
+<td>(1) Temporal distribution of spikes is unclear; (2) Only works with unchanging stimulus or slowly changing stimulus</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Spike density</td>
+<td>Firing rate of one neuron over multiple trials; time bins are used to obtain temporal information</td>
+<td>(1) Temporal distribution is available; (2) Reliable over trials</td>
+<td>(1) Neuron may be sensitized after repeated stimulation (habituation); (2) Lack of generalization – you’re finding one neuron’s preference</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Population density</td>
+<td>Records spike trains of multiple neurons over the same trials</td>
+<td>Shows us population-wide trends</td>
+<td>(1) Difficult to record from multiple neurons simultaneously; (2) Assumes all neurons are the same</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Here is a way of seeing the same information visually:</p>
+<div style="float:center;width:550px">
+<div class="figure"><span style="display:block;" id="fig:firingRateTable-fig"></span>
+<img src="images/firingRateTable.png" alt="Comparing the three methods for computing firing rate" width="411" />
 <p class="caption">
-Figure 6.3: PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output.
+Figure 6.4: Comparing the three methods for computing firing rate
 </p>
 </div>
-<div class="figure"><span id="fig:firingRate1-fig"></span>
-<img src="images/firingRate1.png" alt="PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output."  />
-<p class="caption">
-Figure 6.4: PSTH generated from different time windows. The size of the time window gets larger from top to bottom(0.005s, 0.025s, and 0.050s). While the smaller time window retains more information of the original spike train, the bigger time window gives a more smooth and continuous output.
-</p>
 </div>
-<p>Sometimes, instead of collecting data from real neurons, we need to simulate spike trains from given statistics. The artificial spike trains can be compared with real data, or used to reconstruct possible firing patterns with a given stimulus. Here, we will discuss the homogeneous Poisson process, or the simplest way of generating artificial spike train. The homogeneous <strong>Poisson process</strong> entails that for every small interval on the timeline, the probability of an event happening (in our case, action potential) will be proportional to the length of the time interval, while the proportionality constant <em>r</em> is fixed. To understand this abstract definition, think about a timeline whereby at each time point, we throw a coin and record the head as 1. Try to visualize that timeline. We agree that all 1s will be randomly spread along the timeline, and the interval between when we get a pair of heads, varies along the timeline. This will look very similar to an artificial spike train generated by the Poisson process, whose distribution can be expressed by the following formula: <span class="math display">\[p(q\ spikes\ in\ \Delta{t}) = e^{-\lambda}\frac{\lambda^{n}}{n!} \]</span></p>
-<div class="figure"><span id="fig:poisson-fig"></span>
-<img src="images/PoissonSpike.png" alt="An artificial spike train generated by Poisson process and its ISI distribution. Notice that the spikes are randomly distributed along the time axis, and the ISI histogram has an exponential distribution."  />
-<p class="caption">
-Figure 6.5: An artificial spike train generated by Poisson process and its ISI distribution. Notice that the spikes are randomly distributed along the time axis, and the ISI histogram has an exponential distribution.
-</p>
-</div>
-<p><strong>Worked Example:</strong><br />
-For this example, we will consider data collected by Robert Cat from a neuron located in an alien’s posterior inferior temporal cortex responding to a rapidly-changing color stimulus. Dr. Cat recorded the neuron at 1000 Hz for ten seconds and created a Boolean vector (<em>spikes</em>) where 1 signifies a spike. Create a program that calculates the neuron’s spike count rate, and then create a plot of the spike count rate versus time.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="Ch5.html#cb20-1"></a><span class="co"># First, import the necessary libraries</span></span>
-<span id="cb20-2"><a href="Ch5.html#cb20-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb20-3"><a href="Ch5.html#cb20-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb20-4"><a href="Ch5.html#cb20-4"></a></span>
-<span id="cb20-5"><a href="Ch5.html#cb20-5"></a><span class="co"># Calculate the total number of spikes and store them in totalSpikes</span></span>
-<span id="cb20-6"><a href="Ch5.html#cb20-6"></a><span class="co"># Because the vector is binary, the sum of the 1s and 0s gives the total</span></span>
-<span id="cb20-7"><a href="Ch5.html#cb20-7"></a>totalSpikes <span class="op">=</span> np.<span class="bu">sum</span>(spikes)</span>
-<span id="cb20-8"><a href="Ch5.html#cb20-8"></a></span>
-<span id="cb20-9"><a href="Ch5.html#cb20-9"></a><span class="co"># Calculate the neuron’s spike count rate, and store it in spikeRate</span></span>
-<span id="cb20-10"><a href="Ch5.html#cb20-10"></a><span class="co"># We divide by 10 because we want our rate to be in the unit of spikes/second (Hz)</span></span>
-<span id="cb20-11"><a href="Ch5.html#cb20-11"></a>spikeRate <span class="op">=</span> totalSpikes <span class="op">/</span> <span class="dv">10</span></span>
-<span id="cb20-12"><a href="Ch5.html#cb20-12"></a></span>
-<span id="cb20-13"><a href="Ch5.html#cb20-13"></a><span class="co"># Print the spike count rate</span></span>
-<span id="cb20-14"><a href="Ch5.html#cb20-14"></a><span class="bu">print</span>(<span class="st">&#39;The spike count rate is: </span><span class="sc">{}</span><span class="st"> Hz&#39;</span>.<span class="bu">format</span>(spikeRate))</span></code></pre></div>
+<p><strong>Peristimulus time histograms (PSTHs)</strong> can be used to describe spike trains. These plots are created by dividing our period of measurement into time periods of some established length, and graphing the number of spikes in each of these periods over time. These are typically lined up temporally with a graph of stimulus intensity in order to visualize how neuronal activity is correlated to the stimulus. These are useful tools in our arsenal to analyze spike trains.</p>
+<p>Sometimes, instead of collating data from real neurons, we need to simulate spike trains from given statistics. These artificial spike trains can be compared with real data, or used to reconstruct possible firing patterns with a given stimulus. Here, we will discuss Poisson processes, a tool we can use to generate artificial spike trains.</p>
 <p><strong>Worked Example:</strong><br />
 Next, we will examine how to calculate the rate as an average across 50 trials of the same neuron Dr. Cat obtained responding to the same stimulus using the spike density rate. In this experiment, each trial was one second long, and measurements were taken at 1000 Hz. Dr. Cat noticed in their research that the neuron fired at an average of 50 Hz for the first 300 ms of the recording and an average of 15 Hz for the remaining 700 ms. First, simulate the neuron in Dr. Cat’s experiment and then, using this information, plot spike density rate versus time.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="Ch5.html#cb21-1"></a><span class="co"># As usual, we&#39;ll begin by importing the necessary libraries</span></span>
-<span id="cb21-2"><a href="Ch5.html#cb21-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb21-3"><a href="Ch5.html#cb21-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb21-4"><a href="Ch5.html#cb21-4"></a></span>
-<span id="cb21-5"><a href="Ch5.html#cb21-5"></a><span class="co"># Define the two average spiking rates as probabilities</span></span>
-<span id="cb21-6"><a href="Ch5.html#cb21-6"></a>p1 <span class="op">=</span> <span class="dv">50</span><span class="op">/</span><span class="dv">1000</span> <span class="co"># on average, 50 spikes in the 1000 time points</span></span>
-<span id="cb21-7"><a href="Ch5.html#cb21-7"></a>p2 <span class="op">=</span> <span class="dv">15</span><span class="op">/</span><span class="dv">1000</span> <span class="co"># on average, 15 spikes in the 1000 time points</span></span>
-<span id="cb21-8"><a href="Ch5.html#cb21-8"></a></span>
-<span id="cb21-9"><a href="Ch5.html#cb21-9"></a><span class="co"># In order to create the data, we will create a matrix that</span></span>
-<span id="cb21-10"><a href="Ch5.html#cb21-10"></a><span class="co"># is numTrials by numTimePoints in size. We will initialize</span></span>
-<span id="cb21-11"><a href="Ch5.html#cb21-11"></a><span class="co"># it with zeros and then fill in the spikes later.</span></span>
-<span id="cb21-12"><a href="Ch5.html#cb21-12"></a>dataMat <span class="op">=</span> np.zeros((<span class="dv">50</span>, <span class="dv">1000</span>))</span>
-<span id="cb21-13"><a href="Ch5.html#cb21-13"></a></span>
-<span id="cb21-14"><a href="Ch5.html#cb21-14"></a><span class="co"># Here, we will create a nested loop. The outer loop will </span></span>
-<span id="cb21-15"><a href="Ch5.html#cb21-15"></a><span class="co"># loop through the 50 trials. The inner loop will loop through</span></span>
-<span id="cb21-16"><a href="Ch5.html#cb21-16"></a><span class="co"># the time points and use a random number generator to determine</span></span>
-<span id="cb21-17"><a href="Ch5.html#cb21-17"></a><span class="co"># the placement of each spike.</span></span>
-<span id="cb21-18"><a href="Ch5.html#cb21-18"></a></span>
-<span id="cb21-19"><a href="Ch5.html#cb21-19"></a><span class="co"># Data creation loop of 50 trials</span></span>
-<span id="cb21-20"><a href="Ch5.html#cb21-20"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>):</span>
-<span id="cb21-21"><a href="Ch5.html#cb21-21"></a></span>
-<span id="cb21-22"><a href="Ch5.html#cb21-22"></a>  <span class="co"># In each of the 50 trials, loop through 1000 time points</span></span>
-<span id="cb21-23"><a href="Ch5.html#cb21-23"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb21-24"><a href="Ch5.html#cb21-24"></a>  </span>
-<span id="cb21-25"><a href="Ch5.html#cb21-25"></a>    <span class="co"># At each time point, we want the neuron to fire with </span></span>
-<span id="cb21-26"><a href="Ch5.html#cb21-26"></a>    <span class="co"># probability p1 in the first 300 ms, and probability p2</span></span>
-<span id="cb21-27"><a href="Ch5.html#cb21-27"></a>    <span class="co"># for the remainder of the trial.</span></span>
-<span id="cb21-28"><a href="Ch5.html#cb21-28"></a>    </span>
-<span id="cb21-29"><a href="Ch5.html#cb21-29"></a>    <span class="co"># To do this, we will first create a conditional to determine</span></span>
-<span id="cb21-30"><a href="Ch5.html#cb21-30"></a>    <span class="co"># whether or not we are in the first 300 ms. If so, we will </span></span>
-<span id="cb21-31"><a href="Ch5.html#cb21-31"></a>    <span class="co"># use p1, and if not, we will use p2.</span></span>
-<span id="cb21-32"><a href="Ch5.html#cb21-32"></a>    <span class="cf">if</span> i <span class="op">&lt;</span> <span class="dv">300</span>:</span>
-<span id="cb21-33"><a href="Ch5.html#cb21-33"></a>      p <span class="op">=</span> p1</span>
-<span id="cb21-34"><a href="Ch5.html#cb21-34"></a>    <span class="cf">else</span>:</span>
-<span id="cb21-35"><a href="Ch5.html#cb21-35"></a>      p <span class="op">=</span> p2</span>
-<span id="cb21-36"><a href="Ch5.html#cb21-36"></a>    </span>
-<span id="cb21-37"><a href="Ch5.html#cb21-37"></a>    <span class="co"># At each time point, we flip a random coin using np.random.rand().</span></span>
-<span id="cb21-38"><a href="Ch5.html#cb21-38"></a>    <span class="co"># This generates a random value between 0 and 1. If this value</span></span>
-<span id="cb21-39"><a href="Ch5.html#cb21-39"></a>    <span class="co"># is less than our target probability, the neuron will fire.</span></span>
-<span id="cb21-40"><a href="Ch5.html#cb21-40"></a>    <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> p:</span>
-<span id="cb21-41"><a href="Ch5.html#cb21-41"></a>      dataMat[j, i] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb21-42"><a href="Ch5.html#cb21-42"></a>      </span>
-<span id="cb21-43"><a href="Ch5.html#cb21-43"></a>    <span class="co"># Note that we do not need an &quot;else&quot; here because the rest of the</span></span>
-<span id="cb21-44"><a href="Ch5.html#cb21-44"></a>    <span class="co"># matrix is already 0.</span></span>
-<span id="cb21-45"><a href="Ch5.html#cb21-45"></a>    </span>
-<span id="cb21-46"><a href="Ch5.html#cb21-46"></a><span class="co"># Now that we have created our data, we can calculate the spike </span></span>
-<span id="cb21-47"><a href="Ch5.html#cb21-47"></a><span class="co"># density rate.</span></span>
-<span id="cb21-48"><a href="Ch5.html#cb21-48"></a></span>
-<span id="cb21-49"><a href="Ch5.html#cb21-49"></a><span class="co"># Sum all the trials to plot the total number of spikes in each </span></span>
-<span id="cb21-50"><a href="Ch5.html#cb21-50"></a><span class="co"># time bin, and store them in counts (HINT: we wish to sum over </span></span>
-<span id="cb21-51"><a href="Ch5.html#cb21-51"></a><span class="co"># all the rows, and numpy denotes rows before columns. This is</span></span>
-<span id="cb21-52"><a href="Ch5.html#cb21-52"></a><span class="co"># the reason we use axis=0 (i.e. the first axis))</span></span>
-<span id="cb21-53"><a href="Ch5.html#cb21-53"></a>counts <span class="op">=</span> np.<span class="bu">sum</span>(dataMat, axis <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb21-54"><a href="Ch5.html#cb21-54"></a></span>
-<span id="cb21-55"><a href="Ch5.html#cb21-55"></a><span class="co"># Now, we need to translate these counts into a rate by dividing</span></span>
-<span id="cb21-56"><a href="Ch5.html#cb21-56"></a><span class="co"># by the number of trials and the dt</span></span>
-<span id="cb21-57"><a href="Ch5.html#cb21-57"></a>density <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">1000</span>)) <span class="op">*</span> counts<span class="op">/</span><span class="dv">50</span></span>
-<span id="cb21-58"><a href="Ch5.html#cb21-58"></a></span>
-<span id="cb21-59"><a href="Ch5.html#cb21-59"></a><span class="co"># In order to create a plot, we need to create a vector of time</span></span>
-<span id="cb21-60"><a href="Ch5.html#cb21-60"></a><span class="co"># points to plot it against</span></span>
-<span id="cb21-61"><a href="Ch5.html#cb21-61"></a>time <span class="op">=</span> np.arange(<span class="dv">1000</span>)</span>
-<span id="cb21-62"><a href="Ch5.html#cb21-62"></a></span>
-<span id="cb21-63"><a href="Ch5.html#cb21-63"></a><span class="co"># Create spike density vs. time graph</span></span>
-<span id="cb21-64"><a href="Ch5.html#cb21-64"></a>plt.figure()</span>
-<span id="cb21-65"><a href="Ch5.html#cb21-65"></a>plt.plot(time, density)</span>
-<span id="cb21-66"><a href="Ch5.html#cb21-66"></a>plt.xlabel(<span class="st">&#39;Time in ms&#39;</span>)</span>
-<span id="cb21-67"><a href="Ch5.html#cb21-67"></a>plt.ylabel(<span class="st">&#39;Spike density (Spikes per second)&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="Ch5.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As usual, we&#39;ll begin by importing the necessary libraries</span></span>
+<span id="cb2-2"><a href="Ch5.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="Ch5.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="Ch5.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="Ch5.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the two average spiking rates as probabilities</span></span>
+<span id="cb2-6"><a href="Ch5.html#cb2-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> <span class="dv">50</span><span class="op">/</span><span class="dv">1000</span> <span class="co"># on average, 50 spikes in the 1000 time points</span></span>
+<span id="cb2-7"><a href="Ch5.html#cb2-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> <span class="dv">15</span><span class="op">/</span><span class="dv">1000</span> <span class="co"># on average, 15 spikes in the 1000 time points</span></span>
+<span id="cb2-8"><a href="Ch5.html#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="Ch5.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># In order to create the data, we will create a matrix that</span></span>
+<span id="cb2-10"><a href="Ch5.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># is numTrials by numTimePoints in size. We will initialize</span></span>
+<span id="cb2-11"><a href="Ch5.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># it with zeros and then fill in the spikes later.</span></span>
+<span id="cb2-12"><a href="Ch5.html#cb2-12" aria-hidden="true" tabindex="-1"></a>dataMat <span class="op">=</span> np.zeros((<span class="dv">50</span>, <span class="dv">1000</span>))</span>
+<span id="cb2-13"><a href="Ch5.html#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="Ch5.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Here, we will create a nested loop. The outer loop will </span></span>
+<span id="cb2-15"><a href="Ch5.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through the 50 trials. The inner loop will loop through</span></span>
+<span id="cb2-16"><a href="Ch5.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># the time points and use a random number generator to determine</span></span>
+<span id="cb2-17"><a href="Ch5.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># the placement of each spike.</span></span>
+<span id="cb2-18"><a href="Ch5.html#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="Ch5.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Data creation loop of 50 trials</span></span>
+<span id="cb2-20"><a href="Ch5.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>):</span>
+<span id="cb2-21"><a href="Ch5.html#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="Ch5.html#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># In each of the 50 trials, loop through 1000 time points</span></span>
+<span id="cb2-23"><a href="Ch5.html#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb2-24"><a href="Ch5.html#cb2-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-25"><a href="Ch5.html#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># At each time point, we want the neuron to fire with </span></span>
+<span id="cb2-26"><a href="Ch5.html#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># probability p1 in the first 300 ms, and probability p2</span></span>
+<span id="cb2-27"><a href="Ch5.html#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># for the remainder of the trial.</span></span>
+<span id="cb2-28"><a href="Ch5.html#cb2-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-29"><a href="Ch5.html#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># To do this, we will first create a conditional to determine</span></span>
+<span id="cb2-30"><a href="Ch5.html#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># whether or not we are in the first 300 ms. If so, we will </span></span>
+<span id="cb2-31"><a href="Ch5.html#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># use p1, and if not, we will use p2.</span></span>
+<span id="cb2-32"><a href="Ch5.html#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">&lt;</span> <span class="dv">300</span>:</span>
+<span id="cb2-33"><a href="Ch5.html#cb2-33" aria-hidden="true" tabindex="-1"></a>      p <span class="op">=</span> p1</span>
+<span id="cb2-34"><a href="Ch5.html#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-35"><a href="Ch5.html#cb2-35" aria-hidden="true" tabindex="-1"></a>      p <span class="op">=</span> p2</span>
+<span id="cb2-36"><a href="Ch5.html#cb2-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-37"><a href="Ch5.html#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># At each time point, we flip a random coin using np.random.rand().</span></span>
+<span id="cb2-38"><a href="Ch5.html#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This generates a random value between 0 and 1. If this value</span></span>
+<span id="cb2-39"><a href="Ch5.html#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># is less than our target probability, the neuron will fire.</span></span>
+<span id="cb2-40"><a href="Ch5.html#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> p:</span>
+<span id="cb2-41"><a href="Ch5.html#cb2-41" aria-hidden="true" tabindex="-1"></a>      dataMat[j, i] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-42"><a href="Ch5.html#cb2-42" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb2-43"><a href="Ch5.html#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Note that we do not need an &quot;else&quot; here because the rest of the</span></span>
+<span id="cb2-44"><a href="Ch5.html#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="co"># matrix is already 0.</span></span>
+<span id="cb2-45"><a href="Ch5.html#cb2-45" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-46"><a href="Ch5.html#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Now that we have created our data, we can calculate the spike </span></span>
+<span id="cb2-47"><a href="Ch5.html#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># density rate.</span></span>
+<span id="cb2-48"><a href="Ch5.html#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="Ch5.html#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum all the trials to plot the total number of spikes in each </span></span>
+<span id="cb2-50"><a href="Ch5.html#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co"># time bin, and store them in counts (HINT: we wish to sum over </span></span>
+<span id="cb2-51"><a href="Ch5.html#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co"># all the rows, and numpy denotes rows before columns. This is</span></span>
+<span id="cb2-52"><a href="Ch5.html#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co"># the reason we use axis=0 (i.e. the first axis))</span></span>
+<span id="cb2-53"><a href="Ch5.html#cb2-53" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> np.<span class="bu">sum</span>(dataMat, axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb2-54"><a href="Ch5.html#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="Ch5.html#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, we need to translate these counts into a rate by dividing</span></span>
+<span id="cb2-56"><a href="Ch5.html#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co"># by the number of trials and the dt</span></span>
+<span id="cb2-57"><a href="Ch5.html#cb2-57" aria-hidden="true" tabindex="-1"></a>density <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">1000</span>)) <span class="op">*</span> counts<span class="op">/</span><span class="dv">50</span></span>
+<span id="cb2-58"><a href="Ch5.html#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="Ch5.html#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co"># In order to create a plot, we need to create a vector of time</span></span>
+<span id="cb2-60"><a href="Ch5.html#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co"># points to plot it against</span></span>
+<span id="cb2-61"><a href="Ch5.html#cb2-61" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.arange(<span class="dv">1000</span>)</span>
+<span id="cb2-62"><a href="Ch5.html#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="Ch5.html#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Create spike density vs. time graph</span></span>
+<span id="cb2-64"><a href="Ch5.html#cb2-64" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb2-65"><a href="Ch5.html#cb2-65" aria-hidden="true" tabindex="-1"></a>plt.plot(time, density)</span>
+<span id="cb2-66"><a href="Ch5.html#cb2-66" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Time in ms&#39;</span>)</span>
+<span id="cb2-67"><a href="Ch5.html#cb2-67" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Spike density (Spikes per second)&#39;</span>)</span></code></pre></div>
 The resulting plot looks like this:
-<div style="float:left;width:564px">
-<div class="figure"><span id="fig:spikeDensity-fig"></span>
-<img src="images/spikeDensity.png" alt="Spike density rate over 50 trials"  />
+<div style="float:left;width:464px">
+<div class="figure"><span style="display:block;" id="fig:spikeDensity-fig"></span>
+<img src="images/spikeDensity.png" alt="Spike density rate over 50 trials" width="468" />
 <p class="caption">
-Figure 6.6: Spike density rate over 50 trials
+Figure 6.5: Spike density rate over 50 trials
 </p>
 </div>
 </div>
 </div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">6.5</span> Summary</h2>
+<div id="poisson-processes" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Poisson Processes<a href="Ch5.html#poisson-processes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before we can talk about Poisson processes, let’s establish some mathematical definitions. A <strong>Fano factor</strong> is found by dividing the variance of the interspike intervals (time between each spike) over a dataset over the mean interspike interval of the data. We do this to see if the distribution of the data (in our case, spikes) is random in our period of measurement.</p>
+<p><span class="math display">\[F = \frac{\sigma_{sp}^2}{\mu_{sp}}\]</span></p>
+<p>The ISI histogram can be characterized by <strong>coefficient of variation (CV)</strong>, which is the standard deviation of ISIs divided by the mean of it. Apart from that, we can also use the <strong>Fano factor</strong> to measure the spike variability. It is calculated by the variance of the number of spikes divided by the mean number of spikes in a given time interval. Compare to CV, Fano factor is less dependent on the intervals between spikes but more on the number of spikes in a given time bin. If the underlying firing rate varies or the spike firing in irregular time points, both CV and Fano factor increase. Thus, CV and Fano factors are useful secondary statistics that helps to measure variability in spike trains.</p>
+<p>A Poisson process is a dataset that, when analyzed like this, returns a Fano factor of 1, meaning that the variance and the mean are equal. This means that in our time period, the probability of a spike occurring at each time interval is equal to the number of spikes that occur over the time interval. To understand this abstract definition, think about a timeline of 100 seconds where one time point is equal to one second along the timeline. We know that at 50 time points along the timeline, we get a value of 1. From this information, we know that the probability of a 1 occurring is 50/100 (occurrences/length of time) at each time point. So, for each time point, we flip a coin. When it’s heads, we record a 1. When it is tails, we record a 0. We agree that all 1s will be randomly spread along the timeline, and the interval between when we get a pair of heads varies along the timeline. This will look very similar to an artificial spike train generated by the Poisson process, whose distribution can be expressed by the formula below.</p>
+<div class="figure"><span style="display:block;" id="fig:poisson-fig"></span>
+<img src="images/PoissonSpike.png" alt="An artificial spike train generated by Poisson process and its ISI distribution. Notice that the spikes are randomly distributed along the time axis, and the ISI histogram has an exponential distribution." width="271" />
+<p class="caption">
+Figure 6.6: An artificial spike train generated by Poisson process and its ISI distribution. Notice that the spikes are randomly distributed along the time axis, and the ISI histogram has an exponential distribution.
+</p>
 </div>
-<div id="exercises" class="section level2">
-<h2><span class="header-section-number">6.6</span> Exercises</h2>
-<div id="conceptual-problems" class="section level3">
-<h3><span class="header-section-number">6.6.1</span> Conceptual Problems</h3>
+<p>Thus, the formula for the probability of <em>q</em> spikes in some small interval <span class="math inline">\(\Delta t\)</span> is:</p>
+<p><span class="math display">\[p(q\ spikes\ in\ \Delta{t}) = e^{-\lambda}\frac{\lambda^{n}}{n!} \]</span></p>
+<p>What makes this Poisson process <strong>homogeneous</strong> is that our known firing rate (for this example, 45 Hz) does not change over our 1000 ms time period. This means that for every millisecond in this period, there is a 45/1000 chance to find a spike there.</p>
+<p>By contrast, an <strong>inhomogeneous Poisson process</strong> is one in which our firing rate changes sometime during our time period. For example, we could establish that starting at 500 ms, our firing rate would increase to 65 Hz. This would mean for every subsequent millisecond, there would be a 65/1000 chance to find a spike there.</p>
+<p>Creating a distribution of the ISIs from a spike train allows us to compare it to a Poisson process. In a fully random distribution of spikes, one would expect to find an exponential distribution of interspike intervals decreasing in length. This is shown in Figure 6.6 which depicts a histogram of ISIs from a homogeneous process. It is evident that most ISIs are small, with some very long ISIs.</p>
+<div class="figure"><span style="display:block;" id="fig:poissonISI-fig"></span>
+<img src="images/poissonISI.png" alt="Distribution of ISIs from a randomly firing artificial neuron." width="207" />
+<p class="caption">
+Figure 6.7: Distribution of ISIs from a randomly firing artificial neuron.
+</p>
+</div>
+<p><strong>Worked Example</strong>
+Below is a section of code that will allow you to create a digital neuron that fires based on a Poisson process. This model can help aid our understanding so that we can create more biologically plausible ones as we grow to be more mature hackers.</p>
+<p>Some metrics to keep in mind as we go through this code block:</p>
+<ul>
+<li>This neuron fires at a constant rate of 15 Hz, but at random intervals.</li>
+<li>The simulator samples 1000 times a second (1000 Hz).</li>
+<li>The simulator runs for 2 minutes.</li>
+<li>We will compute the spike count rate for this neuron and plot the distribution of interspike intervals as well.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="Ch5.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary libraries</span></span>
+<span id="cb3-2"><a href="Ch5.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="Ch5.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-4"><a href="Ch5.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="Ch5.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the probability of a spike occurring in each interval</span></span>
+<span id="cb3-6"><a href="Ch5.html#cb3-6" aria-hidden="true" tabindex="-1"></a>prob <span class="op">=</span> <span class="dv">15</span><span class="op">/</span><span class="dv">1000</span> </span>
+<span id="cb3-7"><a href="Ch5.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We are sampling 1000 times/s and the neuron fires 15x/s on average</span></span>
+<span id="cb3-8"><a href="Ch5.html#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="Ch5.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Initiate data structure to hold the spike train</span></span>
+<span id="cb3-10"><a href="Ch5.html#cb3-10" aria-hidden="true" tabindex="-1"></a>timePoints <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">1000</span> <span class="co"># 2 minutes * 60s/minute * 1000 samples/second</span></span>
+<span id="cb3-11"><a href="Ch5.html#cb3-11" aria-hidden="true" tabindex="-1"></a>poissonNeuron <span class="op">=</span> np.zeros(timePoints)</span>
+<span id="cb3-12"><a href="Ch5.html#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="Ch5.html#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a loop to simulate each time point</span></span>
+<span id="cb3-14"><a href="Ch5.html#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(poissonNeuron)):</span>
+<span id="cb3-15"><a href="Ch5.html#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># conditional statement to asssess if spike has occurred</span></span>
+<span id="cb3-16"><a href="Ch5.html#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> prob: <span class="co"># if a random number between 0 and 1 is &lt; prob</span></span>
+<span id="cb3-17"><a href="Ch5.html#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># store a 1 in poissonNeuron. This means the neuron has fired</span></span>
+<span id="cb3-18"><a href="Ch5.html#cb3-18" aria-hidden="true" tabindex="-1"></a>    poissonNeuron[i] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-19"><a href="Ch5.html#cb3-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-20"><a href="Ch5.html#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the overall spike count rate</span></span>
+<span id="cb3-21"><a href="Ch5.html#cb3-21" aria-hidden="true" tabindex="-1"></a>numSpikes <span class="op">=</span> <span class="bu">sum</span>(poissonNeuron) </span>
+<span id="cb3-22"><a href="Ch5.html#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># total number of action potentials in 2 minutes</span></span>
+<span id="cb3-23"><a href="Ch5.html#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;The spike count rate was </span><span class="sc">{}</span><span class="st"> Hz&#39;</span>.<span class="bu">format</span>(numSpikes <span class="op">/</span> <span class="dv">2</span><span class="op">*</span><span class="dv">60</span>)) </span>
+<span id="cb3-24"><a href="Ch5.html#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 minutes * 60s/minute</span></span>
+<span id="cb3-25"><a href="Ch5.html#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="Ch5.html#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the distribution of ISIs</span></span>
+<span id="cb3-27"><a href="Ch5.html#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: determine the time stamps of each spike</span></span>
+<span id="cb3-28"><a href="Ch5.html#cb3-28" aria-hidden="true" tabindex="-1"></a>spikeTimes <span class="op">=</span> np.where(poissonNeuron <span class="op">==</span> <span class="dv">1</span>)[<span class="dv">0</span>]</span>
+<span id="cb3-29"><a href="Ch5.html#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember the difference between = and ==</span></span>
+<span id="cb3-30"><a href="Ch5.html#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># The [0] at the end is because np.where returns two arrays and we </span></span>
+<span id="cb3-31"><a href="Ch5.html#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># only need the first one</span></span>
+<span id="cb3-32"><a href="Ch5.html#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="Ch5.html#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Initialize data structure to hold ISIs</span></span>
+<span id="cb3-34"><a href="Ch5.html#cb3-34" aria-hidden="true" tabindex="-1"></a>isi <span class="op">=</span> np.zeros(<span class="bu">len</span>(spikeTimes)<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb3-35"><a href="Ch5.html#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co"># There will be one fewer ISI than the number of spikes</span></span>
+<span id="cb3-36"><a href="Ch5.html#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="Ch5.html#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Loop through each pair of consecutive spikes, compute isi </span></span>
+<span id="cb3-38"><a href="Ch5.html#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co"># and store</span></span>
+<span id="cb3-39"><a href="Ch5.html#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(isi)):</span>
+<span id="cb3-40"><a href="Ch5.html#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Each ISI is the time between spike x and spike x+1</span></span>
+<span id="cb3-41"><a href="Ch5.html#cb3-41" aria-hidden="true" tabindex="-1"></a>  isi[x] <span class="op">=</span> spikeTimes[x<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> spikeTimes[x]</span>
+<span id="cb3-42"><a href="Ch5.html#cb3-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-43"><a href="Ch5.html#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the ISI distribution</span></span>
+<span id="cb3-44"><a href="Ch5.html#cb3-44" aria-hidden="true" tabindex="-1"></a>plt.hist(isi, <span class="dv">110</span>) <span class="co"># create a histogram with 110 bins</span></span>
+<span id="cb3-45"><a href="Ch5.html#cb3-45" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;ISI (ms)&#39;</span>)</span>
+<span id="cb3-46"><a href="Ch5.html#cb3-46" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Frequency&#39;</span>)</span></code></pre></div>
+</div>
+<div id="summary-4" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Summary<a href="Ch5.html#summary-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Translating neuronal activity to a format where it can be used in mathematical operations makes use of the fact that action potentials (spikes) are <em>all-or-none</em> and <em>stereotyped</em>. Because of this, every spike both occurs at the same threshold and consistently follows the same pattern. By representing spikes and their absence in a binary system, we can create spike trains that distill voltage activity into vectors of 1s and 0s.</p>
+<p>In many applications, estimating the continuous firing rate of a neuron is advantageous. There are multiple approaches to doing so. The three major methods are:</p>
+<ul>
+<li>Spike count rate</li>
+<li>Spike density</li>
+<li>Population density</li>
+</ul>
+<p>We then turn to the Poisson process, which is a tool for generating artificial spike trains when the firing rate over a time period is known. These artificial spike trains create a random distribution of spikes by dividing the known firing rate by the time period. This gives us a probability that a spike will occur at each time point. Because the fact that a spike will/will not occur is random at each time point (like flipping a coin), we create the random distribution of spikes. We can compare real neuronal spike trains with spike trains generated by Poisson processes to learn more about possible neuronal responses to stimuli.</p>
+</div>
+<div id="exercises-3" class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> Exercises<a href="Ch5.html#exercises-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conceptual-problems" class="section level3 hasAnchor" number="6.7.1">
+<h3><span class="header-section-number">6.7.1</span> Conceptual Problems<a href="Ch5.html#conceptual-problems" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>Define the spike count rate. What are the advantages and disadvantages of defining rate as a spike count?<br />
-</li>
-<li>Define the spike density rate. What are the advantages and disadvantages of defining rate as a spike density?<br />
-</li>
-<li>Define firing rates as population density. What are the advantages and disadvantages of defining rate as population activity?<br />
-</li>
-<li>What are the qualifications for a Poisson spike train?</li>
+<li><p>Define the spike count rate. What are the advantages and disadvantages of defining rate as a spike count?<br />
+</p></li>
+<li><p>Define the spike density rate. What are the advantages and disadvantages of defining rate as a spike density?<br />
+</p></li>
+<li><p>Define firing rates as population density. What are the advantages and disadvantages of defining rate as population activity?</p></li>
+<li><p>What are the qualifications for a Poisson spike train?</p></li>
+<li><p>Challenge: We have simulated a homogeneous Poisson process. What would you alter in this code in order to simulate an inhomogeneous Poisson process?</p></li>
 </ol>
 </div>
-<div id="coding-problems" class="section level3">
-<h3><span class="header-section-number">6.6.2</span> Coding Problems</h3>
+<div id="coding-problems" class="section level3 hasAnchor" number="6.7.2">
+<h3><span class="header-section-number">6.7.2</span> Coding Problems<a href="Ch5.html#coding-problems" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><em>Part a.</em> Create a Poisson spike train to simulate a neuron that fires for 2000 ms at an average rate of 50 Hz. The Poisson distribution is a useful concept to create random spike locations within a time frame (2000 ms in this case) that produce an average desired frequency (50 Hz in this case). The randomness can be achieved by using the np.random.rand() function, which generates a random value uniformly sampled between 0 and 1. If this random value is less than the specified probability of firing, than the code will generate a 1 indicating a spike. Otherwise, the spike train will contain zeros.<br />
 <em>Part b</em> Using the following code template, add a counting variable to measure the number of spikes produced in the simulation. Use this total spike count to calculate the final spike count rate (spikes/second, or Hz) and see how it compares to the desired frequency of 50 Hz (50 spikes/second).</li>
 </ol>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="Ch5.html#cb22-1"></a><span class="co"># Import the necessary libraries</span></span>
-<span id="cb22-2"><a href="Ch5.html#cb22-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb22-3"><a href="Ch5.html#cb22-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb22-4"><a href="Ch5.html#cb22-4"></a></span>
-<span id="cb22-5"><a href="Ch5.html#cb22-5"></a><span class="co"># Initialize data structures</span></span>
-<span id="cb22-6"><a href="Ch5.html#cb22-6"></a><span class="co"># Hint: your simulation runs for 2000 ms</span></span>
-<span id="cb22-7"><a href="Ch5.html#cb22-7"></a>timeVec <span class="op">=</span></span>
-<span id="cb22-8"><a href="Ch5.html#cb22-8"></a></span>
-<span id="cb22-9"><a href="Ch5.html#cb22-9"></a><span class="co"># Hint: you may express your desired rate as a nSpikes / 1000 ms probability</span></span>
-<span id="cb22-10"><a href="Ch5.html#cb22-10"></a>probability <span class="op">=</span> </span>
-<span id="cb22-11"><a href="Ch5.html#cb22-11"></a></span>
-<span id="cb22-12"><a href="Ch5.html#cb22-12"></a><span class="co"># Hint: you want the default value to be zero</span></span>
-<span id="cb22-13"><a href="Ch5.html#cb22-13"></a>spikes <span class="op">=</span></span>
-<span id="cb22-14"><a href="Ch5.html#cb22-14"></a></span>
-<span id="cb22-15"><a href="Ch5.html#cb22-15"></a><span class="co"># Loop through each time point - fill in missing code</span></span>
-<span id="cb22-16"><a href="Ch5.html#cb22-16"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>():</span>
-<span id="cb22-17"><a href="Ch5.html#cb22-17"></a>  <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> probability:</span>
-<span id="cb22-18"><a href="Ch5.html#cb22-18"></a>    <span class="co"># fill in this key line</span></span>
-<span id="cb22-19"><a href="Ch5.html#cb22-19"></a>    </span>
-<span id="cb22-20"><a href="Ch5.html#cb22-20"></a><span class="co"># Compute the spike count rate here</span></span>
-<span id="cb22-21"><a href="Ch5.html#cb22-21"></a>spikeCountRate <span class="op">=</span> </span>
-<span id="cb22-22"><a href="Ch5.html#cb22-22"></a></span>
-<span id="cb22-23"><a href="Ch5.html#cb22-23"></a><span class="co"># Print the spike count rate</span></span>
-<span id="cb22-24"><a href="Ch5.html#cb22-24"></a><span class="bu">print</span>(<span class="st">&#39;The firing rate was: </span><span class="sc">{}</span><span class="st"> Hz&#39;</span>.<span class="bu">format</span>(spikeCountRate))</span>
-<span id="cb22-25"><a href="Ch5.html#cb22-25"></a></span>
-<span id="cb22-26"><a href="Ch5.html#cb22-26"></a><span class="co"># Create a figure of the spike train</span></span>
-<span id="cb22-27"><a href="Ch5.html#cb22-27"></a>plt.figure()</span>
-<span id="cb22-28"><a href="Ch5.html#cb22-28"></a>plt.plot(timeVec, spikes)</span>
-<span id="cb22-29"><a href="Ch5.html#cb22-29"></a>plt.title(<span class="st">&#39;Spikes versus Time&#39;</span>)</span>
-<span id="cb22-30"><a href="Ch5.html#cb22-30"></a>plt.xlabel(<span class="st">&#39;Time (ms)&#39;</span>)</span>
-<span id="cb22-31"><a href="Ch5.html#cb22-31"></a>plt.ylabel(<span class="st">&#39;Spikes&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="Ch5.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the necessary libraries</span></span>
+<span id="cb4-2"><a href="Ch5.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb4-3"><a href="Ch5.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-4"><a href="Ch5.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="Ch5.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize data structures</span></span>
+<span id="cb4-6"><a href="Ch5.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: your simulation runs for 2000 ms</span></span>
+<span id="cb4-7"><a href="Ch5.html#cb4-7" aria-hidden="true" tabindex="-1"></a>timeVec <span class="op">=</span></span>
+<span id="cb4-8"><a href="Ch5.html#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="Ch5.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: you may express your desired rate as a nSpikes / 1000 ms probability</span></span>
+<span id="cb4-10"><a href="Ch5.html#cb4-10" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> </span>
+<span id="cb4-11"><a href="Ch5.html#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="Ch5.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: you want the default value to be zero</span></span>
+<span id="cb4-13"><a href="Ch5.html#cb4-13" aria-hidden="true" tabindex="-1"></a>spikes <span class="op">=</span></span>
+<span id="cb4-14"><a href="Ch5.html#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="Ch5.html#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each time point - fill in missing code</span></span>
+<span id="cb4-16"><a href="Ch5.html#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>():</span>
+<span id="cb4-17"><a href="Ch5.html#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> probability:</span>
+<span id="cb4-18"><a href="Ch5.html#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fill in this key line</span></span>
+<span id="cb4-19"><a href="Ch5.html#cb4-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-20"><a href="Ch5.html#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the spike count rate here</span></span>
+<span id="cb4-21"><a href="Ch5.html#cb4-21" aria-hidden="true" tabindex="-1"></a>spikeCountRate <span class="op">=</span> </span>
+<span id="cb4-22"><a href="Ch5.html#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="Ch5.html#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the spike count rate</span></span>
+<span id="cb4-24"><a href="Ch5.html#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;The firing rate was: </span><span class="sc">{}</span><span class="st"> Hz&#39;</span>.<span class="bu">format</span>(spikeCountRate))</span>
+<span id="cb4-25"><a href="Ch5.html#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="Ch5.html#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a figure of the spike train</span></span>
+<span id="cb4-27"><a href="Ch5.html#cb4-27" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb4-28"><a href="Ch5.html#cb4-28" aria-hidden="true" tabindex="-1"></a>plt.plot(timeVec, spikes)</span>
+<span id="cb4-29"><a href="Ch5.html#cb4-29" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Spikes versus Time&#39;</span>)</span>
+<span id="cb4-30"><a href="Ch5.html#cb4-30" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Time (ms)&#39;</span>)</span>
+<span id="cb4-31"><a href="Ch5.html#cb4-31" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Spikes&#39;</span>)</span></code></pre></div>
 <p><em>Part c</em> Using your spike train, compute a histogram of interspike intervals (ISIs). To do this, it will be helpful to find the locations of your spikes in your spike train. The function np.where() will do this (hint: you will only need the first value returned in the tuple). Hint: you will have 1 fewer ISI than number of spikes in your spike train.</p>
 <ol start="2" style="list-style-type: decimal">
 <li><em>Part a</em> Using the same Poisson process as above, simulate an experiment in which 40 trials of 2000 ms are created and place all trials into a single array. Fill in the code snippet below to create your array and plot a raster plot of all trials.</li>
 </ol>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="Ch5.html#cb23-1"></a><span class="co"># Import necessary libraries</span></span>
-<span id="cb23-2"><a href="Ch5.html#cb23-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb23-3"><a href="Ch5.html#cb23-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb23-4"><a href="Ch5.html#cb23-4"></a></span>
-<span id="cb23-5"><a href="Ch5.html#cb23-5"></a><span class="co">#fill in the time vector and the spike frequency value of 50 Hz</span></span>
-<span id="cb23-6"><a href="Ch5.html#cb23-6"></a>timeVec <span class="op">=</span> </span>
-<span id="cb23-7"><a href="Ch5.html#cb23-7"></a>p1 <span class="op">=</span> </span>
-<span id="cb23-8"><a href="Ch5.html#cb23-8"></a></span>
-<span id="cb23-9"><a href="Ch5.html#cb23-9"></a><span class="co">#Allocate space for the 40 trials x 2000 ms array</span></span>
-<span id="cb23-10"><a href="Ch5.html#cb23-10"></a>allTrials <span class="op">=</span> </span>
-<span id="cb23-11"><a href="Ch5.html#cb23-11"></a></span>
-<span id="cb23-12"><a href="Ch5.html#cb23-12"></a><span class="co">#Create a Poisson spike generator, that loops 40 times for all 40 trials</span></span>
-<span id="cb23-13"><a href="Ch5.html#cb23-13"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>():</span>
-<span id="cb23-14"><a href="Ch5.html#cb23-14"></a></span>
-<span id="cb23-15"><a href="Ch5.html#cb23-15"></a>    <span class="co"># For each trial, use an inner loop to represent all 2000 time points</span></span>
-<span id="cb23-16"><a href="Ch5.html#cb23-16"></a>    <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">range</span>():</span>
-<span id="cb23-17"><a href="Ch5.html#cb23-17"></a></span>
-<span id="cb23-18"><a href="Ch5.html#cb23-18"></a><span class="co"># Create the raster plot</span></span>
-<span id="cb23-19"><a href="Ch5.html#cb23-19"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(): <span class="co"># How many trials are we running? </span></span>
-<span id="cb23-20"><a href="Ch5.html#cb23-20"></a>    spikes, <span class="op">=</span>  <span class="co">#Fill in Spikes to represent every spike found</span></span>
-<span id="cb23-21"><a href="Ch5.html#cb23-21"></a>               <span class="co"># in the allTrials matrix. Index the jth trial </span></span>
-<span id="cb23-22"><a href="Ch5.html#cb23-22"></a>               <span class="co"># only. </span></span>
-<span id="cb23-23"><a href="Ch5.html#cb23-23"></a>    </span>
-<span id="cb23-24"><a href="Ch5.html#cb23-24"></a>    spikeTimes <span class="op">=</span> timeVec[spikes] </span>
-<span id="cb23-25"><a href="Ch5.html#cb23-25"></a>    theseSpikes <span class="op">=</span> np.ones(<span class="bu">len</span>(spikes))<span class="op">*</span>j<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb23-26"><a href="Ch5.html#cb23-26"></a>    </span>
-<span id="cb23-27"><a href="Ch5.html#cb23-27"></a>    plt.scatter(spikeTimes, theseSpikes, s<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="st">&#39;k&#39;</span>)</span>
-<span id="cb23-28"><a href="Ch5.html#cb23-28"></a></span>
-<span id="cb23-29"><a href="Ch5.html#cb23-29"></a><span class="co">#Fill in the labels of the x, y axis</span></span>
-<span id="cb23-30"><a href="Ch5.html#cb23-30"></a>plt.title()</span>
-<span id="cb23-31"><a href="Ch5.html#cb23-31"></a>plt.xlabel() </span>
-<span id="cb23-32"><a href="Ch5.html#cb23-32"></a>plt.ylabel()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="Ch5.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary libraries</span></span>
+<span id="cb5-2"><a href="Ch5.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="Ch5.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-4"><a href="Ch5.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="Ch5.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#fill in the time vector and the spike frequency value of 50 Hz</span></span>
+<span id="cb5-6"><a href="Ch5.html#cb5-6" aria-hidden="true" tabindex="-1"></a>timeVec <span class="op">=</span> </span>
+<span id="cb5-7"><a href="Ch5.html#cb5-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> </span>
+<span id="cb5-8"><a href="Ch5.html#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="Ch5.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Allocate space for the 40 trials x 2000 ms array</span></span>
+<span id="cb5-10"><a href="Ch5.html#cb5-10" aria-hidden="true" tabindex="-1"></a>allTrials <span class="op">=</span> </span>
+<span id="cb5-11"><a href="Ch5.html#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="Ch5.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a Poisson spike generator, that loops 40 times for all 40 trials</span></span>
+<span id="cb5-13"><a href="Ch5.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>():</span>
+<span id="cb5-14"><a href="Ch5.html#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="Ch5.html#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># For each trial, use an inner loop to represent all 2000 time points</span></span>
+<span id="cb5-16"><a href="Ch5.html#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">range</span>():</span>
+<span id="cb5-17"><a href="Ch5.html#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="Ch5.html#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the raster plot</span></span>
+<span id="cb5-19"><a href="Ch5.html#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(): <span class="co"># How many trials are we running? </span></span>
+<span id="cb5-20"><a href="Ch5.html#cb5-20" aria-hidden="true" tabindex="-1"></a>    spikes, <span class="op">=</span>  <span class="co">#Fill in Spikes to represent every spike found</span></span>
+<span id="cb5-21"><a href="Ch5.html#cb5-21" aria-hidden="true" tabindex="-1"></a>               <span class="co"># in the allTrials matrix. Index the jth trial </span></span>
+<span id="cb5-22"><a href="Ch5.html#cb5-22" aria-hidden="true" tabindex="-1"></a>               <span class="co"># only. </span></span>
+<span id="cb5-23"><a href="Ch5.html#cb5-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-24"><a href="Ch5.html#cb5-24" aria-hidden="true" tabindex="-1"></a>    spikeTimes <span class="op">=</span> timeVec[spikes] </span>
+<span id="cb5-25"><a href="Ch5.html#cb5-25" aria-hidden="true" tabindex="-1"></a>    theseSpikes <span class="op">=</span> np.ones(<span class="bu">len</span>(spikes))<span class="op">*</span>j<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb5-26"><a href="Ch5.html#cb5-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-27"><a href="Ch5.html#cb5-27" aria-hidden="true" tabindex="-1"></a>    plt.scatter(spikeTimes, theseSpikes, s<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="st">&#39;k&#39;</span>)</span>
+<span id="cb5-28"><a href="Ch5.html#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="Ch5.html#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">#Fill in the labels of the x, y axis</span></span>
+<span id="cb5-30"><a href="Ch5.html#cb5-30" aria-hidden="true" tabindex="-1"></a>plt.title()</span>
+<span id="cb5-31"><a href="Ch5.html#cb5-31" aria-hidden="true" tabindex="-1"></a>plt.xlabel() </span>
+<span id="cb5-32"><a href="Ch5.html#cb5-32" aria-hidden="true" tabindex="-1"></a>plt.ylabel()</span></code></pre></div>
 <p><em>Part b</em> Now compute the Fano factor for your spike array. This may be done in one line of code using the built-in functions for variance and mean from the numpy library.</p>
 
 </div>
@@ -529,7 +739,6 @@ Figure 6.6: Spike density rate over 50 trials
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
 <script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -548,6 +757,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -556,8 +766,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-FiringRates.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -567,7 +777,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Computational Neuroscience.pdf", "Computational Neuroscience.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 },
@@ -584,7 +798,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -4,27 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience</title>
+  <title>Chapter 7 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience</title>
   <meta name="description" content="TBD" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience" />
+  <meta property="og:title" content="Chapter 7 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="TBD" />
   <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience" />
+  <meta name="twitter:title" content="Chapter 7 Reverse Correlation and Receptive Field Mapping | Computational Neuroscience" />
   
   <meta name="twitter:description" content="TBD" />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Students of NS/PY 357 Bates College" />
 
 
-<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +31,8 @@
   
 <link rel="prev" href="Ch5.html"/>
 <link rel="next" href="Ch7.html"/>
-<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,23 +48,24 @@
 
 
 
-
-<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,13 +85,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +104,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -118,6 +118,8 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -130,87 +132,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li><a href="./">Computational Neuroscience</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-book-is-free-as-in-pizza"><i class="fa fa-check"></i><b>1.1</b> This book is free (as in pizza)</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors-version-0.0"><i class="fa fa-check"></i><b>1.5</b> Authors: Version 0.0</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#authors-version-1.0"><i class="fa fa-check"></i><b>1.6</b> Authors: Version 1.0</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#authors-version-2.0"><i class="fa fa-check"></i><b>1.7</b> Authors: Version 2.0</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a><ul>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
 <li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
-<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
-<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.4</b> Example Python Problems</a></li>
-<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.5</b> Conceptual Exercises for Learning Python</a></li>
-<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.6</b> Coding Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#libraries"><i class="fa fa-check"></i><b>2.3</b> Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#data-types"><i class="fa fa-check"></i><b>2.4</b> Data Types</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="Ch1.html"><a href="Ch1.html#string"><i class="fa fa-check"></i><b>2.4.1</b> String</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Ch1.html"><a href="Ch1.html#integers"><i class="fa fa-check"></i><b>2.4.2</b> Integers</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Ch1.html"><a href="Ch1.html#floats"><i class="fa fa-check"></i><b>2.4.3</b> Floats</a></li>
+<li class="chapter" data-level="2.4.4" data-path="Ch1.html"><a href="Ch1.html#lists"><i class="fa fa-check"></i><b>2.4.4</b> Lists</a></li>
+<li class="chapter" data-level="2.4.5" data-path="Ch1.html"><a href="Ch1.html#boolean"><i class="fa fa-check"></i><b>2.4.5</b> Boolean</a></li>
+<li class="chapter" data-level="2.4.6" data-path="Ch1.html"><a href="Ch1.html#arrays"><i class="fa fa-check"></i><b>2.4.6</b> Arrays</a></li>
+<li class="chapter" data-level="2.4.7" data-path="Ch1.html"><a href="Ch1.html#vectors"><i class="fa fa-check"></i><b>2.4.7</b> Vectors</a></li>
+<li class="chapter" data-level="2.4.8" data-path="Ch1.html"><a href="Ch1.html#matrices"><i class="fa fa-check"></i><b>2.4.8</b> Matrices</a></li>
+<li class="chapter" data-level="2.4.9" data-path="Ch1.html"><a href="Ch1.html#variable-assignment"><i class="fa fa-check"></i><b>2.4.9</b> Variable assignment</a></li>
+<li class="chapter" data-level="2.4.10" data-path="Ch1.html"><a href="Ch1.html#f-strings"><i class="fa fa-check"></i><b>2.4.10</b> f-Strings</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a><ul>
-<li class="chapter" data-level="3.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="3.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#for-loops"><i class="fa fa-check"></i><b>2.5</b> For loops</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#if-elif-else-statements"><i class="fa fa-check"></i><b>2.6</b> If-Elif-Else Statements</a></li>
+<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#conditional-statements"><i class="fa fa-check"></i><b>2.7</b> Conditional statements</a></li>
+<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#logic-statements"><i class="fa fa-check"></i><b>2.8</b> Logic statements</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="Ch1.html"><a href="Ch1.html#and-or-not"><i class="fa fa-check"></i><b>2.8.1</b> “And”, “Or”, “Not”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="Ch1.html"><a href="Ch1.html#while-loops"><i class="fa fa-check"></i><b>2.9</b> While loops</a></li>
+<li class="chapter" data-level="2.10" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.10</b> Summary</a></li>
+<li class="chapter" data-level="2.11" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.11</b> Example Python Problems</a></li>
+<li class="chapter" data-level="2.12" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.12</b> Conceptual Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.13" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.13</b> Coding Exercises for Learning Python</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="Ch2.html"><a href="Ch2.html#can-we-make-models-that-understand"><i class="fa fa-check"></i><b>3.3.1</b> Can we make models that understand?</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#levels-of-organization"><i class="fa fa-check"></i><b>3.4</b> Levels of organization</a></li>
 <li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.5</b> Applications of computational neuroscience</a></li>
 <li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.6</b> The future of computational neuroscience</a></li>
-<li class="chapter" data-level="3.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
 <li class="chapter" data-level="3.8" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a><ul>
-<li class="chapter" data-level="4.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="4.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>4.3</b> What is an action potential?</a></li>
-<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.4</b> Nernst equilibrium potential</a></li>
-<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.5</b> Leaky Integrate and Fire Model</a></li>
-<li class="chapter" data-level="4.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
-<li class="chapter" data-level="4.7" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a><ul>
-<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.7.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.7.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#membrane-potentials-and-electrochemical-gradients"><i class="fa fa-check"></i><b>4.3</b> Membrane potentials and electrochemical gradients</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#phases-of-the-action-potential"><i class="fa fa-check"></i><b>4.4</b> Phases of the action potential</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="Ch3.html"><a href="Ch3.html#positive-feedback-and-depolarization"><i class="fa fa-check"></i><b>4.4.1</b> Positive feedback and depolarization</a></li>
+<li class="chapter" data-level="4.4.2" data-path="Ch3.html"><a href="Ch3.html#negative-feedback-and-repolarization"><i class="fa fa-check"></i><b>4.4.2</b> Negative feedback and repolarization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.5</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.6</b> Leaky Integrate and Fire Model</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#passive-membrane-model"><i class="fa fa-check"></i><b>4.7.1</b> Passive membrane model:</a></li>
+<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#an-action-potential-has-six-phases"><i class="fa fa-check"></i><b>4.7.2</b> An action potential has six phases:</a></li>
+<li class="chapter" data-level="4.7.3" data-path="Ch3.html"><a href="Ch3.html#main-features-of-an-action-potential"><i class="fa fa-check"></i><b>4.7.3</b> Main features of an action potential:</a></li>
+<li class="chapter" data-level="4.7.4" data-path="Ch3.html"><a href="Ch3.html#the-flow-of-ions-and-equilibrium-potentials"><i class="fa fa-check"></i><b>4.7.4</b> The flow of ions and equilibrium potentials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="Ch3.html"><a href="Ch3.html#exercises-1"><i class="fa fa-check"></i><b>4.8</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.8.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="4.8.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.8.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a><ul>
-<li class="chapter" data-level="5.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="5.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-3"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introduction-3"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
 <li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>5.3</b> The Hodgkin and Huxley model</a></li>
-<li class="chapter" data-level="5.4" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
-<li class="chapter" data-level="5.5" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
-<li class="chapter" data-level="5.5.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#exercises-2"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="Ch4.html"><a href="Ch4.html#conceptual-exercises-1"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Ch4.html"><a href="Ch4.html#coding-exercises-1"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a><ul>
-<li class="chapter" data-level="6.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="6.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-4"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-4"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
 <li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#spike-trains"><i class="fa fa-check"></i><b>6.3</b> Spike Trains</a></li>
 <li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#spike-statistics"><i class="fa fa-check"></i><b>6.4</b> Spike Statistics</a></li>
-<li class="chapter" data-level="6.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
-<li class="chapter" data-level="6.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>6.6</b> Exercises</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.6.1</b> Conceptual Problems</a></li>
-<li class="chapter" data-level="6.6.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.6.2</b> Coding Problems</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#poisson-processes"><i class="fa fa-check"></i><b>6.5</b> Poisson Processes</a></li>
+<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#summary-4"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.7.1</b> Conceptual Problems</a></li>
+<li class="chapter" data-level="6.7.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.7.2</b> Coding Problems</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a><ul>
-<li class="chapter" data-level="7.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="7.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#vocabulary-5"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#introduction-5"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
 <li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#spike-triggered-average"><i class="fa fa-check"></i><b>7.3</b> Spike-triggered Average</a></li>
 <li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#reverse-correlation"><i class="fa fa-check"></i><b>7.4</b> Reverse Correlation</a></li>
-<li class="chapter" data-level="7.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-<li class="chapter" data-level="7.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>7.6</b> Exercises</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="7.6.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#summary-5"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="Ch6.html"><a href="Ch6.html#exercises-4"><i class="fa fa-check"></i><b>7.6</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="Ch6.html"><a href="Ch6.html#conceptual-exercises-2"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="7.6.2" data-path="Ch6.html"><a href="Ch6.html#coding-exercises-2"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a><ul>
-<li class="chapter" data-level="8.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="8.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
-<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="Ch7.html"><a href="Ch7.html#vocabulary-6"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="8.2" data-path="Ch7.html"><a href="Ch7.html#introduction-6"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="Ch7.html"><a href="Ch7.html#eeg"><i class="fa fa-check"></i><b>8.3.1</b> EEG</a></li>
 <li class="chapter" data-level="8.3.2" data-path="Ch7.html"><a href="Ch7.html#meg"><i class="fa fa-check"></i><b>8.3.2</b> MEG</a></li>
 <li class="chapter" data-level="8.3.3" data-path="Ch7.html"><a href="Ch7.html#fmri"><i class="fa fa-check"></i><b>8.3.3</b> fMRI</a></li>
 <li class="chapter" data-level="8.3.4" data-path="Ch7.html"><a href="Ch7.html#ecog"><i class="fa fa-check"></i><b>8.3.4</b> ECOG</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="Ch7.html"><a href="Ch7.html#introduction-to-decoding"><i class="fa fa-check"></i><b>8.4</b> Introduction to Decoding</a></li>
-<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a>
+<ul>
 <li class="chapter" data-level="8.5.1" data-path="Ch7.html"><a href="Ch7.html#correlation-classifiers"><i class="fa fa-check"></i><b>8.5.1</b> Correlation classifiers</a></li>
 <li class="chapter" data-level="8.5.2" data-path="Ch7.html"><a href="Ch7.html#distance-based-classifiers"><i class="fa fa-check"></i><b>8.5.2</b> Distance-based classifiers</a></li>
 <li class="chapter" data-level="8.5.3" data-path="Ch7.html"><a href="Ch7.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>8.5.3</b> Boundary-based classifiers</a></li>
@@ -218,16 +275,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="Ch7.html"><a href="Ch7.html#cross-validation"><i class="fa fa-check"></i><b>8.6</b> Cross validation</a></li>
 <li class="chapter" data-level="8.7" data-path="Ch7.html"><a href="Ch7.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a><ul>
+<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="Ch8.html"><a href="Ch8.html#vocabulary-list"><i class="fa fa-check"></i><b>9.1</b> Vocabulary List:</a></li>
 <li class="chapter" data-level="9.2" data-path="Ch8.html"><a href="Ch8.html#introductionbackground"><i class="fa fa-check"></i><b>9.2</b> Introduction/Background</a></li>
 <li class="chapter" data-level="9.3" data-path="Ch8.html"><a href="Ch8.html#different-types-of-learning"><i class="fa fa-check"></i><b>9.3</b> Different Types of Learning</a></li>
 <li class="chapter" data-level="9.4" data-path="Ch8.html"><a href="Ch8.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>9.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
 <li class="chapter" data-level="9.5" data-path="Ch8.html"><a href="Ch8.html#perceptron"><i class="fa fa-check"></i><b>9.5</b> Perceptron</a></li>
-<li class="chapter" data-level="9.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+<li class="chapter" data-level="9.6" data-path="Ch8.html"><a href="Ch8.html#summary-6"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="Ch9.html"><a href="Ch9.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
-<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a><ul>
+<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="Ch10.html"><a href="Ch10.html#chapter-1-preface"><i class="fa fa-check"></i><b>11.1</b> Chapter 1: Preface</a></li>
 <li class="chapter" data-level="11.2" data-path="Ch10.html"><a href="Ch10.html#chapter-2-introduction-to-python"><i class="fa fa-check"></i><b>11.2</b> Chapter 2: Introduction to Python</a></li>
 <li class="chapter" data-level="11.3" data-path="Ch10.html"><a href="Ch10.html#chapter-3-what-is-computational-neuroscience"><i class="fa fa-check"></i><b>11.3</b> Chapter 3: What is Computational Neuroscience?</a></li>
@@ -238,28 +297,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.8" data-path="Ch10.html"><a href="Ch10.html#chapter-8-decoding"><i class="fa fa-check"></i><b>11.8</b> Chapter 8: Decoding</a></li>
 <li class="chapter" data-level="11.9" data-path="Ch10.html"><a href="Ch10.html#chapter-9-neural-networks"><i class="fa fa-check"></i><b>11.9</b> Chapter 9: Neural Networks</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a><ul>
+<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="Ch11.html"><a href="Ch11.html#chapter-1-introduction-to-python"><i class="fa fa-check"></i><b>12.1</b> Chapter 1: Introduction to Python</a></li>
 <li class="chapter" data-level="12.2" data-path="Ch11.html"><a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience"><i class="fa fa-check"></i><b>12.2</b> Chapter 2: Introduction to Computational Neuroscience</a></li>
-<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a><ul>
+<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a>
+<ul>
 <li class="chapter" data-level="12.3.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions"><i class="fa fa-check"></i><b>12.3.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.3.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions"><i class="fa fa-check"></i><b>12.3.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a><ul>
+<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a>
+<ul>
 <li class="chapter" data-level="12.4.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-1"><i class="fa fa-check"></i><b>12.4.1</b> Conceptual Questions:</a></li>
 <li class="chapter" data-level="12.4.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-1"><i class="fa fa-check"></i><b>12.4.2</b> Coding Questions:</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a><ul>
+<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a>
+<ul>
 <li class="chapter" data-level="12.5.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-2"><i class="fa fa-check"></i><b>12.5.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.5.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-2"><i class="fa fa-check"></i><b>12.5.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a>
+<ul>
 <li class="chapter" data-level="12.6.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-3"><i class="fa fa-check"></i><b>12.6.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.6.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-3"><i class="fa fa-check"></i><b>12.6.2</b> Coding Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="12.7" data-path="Ch11.html"><a href="Ch11.html#chapter-7-decoding"><i class="fa fa-check"></i><b>12.7</b> Chapter 7: Decoding</a></li>
 <li class="chapter" data-level="12.8" data-path="Ch11.html"><a href="Ch11.html#chapter-8-neural-networks"><i class="fa fa-check"></i><b>12.8</b> Chapter 8: Neural Networks</a></li>
 </ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -277,10 +344,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ch6" class="section level1">
-<h1><span class="header-section-number">7</span> Reverse Correlation and Receptive Field Mapping</h1>
-<div id="vocabulary" class="section level2">
-<h2><span class="header-section-number">7.1</span> Vocabulary</h2>
+<div id="Ch6" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Reverse Correlation and Receptive Field Mapping<a href="Ch6.html#Ch6" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="vocabulary-5" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Vocabulary<a href="Ch6.html#vocabulary-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Poisson process</li>
 <li>Spike train</li>
@@ -292,227 +359,232 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Spike-triggered average</li>
 <li>White noise</li>
 <li>Reverse correlation</li>
+<li>Convolution</li>
+<li>Spike threshold</li>
+<li>Refractory period</li>
 </ul>
 </div>
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">7.2</span> Introduction</h2>
-<p>Throughout our everyday lives, we receive an enormous amount of sensory inputs from our surrounding environment: the color of the clouds before sunset, the melody played by an old record player, the smell of apple pie, or the taste of your favorite dish. Our brain, with its incredible computational capacity, successfully encodes all these sensory inputs from different modalities to something we can perceive and understand, in the language of neurons. Our discussion from previous chapters noted that the language of neurons–or the neural code–consists of action potentials that are all-or-none events, and we learned how neurons fire an action potential. In this chapter, we are going to talk about why neuron fires and how to characterize and analyze these action potentials using spike trains. Based on this, we are going to discuss ways to study the relationship between outside stimuli and neural responses.</p>
+<div id="introduction-5" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Introduction<a href="Ch6.html#introduction-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Throughout our everyday lives, we receive an enormous amount of sensory inputs from our surrounding environment: the color of the clouds before sunset, the melody played by an old record player, the smell of apple pie, or the taste of your favorite dish. Our brain encodes all of these sensory
+inputs from different modalities to something we can perceive and understand, in the language
+of neurons. Our discussion from previous chapters noted that the language of neurons–or the neural code–consists of action potentials that are all-or-none events, and we learned how neurons fire an action potential and how to characterize and analyze these action potentials using spike trains. In this chapter, we are going to talk about why neurons fire and how to characterize and analyze these action potentials using spike trains. Based on this, we are going to discuss ways to study the relationship between outside stimuli and neural responses.</p>
 </div>
-<div id="spike-triggered-average" class="section level2">
-<h2><span class="header-section-number">7.3</span> Spike-triggered Average</h2>
+<div id="spike-triggered-average" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Spike-triggered Average<a href="Ch6.html#spike-triggered-average" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An essential tool for describing neurons, and how they respond to certain stimuli, is the <strong>spike-triggered average (STA)</strong>. The STA is the average value of the stimulus during some time interval before a spike occurs. Researchers record a neuron’s activity as it responds to various stimuli. First, the researchers must determine the amount of time before a spike they want to analyze. Once the data has been obtained and the time step determined, the value of the one-time step before a spike is recorded, and averaged across trials. This value ultimately characterizes the level of stimulus necessary for the neuron to fire. It is important to note that the spike-triggered average is measuring the average level of the stimulus, not of the neuron. This calculation is based on the probability of a neuron spiking due to stimuli activity to occur in the recent past.</p>
-<div class="figure"><span id="fig:STA-fig"></span>
-<img src="images/spikeTriggeredAverage.png" alt="The spike triggered average can be used to calculate both the stimulus and the spike train."  />
+<div class="figure"><span style="display:block;" id="fig:STA-fig"></span>
+<img src="images/spikeTriggeredAverage.png" alt="The spike triggered average can be used to calculate both the stimulus and the spike train." width="414" />
 <p class="caption">
 Figure 7.1: The spike triggered average can be used to calculate both the stimulus and the spike train.
 </p>
 </div>
 <div style="float:left;width:312px">
-<div class="figure"><span id="fig:whiteNoise-fig"></span>
-<img src="images/whiteNoise.png" alt="Example of a white noise stimulus using gray scale."  />
+<div class="figure"><span style="display:block;" id="fig:whiteNoise-fig"></span>
+<img src="images/whiteNoise.png" alt="Example of a white noise stimulus using gray scale." width="156" />
 <p class="caption">
 Figure 7.2: Example of a white noise stimulus using gray scale.
 </p>
 </div>
 </div>
-<p>The spike-triggered average can be utilized to determine the receptive fields of individual neurons. However, when using the STA to determine receptive fields, the stimulus presented to the recording neuron must be sufficiently random. If it isn’t, any correlation in stimuli will be presented in the generated receptive field, thus skewing the result. A <strong>white noise</strong>, is a type of stimulus with random variation where the value at each time point is independent of all other points. White noise can be employed in these instances to provide a receptive field without bias. White noise stimuli can look different based on the neuron and the system being observed, from a series of random auditory frequencies to randomly generated pixels stimulating the visual cortex. For each set of stimuli, the value at each time point does not correlate with the values around it. For more information on spike-triggered average analyses, especially concerning receptive fields,<a href="https://jov.arvojournals.org/article.aspx?articleid=2193104">read this experiment.</a></p>
+<p>The spike-triggered average can be utilized to determine the receptive fields of individual neurons. However, when using the STA to determine receptive fields, the stimulus presented to the recording neuron must be sufficiently random. If it isn’t, any correlation in stimuli will be presented in the generated receptive field, thus skewing the result. <strong>White noise</strong> is a type of stimulus with random variation where the value at each time point is independent of all other points. White noise can be employed in these instances to provide a receptive field without bias. White noise stimuli can look different based on the neuron and the system being observed, from a series of random auditory frequencies to randomly generated pixels stimulating the visual cortex. For each set of stimuli, the value at each time point does not correlate with the values around it. For more information on spike-triggered average analyses, especially concerning receptive fields,<a href="https://jov.arvojournals.org/article.aspx?articleid=2193104">read this experiment.</a></p>
 <p><strong>Worked Example:</strong>
 Paul the Python has been trying to figure out what every neuron in his reptilian brain responds to for purely scientific purposes. He has found a region in his visual cortex that responds to different hat sizes (in inches). He wants to find out which diameter of hat a particular neuron responds to (henceforth referred to as Paul’s neuron). To do so, he has decided to show his neuron many diameters of hats to try and find the spike triggered average but Paul the Python doesn’t have any arms so we have to help him out.</p>
 <p><em>Solution</em>: First, generate random hat diameters that we will show Paul’s neuron. In this problem, we will show Paul’s neuron a new hat each millisecond for 3 seconds.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="Ch6.html#cb24-1"></a><span class="im">import</span> numpy <span class="im">as</span> np                <span class="co"># Import the necessary </span></span>
-<span id="cb24-2"><a href="Ch6.html#cb24-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt   <span class="co"># libraries. Numpy is useful</span></span>
-<span id="cb24-3"><a href="Ch6.html#cb24-3"></a>                                  <span class="co"># for many things like generating</span></span>
-<span id="cb24-4"><a href="Ch6.html#cb24-4"></a>                                  <span class="co"># arrays and random numbers</span></span>
-<span id="cb24-5"><a href="Ch6.html#cb24-5"></a>                                  <span class="co"># Matplotlib will help with </span></span>
-<span id="cb24-6"><a href="Ch6.html#cb24-6"></a>                                  <span class="co"># plotting</span></span>
-<span id="cb24-7"><a href="Ch6.html#cb24-7"></a>                                  </span>
-<span id="cb24-8"><a href="Ch6.html#cb24-8"></a>time <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">3</span>, <span class="fl">0.001</span>)  <span class="co"># Create a time vector for 3 seconds</span></span>
-<span id="cb24-9"><a href="Ch6.html#cb24-9"></a>                               <span class="co"># with a step size of 0.001 so </span></span>
-<span id="cb24-10"><a href="Ch6.html#cb24-10"></a>                               <span class="co"># that each time step is one ms.</span></span>
-<span id="cb24-11"><a href="Ch6.html#cb24-11"></a>                               <span class="co"># (This makes conversions easier</span></span>
-<span id="cb24-12"><a href="Ch6.html#cb24-12"></a>                               <span class="co"># in the long run). We are </span></span>
-<span id="cb24-13"><a href="Ch6.html#cb24-13"></a>                               <span class="co"># essentially showing Paul a new</span></span>
-<span id="cb24-14"><a href="Ch6.html#cb24-14"></a>                               <span class="co"># hat diameter each ms.</span></span>
-<span id="cb24-15"><a href="Ch6.html#cb24-15"></a></span>
-<span id="cb24-16"><a href="Ch6.html#cb24-16"></a>numbers <span class="op">=</span> np.random.randn(<span class="bu">len</span>(time))  <span class="co"># Use np.random.randn()</span></span>
-<span id="cb24-17"><a href="Ch6.html#cb24-17"></a>                                      <span class="co"># to get a range of random</span></span>
-<span id="cb24-18"><a href="Ch6.html#cb24-18"></a>          <span class="co"># numbers that falls under the standard normal</span></span>
-<span id="cb24-19"><a href="Ch6.html#cb24-19"></a>          <span class="co"># distribution. The point of this step is just to get</span></span>
-<span id="cb24-20"><a href="Ch6.html#cb24-20"></a>          <span class="co"># a set of random values. This distribution will </span></span>
-<span id="cb24-21"><a href="Ch6.html#cb24-21"></a>          <span class="co"># typically yield values between -4 and 4. We are </span></span>
-<span id="cb24-22"><a href="Ch6.html#cb24-22"></a>          <span class="co"># showing Paul a new hat at every time point, so we</span></span>
-<span id="cb24-23"><a href="Ch6.html#cb24-23"></a>          <span class="co"># need to create a vector that is the same length as </span></span>
-<span id="cb24-24"><a href="Ch6.html#cb24-24"></a>          <span class="co"># the time vector. To do this, we could hard code 3000</span></span>
-<span id="cb24-25"><a href="Ch6.html#cb24-25"></a>          <span class="co"># but it is better to write in len(time) in case we </span></span>
-<span id="cb24-26"><a href="Ch6.html#cb24-26"></a>          <span class="co"># decide to change aspects of the experiment in the</span></span>
-<span id="cb24-27"><a href="Ch6.html#cb24-27"></a>          <span class="co"># future. Remember, coding is about making life easy</span></span>
-<span id="cb24-28"><a href="Ch6.html#cb24-28"></a>          <span class="co"># for us in the future!</span></span>
-<span id="cb24-29"><a href="Ch6.html#cb24-29"></a>          </span>
-<span id="cb24-30"><a href="Ch6.html#cb24-30"></a>diameters <span class="op">=</span> <span class="bu">abs</span>(numbers)  <span class="co"># Since we are using a normal distribution</span></span>
-<span id="cb24-31"><a href="Ch6.html#cb24-31"></a>                          <span class="co"># and we can&#39;t have negative hat sizes,</span></span>
-<span id="cb24-32"><a href="Ch6.html#cb24-32"></a>                          <span class="co"># we are taking the absolute value of </span></span>
-<span id="cb24-33"><a href="Ch6.html#cb24-33"></a>                          <span class="co"># the random hat sizes.</span></span>
-<span id="cb24-34"><a href="Ch6.html#cb24-34"></a></span>
-<span id="cb24-35"><a href="Ch6.html#cb24-35"></a>plt.figure()</span>
-<span id="cb24-36"><a href="Ch6.html#cb24-36"></a>plt.plot(time, diameters)  <span class="co"># Plot hat diameters against time to </span></span>
-<span id="cb24-37"><a href="Ch6.html#cb24-37"></a>plt.xlabel(<span class="st">&#39;Time in s&#39;</span>)    <span class="co"># show what Paul is seeing in the 3</span></span>
-<span id="cb24-38"><a href="Ch6.html#cb24-38"></a>plt.ylabel(<span class="st">&#39;Hat diameters in inches&#39;</span>)  <span class="co"># second experiment. </span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="Ch6.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np                <span class="co"># Import the necessary </span></span>
+<span id="cb1-2"><a href="Ch6.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt   <span class="co"># libraries. Numpy is useful</span></span>
+<span id="cb1-3"><a href="Ch6.html#cb1-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="co"># for many things like generating</span></span>
+<span id="cb1-4"><a href="Ch6.html#cb1-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="co"># arrays and random numbers</span></span>
+<span id="cb1-5"><a href="Ch6.html#cb1-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="co"># Matplotlib will help with </span></span>
+<span id="cb1-6"><a href="Ch6.html#cb1-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="co"># plotting</span></span>
+<span id="cb1-7"><a href="Ch6.html#cb1-7" aria-hidden="true" tabindex="-1"></a>                                  </span>
+<span id="cb1-8"><a href="Ch6.html#cb1-8" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">3</span>, <span class="fl">0.001</span>)  <span class="co"># Create a time vector for 3 seconds</span></span>
+<span id="cb1-9"><a href="Ch6.html#cb1-9" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># with a step size of 0.001 so </span></span>
+<span id="cb1-10"><a href="Ch6.html#cb1-10" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># that each time step is one ms.</span></span>
+<span id="cb1-11"><a href="Ch6.html#cb1-11" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># (This makes conversions easier</span></span>
+<span id="cb1-12"><a href="Ch6.html#cb1-12" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># in the long run). We are </span></span>
+<span id="cb1-13"><a href="Ch6.html#cb1-13" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># essentially showing Paul a new</span></span>
+<span id="cb1-14"><a href="Ch6.html#cb1-14" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># hat diameter each ms.</span></span>
+<span id="cb1-15"><a href="Ch6.html#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="Ch6.html#cb1-16" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> np.random.randn(<span class="bu">len</span>(time))  <span class="co"># Use np.random.randn()</span></span>
+<span id="cb1-17"><a href="Ch6.html#cb1-17" aria-hidden="true" tabindex="-1"></a>                                      <span class="co"># to get a range of random</span></span>
+<span id="cb1-18"><a href="Ch6.html#cb1-18" aria-hidden="true" tabindex="-1"></a>          <span class="co"># numbers that falls under the standard normal</span></span>
+<span id="cb1-19"><a href="Ch6.html#cb1-19" aria-hidden="true" tabindex="-1"></a>          <span class="co"># distribution. The point of this step is just to get</span></span>
+<span id="cb1-20"><a href="Ch6.html#cb1-20" aria-hidden="true" tabindex="-1"></a>          <span class="co"># a set of random values. This distribution will </span></span>
+<span id="cb1-21"><a href="Ch6.html#cb1-21" aria-hidden="true" tabindex="-1"></a>          <span class="co"># typically yield values between -4 and 4. We are </span></span>
+<span id="cb1-22"><a href="Ch6.html#cb1-22" aria-hidden="true" tabindex="-1"></a>          <span class="co"># showing Paul a new hat at every time point, so we</span></span>
+<span id="cb1-23"><a href="Ch6.html#cb1-23" aria-hidden="true" tabindex="-1"></a>          <span class="co"># need to create a vector that is the same length as </span></span>
+<span id="cb1-24"><a href="Ch6.html#cb1-24" aria-hidden="true" tabindex="-1"></a>          <span class="co"># the time vector. To do this, we could hard code 3000</span></span>
+<span id="cb1-25"><a href="Ch6.html#cb1-25" aria-hidden="true" tabindex="-1"></a>          <span class="co"># but it is better to write in len(time) in case we </span></span>
+<span id="cb1-26"><a href="Ch6.html#cb1-26" aria-hidden="true" tabindex="-1"></a>          <span class="co"># decide to change aspects of the experiment in the</span></span>
+<span id="cb1-27"><a href="Ch6.html#cb1-27" aria-hidden="true" tabindex="-1"></a>          <span class="co"># future. Remember, coding is about making life easy</span></span>
+<span id="cb1-28"><a href="Ch6.html#cb1-28" aria-hidden="true" tabindex="-1"></a>          <span class="co"># for us in the future!</span></span>
+<span id="cb1-29"><a href="Ch6.html#cb1-29" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb1-30"><a href="Ch6.html#cb1-30" aria-hidden="true" tabindex="-1"></a>diameters <span class="op">=</span> <span class="bu">abs</span>(numbers)  <span class="co"># Since we are using a normal distribution</span></span>
+<span id="cb1-31"><a href="Ch6.html#cb1-31" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># and we can&#39;t have negative hat sizes,</span></span>
+<span id="cb1-32"><a href="Ch6.html#cb1-32" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># we are taking the absolute value of </span></span>
+<span id="cb1-33"><a href="Ch6.html#cb1-33" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># the random hat sizes.</span></span>
+<span id="cb1-34"><a href="Ch6.html#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="Ch6.html#cb1-35" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb1-36"><a href="Ch6.html#cb1-36" aria-hidden="true" tabindex="-1"></a>plt.plot(time, diameters)  <span class="co"># Plot hat diameters against time to </span></span>
+<span id="cb1-37"><a href="Ch6.html#cb1-37" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Time in s&#39;</span>)    <span class="co"># show what Paul is seeing in the 3</span></span>
+<span id="cb1-38"><a href="Ch6.html#cb1-38" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Hat diameters in inches&#39;</span>)  <span class="co"># second experiment. </span></span></code></pre></div>
 <p>The resulting plot looks like this:</p>
-<div class="figure"><span id="fig:hats-fig"></span>
-<img src="images/hatDiameters.png" alt="Hat sizes shown to Paul the Python's neuron."  />
+<div class="figure"><span style="display:block;" id="fig:hats-fig"></span>
+<img src="images/hatDiameters.png" alt="Hat sizes shown to Paul the Python's neuron." width="432" />
 <p class="caption">
 Figure 7.3: Hat sizes shown to Paul the Python’s neuron.
 </p>
 </div>
 <p>Now we have to model Paul’s neuron. Paul loves large floppy hats so this neuron is dedicated to detecting hats with large diameters. For this reason, his neuron will spike every time he sees a hat with a diameter over 2 inches. This neuron happens to spike 200 ms after he sees that particular stimulus.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="Ch6.html#cb25-1"></a>Paulsneuron <span class="op">=</span> np.zeros(<span class="bu">len</span>(time))  <span class="co"># The neuron is usually at </span></span>
-<span id="cb25-2"><a href="Ch6.html#cb25-2"></a>                                   <span class="co"># rest. Because all we care</span></span>
-<span id="cb25-3"><a href="Ch6.html#cb25-3"></a>                        <span class="co"># about in this example is if the neuron</span></span>
-<span id="cb25-4"><a href="Ch6.html#cb25-4"></a>                        <span class="co"># is spiking, we can denote each spike as</span></span>
-<span id="cb25-5"><a href="Ch6.html#cb25-5"></a>                        <span class="co"># a &quot;1&quot; and each non-spike as a &quot;0&quot;. This </span></span>
-<span id="cb25-6"><a href="Ch6.html#cb25-6"></a>                        <span class="co"># is a placeholder for the neuron&#39;s </span></span>
-<span id="cb25-7"><a href="Ch6.html#cb25-7"></a>                        <span class="co"># response, denoting that the default </span></span>
-<span id="cb25-8"><a href="Ch6.html#cb25-8"></a>                        <span class="co"># value is rest.</span></span>
-<span id="cb25-9"><a href="Ch6.html#cb25-9"></a></span>
-<span id="cb25-10"><a href="Ch6.html#cb25-10"></a>time <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">3</span>, <span class="fl">0.001</span>)  <span class="co"># Same as above</span></span>
-<span id="cb25-11"><a href="Ch6.html#cb25-11"></a></span>
-<span id="cb25-12"><a href="Ch6.html#cb25-12"></a>numbers <span class="op">=</span> np.random.randn(<span class="bu">len</span>(time)) <span class="co"># Same as above</span></span>
-<span id="cb25-13"><a href="Ch6.html#cb25-13"></a>diameters <span class="op">=</span> <span class="bu">abs</span>(numbers)</span>
-<span id="cb25-14"><a href="Ch6.html#cb25-14"></a></span>
-<span id="cb25-15"><a href="Ch6.html#cb25-15"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(time) <span class="dv">-200</span>):  <span class="co"># This is a loop that will create</span></span>
-<span id="cb25-16"><a href="Ch6.html#cb25-16"></a>   <span class="cf">if</span> diameters[i] <span class="op">&gt;</span> <span class="dv">2</span>:          <span class="co"># the spikes in Paul&#39;s neuron.</span></span>
-<span id="cb25-17"><a href="Ch6.html#cb25-17"></a>      Paulsneuron[i<span class="op">+</span><span class="dv">199</span>] <span class="op">=</span> <span class="dv">1</span>     <span class="co"># We are saying that if the value</span></span>
-<span id="cb25-18"><a href="Ch6.html#cb25-18"></a>                  <span class="co"># of the current diameter is greater than 2, </span></span>
-<span id="cb25-19"><a href="Ch6.html#cb25-19"></a>                  <span class="co"># Paul&#39;s neuron will spike (i.e show up as 1).</span></span>
-<span id="cb25-20"><a href="Ch6.html#cb25-20"></a>                  <span class="co"># These values will be saved in the Paulsneuron </span></span>
-<span id="cb25-21"><a href="Ch6.html#cb25-21"></a>                  <span class="co"># vector. Because neurons can&#39;t spike instantly, </span></span>
-<span id="cb25-22"><a href="Ch6.html#cb25-22"></a>                  <span class="co"># we will delay the spike for 200 ms. This is why</span></span>
-<span id="cb25-23"><a href="Ch6.html#cb25-23"></a>                  <span class="co"># we write [i+199]. As we are getting 200 fewer </span></span>
-<span id="cb25-24"><a href="Ch6.html#cb25-24"></a>                  <span class="co"># values, we have to subtract 200 from the range</span></span>
-<span id="cb25-25"><a href="Ch6.html#cb25-25"></a>                  <span class="co"># or else we would be trying to index by a negative</span></span>
-<span id="cb25-26"><a href="Ch6.html#cb25-26"></a>                  <span class="co"># time value, and we would get an error.</span></span>
-<span id="cb25-27"><a href="Ch6.html#cb25-27"></a>                  </span>
-<span id="cb25-28"><a href="Ch6.html#cb25-28"></a><span class="co"># Plotting time versus Paulsneuron in order to see the spike train</span></span>
-<span id="cb25-29"><a href="Ch6.html#cb25-29"></a>plt.figure()</span>
-<span id="cb25-30"><a href="Ch6.html#cb25-30"></a>plt.plot(time, Paulsneuron)</span>
-<span id="cb25-31"><a href="Ch6.html#cb25-31"></a>plt.xlabel(<span class="st">&#39;Time in s&#39;</span>)</span>
-<span id="cb25-32"><a href="Ch6.html#cb25-32"></a>plt.ylabel(<span class="st">&#39;Model Neuron Response&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="Ch6.html#cb2-1" aria-hidden="true" tabindex="-1"></a>Paulsneuron <span class="op">=</span> np.zeros(<span class="bu">len</span>(time))  <span class="co"># The neuron is usually at </span></span>
+<span id="cb2-2"><a href="Ch6.html#cb2-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># rest. Because all we care</span></span>
+<span id="cb2-3"><a href="Ch6.html#cb2-3" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># about in this example is if the neuron</span></span>
+<span id="cb2-4"><a href="Ch6.html#cb2-4" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># is spiking, we can denote each spike as</span></span>
+<span id="cb2-5"><a href="Ch6.html#cb2-5" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># a &quot;1&quot; and each non-spike as a &quot;0&quot;. This </span></span>
+<span id="cb2-6"><a href="Ch6.html#cb2-6" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># is a placeholder for the neuron&#39;s </span></span>
+<span id="cb2-7"><a href="Ch6.html#cb2-7" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># response, denoting that the default </span></span>
+<span id="cb2-8"><a href="Ch6.html#cb2-8" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># value is rest.</span></span>
+<span id="cb2-9"><a href="Ch6.html#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="Ch6.html#cb2-10" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">3</span>, <span class="fl">0.001</span>)  <span class="co"># Same as above</span></span>
+<span id="cb2-11"><a href="Ch6.html#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="Ch6.html#cb2-12" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> np.random.randn(<span class="bu">len</span>(time)) <span class="co"># Same as above</span></span>
+<span id="cb2-13"><a href="Ch6.html#cb2-13" aria-hidden="true" tabindex="-1"></a>diameters <span class="op">=</span> <span class="bu">abs</span>(numbers)</span>
+<span id="cb2-14"><a href="Ch6.html#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="Ch6.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(time) <span class="op">-</span><span class="dv">200</span>):  <span class="co"># This is a loop that will create</span></span>
+<span id="cb2-16"><a href="Ch6.html#cb2-16" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> diameters[i] <span class="op">&gt;</span> <span class="dv">2</span>:          <span class="co"># the spikes in Paul&#39;s neuron.</span></span>
+<span id="cb2-17"><a href="Ch6.html#cb2-17" aria-hidden="true" tabindex="-1"></a>      Paulsneuron[i<span class="op">+</span><span class="dv">199</span>] <span class="op">=</span> <span class="dv">1</span>     <span class="co"># We are saying that if the value</span></span>
+<span id="cb2-18"><a href="Ch6.html#cb2-18" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># of the current diameter is greater than 2, </span></span>
+<span id="cb2-19"><a href="Ch6.html#cb2-19" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># Paul&#39;s neuron will spike (i.e show up as 1).</span></span>
+<span id="cb2-20"><a href="Ch6.html#cb2-20" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># These values will be saved in the Paulsneuron </span></span>
+<span id="cb2-21"><a href="Ch6.html#cb2-21" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># vector. Because neurons can&#39;t spike instantly, </span></span>
+<span id="cb2-22"><a href="Ch6.html#cb2-22" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># we will delay the spike for 200 ms. This is why</span></span>
+<span id="cb2-23"><a href="Ch6.html#cb2-23" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># we write [i+199]. As we are getting 200 fewer </span></span>
+<span id="cb2-24"><a href="Ch6.html#cb2-24" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># values, we have to subtract 200 from the range</span></span>
+<span id="cb2-25"><a href="Ch6.html#cb2-25" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># or else we would be trying to index by a negative</span></span>
+<span id="cb2-26"><a href="Ch6.html#cb2-26" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># time value, and we would get an error.</span></span>
+<span id="cb2-27"><a href="Ch6.html#cb2-27" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb2-28"><a href="Ch6.html#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting time versus Paulsneuron in order to see the spike train</span></span>
+<span id="cb2-29"><a href="Ch6.html#cb2-29" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb2-30"><a href="Ch6.html#cb2-30" aria-hidden="true" tabindex="-1"></a>plt.plot(time, Paulsneuron)</span>
+<span id="cb2-31"><a href="Ch6.html#cb2-31" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Time in s&#39;</span>)</span>
+<span id="cb2-32"><a href="Ch6.html#cb2-32" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Model Neuron Response&#39;</span>)</span></code></pre></div>
 <p>The resulting plot looks like this:</p>
-<div class="figure"><span id="fig:paulSpike-fig"></span>
-<img src="images/paulSpike.png" alt="Simulated spikes from Paul's neuron."  />
+<div class="figure"><span style="display:block;" id="fig:paulSpike-fig"></span>
+<img src="images/paulSpike.png" alt="Simulated spikes from Paul's neuron." width="428" />
 <p class="caption">
 Figure 7.4: Simulated spikes from Paul’s neuron.
 </p>
 </div>
 <p>Now we have our stimulus (hat diameters that Paul was exposed to) and our response (how his neuron responded to them). We can use this information to find the spike triggered average.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="Ch6.html#cb26-1"></a>spikes, <span class="op">=</span> np.where(Paulsneuron <span class="op">==</span> <span class="dv">1</span>)  <span class="co"># Find all the places where </span></span>
-<span id="cb26-2"><a href="Ch6.html#cb26-2"></a>                                      <span class="co"># Paul&#39;s neuron equals 1, </span></span>
-<span id="cb26-3"><a href="Ch6.html#cb26-3"></a>                        <span class="co"># aka find where the spikes are. </span></span>
-<span id="cb26-4"><a href="Ch6.html#cb26-4"></a>                        <span class="co"># The np.where() function returns a tuple.</span></span>
-<span id="cb26-5"><a href="Ch6.html#cb26-5"></a>                        <span class="co"># Adding a comma after the variable name </span></span>
-<span id="cb26-6"><a href="Ch6.html#cb26-6"></a>                        <span class="co"># tells Python to just return the first </span></span>
-<span id="cb26-7"><a href="Ch6.html#cb26-7"></a>                        <span class="co"># value in the tuple. </span></span>
-<span id="cb26-8"><a href="Ch6.html#cb26-8"></a>                        </span>
-<span id="cb26-9"><a href="Ch6.html#cb26-9"></a>spikes <span class="op">=</span> spikes[spikes <span class="op">&gt;=</span> <span class="dv">300</span>]    <span class="co"># Filter out spikes earlier</span></span>
-<span id="cb26-10"><a href="Ch6.html#cb26-10"></a>                                  <span class="co"># than 300 ms. We decided above</span></span>
-<span id="cb26-11"><a href="Ch6.html#cb26-11"></a>                <span class="co"># that the neuron will spike 200 ms after the </span></span>
-<span id="cb26-12"><a href="Ch6.html#cb26-12"></a>                <span class="co"># stimulus. We arbitrarily choose a value greater</span></span>
-<span id="cb26-13"><a href="Ch6.html#cb26-13"></a>                <span class="co"># than that so that Python can show us a chunk of </span></span>
-<span id="cb26-14"><a href="Ch6.html#cb26-14"></a>                <span class="co"># time before the spike that includes when the </span></span>
-<span id="cb26-15"><a href="Ch6.html#cb26-15"></a>                <span class="co"># stimulus was shown to the neuron. To expand, </span></span>
-<span id="cb26-16"><a href="Ch6.html#cb26-16"></a>                <span class="co"># if we don&#39;t filter out spikes from the first </span></span>
-<span id="cb26-17"><a href="Ch6.html#cb26-17"></a>                <span class="co"># 300 ms, then if there is a spike at 100ms, </span></span>
-<span id="cb26-18"><a href="Ch6.html#cb26-18"></a>                <span class="co"># we can&#39;t find the stimulus at -200 ms because </span></span>
-<span id="cb26-19"><a href="Ch6.html#cb26-19"></a>                <span class="co"># the stimulus begins at time = 0. </span></span>
-<span id="cb26-20"><a href="Ch6.html#cb26-20"></a></span>
-<span id="cb26-21"><a href="Ch6.html#cb26-21"></a>stimArray <span class="op">=</span> np.zeros((<span class="bu">len</span>(spikes), <span class="dv">300</span>))  <span class="co"># We want to pre-allocate</span></span>
-<span id="cb26-22"><a href="Ch6.html#cb26-22"></a>                                          <span class="co"># an array that will </span></span>
-<span id="cb26-23"><a href="Ch6.html#cb26-23"></a>                <span class="co"># eventually hold the stimulus from -300 ms before </span></span>
-<span id="cb26-24"><a href="Ch6.html#cb26-24"></a>                <span class="co"># to spike up till the spike.</span></span>
-<span id="cb26-25"><a href="Ch6.html#cb26-25"></a></span>
-<span id="cb26-26"><a href="Ch6.html#cb26-26"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(spikes)): </span>
-<span id="cb26-27"><a href="Ch6.html#cb26-27"></a>    stimArray[i, :] <span class="op">=</span> diameters[spikes[i] <span class="op">-</span> <span class="dv">300</span> : spikes[i]] </span>
-<span id="cb26-28"><a href="Ch6.html#cb26-28"></a>    </span>
-<span id="cb26-29"><a href="Ch6.html#cb26-29"></a><span class="co"># We&#39;re isolating the stimulus from -300 ms before the spike up </span></span>
-<span id="cb26-30"><a href="Ch6.html#cb26-30"></a><span class="co"># till the spike and placing it into an array.The best way to </span></span>
-<span id="cb26-31"><a href="Ch6.html#cb26-31"></a><span class="co"># understand this is by starting in the brackets. We&#39;re saying </span></span>
-<span id="cb26-32"><a href="Ch6.html#cb26-32"></a><span class="co"># to take all of the stimuli 300 ms before the spike up till the</span></span>
-<span id="cb26-33"><a href="Ch6.html#cb26-33"></a><span class="co"># spike and then seeing which diameters they corresponded to. </span></span>
-<span id="cb26-34"><a href="Ch6.html#cb26-34"></a><span class="co"># This is saved in the array &quot;stimArray&quot;. </span></span>
-<span id="cb26-35"><a href="Ch6.html#cb26-35"></a></span>
-<span id="cb26-36"><a href="Ch6.html#cb26-36"></a><span class="bu">print</span>(<span class="st">&quot;The stimArray shape is&quot;</span> , stimArray.shape)  <span class="co"># Print the </span></span>
-<span id="cb26-37"><a href="Ch6.html#cb26-37"></a>                                                   <span class="co"># shape of </span></span>
-<span id="cb26-38"><a href="Ch6.html#cb26-38"></a>                                  <span class="co">#stimArray to see its dimensions.</span></span>
-<span id="cb26-39"><a href="Ch6.html#cb26-39"></a></span>
-<span id="cb26-40"><a href="Ch6.html#cb26-40"></a>STA <span class="op">=</span> np.mean(stimArray, axis <span class="op">=</span> <span class="dv">0</span>)  <span class="co"># This is where we actually</span></span>
-<span id="cb26-41"><a href="Ch6.html#cb26-41"></a>                                    <span class="co"># find the spike triggered </span></span>
-<span id="cb26-42"><a href="Ch6.html#cb26-42"></a>                                    <span class="co"># average. We&#39;re finding the </span></span>
-<span id="cb26-43"><a href="Ch6.html#cb26-43"></a>                                    <span class="co"># average stimulus that caused </span></span>
-<span id="cb26-44"><a href="Ch6.html#cb26-44"></a>                                    <span class="co"># the neuron to spike. </span></span>
-<span id="cb26-45"><a href="Ch6.html#cb26-45"></a></span>
-<span id="cb26-46"><a href="Ch6.html#cb26-46"></a>time <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">300</span>, <span class="dv">0</span>, <span class="dv">1</span>)  <span class="co"># We want to see what the average </span></span>
-<span id="cb26-47"><a href="Ch6.html#cb26-47"></a>                              <span class="co"># stimulus that caused the spike </span></span>
-<span id="cb26-48"><a href="Ch6.html#cb26-48"></a>                              <span class="co"># looked like so we need to look </span></span>
-<span id="cb26-49"><a href="Ch6.html#cb26-49"></a>                              <span class="co"># more than 200 ms before the spike. </span></span>
-<span id="cb26-50"><a href="Ch6.html#cb26-50"></a>                              </span>
-<span id="cb26-51"><a href="Ch6.html#cb26-51"></a><span class="co"># Plot time versus the spike triggered average.</span></span>
-<span id="cb26-52"><a href="Ch6.html#cb26-52"></a>plt.plot(time, STA)</span>
-<span id="cb26-53"><a href="Ch6.html#cb26-53"></a>plt.xlabel(<span class="st">&quot;Time (ms before spike)&quot;</span>)</span>
-<span id="cb26-54"><a href="Ch6.html#cb26-54"></a>plt.ylabel(<span class="st">&quot;Average Stimulus Before Spike&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="Ch6.html#cb3-1" aria-hidden="true" tabindex="-1"></a>spikes, <span class="op">=</span> np.where(Paulsneuron <span class="op">==</span> <span class="dv">1</span>)  <span class="co"># Find all the places where </span></span>
+<span id="cb3-2"><a href="Ch6.html#cb3-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="co"># Paul&#39;s neuron equals 1, </span></span>
+<span id="cb3-3"><a href="Ch6.html#cb3-3" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># aka find where the spikes are. </span></span>
+<span id="cb3-4"><a href="Ch6.html#cb3-4" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># The np.where() function returns a tuple.</span></span>
+<span id="cb3-5"><a href="Ch6.html#cb3-5" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># Adding a comma after the variable name </span></span>
+<span id="cb3-6"><a href="Ch6.html#cb3-6" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># tells Python to just return the first </span></span>
+<span id="cb3-7"><a href="Ch6.html#cb3-7" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># value in the tuple. </span></span>
+<span id="cb3-8"><a href="Ch6.html#cb3-8" aria-hidden="true" tabindex="-1"></a>                        </span>
+<span id="cb3-9"><a href="Ch6.html#cb3-9" aria-hidden="true" tabindex="-1"></a>spikes <span class="op">=</span> spikes[spikes <span class="op">&gt;=</span> <span class="dv">300</span>]    <span class="co"># Filter out spikes earlier</span></span>
+<span id="cb3-10"><a href="Ch6.html#cb3-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="co"># than 300 ms. We decided above</span></span>
+<span id="cb3-11"><a href="Ch6.html#cb3-11" aria-hidden="true" tabindex="-1"></a>                <span class="co"># that the neuron will spike 200 ms after the </span></span>
+<span id="cb3-12"><a href="Ch6.html#cb3-12" aria-hidden="true" tabindex="-1"></a>                <span class="co"># stimulus. We arbitrarily choose a value greater</span></span>
+<span id="cb3-13"><a href="Ch6.html#cb3-13" aria-hidden="true" tabindex="-1"></a>                <span class="co"># than that so that Python can show us a chunk of </span></span>
+<span id="cb3-14"><a href="Ch6.html#cb3-14" aria-hidden="true" tabindex="-1"></a>                <span class="co"># time before the spike that includes when the </span></span>
+<span id="cb3-15"><a href="Ch6.html#cb3-15" aria-hidden="true" tabindex="-1"></a>                <span class="co"># stimulus was shown to the neuron. To expand, </span></span>
+<span id="cb3-16"><a href="Ch6.html#cb3-16" aria-hidden="true" tabindex="-1"></a>                <span class="co"># if we don&#39;t filter out spikes from the first </span></span>
+<span id="cb3-17"><a href="Ch6.html#cb3-17" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 300 ms, then if there is a spike at 100ms, </span></span>
+<span id="cb3-18"><a href="Ch6.html#cb3-18" aria-hidden="true" tabindex="-1"></a>                <span class="co"># we can&#39;t find the stimulus at -200 ms because </span></span>
+<span id="cb3-19"><a href="Ch6.html#cb3-19" aria-hidden="true" tabindex="-1"></a>                <span class="co"># the stimulus begins at time = 0. </span></span>
+<span id="cb3-20"><a href="Ch6.html#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="Ch6.html#cb3-21" aria-hidden="true" tabindex="-1"></a>stimArray <span class="op">=</span> np.zeros((<span class="bu">len</span>(spikes), <span class="dv">300</span>))  <span class="co"># We want to pre-allocate</span></span>
+<span id="cb3-22"><a href="Ch6.html#cb3-22" aria-hidden="true" tabindex="-1"></a>                                          <span class="co"># an array that will </span></span>
+<span id="cb3-23"><a href="Ch6.html#cb3-23" aria-hidden="true" tabindex="-1"></a>                <span class="co"># eventually hold the stimulus from -300 ms before </span></span>
+<span id="cb3-24"><a href="Ch6.html#cb3-24" aria-hidden="true" tabindex="-1"></a>                <span class="co"># to spike up till the spike.</span></span>
+<span id="cb3-25"><a href="Ch6.html#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="Ch6.html#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(spikes)): </span>
+<span id="cb3-27"><a href="Ch6.html#cb3-27" aria-hidden="true" tabindex="-1"></a>    stimArray[i, :] <span class="op">=</span> diameters[spikes[i] <span class="op">-</span> <span class="dv">300</span> : spikes[i]] </span>
+<span id="cb3-28"><a href="Ch6.html#cb3-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-29"><a href="Ch6.html#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;re isolating the stimulus from -300 ms before the spike up </span></span>
+<span id="cb3-30"><a href="Ch6.html#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># till the spike and placing it into an array.The best way to </span></span>
+<span id="cb3-31"><a href="Ch6.html#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># understand this is by starting in the brackets. We&#39;re saying </span></span>
+<span id="cb3-32"><a href="Ch6.html#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># to take all of the stimuli 300 ms before the spike up till the</span></span>
+<span id="cb3-33"><a href="Ch6.html#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># spike and then seeing which diameters they corresponded to. </span></span>
+<span id="cb3-34"><a href="Ch6.html#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co"># This is saved in the array &quot;stimArray&quot;. </span></span>
+<span id="cb3-35"><a href="Ch6.html#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="Ch6.html#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;The stimArray shape is&quot;</span> , stimArray.shape)  <span class="co"># Print the </span></span>
+<span id="cb3-37"><a href="Ch6.html#cb3-37" aria-hidden="true" tabindex="-1"></a>                                                   <span class="co"># shape of </span></span>
+<span id="cb3-38"><a href="Ch6.html#cb3-38" aria-hidden="true" tabindex="-1"></a>                                  <span class="co">#stimArray to see its dimensions.</span></span>
+<span id="cb3-39"><a href="Ch6.html#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="Ch6.html#cb3-40" aria-hidden="true" tabindex="-1"></a>STA <span class="op">=</span> np.mean(stimArray, axis <span class="op">=</span> <span class="dv">0</span>)  <span class="co"># This is where we actually</span></span>
+<span id="cb3-41"><a href="Ch6.html#cb3-41" aria-hidden="true" tabindex="-1"></a>                                    <span class="co"># find the spike triggered </span></span>
+<span id="cb3-42"><a href="Ch6.html#cb3-42" aria-hidden="true" tabindex="-1"></a>                                    <span class="co"># average. We&#39;re finding the </span></span>
+<span id="cb3-43"><a href="Ch6.html#cb3-43" aria-hidden="true" tabindex="-1"></a>                                    <span class="co"># average stimulus that caused </span></span>
+<span id="cb3-44"><a href="Ch6.html#cb3-44" aria-hidden="true" tabindex="-1"></a>                                    <span class="co"># the neuron to spike. </span></span>
+<span id="cb3-45"><a href="Ch6.html#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="Ch6.html#cb3-46" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">300</span>, <span class="dv">0</span>, <span class="dv">1</span>)  <span class="co"># We want to see what the average </span></span>
+<span id="cb3-47"><a href="Ch6.html#cb3-47" aria-hidden="true" tabindex="-1"></a>                              <span class="co"># stimulus that caused the spike </span></span>
+<span id="cb3-48"><a href="Ch6.html#cb3-48" aria-hidden="true" tabindex="-1"></a>                              <span class="co"># looked like so we need to look </span></span>
+<span id="cb3-49"><a href="Ch6.html#cb3-49" aria-hidden="true" tabindex="-1"></a>                              <span class="co"># more than 200 ms before the spike. </span></span>
+<span id="cb3-50"><a href="Ch6.html#cb3-50" aria-hidden="true" tabindex="-1"></a>                              </span>
+<span id="cb3-51"><a href="Ch6.html#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot time versus the spike triggered average.</span></span>
+<span id="cb3-52"><a href="Ch6.html#cb3-52" aria-hidden="true" tabindex="-1"></a>plt.plot(time, STA)</span>
+<span id="cb3-53"><a href="Ch6.html#cb3-53" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Time (ms before spike)&quot;</span>)</span>
+<span id="cb3-54"><a href="Ch6.html#cb3-54" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Average Stimulus Before Spike&quot;</span>)</span></code></pre></div>
 <p>The resulting figure looks like this:</p>
-<div class="figure"><span id="fig:paulSTA-fig"></span>
-<img src="images/paulSTA.png" alt="Spike-triggered average of Paul's neuron."  />
+<div class="figure"><span style="display:block;" id="fig:paulSTA-fig"></span>
+<img src="images/paulSTA.png" alt="Spike-triggered average of Paul's neuron." width="437" />
 <p class="caption">
 Figure 7.5: Spike-triggered average of Paul’s neuron.
 </p>
 </div>
 <p>Therefore, the average stimulus that causes Paul’s neuron to spike is a hat with a diameter of about 2.5 because we are selecting hats greater than 2 inches to be the stimuli that drive Paul’s neuron. Python found this for us. You can see that the stimulus shows up on the graph about 200 ms before the neural response because this was how we created the simulated neuron.</p>
 <p><strong>Worked Example:</strong>
-Now that Paul knows the average stimulus that causes his neuron to fire, he wants to create a linear model of his neuron. Use the linear model to help Paul approximate the neuron’s firing rate.</p>
-<p><em>Solution</em>: Thankfully, we can use the spike triggered average that we found in the previous problem to approximate the firing rate. This is because the spike triggered average is like a template that we use to compare with the stimulus. To do this, Paul decides to use convolution.</p>
+Now that Paul knows the average stimulus that causes his neuron to fire, he wants to create a linear model of his neuron. A linear model is a simple map between inputs and outputs using common operations like addition and multiplication. Use the linear model to help Paul approximate the neuron’s firing rate.</p>
+<p><em>Solution</em>: Thankfully, we can use the spike triggered average that we found in the previous problem to approximate the firing rate. This is because the spike triggered average is like a template that we use to compare with the stimulus. To do this, Paul decides to use convolution. Convolution is a method by which we can compare two vectors (in this case, the STA and the stimulus). In this method, first the two vectors are aligned before each element of the signal (the larger vector) is multiplied by each element in the kernel (the smaller vector). If this is still a source of confusion, don’t worry! You will soon be exposed to a problem that will exemplify this process.</p>
 <p>At first this seems difficult and could potentially require a lot of code. However, numpy built-in functions are our friend here, specifically the function np.convolve(). There are two variations of convolution that we can ask Python to do. One variation is called ‘same’ and the other is called ‘valid’. We will explore both arguments.</p>
 <p>By convention, when we convolve two vectors, we call the smaller of the two the <em>kernel</em> and the larger one the <em>signal</em>. Let’s begin by printing the shapes of the STA and the stimulus to see which will be the signal.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="Ch6.html#cb27-1"></a><span class="bu">print</span>(diameters.shape) <span class="co"># reads: (3000,)</span></span>
-<span id="cb27-2"><a href="Ch6.html#cb27-2"></a><span class="bu">print</span>(STA.shape)       <span class="co"># reads: (300,)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="Ch6.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(diameters.shape) <span class="co"># reads: (3000,)</span></span>
+<span id="cb4-2"><a href="Ch6.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(STA.shape)       <span class="co"># reads: (300,)</span></span></code></pre></div>
 <p>Now that we know that STA is the smaller vector, we call it the kernel and our stimulus, “diameters”, is the larger vector so it is the signal. We’ll begin by exploring convolution with the ‘same’ argument. Use the format “variablename = np.convolve(signal, kernel, ‘same’)”</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="Ch6.html#cb28-1"></a><span class="im">import</span> numpy <span class="im">as</span> np               <span class="co"># Import numpy library</span></span>
-<span id="cb28-2"><a href="Ch6.html#cb28-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  <span class="co"># Import matplotlib for plots</span></span>
-<span id="cb28-3"><a href="Ch6.html#cb28-3"></a></span>
-<span id="cb28-4"><a href="Ch6.html#cb28-4"></a><span class="co"># Perform the convolution</span></span>
-<span id="cb28-5"><a href="Ch6.html#cb28-5"></a>predictedfiringrate <span class="op">=</span> np.convolve(diameters, STA, <span class="st">&#39;same&#39;</span>)</span>
-<span id="cb28-6"><a href="Ch6.html#cb28-6"></a></span>
-<span id="cb28-7"><a href="Ch6.html#cb28-7"></a><span class="bu">print</span>(predictedfiringrate.shape) <span class="co"># print the shape so we can</span></span>
-<span id="cb28-8"><a href="Ch6.html#cb28-8"></a>                                 <span class="co"># compare to the &#39;valid&#39; </span></span>
-<span id="cb28-9"><a href="Ch6.html#cb28-9"></a>                                 <span class="co"># argument later.</span></span>
-<span id="cb28-10"><a href="Ch6.html#cb28-10"></a>                                 </span>
-<span id="cb28-11"><a href="Ch6.html#cb28-11"></a><span class="co"># Note: the output is (3000,)</span></span>
-<span id="cb28-12"><a href="Ch6.html#cb28-12"></a>                                 </span>
-<span id="cb28-13"><a href="Ch6.html#cb28-13"></a>plt.figure()</span>
-<span id="cb28-14"><a href="Ch6.html#cb28-14"></a>plt.plot(predictedfiringrates)</span>
-<span id="cb28-15"><a href="Ch6.html#cb28-15"></a>plt.title(<span class="st">&#39;Same Argument&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="Ch6.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np               <span class="co"># Import numpy library</span></span>
+<span id="cb5-2"><a href="Ch6.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  <span class="co"># Import matplotlib for plots</span></span>
+<span id="cb5-3"><a href="Ch6.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="Ch6.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the convolution</span></span>
+<span id="cb5-5"><a href="Ch6.html#cb5-5" aria-hidden="true" tabindex="-1"></a>predictedfiringrate <span class="op">=</span> np.convolve(diameters, STA, <span class="st">&#39;same&#39;</span>)</span>
+<span id="cb5-6"><a href="Ch6.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="Ch6.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(predictedfiringrate.shape) <span class="co"># print the shape so we can</span></span>
+<span id="cb5-8"><a href="Ch6.html#cb5-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="co"># compare to the &#39;valid&#39; </span></span>
+<span id="cb5-9"><a href="Ch6.html#cb5-9" aria-hidden="true" tabindex="-1"></a>                                 <span class="co"># argument later.</span></span>
+<span id="cb5-10"><a href="Ch6.html#cb5-10" aria-hidden="true" tabindex="-1"></a>                                 </span>
+<span id="cb5-11"><a href="Ch6.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: the output is (3000,)</span></span>
+<span id="cb5-12"><a href="Ch6.html#cb5-12" aria-hidden="true" tabindex="-1"></a>                                 </span>
+<span id="cb5-13"><a href="Ch6.html#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb5-14"><a href="Ch6.html#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.plot(predictedfiringrates)</span>
+<span id="cb5-15"><a href="Ch6.html#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Same Argument&#39;</span>)</span></code></pre></div>
 <p>The resulting figure looks like this:</p>
-<div class="figure"><span id="fig:paulConv1-fig"></span>
-<img src="images/paulConv1.png" alt="Convolution with 'same' argument."  />
+<div class="figure"><span style="display:block;" id="fig:paulConv1-fig"></span>
+<img src="images/paulConv1.png" alt="Convolution with 'same' argument." width="418" />
 <p class="caption">
 Figure 7.6: Convolution with ‘same’ argument.
 </p>
 </div>
 <p>We can repeat the process, this time using the ‘valid’ argument instead of ‘same’.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="Ch6.html#cb29-1"></a>predictedfiringrate <span class="op">=</span> np.convolve(diameters, STA, <span class="st">&#39;valid&#39;</span>)</span>
-<span id="cb29-2"><a href="Ch6.html#cb29-2"></a><span class="bu">print</span>(predictedfiringrate.shape)  <span class="co"># prints: (2701,)</span></span>
-<span id="cb29-3"><a href="Ch6.html#cb29-3"></a>plt.figure()</span>
-<span id="cb29-4"><a href="Ch6.html#cb29-4"></a>plt.plot(predictedfiringrate</span>
-<span id="cb29-5"><a href="Ch6.html#cb29-5"></a>plt.title(<span class="st">&#39;Valid Argument))</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="Ch6.html#cb6-1" aria-hidden="true" tabindex="-1"></a>predictedfiringrate <span class="op">=</span> np.convolve(diameters, STA, <span class="st">&#39;valid&#39;</span>)</span>
+<span id="cb6-2"><a href="Ch6.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(predictedfiringrate.shape)  <span class="co"># prints: (2701,)</span></span>
+<span id="cb6-3"><a href="Ch6.html#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb6-4"><a href="Ch6.html#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.plot(predictedfiringrate</span>
+<span id="cb6-5"><a href="Ch6.html#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Valid Argument))</span></span></code></pre></div>
 <p>The resulting figure looks like this:</p>
-<div class="figure"><span id="fig:paulConv2-fig"></span>
-<img src="images/paulConv2.png" alt="Convolution with 'valid' argument."  />
+<div class="figure"><span style="display:block;" id="fig:paulConv2-fig"></span>
+<img src="images/paulConv2.png" alt="Convolution with 'valid' argument." width="422" />
 <p class="caption">
 Figure 7.7: Convolution with ‘valid’ argument.
 </p>
 </div>
 <p>There are a few things to consider here. The most obvious is the shape of the graphs. By looking at the graphs, you can see that the ‘same’ and ‘valid’ plots are essentially the same but ‘same’ has extra values at the edges.</p>
-<p>The ‘same’ argument caused the shape of the variable ‘predictedfiringrate’ to equal 3000 while the ‘valid’ argument caused the shape of ‘predictedfiringrate’ to equal 2701. 2701 is the size of the difference between the signal and kernel ((3000-300) + 1 = 2701). The ‘same’ argument compares the signal and kernel even when the kernel isn’t completely lined up with the signal. A visual comparison is shown in the figure below.</p>
-<div class="figure"><span id="fig:paulPython-fig"></span>
+<p>The ‘same’ argument caused the shape of the variable ‘predictedfiringrate’ to equal 3000 while the ‘valid’ argument caused the shape of ‘predictedfiringrate’ to equal 2701. 2701 is the size of the difference between the signal and kernel ((3000-300) + 1 = 2701). The ‘same’ argument compares the signal and kernel even when the kernel isn’t completely lined up with the signal. Here, our ‘valid’ argument is more exact, but the ‘same’ argument may be easier to use in some applications. A visual comparison is shown in the figure below.</p>
+<div class="figure"><span style="display:block;" id="fig:paulPython-fig"></span>
 <img src="images/PaulthePython.jpg" alt="Difference between 'same' and 'valid' arguments."  />
 <p class="caption">
 Figure 7.8: Difference between ‘same’ and ‘valid’ arguments.
@@ -522,36 +594,40 @@ Figure 7.8: Difference between ‘same’ and ‘valid’ arguments.
 <p>As Cody slithers past Paul, there are moments when they are completely overlapping (c and d). The ‘valid’ argument only describes these moments. For this reason, we don’t get the steep edges in the ‘valid’ graph that we do in the ‘same’ graph. As Cody continues to slither past Paul, there will be moments when they don’t completely overlap (e and f). These moments are reflected as the decrease in the ‘same’ graph because the amount of values of the kernel and signal being compared decrease and zeros get averaged into the signal.</p>
 <p>Great! Now we have both a linear model and convolving the STA with the stimulus essentially provides the predicted firing rate. This is because when the stimulus and spike triggered average are similar, the convolved value is higher, suggesting that the neuron is firing. Likewise, when the stimulus and the spike are dissimilar, the convolved value is smaller, suggesting the neuron isn’t firing. Now we have a prediction of what Paul’s neuron should do after being shown many hats of different diameters.</p>
 </div>
-<div id="reverse-correlation" class="section level2">
-<h2><span class="header-section-number">7.4</span> Reverse Correlation</h2>
-<div class="figure"><span id="fig:STA2-fig"></span>
-<img src="images/reverseCorrelation.png" alt="Reverse correlation encompasses both spike triggered averages and spike triggered covariance."  />
+<div id="reverse-correlation" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Reverse Correlation<a href="Ch6.html#reverse-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure"><span style="display:block;" id="fig:STA2-fig"></span>
+<img src="images/reverseCorrelation.png" alt="Reverse correlation encompasses both spike triggered averages and spike triggered covariance." width="275" />
 <p class="caption">
 Figure 7.9: Reverse correlation encompasses both spike triggered averages and spike triggered covariance.
 </p>
 </div>
 <p>When analyzing neurons and neuronal responses, there are two main factors: the inputs (controlled by researchers), and the outputs (measured by researchers). The process of <strong>reverse correlation</strong> implements the analysis of outputs to determine the inputs that the neuron will respond to with a spike. The spike-triggered average is an application of this process as it looks back at the stimuli preceding a spike to determine information about the sensitivity and response of the neuron. In addition to spike-triggered average, a calculation known as spike-triggered covariance can be used to analyze neuronal responses. Spike-triggered covariance (STC) can be used to identify multi-dimensional inputs to a neuron and is especially useful in linear-nonlinear Poisson models that will be discussed later in this section. STC uses the covariance, variability between two factors, of stimuli that trigger spikes in a neuron to determine a neuron’s response characteristics to multi-dimensional stimuli.</p>
-<p>The basic model for reverse correlation is a Linear Single Input Single Output system (LSISOS). Such linear systems assume the two principles of homogeneity. First, the neuron will not undergo processes such as habituation and will always respond in the same way to the stimulus. Second, superposition: the response from multiple stimuli will be equal to the sum of the individual stimuli. In this model, the LSISOS response is the sum of the spikes scaled to time. Similar to spike-triggered averages, it is best to input a white noise stimulus and then cross-correlate it with its output, which will give you the spike-triggered average. In cross-correlation, the higher the similarity between the two values (the stimulus value and the output value), the greater the correlation value (the spike-triggered average).</p>
-<p>The LSISOS model assumes a linear activity of neurons that is not entirely accurate due to neuron characteristics such as a spike threshold and a refractory period. A new model, known as the linear-nonlinear-Poisson model takes these factors into account. There are three stages to this model: linear stage, nonlinear stage, and the Poisson spike generator stage. The linear stage considers how a neuron responds to a specific feature in a spatio-temporal linear sense. The second stage takes the linear output and input through a nonlinear function to give a neuron’s instantaneous spike rate. The nonlinear function can either be a logistic curve or a rectified linear (ReLU) function. The final step translates the output of the initial steps into spikes using an inhomogeneous Poisson process. The final result from the Poisson generator demonstrates the areas of the stimulus where a spike is more likely to occur.<br />
-Reverse correlation is a technique used for understanding what neurons are responding to, and the spike-triggered averages discussed earlier are one example of how reverse correlation is implemented.</p>
-<div class="figure"><span id="fig:STC-fig"></span>
-<img src="images/spikeTriggeredCovariance.png" alt="Spike-triggered covariance shows how two different stimulus dimensions can be calculated together."  />
+<div class="figure"><span style="display:block;" id="fig:STC-fig"></span>
+<img src="images/spikeTriggeredCovariance.png" alt="Spike-triggered covariance shows how two different stimulus dimensions can be calculated together." width="224" />
 <p class="caption">
 Figure 7.10: Spike-triggered covariance shows how two different stimulus dimensions can be calculated together.
 </p>
 </div>
+<p>The basic model for reverse correlation is a Linear Single Input Single Output system (LSISOS). Such linear systems assume the two principles of homogeneity. First, the neuron will not undergo processes such as habituation and will always respond in the same way to the stimulus. Second, superposition: the response from multiple stimuli will be equal to the sum of the individual stimuli. In this model, the LSISOS response is the sum of the spikes scaled to time. Similar to spike-triggered averages, it is best to input a white noise stimulus and then cross-correlate it with its output, which will give you the spike-triggered average. In cross-correlation, the higher the similarity between the two values (the stimulus value and the output value), the greater the correlation value (the spike-triggered average).</p>
+<p>The LSISOS model assumes a linear activity of neurons that is not entirely accurate due to neuron characteristics such as a spike threshold and a refractory period. A new model, known as the linear-nonlinear-Poisson model takes these factors into account. There are three stages to this model: linear stage, nonlinear stage, and the Poisson spike generator stage. The linear stage considers how a neuron responds to a specific feature in a spatio-temporal linear sense. The second stage takes the linear output and input through a nonlinear function to give a neuron’s instantaneous spike rate. The nonlinear function can either be a logistic curve or a rectified linear (ReLU) function. The final step translates the output of the initial steps into spikes using an inhomogeneous Poisson process. The final result from the Poisson generator demonstrates the areas of the stimulus where a spike is more likely to occur.<br />
+Reverse correlation is a technique used for understanding what neurons are responding to, and the spike-triggered averages discussed earlier are one example of how reverse correlation is implemented.</p>
 </div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">7.5</span> Summary</h2>
-<p>Reverse correlation and all the concepts that play a role in this widely implemented technique, from different modes of spike statistics to various types of stimuli, can be an intimidating topic in computational neuroscience. Analyzing the relationship between inputs and outputs to understand the effect each has on the activity of a neuron is the root of this topic. These analyses can move in both directions: input to output, or output to input. One can manipulate the stimulus and measure the resulting spike train through various statistical methods, or one could use reverse correlation by utilizing the known output of a spike to look back and understand the input necessary to create such a response. These analyses are working on grasping what stimuli the neuron does, or does not, “like”. In other words, they help us predict the neuron’s responses.</p>
+<div id="summary-5" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Summary<a href="Ch6.html#summary-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Reverse correlation and all the concepts that play a role in this widely implemented technique, from different modes of spike statistics to various types of stimuli, can be an intimidating topic in computational neuroscience. To make matters more simple, reverse correlation can be summed up as an analysis of the relationship between the inputs (stimuli) and outputs (neural responses). By manipulating the stimulus to measure the resulting spike train through experimentation, or using reverse correlation via the known output of a spike to reconstruct the necessary stimulus to create a certain response, these analyses can move from input to output or vice versa. These analyses are working on grasping what stimuli the neuron does, or does not, “like”. In other words, they help us predict the neuron’s responses.</p>
 </div>
-<div id="exercises" class="section level2">
-<h2><span class="header-section-number">7.6</span> Exercises</h2>
-<div id="conceptual-exercises" class="section level3">
-<h3><span class="header-section-number">7.6.1</span> Conceptual Exercises</h3>
+<div id="exercises-4" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Exercises<a href="Ch6.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conceptual-exercises-2" class="section level3 hasAnchor" number="7.6.1">
+<h3><span class="header-section-number">7.6.1</span> Conceptual Exercises<a href="Ch6.html#conceptual-exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>Spike-triggered average (STA) is the average of the stimuli that preceded a spike. Describe an experimental design that would allow you to compute an STA.<br />
-<img src="images/linModelQuestion.png" /><!-- --></li>
+<li>Spike-triggered average (STA) is the average of the stimuli that preceded a spike. Describe an experimental design that would allow you to compute an STA.</li>
+</ol>
+<div style="float:center;width:450px">
+<p><img src="images/linModelQuestion.png" width="284" /></p>
+</div>
+<ol start="2" style="list-style-type: decimal">
 <li>Above is a graph of the convolution of the stimulus intensity (horizontal speed of moving dots) and the STA obtained from the data of a fly’s H1 neuronal response to visual motion during the first 1000 time points. Convolving the spike train and STA is often used to reconstruct the firing rate. From the graph, compare the results of the convolution at point A and point B. How does the intensity of stimulus at each given time inform us of the neuron’s behavior?<br />
 </li>
 <li>White noise like Gaussian white noise is often presented as the stimulus when conducting experiments to characterize the receptive field of a neuron. Provide an example of a white noise stimulus for the neurons in one of the sensory systems. What is the importance of this technique?<br />
@@ -561,8 +637,8 @@ Figure 7.10: Spike-triggered covariance shows how two different stimulus dimensi
 <li>The STA functions as a linear filter to predict the neuronal response to a particular type of stimulus. This linear filtering step is often followed by a nonlinear process that is applied to our filtered stimulus in the linear-nonlinear Poisson (LNP) model. Why is this step important? In other words, what are the shortcomings of only having a linear process?</li>
 </ol>
 </div>
-<div id="coding-exercises" class="section level3">
-<h3><span class="header-section-number">7.6.2</span> Coding Exercises</h3>
+<div id="coding-exercises-2" class="section level3 hasAnchor" number="7.6.2">
+<h3><span class="header-section-number">7.6.2</span> Coding Exercises<a href="Ch6.html#coding-exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Exercise 3 (<em>Challenge!</em>)</strong>
 Match each concept to the Python function.</p>
 <p>Concepts:</p>
@@ -571,35 +647,35 @@ Match each concept to the Python function.</p>
 <li>Spike Count Rate</li>
 <li>Interspike Interval</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="Ch6.html#cb30-1"></a><span class="co"># Function 1</span></span>
-<span id="cb30-2"><a href="Ch6.html#cb30-2"></a>prob <span class="op">=</span> <span class="dv">45</span><span class="op">/</span><span class="dv">1000</span></span>
-<span id="cb30-3"><a href="Ch6.html#cb30-3"></a>spikeMatrix <span class="op">=</span> np.zeros((<span class="dv">1000</span>,<span class="dv">1000</span>))</span>
-<span id="cb30-4"><a href="Ch6.html#cb30-4"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb30-5"><a href="Ch6.html#cb30-5"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb30-6"><a href="Ch6.html#cb30-6"></a>    <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> prob:</span>
-<span id="cb30-7"><a href="Ch6.html#cb30-7"></a>      spikeMatrix[i,j] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb30-8"><a href="Ch6.html#cb30-8"></a>spikeCountRates <span class="op">=</span> np.<span class="bu">sum</span>(spikeMatrix, <span class="dv">1</span>)</span>
-<span id="cb30-9"><a href="Ch6.html#cb30-9"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
-<span id="cb30-10"><a href="Ch6.html#cb30-10"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb30-11"><a href="Ch6.html#cb30-11"></a>plt.hist(spikeCountRates, <span class="dv">40</span>, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>)</span>
-<span id="cb30-12"><a href="Ch6.html#cb30-12"></a>plt.xlabel(<span class="st">&quot;Average firing rate (Hz)&quot;</span>)</span>
-<span id="cb30-13"><a href="Ch6.html#cb30-13"></a>plt.ylabel(<span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="Ch6.html#cb31-1"></a><span class="co"># Function 2</span></span>
-<span id="cb31-2"><a href="Ch6.html#cb31-2"></a>np.var(spikeCountRates) <span class="op">/</span> np.mean(spikeCountRates)</span></code></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="Ch6.html#cb32-1"></a><span class="co"># Function 3</span></span>
-<span id="cb32-2"><a href="Ch6.html#cb32-2"></a>spikeCountRates <span class="op">=</span> np.<span class="bu">sum</span>(spikeMatrix, <span class="dv">1</span>)</span>
-<span id="cb32-3"><a href="Ch6.html#cb32-3"></a>totalSpikes <span class="op">=</span> <span class="bu">int</span>(np.<span class="bu">sum</span>(spikeMatrix, axis<span class="op">=</span><span class="va">None</span>))</span>
-<span id="cb32-4"><a href="Ch6.html#cb32-4"></a>isi <span class="op">=</span> np.zeros(totalSpikes <span class="op">-</span> <span class="dv">1</span>)</span>
-<span id="cb32-5"><a href="Ch6.html#cb32-5"></a>count <span class="op">=</span> <span class="dv">-1</span></span>
-<span id="cb32-6"><a href="Ch6.html#cb32-6"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb32-7"><a href="Ch6.html#cb32-7"></a>  spikes <span class="op">=</span> np.nonzero(spikeMatrix[i,:])[<span class="dv">0</span>]</span>
-<span id="cb32-8"><a href="Ch6.html#cb32-8"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(spikes)<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb32-9"><a href="Ch6.html#cb32-9"></a>    count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb32-10"><a href="Ch6.html#cb32-10"></a>    isi[count] <span class="op">=</span> spikes[j<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> spikes[j]</span>
-<span id="cb32-11"><a href="Ch6.html#cb32-11"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb32-12"><a href="Ch6.html#cb32-12"></a>plt.hist(isi, <span class="dv">100</span>)</span>
-<span id="cb32-13"><a href="Ch6.html#cb32-13"></a>plt.xlabel(<span class="st">&quot;ISI (ms)&quot;</span>)</span>
-<span id="cb32-14"><a href="Ch6.html#cb32-14"></a>plt.ylabel(<span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="Ch6.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function 1</span></span>
+<span id="cb7-2"><a href="Ch6.html#cb7-2" aria-hidden="true" tabindex="-1"></a>prob <span class="op">=</span> <span class="dv">45</span><span class="op">/</span><span class="dv">1000</span></span>
+<span id="cb7-3"><a href="Ch6.html#cb7-3" aria-hidden="true" tabindex="-1"></a>spikeMatrix <span class="op">=</span> np.zeros((<span class="dv">1000</span>,<span class="dv">1000</span>))</span>
+<span id="cb7-4"><a href="Ch6.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb7-5"><a href="Ch6.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb7-6"><a href="Ch6.html#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> prob:</span>
+<span id="cb7-7"><a href="Ch6.html#cb7-7" aria-hidden="true" tabindex="-1"></a>      spikeMatrix[i,j] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb7-8"><a href="Ch6.html#cb7-8" aria-hidden="true" tabindex="-1"></a>spikeCountRates <span class="op">=</span> np.<span class="bu">sum</span>(spikeMatrix, <span class="dv">1</span>)</span>
+<span id="cb7-9"><a href="Ch6.html#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb7-10"><a href="Ch6.html#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb7-11"><a href="Ch6.html#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.hist(spikeCountRates, <span class="dv">40</span>, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>)</span>
+<span id="cb7-12"><a href="Ch6.html#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Average firing rate (Hz)&quot;</span>)</span>
+<span id="cb7-13"><a href="Ch6.html#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="Ch6.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function 2</span></span>
+<span id="cb8-2"><a href="Ch6.html#cb8-2" aria-hidden="true" tabindex="-1"></a>np.var(spikeCountRates) <span class="op">/</span> np.mean(spikeCountRates)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="Ch6.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function 3</span></span>
+<span id="cb9-2"><a href="Ch6.html#cb9-2" aria-hidden="true" tabindex="-1"></a>spikeCountRates <span class="op">=</span> np.<span class="bu">sum</span>(spikeMatrix, <span class="dv">1</span>)</span>
+<span id="cb9-3"><a href="Ch6.html#cb9-3" aria-hidden="true" tabindex="-1"></a>totalSpikes <span class="op">=</span> <span class="bu">int</span>(np.<span class="bu">sum</span>(spikeMatrix, axis<span class="op">=</span><span class="va">None</span>))</span>
+<span id="cb9-4"><a href="Ch6.html#cb9-4" aria-hidden="true" tabindex="-1"></a>isi <span class="op">=</span> np.zeros(totalSpikes <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb9-5"><a href="Ch6.html#cb9-5" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb9-6"><a href="Ch6.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb9-7"><a href="Ch6.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  spikes <span class="op">=</span> np.nonzero(spikeMatrix[i,:])[<span class="dv">0</span>]</span>
+<span id="cb9-8"><a href="Ch6.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(spikes)<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb9-9"><a href="Ch6.html#cb9-9" aria-hidden="true" tabindex="-1"></a>    count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb9-10"><a href="Ch6.html#cb9-10" aria-hidden="true" tabindex="-1"></a>    isi[count] <span class="op">=</span> spikes[j<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> spikes[j]</span>
+<span id="cb9-11"><a href="Ch6.html#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb9-12"><a href="Ch6.html#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.hist(isi, <span class="dv">100</span>)</span>
+<span id="cb9-13"><a href="Ch6.html#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;ISI (ms)&quot;</span>)</span>
+<span id="cb9-14"><a href="Ch6.html#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -614,7 +690,6 @@ Match each concept to the Python function.</p>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
 <script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -633,6 +708,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -641,8 +717,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-ReverseCorrelation.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -652,7 +728,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Computational Neuroscience.pdf", "Computational Neuroscience.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 },
@@ -663,20 +743,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

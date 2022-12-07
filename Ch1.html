@@ -4,27 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Introduction to Python | Computational Neuroscience</title>
+  <title>Chapter 2 Introduction to Python | Computational Neuroscience</title>
   <meta name="description" content="TBD" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Introduction to Python | Computational Neuroscience" />
+  <meta property="og:title" content="Chapter 2 Introduction to Python | Computational Neuroscience" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="TBD" />
   <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Introduction to Python | Computational Neuroscience" />
+  <meta name="twitter:title" content="Chapter 2 Introduction to Python | Computational Neuroscience" />
   
   <meta name="twitter:description" content="TBD" />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Students of NS/PY 357 Bates College" />
 
 
-<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +31,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="Ch2.html"/>
-<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,23 +48,24 @@
 
 
 
-
-<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,6 +118,8 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -130,87 +132,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li><a href="./">Computational Neuroscience</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-book-is-free-as-in-pizza"><i class="fa fa-check"></i><b>1.1</b> This book is free (as in pizza)</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors-version-0.0"><i class="fa fa-check"></i><b>1.5</b> Authors: Version 0.0</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#authors-version-1.0"><i class="fa fa-check"></i><b>1.6</b> Authors: Version 1.0</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#authors-version-2.0"><i class="fa fa-check"></i><b>1.7</b> Authors: Version 2.0</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a><ul>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
 <li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
-<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
-<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.4</b> Example Python Problems</a></li>
-<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.5</b> Conceptual Exercises for Learning Python</a></li>
-<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.6</b> Coding Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#libraries"><i class="fa fa-check"></i><b>2.3</b> Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#data-types"><i class="fa fa-check"></i><b>2.4</b> Data Types</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="Ch1.html"><a href="Ch1.html#string"><i class="fa fa-check"></i><b>2.4.1</b> String</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Ch1.html"><a href="Ch1.html#integers"><i class="fa fa-check"></i><b>2.4.2</b> Integers</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Ch1.html"><a href="Ch1.html#floats"><i class="fa fa-check"></i><b>2.4.3</b> Floats</a></li>
+<li class="chapter" data-level="2.4.4" data-path="Ch1.html"><a href="Ch1.html#lists"><i class="fa fa-check"></i><b>2.4.4</b> Lists</a></li>
+<li class="chapter" data-level="2.4.5" data-path="Ch1.html"><a href="Ch1.html#boolean"><i class="fa fa-check"></i><b>2.4.5</b> Boolean</a></li>
+<li class="chapter" data-level="2.4.6" data-path="Ch1.html"><a href="Ch1.html#arrays"><i class="fa fa-check"></i><b>2.4.6</b> Arrays</a></li>
+<li class="chapter" data-level="2.4.7" data-path="Ch1.html"><a href="Ch1.html#vectors"><i class="fa fa-check"></i><b>2.4.7</b> Vectors</a></li>
+<li class="chapter" data-level="2.4.8" data-path="Ch1.html"><a href="Ch1.html#matrices"><i class="fa fa-check"></i><b>2.4.8</b> Matrices</a></li>
+<li class="chapter" data-level="2.4.9" data-path="Ch1.html"><a href="Ch1.html#variable-assignment"><i class="fa fa-check"></i><b>2.4.9</b> Variable assignment</a></li>
+<li class="chapter" data-level="2.4.10" data-path="Ch1.html"><a href="Ch1.html#f-strings"><i class="fa fa-check"></i><b>2.4.10</b> f-Strings</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a><ul>
-<li class="chapter" data-level="3.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="3.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#for-loops"><i class="fa fa-check"></i><b>2.5</b> For loops</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#if-elif-else-statements"><i class="fa fa-check"></i><b>2.6</b> If-Elif-Else Statements</a></li>
+<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#conditional-statements"><i class="fa fa-check"></i><b>2.7</b> Conditional statements</a></li>
+<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#logic-statements"><i class="fa fa-check"></i><b>2.8</b> Logic statements</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="Ch1.html"><a href="Ch1.html#and-or-not"><i class="fa fa-check"></i><b>2.8.1</b> “And”, “Or”, “Not”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="Ch1.html"><a href="Ch1.html#while-loops"><i class="fa fa-check"></i><b>2.9</b> While loops</a></li>
+<li class="chapter" data-level="2.10" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.10</b> Summary</a></li>
+<li class="chapter" data-level="2.11" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.11</b> Example Python Problems</a></li>
+<li class="chapter" data-level="2.12" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.12</b> Conceptual Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.13" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.13</b> Coding Exercises for Learning Python</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="Ch2.html"><a href="Ch2.html#can-we-make-models-that-understand"><i class="fa fa-check"></i><b>3.3.1</b> Can we make models that understand?</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#levels-of-organization"><i class="fa fa-check"></i><b>3.4</b> Levels of organization</a></li>
 <li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.5</b> Applications of computational neuroscience</a></li>
 <li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.6</b> The future of computational neuroscience</a></li>
-<li class="chapter" data-level="3.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
 <li class="chapter" data-level="3.8" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a><ul>
-<li class="chapter" data-level="4.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="4.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>4.3</b> What is an action potential?</a></li>
-<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.4</b> Nernst equilibrium potential</a></li>
-<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.5</b> Leaky Integrate and Fire Model</a></li>
-<li class="chapter" data-level="4.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
-<li class="chapter" data-level="4.7" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a><ul>
-<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.7.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.7.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#membrane-potentials-and-electrochemical-gradients"><i class="fa fa-check"></i><b>4.3</b> Membrane potentials and electrochemical gradients</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#phases-of-the-action-potential"><i class="fa fa-check"></i><b>4.4</b> Phases of the action potential</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="Ch3.html"><a href="Ch3.html#positive-feedback-and-depolarization"><i class="fa fa-check"></i><b>4.4.1</b> Positive feedback and depolarization</a></li>
+<li class="chapter" data-level="4.4.2" data-path="Ch3.html"><a href="Ch3.html#negative-feedback-and-repolarization"><i class="fa fa-check"></i><b>4.4.2</b> Negative feedback and repolarization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.5</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.6</b> Leaky Integrate and Fire Model</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#passive-membrane-model"><i class="fa fa-check"></i><b>4.7.1</b> Passive membrane model:</a></li>
+<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#an-action-potential-has-six-phases"><i class="fa fa-check"></i><b>4.7.2</b> An action potential has six phases:</a></li>
+<li class="chapter" data-level="4.7.3" data-path="Ch3.html"><a href="Ch3.html#main-features-of-an-action-potential"><i class="fa fa-check"></i><b>4.7.3</b> Main features of an action potential:</a></li>
+<li class="chapter" data-level="4.7.4" data-path="Ch3.html"><a href="Ch3.html#the-flow-of-ions-and-equilibrium-potentials"><i class="fa fa-check"></i><b>4.7.4</b> The flow of ions and equilibrium potentials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="Ch3.html"><a href="Ch3.html#exercises-1"><i class="fa fa-check"></i><b>4.8</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.8.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="4.8.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.8.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a><ul>
-<li class="chapter" data-level="5.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="5.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-3"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introduction-3"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
 <li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>5.3</b> The Hodgkin and Huxley model</a></li>
-<li class="chapter" data-level="5.4" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
-<li class="chapter" data-level="5.5" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
-<li class="chapter" data-level="5.5.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#exercises-2"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="Ch4.html"><a href="Ch4.html#conceptual-exercises-1"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Ch4.html"><a href="Ch4.html#coding-exercises-1"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a><ul>
-<li class="chapter" data-level="6.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="6.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-4"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-4"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
 <li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#spike-trains"><i class="fa fa-check"></i><b>6.3</b> Spike Trains</a></li>
 <li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#spike-statistics"><i class="fa fa-check"></i><b>6.4</b> Spike Statistics</a></li>
-<li class="chapter" data-level="6.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
-<li class="chapter" data-level="6.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>6.6</b> Exercises</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.6.1</b> Conceptual Problems</a></li>
-<li class="chapter" data-level="6.6.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.6.2</b> Coding Problems</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#poisson-processes"><i class="fa fa-check"></i><b>6.5</b> Poisson Processes</a></li>
+<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#summary-4"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.7.1</b> Conceptual Problems</a></li>
+<li class="chapter" data-level="6.7.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.7.2</b> Coding Problems</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a><ul>
-<li class="chapter" data-level="7.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="7.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#vocabulary-5"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#introduction-5"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
 <li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#spike-triggered-average"><i class="fa fa-check"></i><b>7.3</b> Spike-triggered Average</a></li>
 <li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#reverse-correlation"><i class="fa fa-check"></i><b>7.4</b> Reverse Correlation</a></li>
-<li class="chapter" data-level="7.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-<li class="chapter" data-level="7.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>7.6</b> Exercises</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="7.6.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#summary-5"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="Ch6.html"><a href="Ch6.html#exercises-4"><i class="fa fa-check"></i><b>7.6</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="Ch6.html"><a href="Ch6.html#conceptual-exercises-2"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="7.6.2" data-path="Ch6.html"><a href="Ch6.html#coding-exercises-2"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a><ul>
-<li class="chapter" data-level="8.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="8.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
-<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="Ch7.html"><a href="Ch7.html#vocabulary-6"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="8.2" data-path="Ch7.html"><a href="Ch7.html#introduction-6"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="Ch7.html"><a href="Ch7.html#eeg"><i class="fa fa-check"></i><b>8.3.1</b> EEG</a></li>
 <li class="chapter" data-level="8.3.2" data-path="Ch7.html"><a href="Ch7.html#meg"><i class="fa fa-check"></i><b>8.3.2</b> MEG</a></li>
 <li class="chapter" data-level="8.3.3" data-path="Ch7.html"><a href="Ch7.html#fmri"><i class="fa fa-check"></i><b>8.3.3</b> fMRI</a></li>
 <li class="chapter" data-level="8.3.4" data-path="Ch7.html"><a href="Ch7.html#ecog"><i class="fa fa-check"></i><b>8.3.4</b> ECOG</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="Ch7.html"><a href="Ch7.html#introduction-to-decoding"><i class="fa fa-check"></i><b>8.4</b> Introduction to Decoding</a></li>
-<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a>
+<ul>
 <li class="chapter" data-level="8.5.1" data-path="Ch7.html"><a href="Ch7.html#correlation-classifiers"><i class="fa fa-check"></i><b>8.5.1</b> Correlation classifiers</a></li>
 <li class="chapter" data-level="8.5.2" data-path="Ch7.html"><a href="Ch7.html#distance-based-classifiers"><i class="fa fa-check"></i><b>8.5.2</b> Distance-based classifiers</a></li>
 <li class="chapter" data-level="8.5.3" data-path="Ch7.html"><a href="Ch7.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>8.5.3</b> Boundary-based classifiers</a></li>
@@ -218,16 +275,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="Ch7.html"><a href="Ch7.html#cross-validation"><i class="fa fa-check"></i><b>8.6</b> Cross validation</a></li>
 <li class="chapter" data-level="8.7" data-path="Ch7.html"><a href="Ch7.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a><ul>
+<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="Ch8.html"><a href="Ch8.html#vocabulary-list"><i class="fa fa-check"></i><b>9.1</b> Vocabulary List:</a></li>
 <li class="chapter" data-level="9.2" data-path="Ch8.html"><a href="Ch8.html#introductionbackground"><i class="fa fa-check"></i><b>9.2</b> Introduction/Background</a></li>
 <li class="chapter" data-level="9.3" data-path="Ch8.html"><a href="Ch8.html#different-types-of-learning"><i class="fa fa-check"></i><b>9.3</b> Different Types of Learning</a></li>
 <li class="chapter" data-level="9.4" data-path="Ch8.html"><a href="Ch8.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>9.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
 <li class="chapter" data-level="9.5" data-path="Ch8.html"><a href="Ch8.html#perceptron"><i class="fa fa-check"></i><b>9.5</b> Perceptron</a></li>
-<li class="chapter" data-level="9.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+<li class="chapter" data-level="9.6" data-path="Ch8.html"><a href="Ch8.html#summary-6"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="Ch9.html"><a href="Ch9.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
-<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a><ul>
+<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="Ch10.html"><a href="Ch10.html#chapter-1-preface"><i class="fa fa-check"></i><b>11.1</b> Chapter 1: Preface</a></li>
 <li class="chapter" data-level="11.2" data-path="Ch10.html"><a href="Ch10.html#chapter-2-introduction-to-python"><i class="fa fa-check"></i><b>11.2</b> Chapter 2: Introduction to Python</a></li>
 <li class="chapter" data-level="11.3" data-path="Ch10.html"><a href="Ch10.html#chapter-3-what-is-computational-neuroscience"><i class="fa fa-check"></i><b>11.3</b> Chapter 3: What is Computational Neuroscience?</a></li>
@@ -238,28 +297,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.8" data-path="Ch10.html"><a href="Ch10.html#chapter-8-decoding"><i class="fa fa-check"></i><b>11.8</b> Chapter 8: Decoding</a></li>
 <li class="chapter" data-level="11.9" data-path="Ch10.html"><a href="Ch10.html#chapter-9-neural-networks"><i class="fa fa-check"></i><b>11.9</b> Chapter 9: Neural Networks</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a><ul>
+<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="Ch11.html"><a href="Ch11.html#chapter-1-introduction-to-python"><i class="fa fa-check"></i><b>12.1</b> Chapter 1: Introduction to Python</a></li>
 <li class="chapter" data-level="12.2" data-path="Ch11.html"><a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience"><i class="fa fa-check"></i><b>12.2</b> Chapter 2: Introduction to Computational Neuroscience</a></li>
-<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a><ul>
+<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a>
+<ul>
 <li class="chapter" data-level="12.3.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions"><i class="fa fa-check"></i><b>12.3.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.3.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions"><i class="fa fa-check"></i><b>12.3.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a><ul>
+<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a>
+<ul>
 <li class="chapter" data-level="12.4.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-1"><i class="fa fa-check"></i><b>12.4.1</b> Conceptual Questions:</a></li>
 <li class="chapter" data-level="12.4.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-1"><i class="fa fa-check"></i><b>12.4.2</b> Coding Questions:</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a><ul>
+<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a>
+<ul>
 <li class="chapter" data-level="12.5.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-2"><i class="fa fa-check"></i><b>12.5.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.5.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-2"><i class="fa fa-check"></i><b>12.5.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a>
+<ul>
 <li class="chapter" data-level="12.6.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-3"><i class="fa fa-check"></i><b>12.6.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.6.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-3"><i class="fa fa-check"></i><b>12.6.2</b> Coding Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="12.7" data-path="Ch11.html"><a href="Ch11.html#chapter-7-decoding"><i class="fa fa-check"></i><b>12.7</b> Chapter 7: Decoding</a></li>
 <li class="chapter" data-level="12.8" data-path="Ch11.html"><a href="Ch11.html#chapter-8-neural-networks"><i class="fa fa-check"></i><b>12.8</b> Chapter 8: Neural Networks</a></li>
 </ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -277,31 +344,311 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ch1" class="section level1">
-<h1><span class="header-section-number">2</span> Introduction to Python</h1>
-<div id="vocabulary" class="section level2">
-<h2><span class="header-section-number">2.1</span> Vocabulary</h2>
+<div id="Ch1" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Introduction to Python<a href="Ch1.html#Ch1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="vocabulary" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Vocabulary<a href="Ch1.html#vocabulary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Library</li>
+<li>String<br />
+</li>
+<li>Integer</li>
+<li>Float</li>
+<li>List</li>
+<li>Boolean</li>
+<li>Array</li>
+<li>Vector</li>
+<li>Matrix</li>
+<li>Variable</li>
+<li>f-String</li>
+</ul>
 </div>
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">2.2</span> Introduction</h2>
+<div id="introduction" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Introduction<a href="Ch1.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>New technologies and the introduction of coding to scientific fields has made solving complex problems as easy and quick as ever. Python is a tool which we can use to easily perform these complex calculations. This software heavily impacted the field of computational neuroscience, where the intricate processes of the brain can now be modeled and translated into the function of a computer. This opens up thousands of doors for new technologies and new discoveries about the brain, as well as how we can potentially recreate brain function virtually.
+In this chapter, we will explore the basics of Python, how to use it, its syntax, and its function. We will go over different data types and libraries, and how to use the built in tools in Python and these libraries in order to work with data, solve mathematical equations, and how to use Python to understand concepts of computational neuroscience.</p>
 </div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">2.3</span> Summary</h2>
+<div id="libraries" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Libraries<a href="Ch1.html#libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Python, we have tools called “libraries”. We will create an analogy where it should be clear the purpose of libraries in Python. Libraries are places you go to to read information discovered by other individuals already. You could figure out the derivative of “2x,” but it could take a lifetime of work to do this. Instead, why not pick up a calculus book from the library and follow its instructions.<br />
+That is how to view libraries. Libraries are pre-written chunks of code–made from other great programmers–which can be pulled from to make writing new code more efficient. It’s important to implement certain libraries if they contain functions and methods to make your job easier. If code already exists, use it. For example, imagine I know I am going to work with irrational numbers and it will be annoying to type out the number pi. There is a library called numpy that can do it for me. Below, I will demonstrate how to utilize the library.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="Ch1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="Ch1.html#cb1-2" aria-hidden="true" tabindex="-1"></a>number_pi <span class="op">=</span> np.pi</span>
+<span id="cb1-3"><a href="Ch1.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(number_pi)</span>
+<span id="cb1-4"><a href="Ch1.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="Ch1.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: 3.141592653589793</span></span></code></pre></div>
+<p>Where the variable we declared ‘number_pi’ is the number pi! Note: Variables are before the equal sign and the information stored in them is what is after the equal sign. We dive deeper into assignment statements and variables later on. All we had to do was use the import statement, put the library we wanted to import and for time sake we call it “as np” to make it quicker to type. To use what is in the library you must type what you are importing it as a period in front and then type the function/method you want to utilize.</p>
+<p>Note: Functions are blocks of code that can be executed by calling that function’s name. A method on the other hand is a specific action that an object can perform because that method is associated with that object’s class. We dive into data types/classes later on so stay tuned!</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="Ch1.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> library <span class="im">as</span> something</span>
+<span id="cb2-2"><a href="Ch1.html#cb2-2" aria-hidden="true" tabindex="-1"></a>something.method()<span class="op">/</span>function()</span></code></pre></div>
+<p>Some libraries that are especially important for scientific computing include:</p>
+<ul>
+<li><a href="https://numpy.org/">Numpy</a></li>
+<li><a href="https://matplotlib.org/">Matplotlib</a></li>
+<li><a href="https://www.sympy.org/en/index.html">Sympy</a></li>
+</ul>
+<p>There are a variety of libraries out there and there is probably a library out there that can make your life easier!</p>
 </div>
-<div id="example-python-problems" class="section level2">
-<h2><span class="header-section-number">2.4</span> Example Python Problems</h2>
+<div id="data-types" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Data Types<a href="Ch1.html#data-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Python, variables store values where each value is of a certain data type. Different data types serve for different functionality and purposes. Certain data types have built in functions in Python and here we will quickly outline the main kinds of data types and their common uses.</p>
+<div id="string" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> String<a href="Ch1.html#string" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>String data types will usually appear in-between two quotation marks. They are essentially textual data which can be stored within a variable. String type data will never be numerical.</p>
+<div id="example-1" class="section level4 hasAnchor" number="2.4.1.1">
+<h4><span class="header-section-number">2.4.1.1</span> Example 1:<a href="Ch1.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>“Bates College” is a string data type. If we put this data type in a variable say:
+college = ‘Bates College’</p>
+<p>Here’s how this would look in Python:</p>
+<p><img src="images/string.png" /></p>
+<p>Note the function “%whos” returns a list of every variable and its data type already established in this workbook.</p>
+<p>The college variable is of type string. Strings are great when you want to print out a message to a user or get input. There are a lot more uses for strings but these are the main points to take away for now.</p>
+</div>
+</div>
+<div id="integers" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Integers<a href="Ch1.html#integers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Integer data types are simply numbers without a decimal. For example, 1 is an integer BUT 1.0 is not an integer, it is a float. We will talk about floats soon. Integers are a great tool when doing computations in Python. Python is really good at a variety of arithmetic operations and integers are the data types to access these arithmetic operations!</p>
+</div>
+<div id="floats" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> Floats<a href="Ch1.html#floats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Float data types are like integers but now we are dealing with decimal points. Here 1.0 is float, 5.66686 is a float, and so on and so forth. Floats are also able to access the arithmetic tools built in python and are also a great tool to use when dealing with problems that call for them. Moreover, when precision is essential in a project utilizing floats is the way to go!</p>
+</div>
+<div id="lists" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> Lists<a href="Ch1.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lists are data types that will appear with brackets outside and be filled with a variety of objects inside of it.</p>
+<div id="example-2" class="section level4 hasAnchor" number="2.4.4.1">
+<h4><span class="header-section-number">2.4.4.1</span> Example 2:<a href="Ch1.html#example-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/list.png" /></p>
+<p>Here we see the theList object has the data type list where it carries other data types inside of it. Lists are great when you need to store a variety of data in one place. As you will see later lists have a large set of built in functions in python as well that are very beneficial for a variety of projects.</p>
+</div>
+</div>
+<div id="boolean" class="section level3 hasAnchor" number="2.4.5">
+<h3><span class="header-section-number">2.4.5</span> Boolean<a href="Ch1.html#boolean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A Boolean data type is either True or False, and this binary data type is what python reads when deciding to do certain tasks. For example, if Python reads a task as being False python will not execute its instructions and if True, Python then begins to do the tasks laid for it.</p>
+</div>
+<div id="arrays" class="section level3 hasAnchor" number="2.4.6">
+<h3><span class="header-section-number">2.4.6</span> Arrays<a href="Ch1.html#arrays" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Arrays are a helpful tool which allow us to store multiple data points all in one place. Another way to think of arrays is by storing a variety of elements being stored as a unit. We can refer to individual elements in an array by utilizing an index which will be explored later on.</p>
+<p>The beauty of arrays is that they are a broad category of a kind of data type. Specific kinds of arrays are known as vectors and matrices which we can easily create using the numpy library. There are many different types of arrays. The two we will learn about in this chapter are vectors and matrices.</p>
+</div>
+<div id="vectors" class="section level3 hasAnchor" number="2.4.7">
+<h3><span class="header-section-number">2.4.7</span> Vectors<a href="Ch1.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vectors are slightly different from lists. Vectors are created from the np.array call where it has one row and a designated amount of columns. Every vector has its own respective length, which can be found using the len() function. Note the length of a vector is going to be the number of columns we assigned it.</p>
+<div id="example-3" class="section level4 hasAnchor" number="2.4.7.1">
+<h4><span class="header-section-number">2.4.7.1</span> Example 3:<a href="Ch1.html#example-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A vector would look like [1, 2, 3, 4, 5, 6], which has a length of 6 as there are 6 data points/columns. Here it is shown in Python:</p>
+<p><img src="images/vector.png" /></p>
+<p>Note that the first print() function is printing the contents of the vector, whereas the second print() function is printing the length of the vector.</p>
+</div>
+</div>
+<div id="matrices" class="section level3 hasAnchor" number="2.4.8">
+<h3><span class="header-section-number">2.4.8</span> Matrices<a href="Ch1.html#matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Matrices are essentially like vectors but have more than one row.</p>
+<div id="example-4" class="section level4 hasAnchor" number="2.4.8.1">
+<h4><span class="header-section-number">2.4.8.1</span> Example 4:<a href="Ch1.html#example-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>[1, 2, 3]
+[4, 5, 6]</p>
+<p>This matrix has two rows and thus a length of 2 where we see the length is correlated with the number of rows a matrix contains. Thus, its .shape() would be [2,3].</p>
+<p>Here’s how it would show up in Python:</p>
+<p><img src="images/matrix.png" /></p>
+<p>Note: If you ever are curious about an object’s data type use type(object) and you will get back the type of the object.</p>
+<p>When performing calculations with specific data types, the data types must match up. For instance, a string cannot be subtracted from an integer, nor can a float be multiplied by a Boolean.</p>
+</div>
+</div>
+<div id="variable-assignment" class="section level3 hasAnchor" number="2.4.9">
+<h3><span class="header-section-number">2.4.9</span> Variable assignment<a href="Ch1.html#variable-assignment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Placing a single = sign after a block of text assigns whatever is placed after the equals sign to a variable, whatever is before the equals sign. This is helpful to shorthand while coding, as well as to assign short, descriptive names to complex data types.</p>
+<p>Here is an example of how to do this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="Ch1.html#cb3-1" aria-hidden="true" tabindex="-1"></a>dividend <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb3-2"><a href="Ch1.html#cb3-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb3-3"><a href="Ch1.html#cb3-3" aria-hidden="true" tabindex="-1"></a>quotient <span class="op">=</span> dividend <span class="op">/</span> divisor</span>
+<span id="cb3-4"><a href="Ch1.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quotient)</span>
+<span id="cb3-5"><a href="Ch1.html#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="Ch1.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.0</span></span></code></pre></div>
+<p>Here, the variable “dividend” is assigned to 100, the variable “divisor” is assigned to 20, and we are calculating the variable “quotient” by dividing these two variables. These variables can be plugged directly into the equation in order to not have to “hard-code” these numbers; that is, input actual numbers into the equation in case the variable values have to be changed later, the code will still function the same way.</p>
+<p>Note: to actually perform the “is equal to” calculation, it’s important to use two equals signs (that is, ==) in order to do so.</p>
+</div>
+<div id="f-strings" class="section level3 hasAnchor" number="2.4.10">
+<h3><span class="header-section-number">2.4.10</span> f-Strings<a href="Ch1.html#f-strings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Whenever we print out a string we can sometimes run into some conflict. Here is an example.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="Ch1.html#cb4-1" aria-hidden="true" tabindex="-1"></a>aNumber <span class="op">=</span> <span class="dv">4</span></span></code></pre></div>
+<p>The variable aNumber is an integer. If we type the following:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="Ch1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1</span></span>
+<span id="cb5-2"><a href="Ch1.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;This is the number aNumber&#39;</span>)</span>
+<span id="cb5-3"><a href="Ch1.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="Ch1.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2</span></span>
+<span id="cb5-5"><a href="Ch1.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;This is the number&#39;</span> <span class="op">+</span>aNumber)</span>
+<span id="cb5-6"><a href="Ch1.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="Ch1.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3</span></span>
+<span id="cb5-8"><a href="Ch1.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;This is the number&#39;</span><span class="op">+</span><span class="bu">str</span>(aNumber))</span></code></pre></div>
+<p>Then we would obtain the following print statements:<br />
+‘This is the aNumber’
+An error since it is invalid syntax. This is because aNumber is not a string.
+‘This is the number 4’</p>
+<p>Thus, the third option is a valid way to print out objects that are not by default string, however, there is a quicker way to do this using formatting strings.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="Ch1.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;Words go in here and the next word is </span><span class="sc">{</span><span class="kw">not</span> string <span class="bu">type</span><span class="sc">}</span><span class="ss">)</span></span></code></pre></div>
+<p>The output will be the string and what is in between the curly brackets will be automatically turned into a string and added to the overall string where it was placed. This is awesome in terms of saving time and writing beautiful print statements for the user.</p>
+<div id="example-5" class="section level4 hasAnchor" number="2.4.10.1">
+<h4><span class="header-section-number">2.4.10.1</span> Example 5:<a href="Ch1.html#example-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="Ch1.html#cb7-1" aria-hidden="true" tabindex="-1"></a>voltage <span class="op">=</span> <span class="st">&#39;+35&#39;</span></span>
+<span id="cb7-2"><a href="Ch1.html#cb7-2" aria-hidden="true" tabindex="-1"></a>phase <span class="op">=</span> <span class="st">&#39;repolarizing&#39;</span></span>
+<span id="cb7-3"><a href="Ch1.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;When the voltage hits </span><span class="sc">{</span>voltage<span class="sc">}</span><span class="ss"> mV, the neuron enters the </span><span class="sc">{</span>phase<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb7-4"><a href="Ch1.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ss">phase of the action potential.&quot;)</span></span></code></pre></div>
+<p>Here, we use an f-string to insert information about an action potential into a sentence explaining this action potential. First, we define the variables, then place them in curly brackets within the sentence where we want it to show up.</p>
+<p>These f-strings have other amazing features embedded in them where we can, for example, designate the number of decimal places we want a float value to show.</p>
+</div>
+<div id="example-6" class="section level4 hasAnchor" number="2.4.10.2">
+<h4><span class="header-section-number">2.4.10.2</span> Example 6:<a href="Ch1.html#example-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="Ch1.html#cb8-1" aria-hidden="true" tabindex="-1"></a>random_float <span class="op">=</span> <span class="fl">4.567</span></span>
+<span id="cb8-2"><a href="Ch1.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="Ch1.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f’We want to see two decimal places <span class="cf">for</span> the random <span class="bu">float</span> {random_float:<span class="fl">.2</span><span class="er">f</span>}’</span>
+<span id="cb8-4"><a href="Ch1.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We want to see two decimal places for the random float 4.57.</span></span></code></pre></div>
+<p>This is just one example of its incredible uses but keep exploring other features! <a href="https://docs.google.com/document/d/1SveSI2_d-9XFWjtatueA25qEl45WJMFqGpRDKg0WuIY/edit">Click me to get your feet wet with some examples!</a></p>
+</div>
+</div>
+</div>
+<div id="for-loops" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> For loops<a href="Ch1.html#for-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For loops are an incredible tool we can use to quickly perform calculations which are looped a certain number of times. They essentially run through a set of instructions a specified number of times while simultaneously running through different data sets in order to see the outcome of these instructions throughout all the data. Here’s an example of how we would use a for loop in computational neuroscience.</p>
+<div id="example-7" class="section level4 hasAnchor" number="2.5.0.1">
+<h4><span class="header-section-number">2.5.0.1</span> Example 7:<a href="Ch1.html#example-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We are going to create a for loop that lists the resting potential of six different neurons within the text “The resting potential of a neuron is at __mV”.</p>
+<p>First, we are going to create a vector containing six different resting potentials. We need to import numpy in order to create a vector, so that is our first step. We save numpy as np so we don’t have to type out “numpy” each time we want to pull from that library. The next step is to create the vector using the np.array([]) function.</p>
+<p>Our next step is to start the for loop. We start with the word “for”, which triggers the start of the for loop. We next define the variable, which is going to be [i] in this example. Next, we use the command “in”, which defines the range of the for loop. Next, we define our vector “rate” that we will loop over in each iteration. We finish off this line with a colon “:”.</p>
+<p>After the for loop has been started, we have to place a command below it. We indent the next line, then place our command. This can be any mathematical equation, but for this example, we are going to use the “print()” command. We place “print()” after the indent, then state the text, as well as how we want the variable to be processed by the function. Note that in this example, we must name the variable [i] as a string, as that’s what the function is set up to process.</p>
+<p>Here’s how this looks in Python:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="Ch1.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="Ch1.html#cb9-2" aria-hidden="true" tabindex="-1"></a>rate <span class="op">=</span> np.array([<span class="op">-</span><span class="dv">90</span>, <span class="op">-</span><span class="dv">80</span>, <span class="op">-</span><span class="dv">85</span>, <span class="op">-</span><span class="dv">70</span>, <span class="op">-</span><span class="dv">65</span>, <span class="op">-</span><span class="dv">75</span>])</span>
+<span id="cb9-3"><a href="Ch1.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="Ch1.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> rate:</span>
+<span id="cb9-5"><a href="Ch1.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&#39;The resting potential of the neuron is at &#39;</span> <span class="op">+</span><span class="bu">str</span>(i) <span class="op">+</span> <span class="st">&#39;mV&#39;</span>)</span>
+<span id="cb9-6"><a href="Ch1.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-7"><a href="Ch1.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The resting potential of the neuron is at -90 mV</span></span>
+<span id="cb9-8"><a href="Ch1.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The resting potential of the neuron is at -80 mV</span></span>
+<span id="cb9-9"><a href="Ch1.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># The resting potential of the neuron is at -85 mV</span></span>
+<span id="cb9-10"><a href="Ch1.html#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># The resting potential of the neuron is at -70 mV</span></span>
+<span id="cb9-11"><a href="Ch1.html#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># The resting potential of the neuron is at -65 mV</span></span>
+<span id="cb9-12"><a href="Ch1.html#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The resting potential of the neuron is at -75 mV</span></span></code></pre></div>
+<p>Note that the loop ran through until it processed every item in the vector, and completed the function respectively. It thus printed each item on the list separately into the assigned text.</p>
+<p>For loops are incredibly useful, as they can calculate a function with a multitude of data sets, as long as the function remains the same. For instance, it can sort items out of a list, or perform a physics calculation over and over again with different data each time. They save a lot of time in using Python to perform calculations, and they’re an incredibly important tool in the field of computational neuroscience as well. For instance, they can be used to calculate the action potentials of a set of neurons with varying resting potentials, which we can store in a vector.</p>
+</div>
+</div>
+<div id="if-elif-else-statements" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> If-Elif-Else Statements<a href="Ch1.html#if-elif-else-statements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If-Elif-Else statements are an easy way to sort data depending on whether or not it fits a certain criteria or not. It essentially tells the computer, “if this happens, then this should be the result. Else, this other result should occur.” Elif is short for “else-if”, which is a middle-ground between else and if demands. “If this occurs, this should be the result. Else if this occurs, this second result should occur. Or else, this third result should occur.” These are helpful in determining what criteria a piece of data can be sorted under. Here’s an example of how an if-else statement can be used in Python.</p>
+<div id="example-8" class="section level4 hasAnchor" number="2.6.0.1">
+<h4><span class="header-section-number">2.6.0.1</span> Example 8:<a href="Ch1.html#example-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For this example, we are going to place an if-else statement inside of a for loop. This will help us quickly sort through multiple pieces of data. This block of code will help us sort through different neuron voltages and determine whether the neuron is in the process of depolarizing/repolarizing or if it is hyperpolarized. We will start again by importing numpy, as we need it to create a vector. We will then create a vector which contains a series of different voltages to be sorted, between -90 and 30.</p>
+<p>The next step is to start the for loop. We set our variable as i and plug our vector “voltage” into function “in”, then follow by a colon.</p>
+<p>Next, we start our if-else statement. For our if statement, we will establish whether a neuron is in a depolarizing/repolarizing state by seeing if its voltage is above or equal to the average resting potential of a neuron, -70V. If this statement is true, the function will print “depolarizing/repolarizing”. The else statement states that if the variable is not greater than or equal to -70, it must be in the hyperpolarizing state, and thus it will print “hyperpolarizing”. The for loop will run this test on each set of data in the vector, thus sorting them by whether or not they are a depolarizing/repolarizing voltage or a hyperpolarizing voltage.</p>
+<p>Here’s what this would look like in Python.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="Ch1.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="Ch1.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="Ch1.html#cb10-3" aria-hidden="true" tabindex="-1"></a>voltage <span class="op">=</span> np.array([<span class="op">-</span><span class="dv">65</span>, <span class="op">-</span><span class="dv">90</span>, <span class="dv">30</span>, <span class="op">-</span><span class="dv">70</span>, <span class="dv">10</span>, <span class="op">-</span><span class="dv">80</span>, <span class="dv">30</span>])</span>
+<span id="cb10-4"><a href="Ch1.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="Ch1.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> voltage:</span>
+<span id="cb10-6"><a href="Ch1.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="op">-</span><span class="dv">70</span>:</span>
+<span id="cb10-7"><a href="Ch1.html#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Depolarizing/Repolarizing&#39;</span>)</span>
+<span id="cb10-8"><a href="Ch1.html#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb10-9"><a href="Ch1.html#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Hyperpolarizing)</span></span>
+<span id="cb10-10"><a href="Ch1.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="er">    </span></span>
+<span id="cb10-11"><a href="Ch1.html#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="Ch1.html#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="er"># Depolarizing/Repolarizing</span></span>
+<span id="cb10-13"><a href="Ch1.html#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="er"># Hyperpolarizing</span></span>
+<span id="cb10-14"><a href="Ch1.html#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="er"># Depolarizing/Repolarizing</span></span>
+<span id="cb10-15"><a href="Ch1.html#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="er"># Depolarizing/Repolarizing</span></span>
+<span id="cb10-16"><a href="Ch1.html#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="er"># Depolarizing/Repolarizing</span></span>
+<span id="cb10-17"><a href="Ch1.html#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="er"># Hyperpolarizing</span></span>
+<span id="cb10-18"><a href="Ch1.html#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="er"># Depolarizing/Repolarizing</span></span></code></pre></div>
+<p>As you can see, Python printed a list of either “Depolarizing/Repolarizing” or “Hyperpolarizing” which responds to the criteria we placed in the if-else statement in correspondence to the vector.</p>
+<p>This example shows how we can use if-else statements in computational neuroscience. They are very useful in running through criteria and if a data set matches up with this set criteria.</p>
+</div>
+</div>
+<div id="conditional-statements" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Conditional statements<a href="Ch1.html#conditional-statements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we will quickly demonstrate some conditional statements using pseudo-code. These will be supplementary to when we dive into logic statements!</p>
+<p>When thinking of AND statements:</p>
+<pre><code>Condition -&gt; If it is raining AND if it is cold:  
+    Action -&gt; wear a jacket  </code></pre>
+<p>We wear a jacket when <strong>both</strong> events/conditions are true.</p>
+<p>When thinking of OR statements:</p>
+<pre><code>Condition -&gt; If it is raining OR if it is cold:  
+    Action -&gt; wear a jacket  </code></pre>
+<p>We wear a jacket when <strong>either</strong> events/conditions are true.</p>
+</div>
+<div id="logic-statements" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Logic statements<a href="Ch1.html#logic-statements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Python when we get to difficult projects we may have to lay out complex instructions for Python to interpret. For example, we may want to print out a string if an object equals some value and if it doesn’t equal some value, we then want to print out another kind of string. To do this logical statements are essential.</p>
+<div id="and-or-not" class="section level3 hasAnchor" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> “And”, “Or”, “Not”<a href="Ch1.html#and-or-not" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us understand each of these logic operators. Let us have x and y be some conditional statements we have declared. The “and” operator is usually used when we want Python to read both condition statements to be true to run.</p>
+<pre><code> If x and y are true:
+     Do these instructions
+     </code></pre>
+<p>Here x AND y must be seen as true to run the code below the logic.</p>
+<p>The “or” operator is usually used when we want python to read either conditional statement to be true to run.</p>
+<pre><code>If x or y are true:
+    Do these instructions
+    </code></pre>
+<p>Here x can be true to run the code inside the if statement. The y can be true to run the code below. Both can be true to run the code. However, if both are false then the code does not run as the statement is now False.</p>
+<p>The “not” operator flips the boolean output of a statement. Imagine x is True and y is False:</p>
+<pre><code>If x and not y are true:
+    Do these intructions
+    </code></pre>
+<p>We know x is True and y is False. However, the not in front of y makes it become True meaning Python reads the logic statement as true and executes the instructions below.</p>
+</div>
+</div>
+<div id="while-loops" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> While loops<a href="Ch1.html#while-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While loops are not a completely new concept; in fact, they are very similar to what we’ve already learned. They are a combination of for loops and if statements. While loops are conditioned to keep them running until that condition is deemed false.</p>
+<div id="example-9" class="section level4 hasAnchor" number="2.9.0.1">
+<h4><span class="header-section-number">2.9.0.1</span> Example 9<a href="Ch1.html#example-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To create a variable (x) which adds 5 every time it loops through until it gets to 25, we would use a while loop while x is less than 25. In this case, the while loop runs until x = 25, then the while loop would stop once x = 25.</p>
+<p>Here’s what this would look like in Python:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="Ch1.html#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-2"><a href="Ch1.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="Ch1.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">25</span>:</span>
+<span id="cb16-4"><a href="Ch1.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">+</span> <span class="dv">5</span></span>
+<span id="cb16-5"><a href="Ch1.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(x)</span>
+<span id="cb16-6"><a href="Ch1.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-7"><a href="Ch1.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 5</span></span>
+<span id="cb16-8"><a href="Ch1.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 10</span></span>
+<span id="cb16-9"><a href="Ch1.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 15</span></span>
+<span id="cb16-10"><a href="Ch1.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 20</span></span>
+<span id="cb16-11"><a href="Ch1.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 25</span></span></code></pre></div>
+<p>The function printed every number of x + 5 between 0 (the starting point which was established outside the loop), and 25, the maximum range. It stopped printing after x = 25, thus, the while loop worked. The loop kept running when the condition was still considered true, as in, x &lt; 25. Once the condition became false, and x = 25, the loop stopped running.</p>
+<p>While loops, like for loops, are also very useful in computing repeat mathematical equations. We can use this in computational neuroscience to model the repeated firing of a neuron which will stop as soon as it performs a specific neuronal function or completes a task. While loops and for loops can be used in junction to mimic neuronal firing behavior.</p>
+<p>While loops can also be dangerous, however. If inputted incorrectly, while loops will never stop and will run forever, which Python is not fond of. The next example explores this phenomenon.</p>
+</div>
+<div id="example-10" class="section level4 hasAnchor" number="2.9.0.2">
+<h4><span class="header-section-number">2.9.0.2</span> Example 10<a href="Ch1.html#example-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="Ch1.html#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb17-2"><a href="Ch1.html#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="Ch1.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="dv">10</span> <span class="op">&lt;</span> x:</span>
+<span id="cb17-4"><a href="Ch1.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  y <span class="op">=</span> x <span class="op">+</span> <span class="dv">2</span></span></code></pre></div>
+<p>In this example, y as a variable is not defined, and there is never any command to change the value of x to be anything other than 10. Thus, the condition is always true and the loop will never stop running, so the cell will never stop running and Python will crash.</p>
+<p>When should for loops be used versus while loops? For loops should be used when you need to run through a function a specified number of times, perhaps with a different data set each time. While loops, on the other hand, are used to loop through a function an unspecified number of times until the condition in the function is proven false. While loops are dependent on the outcome of each loop through the function to keep running, whereas for loops are dependent on the number of specified runs through the loop to keep running.</p>
+</div>
+</div>
+<div id="summary" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> Summary<a href="Ch1.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this chapter, we learned some basic functions of Python, as well as how these concepts apply to the field of computational neuroscience. We learned about data types, including strings, integers, floats, lists, booleans, vectors, and matrices. We learned how to use logic statements to perform basic commands in Python. We learned about what a Python library is and how to import it, as well as how to use basic commands of the famous libraries Numpy or Matplotlib to further Python’s capabilities. We learned how to use f-strings to return specific pieces of data from a list. Lastly, we learned how to use for loops and while loops to perform repeat functions, what the difference between them is, and how they can be used in neuroscience contexts. We went over the importance of computer programming and how it has impacted our ability to perform science in the modern world, as well as the directions it may take us in neuroscience fields.</p>
+</div>
+<div id="example-python-problems" class="section level2 hasAnchor" number="2.11">
+<h2><span class="header-section-number">2.11</span> Example Python Problems<a href="Ch1.html#example-python-problems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Example 1</strong>:<br />
-Programming is essentially simplifying steps of a task to an alien that doesn’t understand how humans think. You need to be specific, detailed, and consistent in the format. The computer has a few basic commands it can do, so you need to be creative about how you’ll lay out the steps. With this in mind how would you explain to a computer how to get pizza from Commons?</p>
+In programming, it’s crucial to be specific, detailed, and consistent in the format. The computer has a few basic commands it can do, so you need to be creative about how you’ll lay out the steps. With this in mind, how would you explain to a computer how to get pizza from a pizza restaurant?</p>
 <p>Solution (outline):</p>
 <ul>
-<li>You would first need to give the computer directions to Commons</li>
-<li>Scan its ID to enter Commons from the west facing door</li>
-<li>Proceed to the first scanning station, scan its ID, and wait in line</li>
-<li>Proceed to the pizza station which is on the left side of the building</li>
+<li>You would first need to give the computer directions to the pizza restaurant</li>
+<li>Walk up to the West facing door</li>
+<li>Put its hand on the handle and pull open the door</li>
+<li>Step forward into the building.</li>
+<li>Proceed to the counter, which is on the left side of the building</li>
 <li>Look at the types of pizza there are and decide which one it wants</li>
-<li>Ask the Commons employee for the pizza it wants</li>
-<li>Take its box and follow the signs to exit</li>
-<li>Scan out and exit through the east facing doors</li>
+<li>Ask the cashier for the pizza it wants</li>
+<li>Wait for pizza, take its box and follow the signs to exit</li>
+<li>Open East facing doors to exit</li>
 </ul>
 <p><strong>Example 2</strong>:<br />
 The type() function tells you what type of data a certain variable is. Predict what Python will return for the following commands:</p>
@@ -314,41 +661,41 @@ b.) integer<br />
 c.) float</p>
 <p><strong>Example 3:</strong><br />
 Python is a simple programming language and doesn’t naturally come with all of the functions you might need. However, there is no reason to worry. Because Python is so ubiquitous, you can find downloadable packages of code to perform things you might otherwise sink hours into programming. One of these packages is numpy which performs many mathematical calculations that Python doesn’t come equipped with. Here are some examples of numpy functions:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="Ch1.html#cb1-1"></a><span class="co"># exponential</span></span>
-<span id="cb1-2"><a href="Ch1.html#cb1-2"></a>numpy.exp(x)</span>
-<span id="cb1-3"><a href="Ch1.html#cb1-3"></a></span>
-<span id="cb1-4"><a href="Ch1.html#cb1-4"></a><span class="co"># square root</span></span>
-<span id="cb1-5"><a href="Ch1.html#cb1-5"></a>numpy.sqrt(x)</span>
-<span id="cb1-6"><a href="Ch1.html#cb1-6"></a></span>
-<span id="cb1-7"><a href="Ch1.html#cb1-7"></a><span class="co"># natural log</span></span>
-<span id="cb1-8"><a href="Ch1.html#cb1-8"></a>numpy.log(x)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="Ch1.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># exponential</span></span>
+<span id="cb18-2"><a href="Ch1.html#cb18-2" aria-hidden="true" tabindex="-1"></a>numpy.exp(x)</span>
+<span id="cb18-3"><a href="Ch1.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="Ch1.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># square root</span></span>
+<span id="cb18-5"><a href="Ch1.html#cb18-5" aria-hidden="true" tabindex="-1"></a>numpy.sqrt(x)</span>
+<span id="cb18-6"><a href="Ch1.html#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="Ch1.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># natural log</span></span>
+<span id="cb18-8"><a href="Ch1.html#cb18-8" aria-hidden="true" tabindex="-1"></a>numpy.log(x)</span></code></pre></div>
 <p>In order to use these functions you must first import the package into your notebook which can simply be done with the import function:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="Ch1.html#cb2-1"></a><span class="im">import</span> numpy</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="Ch1.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span></code></pre></div>
 <p><strong>Example 4:</strong>
 Write code to do the following and print them:</p>
 <p>a.) <span class="math inline">\(e^8\)</span><br />
 b.) <span class="math inline">\(\sqrt{55+31}\)</span><br />
 c.) <span class="math inline">\(\ln(664/41)\)</span></p>
 <p>Solution:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="Ch1.html#cb3-1"></a><span class="co"># part a</span></span>
-<span id="cb3-2"><a href="Ch1.html#cb3-2"></a><span class="bu">print</span>(numpy.exp(<span class="dv">8</span>))</span>
-<span id="cb3-3"><a href="Ch1.html#cb3-3"></a></span>
-<span id="cb3-4"><a href="Ch1.html#cb3-4"></a><span class="co"># part b</span></span>
-<span id="cb3-5"><a href="Ch1.html#cb3-5"></a><span class="bu">print</span>(numpy.sqrt(<span class="dv">55</span><span class="op">+</span><span class="dv">31</span>))</span>
-<span id="cb3-6"><a href="Ch1.html#cb3-6"></a></span>
-<span id="cb3-7"><a href="Ch1.html#cb3-7"></a><span class="co"># part c</span></span>
-<span id="cb3-8"><a href="Ch1.html#cb3-8"></a><span class="bu">print</span>(numpy.log(<span class="dv">664</span><span class="op">/</span><span class="dv">41</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="Ch1.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># part a</span></span>
+<span id="cb20-2"><a href="Ch1.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numpy.exp(<span class="dv">8</span>))</span>
+<span id="cb20-3"><a href="Ch1.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="Ch1.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># part b</span></span>
+<span id="cb20-5"><a href="Ch1.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numpy.sqrt(<span class="dv">55</span><span class="op">+</span><span class="dv">31</span>))</span>
+<span id="cb20-6"><a href="Ch1.html#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="Ch1.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># part c</span></span>
+<span id="cb20-8"><a href="Ch1.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numpy.log(<span class="dv">664</span><span class="op">/</span><span class="dv">41</span>))</span></code></pre></div>
 <p><strong>Example 5:</strong>
 “If” statements are rather straightforward. You tell Python what to do <em>if</em> a particular circumstance is true. For example:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="Ch1.html#cb4-1"></a><span class="co"># pick a random integer between 1 and 10</span></span>
-<span id="cb4-2"><a href="Ch1.html#cb4-2"></a>x <span class="op">=</span> np.random.randint(<span class="dv">10</span>)</span>
-<span id="cb4-3"><a href="Ch1.html#cb4-3"></a></span>
-<span id="cb4-4"><a href="Ch1.html#cb4-4"></a><span class="co"># print &quot;okie dokie&quot; for if x is small, but print &quot;nokie dokie&quot;</span></span>
-<span id="cb4-5"><a href="Ch1.html#cb4-5"></a><span class="co"># for larger values</span></span>
-<span id="cb4-6"><a href="Ch1.html#cb4-6"></a><span class="cf">if</span> <span class="dv">4</span><span class="op">&gt;</span>x:</span>
-<span id="cb4-7"><a href="Ch1.html#cb4-7"></a>  <span class="bu">print</span>(<span class="st">&quot;okie dokie&quot;</span>)</span>
-<span id="cb4-8"><a href="Ch1.html#cb4-8"></a><span class="cf">else</span>:</span>
-<span id="cb4-9"><a href="Ch1.html#cb4-9"></a>  <span class="bu">print</span>(<span class="st">&quot;nokie dokie&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="Ch1.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pick a random integer between 1 and 10</span></span>
+<span id="cb21-2"><a href="Ch1.html#cb21-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.randint(<span class="dv">10</span>)</span>
+<span id="cb21-3"><a href="Ch1.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="Ch1.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print &quot;okie dokie&quot; for if x is small, but print &quot;nokie dokie&quot;</span></span>
+<span id="cb21-5"><a href="Ch1.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for larger values</span></span>
+<span id="cb21-6"><a href="Ch1.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">4</span><span class="op">&gt;</span>x:</span>
+<span id="cb21-7"><a href="Ch1.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;okie dokie&quot;</span>)</span>
+<span id="cb21-8"><a href="Ch1.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb21-9"><a href="Ch1.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;nokie dokie&quot;</span>)</span></code></pre></div>
 <p>In this example we are using the numpy.random.randint function to generate a random number between 0-9 and storing it in the variable x. This is because the numpy.random.randint function begins counting at 0 and is not inclusive of the last digit. The if statement then tells Python that if the randomly generated number is less than four print okie dokie and if not print nokie dokie. You can run this code multiple times and see the changes.</p>
 <p><strong>Example 6:</strong>
 Now try it yourself. Imagine you’re playing the lottery and your numbers are 3, 22, 55, and 31 and numbers are selected between 0 and 150, you win if any of your numbers are selected. Write an “if” statement that returns “I’m loaded!!!” if your numbers are not selected, print “better luck next time”.</p>
@@ -357,72 +704,73 @@ Now try it yourself. Imagine you’re playing the lottery and your numbers are 3
 <li>“Or” is a function that can be used in conjunction with “if” statements.</li>
 </ul>
 <p>Solution:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="Ch1.html#cb5-1"></a><span class="co"># print a random integer between 1 and 56</span></span>
-<span id="cb5-2"><a href="Ch1.html#cb5-2"></a>x <span class="op">=</span> numpy.random.randint(<span class="dv">57</span>)</span>
-<span id="cb5-3"><a href="Ch1.html#cb5-3"></a></span>
-<span id="cb5-4"><a href="Ch1.html#cb5-4"></a><span class="co"># check to see if x is a winning number</span></span>
-<span id="cb5-5"><a href="Ch1.html#cb5-5"></a><span class="cf">if</span> x<span class="op">==</span><span class="dv">3</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">22</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">55</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">31</span>:</span>
-<span id="cb5-6"><a href="Ch1.html#cb5-6"></a>  <span class="bu">print</span>(<span class="st">&quot;I&#39;m loaded!&quot;</span>)</span>
-<span id="cb5-7"><a href="Ch1.html#cb5-7"></a><span class="cf">else</span>:</span>
-<span id="cb5-8"><a href="Ch1.html#cb5-8"></a>  <span class="bu">print</span>(<span class="st">&quot;Better luck next time!&quot;</span>)</span>
-<span id="cb5-9"><a href="Ch1.html#cb5-9"></a></span>
-<span id="cb5-10"><a href="Ch1.html#cb5-10"></a><span class="co"># check what number was chosen  </span></span>
-<span id="cb5-11"><a href="Ch1.html#cb5-11"></a><span class="bu">print</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="Ch1.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print a random integer between 1 and 56</span></span>
+<span id="cb22-2"><a href="Ch1.html#cb22-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> numpy.random.randint(<span class="dv">57</span>)</span>
+<span id="cb22-3"><a href="Ch1.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="Ch1.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check to see if x is a winning number</span></span>
+<span id="cb22-5"><a href="Ch1.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x<span class="op">==</span><span class="dv">3</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">22</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">55</span> <span class="kw">or</span> x<span class="op">==</span><span class="dv">31</span>:</span>
+<span id="cb22-6"><a href="Ch1.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;I&#39;m loaded!&quot;</span>)</span>
+<span id="cb22-7"><a href="Ch1.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb22-8"><a href="Ch1.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;Better luck next time!&quot;</span>)</span>
+<span id="cb22-9"><a href="Ch1.html#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="Ch1.html#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># check what number was chosen  </span></span>
+<span id="cb22-11"><a href="Ch1.html#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <p><strong>Example 7:</strong>
 Imagine you are cleaning up at the end of your birthday party. You are tired and hungry from a long day of having fun. You are wondering how many slices of pizza are left in each of the 5 pizza boxes, and you decide to write an algorithm that will look through each pizza box and count the number of remaining slices.</p>
 <p>Follow the comments below to understand what each line of this code does:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="Ch1.html#cb6-1"></a><span class="co"># We are importing the package numpy which has built in functions </span></span>
-<span id="cb6-2"><a href="Ch1.html#cb6-2"></a><span class="co"># that will make coding easier and more efficient.</span></span>
-<span id="cb6-3"><a href="Ch1.html#cb6-3"></a><span class="im">import</span> numpy</span>
-<span id="cb6-4"><a href="Ch1.html#cb6-4"></a></span>
-<span id="cb6-5"><a href="Ch1.html#cb6-5"></a><span class="co"># We are defining the total number of pizza boxes that we need </span></span>
-<span id="cb6-6"><a href="Ch1.html#cb6-6"></a><span class="co"># to examine.</span></span>
-<span id="cb6-7"><a href="Ch1.html#cb6-7"></a>totalBoxes <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb6-8"><a href="Ch1.html#cb6-8"></a></span>
-<span id="cb6-9"><a href="Ch1.html#cb6-9"></a><span class="co"># Start counting the number of pizza slices. Since we haven&#39;t </span></span>
-<span id="cb6-10"><a href="Ch1.html#cb6-10"></a><span class="co"># started counting, we will start at zero.</span></span>
-<span id="cb6-11"><a href="Ch1.html#cb6-11"></a>count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-12"><a href="Ch1.html#cb6-12"></a></span>
-<span id="cb6-13"><a href="Ch1.html#cb6-13"></a><span class="co"># Here we are initializing the for loop. We are telling Python </span></span>
-<span id="cb6-14"><a href="Ch1.html#cb6-14"></a><span class="co"># to look at each box in the range of totalBoxes.</span></span>
-<span id="cb6-15"><a href="Ch1.html#cb6-15"></a><span class="cf">for</span> box <span class="kw">in</span> <span class="bu">range</span>(totalBoxes):</span>
-<span id="cb6-16"><a href="Ch1.html#cb6-16"></a>  <span class="co"># We’ve indented here because we are working inside the for loop.</span></span>
-<span id="cb6-17"><a href="Ch1.html#cb6-17"></a>  </span>
-<span id="cb6-18"><a href="Ch1.html#cb6-18"></a>  <span class="co"># The numpy.random.randint() function is selecting a random </span></span>
-<span id="cb6-19"><a href="Ch1.html#cb6-19"></a>  <span class="co"># number between 0 and 16 (we use 17 because the numpy random </span></span>
-<span id="cb6-20"><a href="Ch1.html#cb6-20"></a>  <span class="co"># function is not inclusive of the last digit). This will </span></span>
-<span id="cb6-21"><a href="Ch1.html#cb6-21"></a>  <span class="co"># represent the number of slices left in this box.</span></span>
-<span id="cb6-22"><a href="Ch1.html#cb6-22"></a>  slices <span class="op">=</span> numpy.random.randint(<span class="dv">0</span>, high<span class="op">=</span><span class="dv">17</span>)</span>
-<span id="cb6-23"><a href="Ch1.html#cb6-23"></a>  </span>
-<span id="cb6-24"><a href="Ch1.html#cb6-24"></a>  <span class="co"># We are telling Python that if there is at least one slice in</span></span>
-<span id="cb6-25"><a href="Ch1.html#cb6-25"></a>  <span class="co"># the box, we should increase the count and print the number of </span></span>
-<span id="cb6-26"><a href="Ch1.html#cb6-26"></a>  <span class="co"># slices found.</span></span>
-<span id="cb6-27"><a href="Ch1.html#cb6-27"></a>  <span class="cf">if</span> slices <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb6-28"><a href="Ch1.html#cb6-28"></a>    count <span class="op">+=</span> slices</span>
-<span id="cb6-29"><a href="Ch1.html#cb6-29"></a>    <span class="bu">print</span>(<span class="st">&#39;I have found </span><span class="sc">{}</span><span class="st"> slices!&#39;</span>.<span class="bu">format</span>(count))</span>
-<span id="cb6-30"><a href="Ch1.html#cb6-30"></a>  </span>
-<span id="cb6-31"><a href="Ch1.html#cb6-31"></a>  <span class="co"># &quot;Else&quot; tells Python what to do if there is no pizza in this box.</span></span>
-<span id="cb6-32"><a href="Ch1.html#cb6-32"></a>  <span class="cf">else</span>:</span>
-<span id="cb6-33"><a href="Ch1.html#cb6-33"></a>  </span>
-<span id="cb6-34"><a href="Ch1.html#cb6-34"></a>    <span class="co">#Print is indented inside the else statement because you want to </span></span>
-<span id="cb6-35"><a href="Ch1.html#cb6-35"></a>    <span class="co"># print (&quot;Nooooooo!!!&quot;) if the else statement needs to be used.</span></span>
-<span id="cb6-36"><a href="Ch1.html#cb6-36"></a></span>
-<span id="cb6-37"><a href="Ch1.html#cb6-37"></a>    <span class="bu">print</span>(<span class="st">&quot;Nooooooo!!!&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="Ch1.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We are importing the package numpy which has built in functions </span></span>
+<span id="cb23-2"><a href="Ch1.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># that will make coding easier and more efficient.</span></span>
+<span id="cb23-3"><a href="Ch1.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span>
+<span id="cb23-4"><a href="Ch1.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="Ch1.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We are defining the total number of pizza boxes that we need </span></span>
+<span id="cb23-6"><a href="Ch1.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># to examine.</span></span>
+<span id="cb23-7"><a href="Ch1.html#cb23-7" aria-hidden="true" tabindex="-1"></a>totalBoxes <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb23-8"><a href="Ch1.html#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="Ch1.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Start counting the number of pizza slices. Since we haven&#39;t </span></span>
+<span id="cb23-10"><a href="Ch1.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># started counting, we will start at zero.</span></span>
+<span id="cb23-11"><a href="Ch1.html#cb23-11" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb23-12"><a href="Ch1.html#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="Ch1.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we are initializing the for loop. We are telling Python </span></span>
+<span id="cb23-14"><a href="Ch1.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co"># to look at each box in the range of totalBoxes.</span></span>
+<span id="cb23-15"><a href="Ch1.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> box <span class="kw">in</span> <span class="bu">range</span>(totalBoxes):</span>
+<span id="cb23-16"><a href="Ch1.html#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># We’ve indented here because we are working inside the for loop.</span></span>
+<span id="cb23-17"><a href="Ch1.html#cb23-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-18"><a href="Ch1.html#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The numpy.random.randint() function is selecting a random </span></span>
+<span id="cb23-19"><a href="Ch1.html#cb23-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># number between 0 and 16 (we use 17 because the numpy random </span></span>
+<span id="cb23-20"><a href="Ch1.html#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># function is not inclusive of the last digit). This will </span></span>
+<span id="cb23-21"><a href="Ch1.html#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># represent the number of slices left in this box.</span></span>
+<span id="cb23-22"><a href="Ch1.html#cb23-22" aria-hidden="true" tabindex="-1"></a>  slices <span class="op">=</span> numpy.random.randint(<span class="dv">0</span>, high<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb23-23"><a href="Ch1.html#cb23-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-24"><a href="Ch1.html#cb23-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># We are telling Python that if there is at least one slice in</span></span>
+<span id="cb23-25"><a href="Ch1.html#cb23-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the box, we should increase the count and print the number of </span></span>
+<span id="cb23-26"><a href="Ch1.html#cb23-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># slices found.</span></span>
+<span id="cb23-27"><a href="Ch1.html#cb23-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> slices <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb23-28"><a href="Ch1.html#cb23-28" aria-hidden="true" tabindex="-1"></a>    count <span class="op">+=</span> slices</span>
+<span id="cb23-29"><a href="Ch1.html#cb23-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;I have found </span><span class="sc">{}</span><span class="st"> slices!&#39;</span>.<span class="bu">format</span>(count))</span>
+<span id="cb23-30"><a href="Ch1.html#cb23-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-31"><a href="Ch1.html#cb23-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># &quot;Else&quot; tells Python what to do if there is no pizza in this box.</span></span>
+<span id="cb23-32"><a href="Ch1.html#cb23-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb23-33"><a href="Ch1.html#cb23-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-34"><a href="Ch1.html#cb23-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Print is indented inside the else statement because you want to </span></span>
+<span id="cb23-35"><a href="Ch1.html#cb23-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print (&quot;Nooooooo!!!&quot;) if the else statement needs to be used.</span></span>
+<span id="cb23-36"><a href="Ch1.html#cb23-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-37"><a href="Ch1.html#cb23-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Nooooooo!!!&quot;</span>)</span></code></pre></div>
 </div>
-<div id="conceptual-exercises-for-learning-python" class="section level2">
-<h2><span class="header-section-number">2.5</span> Conceptual Exercises for Learning Python</h2>
+<div id="conceptual-exercises-for-learning-python" class="section level2 hasAnchor" number="2.12">
+<h2><span class="header-section-number">2.12</span> Conceptual Exercises for Learning Python<a href="Ch1.html#conceptual-exercises-for-learning-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>How does Python read code?</p></li>
 <li><p>Compare and contrast the function of brackets and parentheses.</p></li>
+<li><p>How is a string different from a list, and given their respective scenarios what characters should be used?</p></li>
 <li><p>How is a tuple different than a list, and given their respective scenarios what characters should be used?</p></li>
 <li><p>Why is indentation important when using writing code in Python, and how can it affect your cell outcome?</p></li>
 <li><p>Describe the four most common data types (int, float, bool, str) that variables can be assigned to and describe each one.</p></li>
 </ol>
 </div>
-<div id="coding-exercises-for-learning-python" class="section level2">
-<h2><span class="header-section-number">2.6</span> Coding Exercises for Learning Python</h2>
+<div id="coding-exercises-for-learning-python" class="section level2 hasAnchor" number="2.13">
+<h2><span class="header-section-number">2.13</span> Coding Exercises for Learning Python<a href="Ch1.html#coding-exercises-for-learning-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Define two variables, one called varOne that represents the value 20 and one calledvarTwo that represents the value 5:</li>
+<li>Define two variables, one called varOne that represents the value 20 and one called varTwo that represents the value 5:</li>
 </ol>
 <ol style="list-style-type: lower-alpha">
 <li>Creating a new variable called addVar, write a code that will add varOne andvarTwo.</li>
@@ -441,6 +789,17 @@ Hint: use basic addition, divison, and multiplication commands rather than makin
 c. Create a second list with three sport names and print the list.
 d. Write a line of Python code that will sort your list from part c alphabetically.</p>
 <ol start="3" style="list-style-type: decimal">
+<li>Create a verbal description of what this code block is doing.</li>
+</ol>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="Ch1.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-2"><a href="Ch1.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="Ch1.html#cb24-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">6</span>])</span>
+<span id="cb24-4"><a href="Ch1.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> data:</span>
+<span id="cb24-5"><a href="Ch1.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">5</span>:</span>
+<span id="cb24-6"><a href="Ch1.html#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Condition 1&#39;</span>)</span>
+<span id="cb24-7"><a href="Ch1.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb24-8"><a href="Ch1.html#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Condition 2&#39;</span>)</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
 <li><p>Create a vector from 5 to 15 (non-inclusive) in increments of 2. Then write a line of code that will print the square of each value in the vector.</p></li>
 <li><p>Create a matrix of zeros with 3 rows and 6 columns. Then, create a 2x4 matrix where the first row lists ice cream flavors and the second row lists soda flavors.</p></li>
 <li><p>Write a for loop that will start at the lowest temperature you experienced this week and end at the highest temperature you experienced (in one degree increments). Inside your loop, use an if…else statement that prints whether each temperature is even or odd.</p></li>
@@ -458,7 +817,6 @@ d. Write a line of Python code that will sort your list from part c alphabetica
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
 <script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -477,6 +835,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -485,8 +844,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-introPython.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -496,7 +855,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Computational Neuroscience.pdf", "Computational Neuroscience.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 },
@@ -513,7 +876,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

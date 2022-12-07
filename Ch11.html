@@ -4,27 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12 Answers to Exercises | Computational Neuroscience</title>
+  <title>Chapter 12 Answers to Exercises | Computational Neuroscience</title>
   <meta name="description" content="TBD" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12 Answers to Exercises | Computational Neuroscience" />
+  <meta property="og:title" content="Chapter 12 Answers to Exercises | Computational Neuroscience" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="TBD" />
   <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12 Answers to Exercises | Computational Neuroscience" />
+  <meta name="twitter:title" content="Chapter 12 Answers to Exercises | Computational Neuroscience" />
   
   <meta name="twitter:description" content="TBD" />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Students of NS/PY 357 Bates College" />
 
 
-<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +31,8 @@
   
 <link rel="prev" href="Ch10.html"/>
 
-<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,23 +48,24 @@
 
 
 
-
-<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,6 +118,8 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -130,87 +132,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li><a href="./">Computational Neuroscience</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-book-is-free-as-in-pizza"><i class="fa fa-check"></i><b>1.1</b> This book is free (as in pizza)</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors-version-0.0"><i class="fa fa-check"></i><b>1.5</b> Authors: Version 0.0</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#authors-version-1.0"><i class="fa fa-check"></i><b>1.6</b> Authors: Version 1.0</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#authors-version-2.0"><i class="fa fa-check"></i><b>1.7</b> Authors: Version 2.0</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a><ul>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
 <li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
-<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
-<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.4</b> Example Python Problems</a></li>
-<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.5</b> Conceptual Exercises for Learning Python</a></li>
-<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.6</b> Coding Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#libraries"><i class="fa fa-check"></i><b>2.3</b> Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#data-types"><i class="fa fa-check"></i><b>2.4</b> Data Types</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="Ch1.html"><a href="Ch1.html#string"><i class="fa fa-check"></i><b>2.4.1</b> String</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Ch1.html"><a href="Ch1.html#integers"><i class="fa fa-check"></i><b>2.4.2</b> Integers</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Ch1.html"><a href="Ch1.html#floats"><i class="fa fa-check"></i><b>2.4.3</b> Floats</a></li>
+<li class="chapter" data-level="2.4.4" data-path="Ch1.html"><a href="Ch1.html#lists"><i class="fa fa-check"></i><b>2.4.4</b> Lists</a></li>
+<li class="chapter" data-level="2.4.5" data-path="Ch1.html"><a href="Ch1.html#boolean"><i class="fa fa-check"></i><b>2.4.5</b> Boolean</a></li>
+<li class="chapter" data-level="2.4.6" data-path="Ch1.html"><a href="Ch1.html#arrays"><i class="fa fa-check"></i><b>2.4.6</b> Arrays</a></li>
+<li class="chapter" data-level="2.4.7" data-path="Ch1.html"><a href="Ch1.html#vectors"><i class="fa fa-check"></i><b>2.4.7</b> Vectors</a></li>
+<li class="chapter" data-level="2.4.8" data-path="Ch1.html"><a href="Ch1.html#matrices"><i class="fa fa-check"></i><b>2.4.8</b> Matrices</a></li>
+<li class="chapter" data-level="2.4.9" data-path="Ch1.html"><a href="Ch1.html#variable-assignment"><i class="fa fa-check"></i><b>2.4.9</b> Variable assignment</a></li>
+<li class="chapter" data-level="2.4.10" data-path="Ch1.html"><a href="Ch1.html#f-strings"><i class="fa fa-check"></i><b>2.4.10</b> f-Strings</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a><ul>
-<li class="chapter" data-level="3.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="3.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#for-loops"><i class="fa fa-check"></i><b>2.5</b> For loops</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#if-elif-else-statements"><i class="fa fa-check"></i><b>2.6</b> If-Elif-Else Statements</a></li>
+<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#conditional-statements"><i class="fa fa-check"></i><b>2.7</b> Conditional statements</a></li>
+<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#logic-statements"><i class="fa fa-check"></i><b>2.8</b> Logic statements</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="Ch1.html"><a href="Ch1.html#and-or-not"><i class="fa fa-check"></i><b>2.8.1</b> “And”, “Or”, “Not”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="Ch1.html"><a href="Ch1.html#while-loops"><i class="fa fa-check"></i><b>2.9</b> While loops</a></li>
+<li class="chapter" data-level="2.10" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.10</b> Summary</a></li>
+<li class="chapter" data-level="2.11" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.11</b> Example Python Problems</a></li>
+<li class="chapter" data-level="2.12" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.12</b> Conceptual Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.13" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.13</b> Coding Exercises for Learning Python</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="Ch2.html"><a href="Ch2.html#can-we-make-models-that-understand"><i class="fa fa-check"></i><b>3.3.1</b> Can we make models that understand?</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#levels-of-organization"><i class="fa fa-check"></i><b>3.4</b> Levels of organization</a></li>
 <li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.5</b> Applications of computational neuroscience</a></li>
 <li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.6</b> The future of computational neuroscience</a></li>
-<li class="chapter" data-level="3.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
 <li class="chapter" data-level="3.8" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a><ul>
-<li class="chapter" data-level="4.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="4.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>4.3</b> What is an action potential?</a></li>
-<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.4</b> Nernst equilibrium potential</a></li>
-<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.5</b> Leaky Integrate and Fire Model</a></li>
-<li class="chapter" data-level="4.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
-<li class="chapter" data-level="4.7" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a><ul>
-<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.7.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.7.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#membrane-potentials-and-electrochemical-gradients"><i class="fa fa-check"></i><b>4.3</b> Membrane potentials and electrochemical gradients</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#phases-of-the-action-potential"><i class="fa fa-check"></i><b>4.4</b> Phases of the action potential</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="Ch3.html"><a href="Ch3.html#positive-feedback-and-depolarization"><i class="fa fa-check"></i><b>4.4.1</b> Positive feedback and depolarization</a></li>
+<li class="chapter" data-level="4.4.2" data-path="Ch3.html"><a href="Ch3.html#negative-feedback-and-repolarization"><i class="fa fa-check"></i><b>4.4.2</b> Negative feedback and repolarization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.5</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.6</b> Leaky Integrate and Fire Model</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#passive-membrane-model"><i class="fa fa-check"></i><b>4.7.1</b> Passive membrane model:</a></li>
+<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#an-action-potential-has-six-phases"><i class="fa fa-check"></i><b>4.7.2</b> An action potential has six phases:</a></li>
+<li class="chapter" data-level="4.7.3" data-path="Ch3.html"><a href="Ch3.html#main-features-of-an-action-potential"><i class="fa fa-check"></i><b>4.7.3</b> Main features of an action potential:</a></li>
+<li class="chapter" data-level="4.7.4" data-path="Ch3.html"><a href="Ch3.html#the-flow-of-ions-and-equilibrium-potentials"><i class="fa fa-check"></i><b>4.7.4</b> The flow of ions and equilibrium potentials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="Ch3.html"><a href="Ch3.html#exercises-1"><i class="fa fa-check"></i><b>4.8</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.8.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="4.8.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.8.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a><ul>
-<li class="chapter" data-level="5.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="5.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-3"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introduction-3"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
 <li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>5.3</b> The Hodgkin and Huxley model</a></li>
-<li class="chapter" data-level="5.4" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
-<li class="chapter" data-level="5.5" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
-<li class="chapter" data-level="5.5.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#exercises-2"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="Ch4.html"><a href="Ch4.html#conceptual-exercises-1"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Ch4.html"><a href="Ch4.html#coding-exercises-1"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a><ul>
-<li class="chapter" data-level="6.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="6.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-4"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-4"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
 <li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#spike-trains"><i class="fa fa-check"></i><b>6.3</b> Spike Trains</a></li>
 <li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#spike-statistics"><i class="fa fa-check"></i><b>6.4</b> Spike Statistics</a></li>
-<li class="chapter" data-level="6.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
-<li class="chapter" data-level="6.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>6.6</b> Exercises</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.6.1</b> Conceptual Problems</a></li>
-<li class="chapter" data-level="6.6.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.6.2</b> Coding Problems</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#poisson-processes"><i class="fa fa-check"></i><b>6.5</b> Poisson Processes</a></li>
+<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#summary-4"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.7.1</b> Conceptual Problems</a></li>
+<li class="chapter" data-level="6.7.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.7.2</b> Coding Problems</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a><ul>
-<li class="chapter" data-level="7.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="7.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#vocabulary-5"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#introduction-5"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
 <li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#spike-triggered-average"><i class="fa fa-check"></i><b>7.3</b> Spike-triggered Average</a></li>
 <li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#reverse-correlation"><i class="fa fa-check"></i><b>7.4</b> Reverse Correlation</a></li>
-<li class="chapter" data-level="7.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-<li class="chapter" data-level="7.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>7.6</b> Exercises</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="7.6.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#summary-5"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="Ch6.html"><a href="Ch6.html#exercises-4"><i class="fa fa-check"></i><b>7.6</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="Ch6.html"><a href="Ch6.html#conceptual-exercises-2"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="7.6.2" data-path="Ch6.html"><a href="Ch6.html#coding-exercises-2"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a><ul>
-<li class="chapter" data-level="8.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="8.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
-<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="Ch7.html"><a href="Ch7.html#vocabulary-6"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="8.2" data-path="Ch7.html"><a href="Ch7.html#introduction-6"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="Ch7.html"><a href="Ch7.html#eeg"><i class="fa fa-check"></i><b>8.3.1</b> EEG</a></li>
 <li class="chapter" data-level="8.3.2" data-path="Ch7.html"><a href="Ch7.html#meg"><i class="fa fa-check"></i><b>8.3.2</b> MEG</a></li>
 <li class="chapter" data-level="8.3.3" data-path="Ch7.html"><a href="Ch7.html#fmri"><i class="fa fa-check"></i><b>8.3.3</b> fMRI</a></li>
 <li class="chapter" data-level="8.3.4" data-path="Ch7.html"><a href="Ch7.html#ecog"><i class="fa fa-check"></i><b>8.3.4</b> ECOG</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="Ch7.html"><a href="Ch7.html#introduction-to-decoding"><i class="fa fa-check"></i><b>8.4</b> Introduction to Decoding</a></li>
-<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a>
+<ul>
 <li class="chapter" data-level="8.5.1" data-path="Ch7.html"><a href="Ch7.html#correlation-classifiers"><i class="fa fa-check"></i><b>8.5.1</b> Correlation classifiers</a></li>
 <li class="chapter" data-level="8.5.2" data-path="Ch7.html"><a href="Ch7.html#distance-based-classifiers"><i class="fa fa-check"></i><b>8.5.2</b> Distance-based classifiers</a></li>
 <li class="chapter" data-level="8.5.3" data-path="Ch7.html"><a href="Ch7.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>8.5.3</b> Boundary-based classifiers</a></li>
@@ -218,16 +275,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="Ch7.html"><a href="Ch7.html#cross-validation"><i class="fa fa-check"></i><b>8.6</b> Cross validation</a></li>
 <li class="chapter" data-level="8.7" data-path="Ch7.html"><a href="Ch7.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a><ul>
+<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="Ch8.html"><a href="Ch8.html#vocabulary-list"><i class="fa fa-check"></i><b>9.1</b> Vocabulary List:</a></li>
 <li class="chapter" data-level="9.2" data-path="Ch8.html"><a href="Ch8.html#introductionbackground"><i class="fa fa-check"></i><b>9.2</b> Introduction/Background</a></li>
 <li class="chapter" data-level="9.3" data-path="Ch8.html"><a href="Ch8.html#different-types-of-learning"><i class="fa fa-check"></i><b>9.3</b> Different Types of Learning</a></li>
 <li class="chapter" data-level="9.4" data-path="Ch8.html"><a href="Ch8.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>9.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
 <li class="chapter" data-level="9.5" data-path="Ch8.html"><a href="Ch8.html#perceptron"><i class="fa fa-check"></i><b>9.5</b> Perceptron</a></li>
-<li class="chapter" data-level="9.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+<li class="chapter" data-level="9.6" data-path="Ch8.html"><a href="Ch8.html#summary-6"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="Ch9.html"><a href="Ch9.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
-<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a><ul>
+<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="Ch10.html"><a href="Ch10.html#chapter-1-preface"><i class="fa fa-check"></i><b>11.1</b> Chapter 1: Preface</a></li>
 <li class="chapter" data-level="11.2" data-path="Ch10.html"><a href="Ch10.html#chapter-2-introduction-to-python"><i class="fa fa-check"></i><b>11.2</b> Chapter 2: Introduction to Python</a></li>
 <li class="chapter" data-level="11.3" data-path="Ch10.html"><a href="Ch10.html#chapter-3-what-is-computational-neuroscience"><i class="fa fa-check"></i><b>11.3</b> Chapter 3: What is Computational Neuroscience?</a></li>
@@ -238,28 +297,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.8" data-path="Ch10.html"><a href="Ch10.html#chapter-8-decoding"><i class="fa fa-check"></i><b>11.8</b> Chapter 8: Decoding</a></li>
 <li class="chapter" data-level="11.9" data-path="Ch10.html"><a href="Ch10.html#chapter-9-neural-networks"><i class="fa fa-check"></i><b>11.9</b> Chapter 9: Neural Networks</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a><ul>
+<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="Ch11.html"><a href="Ch11.html#chapter-1-introduction-to-python"><i class="fa fa-check"></i><b>12.1</b> Chapter 1: Introduction to Python</a></li>
 <li class="chapter" data-level="12.2" data-path="Ch11.html"><a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience"><i class="fa fa-check"></i><b>12.2</b> Chapter 2: Introduction to Computational Neuroscience</a></li>
-<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a><ul>
+<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a>
+<ul>
 <li class="chapter" data-level="12.3.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions"><i class="fa fa-check"></i><b>12.3.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.3.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions"><i class="fa fa-check"></i><b>12.3.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a><ul>
+<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a>
+<ul>
 <li class="chapter" data-level="12.4.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-1"><i class="fa fa-check"></i><b>12.4.1</b> Conceptual Questions:</a></li>
 <li class="chapter" data-level="12.4.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-1"><i class="fa fa-check"></i><b>12.4.2</b> Coding Questions:</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a><ul>
+<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a>
+<ul>
 <li class="chapter" data-level="12.5.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-2"><i class="fa fa-check"></i><b>12.5.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.5.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-2"><i class="fa fa-check"></i><b>12.5.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a>
+<ul>
 <li class="chapter" data-level="12.6.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-3"><i class="fa fa-check"></i><b>12.6.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.6.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-3"><i class="fa fa-check"></i><b>12.6.2</b> Coding Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="12.7" data-path="Ch11.html"><a href="Ch11.html#chapter-7-decoding"><i class="fa fa-check"></i><b>12.7</b> Chapter 7: Decoding</a></li>
 <li class="chapter" data-level="12.8" data-path="Ch11.html"><a href="Ch11.html#chapter-8-neural-networks"><i class="fa fa-check"></i><b>12.8</b> Chapter 8: Neural Networks</a></li>
 </ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -277,14 +344,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ch11" class="section level1">
-<h1><span class="header-section-number">12</span> Answers to Exercises</h1>
-<div id="chapter-1-introduction-to-python" class="section level2">
-<h2><span class="header-section-number">12.1</span> Chapter 1: Introduction to Python</h2>
+<div id="Ch11" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Answers to Exercises<a href="Ch11.html#Ch11" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="chapter-1-introduction-to-python" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Chapter 1: Introduction to Python<a href="Ch11.html#chapter-1-introduction-to-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Conceptual Questions</strong><br />
 1. Python reads the code provided the same way that we read, left to right, top to bottom!</p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>In Python, brackets are used to make lists. Parentheses are used to make tuples. However, when indexing for any of these collections, only brackets are used. Parentheses are also used when providing inputs for functions for example; when using NumPy’s function for the mean, you would use parentheses in “np.mean(XXX). It should be noted that all shells of the parentheses should be accounted for as not doing so can result in painful syntax errors.</p></li>
+<li><p>A string is a sequential list of characters that is most often used to create text. A list is a sequence of items that can be numbers or alphabet characters.</p></li>
 <li><p>A tuple is defined as a sequence of items that cannot be changed, also characterized as <em>immutable</em>. A list is defined as a sequence of items that can be changed, also known as <em>mutable</em>. When writing tuples use a set of parentheses, and for lists use brackets.</p></li>
 <li><p>In Python, indentations are necessary as they indicate where the statement belongs to in terms of blocks of code. In Python, indentations indicate specifically where in the block of code a statement belongs.<br />
 Additionally, the amount of indentation is important because if there is extra space or missing space within a block of Python code, it likely will cause a syntax error or change your desired outcome.</p></li>
@@ -292,51 +360,53 @@ Additionally, the amount of indentation is important because if there is extra s
 </ol>
 <p><strong>Python Exercises</strong><br />
 Question 1:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="Ch11.html#cb39-1"></a>varOne <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb39-2"><a href="Ch11.html#cb39-2"></a>varTwo <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb39-3"><a href="Ch11.html#cb39-3"></a></span>
-<span id="cb39-4"><a href="Ch11.html#cb39-4"></a><span class="co"># Part A</span></span>
-<span id="cb39-5"><a href="Ch11.html#cb39-5"></a>addVar <span class="op">=</span> varOne <span class="op">+</span> varTwo</span>
-<span id="cb39-6"><a href="Ch11.html#cb39-6"></a><span class="bu">print</span>(addVar)</span>
-<span id="cb39-7"><a href="Ch11.html#cb39-7"></a></span>
-<span id="cb39-8"><a href="Ch11.html#cb39-8"></a><span class="co"># Part B</span></span>
-<span id="cb39-9"><a href="Ch11.html#cb39-9"></a>divVar <span class="op">=</span> varOne <span class="op">/</span> varTwo</span>
-<span id="cb39-10"><a href="Ch11.html#cb39-10"></a><span class="bu">print</span>(divVar)</span>
-<span id="cb39-11"><a href="Ch11.html#cb39-11"></a></span>
-<span id="cb39-12"><a href="Ch11.html#cb39-12"></a><span class="co"># Part C</span></span>
-<span id="cb39-13"><a href="Ch11.html#cb39-13"></a>multVar <span class="op">=</span> addVar <span class="op">*</span> divVar</span>
-<span id="cb39-14"><a href="Ch11.html#cb39-14"></a><span class="bu">print</span>(multVar)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="Ch11.html#cb1-1" aria-hidden="true" tabindex="-1"></a>varOne <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb1-2"><a href="Ch11.html#cb1-2" aria-hidden="true" tabindex="-1"></a>varTwo <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-3"><a href="Ch11.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="Ch11.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Part A</span></span>
+<span id="cb1-5"><a href="Ch11.html#cb1-5" aria-hidden="true" tabindex="-1"></a>addVar <span class="op">=</span> varOne <span class="op">+</span> varTwo</span>
+<span id="cb1-6"><a href="Ch11.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(addVar)</span>
+<span id="cb1-7"><a href="Ch11.html#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="Ch11.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Part B</span></span>
+<span id="cb1-9"><a href="Ch11.html#cb1-9" aria-hidden="true" tabindex="-1"></a>divVar <span class="op">=</span> varOne <span class="op">/</span> varTwo</span>
+<span id="cb1-10"><a href="Ch11.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(divVar)</span>
+<span id="cb1-11"><a href="Ch11.html#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="Ch11.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Part C</span></span>
+<span id="cb1-13"><a href="Ch11.html#cb1-13" aria-hidden="true" tabindex="-1"></a>multVar <span class="op">=</span> addVar <span class="op">*</span> divVar</span>
+<span id="cb1-14"><a href="Ch11.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(multVar)</span></code></pre></div>
 <p>Question 2:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="Ch11.html#cb40-1"></a>L1 <span class="op">=</span> [<span class="st">&#39;berries&#39;</span>, <span class="st">&#39;cake&#39;</span>, <span class="st">&#39;chips&#39;</span>, <span class="st">&#39;candy&#39;</span>, <span class="st">&#39;apple&#39;</span>]</span>
-<span id="cb40-2"><a href="Ch11.html#cb40-2"></a><span class="bu">print</span>(L1)</span>
-<span id="cb40-3"><a href="Ch11.html#cb40-3"></a><span class="bu">print</span>(L1[<span class="dv">2</span>:<span class="dv">4</span>])</span>
-<span id="cb40-4"><a href="Ch11.html#cb40-4"></a></span>
-<span id="cb40-5"><a href="Ch11.html#cb40-5"></a>L2 <span class="op">=</span> [<span class="st">&#39;soccer&#39;</span>, <span class="st">&#39;baseball&#39;</span>, <span class="st">&#39;golf&#39;</span>]</span>
-<span id="cb40-6"><a href="Ch11.html#cb40-6"></a><span class="bu">print</span>(L2)</span>
-<span id="cb40-7"><a href="Ch11.html#cb40-7"></a><span class="bu">print</span>(<span class="bu">sorted</span>(L2))</span></code></pre></div>
-<p>Question 3:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="Ch11.html#cb41-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb41-2"><a href="Ch11.html#cb41-2"></a></span>
-<span id="cb41-3"><a href="Ch11.html#cb41-3"></a>vector1 <span class="op">=</span> np.arange(<span class="dv">5</span>, <span class="dv">15</span>, <span class="dv">2</span>)</span>
-<span id="cb41-4"><a href="Ch11.html#cb41-4"></a><span class="bu">print</span>(vector1 <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="Ch11.html#cb2-1" aria-hidden="true" tabindex="-1"></a>L1 <span class="op">=</span> [<span class="st">&#39;berries&#39;</span>, <span class="st">&#39;cake&#39;</span>, <span class="st">&#39;chips&#39;</span>, <span class="st">&#39;candy&#39;</span>, <span class="st">&#39;apple&#39;</span>]</span>
+<span id="cb2-2"><a href="Ch11.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(L1)</span>
+<span id="cb2-3"><a href="Ch11.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(L1[<span class="dv">2</span>:<span class="dv">4</span>])</span>
+<span id="cb2-4"><a href="Ch11.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="Ch11.html#cb2-5" aria-hidden="true" tabindex="-1"></a>L2 <span class="op">=</span> [<span class="st">&#39;soccer&#39;</span>, <span class="st">&#39;baseball&#39;</span>, <span class="st">&#39;golf&#39;</span>]</span>
+<span id="cb2-6"><a href="Ch11.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(L2)</span>
+<span id="cb2-7"><a href="Ch11.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>(L2))</span></code></pre></div>
+<p>Question 3:
+The first line imports the numpy library. We then define the variable data to be a numpy array of 4s and 6s. We loop through each item in data, and if the current item is greater than 5, we print ‘Condition 1’, and print ‘Condition 2’ in all other cases.</p>
 <p>Question 4:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="Ch11.html#cb42-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb42-2"><a href="Ch11.html#cb42-2"></a></span>
-<span id="cb42-3"><a href="Ch11.html#cb42-3"></a>matrix1 <span class="op">=</span> np.zeros((<span class="dv">3</span>, <span class="dv">6</span>))</span>
-<span id="cb42-4"><a href="Ch11.html#cb42-4"></a><span class="bu">print</span>(matrix1)</span>
-<span id="cb42-5"><a href="Ch11.html#cb42-5"></a></span>
-<span id="cb42-6"><a href="Ch11.html#cb42-6"></a>matrix2 <span class="op">=</span> np.array([[<span class="st">&#39;Chocolate&#39;</span>,<span class="st">&#39;Strawberry&#39;</span>,<span class="st">&#39;Vanilla&#39;</span>], </span>
-<span id="cb42-7"><a href="Ch11.html#cb42-7"></a>[<span class="st">&#39;RootBeer&#39;</span>,<span class="st">&#39;Orange&#39;</span>,<span class="st">&#39;Pepsi&#39;</span>)]])</span>
-<span id="cb42-8"><a href="Ch11.html#cb42-8"></a><span class="bu">print</span>(matrix2)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="Ch11.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="Ch11.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="Ch11.html#cb3-3" aria-hidden="true" tabindex="-1"></a>vector1 <span class="op">=</span> np.arange(<span class="dv">5</span>, <span class="dv">15</span>, <span class="dv">2</span>)</span>
+<span id="cb3-4"><a href="Ch11.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vector1 <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div>
 <p>Question 5:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="Ch11.html#cb43-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">58</span>, <span class="dv">71</span>, <span class="dv">1</span>):</span>
-<span id="cb43-2"><a href="Ch11.html#cb43-2"></a>  ifx<span class="op">%</span><span class="dv">2</span> <span class="op">==</span><span class="dv">0</span>:</span>
-<span id="cb43-3"><a href="Ch11.html#cb43-3"></a>    <span class="bu">print</span>(<span class="st">&#39;The number &#39;</span> <span class="op">+</span> <span class="bu">str</span>(x) <span class="op">+</span> <span class="st">&#39; is an even number.&#39;</span>)</span>
-<span id="cb43-4"><a href="Ch11.html#cb43-4"></a>  <span class="cf">else</span>:</span>
-<span id="cb43-5"><a href="Ch11.html#cb43-5"></a>    <span class="bu">print</span>(<span class="st">&#39;The number &#39;</span> <span class="op">+</span> <span class="bu">str</span>(x) <span class="op">+</span> <span class="st">&#39; is an odd number.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="Ch11.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="Ch11.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="Ch11.html#cb4-3" aria-hidden="true" tabindex="-1"></a>matrix1 <span class="op">=</span> np.zeros((<span class="dv">3</span>, <span class="dv">6</span>))</span>
+<span id="cb4-4"><a href="Ch11.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(matrix1)</span>
+<span id="cb4-5"><a href="Ch11.html#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="Ch11.html#cb4-6" aria-hidden="true" tabindex="-1"></a>matrix2 <span class="op">=</span> np.array([[<span class="st">&#39;Chocolate&#39;</span>,<span class="st">&#39;Strawberry&#39;</span>,<span class="st">&#39;Vanilla&#39;</span>], </span>
+<span id="cb4-7"><a href="Ch11.html#cb4-7" aria-hidden="true" tabindex="-1"></a>[<span class="st">&#39;RootBeer&#39;</span>,<span class="st">&#39;Orange&#39;</span>,<span class="st">&#39;Pepsi&#39;</span>)]])</span>
+<span id="cb4-8"><a href="Ch11.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(matrix2)</span></code></pre></div>
+<p>Question 6:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="Ch11.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">58</span>, <span class="dv">71</span>, <span class="dv">1</span>):</span>
+<span id="cb5-2"><a href="Ch11.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  ifx<span class="op">%</span><span class="dv">2</span> <span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb5-3"><a href="Ch11.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;The number &#39;</span> <span class="op">+</span> <span class="bu">str</span>(x) <span class="op">+</span> <span class="st">&#39; is an even number.&#39;</span>)</span>
+<span id="cb5-4"><a href="Ch11.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb5-5"><a href="Ch11.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;The number &#39;</span> <span class="op">+</span> <span class="bu">str</span>(x) <span class="op">+</span> <span class="st">&#39; is an odd number.&#39;</span>)</span></code></pre></div>
 </div>
-<div id="chapter-2-introduction-to-computational-neuroscience" class="section level2">
-<h2><span class="header-section-number">12.2</span> Chapter 2: Introduction to Computational Neuroscience</h2>
+<div id="chapter-2-introduction-to-computational-neuroscience" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Chapter 2: Introduction to Computational Neuroscience<a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>No suggested answer, just enjoy learning about the automata. It turns out that Conway’s Game of Life is Turing-complete, which means that anything that can be computed can be computed with a GoL! (Might take a while, though!)<br />
 </li>
@@ -351,10 +421,10 @@ Question 1:</p>
 <li>TBD</li>
 </ol>
 </div>
-<div id="chapter-3-passive-membrane-models" class="section level2">
-<h2><span class="header-section-number">12.3</span> Chapter 3: Passive Membrane Models</h2>
-<div id="conceptual-questions" class="section level3">
-<h3><span class="header-section-number">12.3.1</span> Conceptual Questions</h3>
+<div id="chapter-3-passive-membrane-models" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Chapter 3: Passive Membrane Models<a href="Ch11.html#chapter-3-passive-membrane-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conceptual-questions" class="section level3 hasAnchor" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Conceptual Questions<a href="Ch11.html#conceptual-questions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p>The neuron begins at resting potential. In this state, the membrane potential is about -70 mV, all voltage gated channels (VG) closed, and potassium may move through leak channels. Current will eventually enter through the ligand-gated channels raising the membrane potential to around -50 mV. At this voltage, a threshold is met and voltage-gated Na+ channels open. Na+ ions flood into the cell and further depolarize it in a positive feedback loop. Eventually voltage-gated Na+ channels will be inactivated, marking the absolute refractory period. Voltage-gated K+ channels will open (usually around 40 mV), and K+ rushes out of the cell. Following this period, the relative refractory period occurs in which voltage-gated Na+ channels are no longer inactivated, but the cell is hyperpolarized, making it more difficult, but still possible, for another action potential to occur.</p></li>
 <li><p>The resting potential of a neuron is also known as an ionic steady state because the ion movement is steadily maintaining a resting membrane potential of around -70 mV. Ions naturally want to even out a concentration gradient to achieve equilibrium. When these ions are forced to maintain an unequal gradient there is a resulting potential energy. On the other hand, ions are attracted to opposite charges (positive and negative attract). This potential is how much energy is required to oppose net diffusion for an ion and is known as the Nernst potential. Each of the major ions (Na+, K+, Cl-, Ca2+) have a Nernst potential, and a weighted average of these Nernst potentials. The weights are provided by the relative permeability of the various ions across the membrane. These permeabilities are related to the density of ion channels in the membrane, as well as the extent to which the channels will allow ions to flow.</p></li>
@@ -391,225 +461,218 @@ Additionally, forcing water against gravity involves externally applied energy. 
 <li><p>TBD</p></li>
 </ol>
 </div>
-<div id="coding-questions" class="section level3">
-<h3><span class="header-section-number">12.3.2</span> Coding Questions</h3>
+<div id="coding-questions" class="section level3 hasAnchor" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> Coding Questions<a href="Ch11.html#coding-questions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>1a.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="Ch11.html#cb44-1"></a><span class="co"># Step 1: Import libraries</span></span>
-<span id="cb44-2"><a href="Ch11.html#cb44-2"></a><span class="im">from</span> numpy <span class="im">import</span> log </span>
-<span id="cb44-3"><a href="Ch11.html#cb44-3"></a></span>
-<span id="cb44-4"><a href="Ch11.html#cb44-4"></a><span class="co"># Step 2: Define general function</span></span>
-<span id="cb44-5"><a href="Ch11.html#cb44-5"></a><span class="kw">def</span> Eion(z, o, i):</span>
-<span id="cb44-6"><a href="Ch11.html#cb44-6"></a>  <span class="cf">return</span> z <span class="op">*</span> log(o<span class="op">/</span>i)</span>
-<span id="cb44-7"><a href="Ch11.html#cb44-7"></a>  </span>
-<span id="cb44-8"><a href="Ch11.html#cb44-8"></a><span class="co"># Step 3: Use function to print the Nernst potential of each ion</span></span>
-<span id="cb44-9"><a href="Ch11.html#cb44-9"></a><span class="co"># Step 3.1: Na+ ion</span></span>
-<span id="cb44-10"><a href="Ch11.html#cb44-10"></a><span class="bu">print</span>(Eion(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
-<span id="cb44-11"><a href="Ch11.html#cb44-11"></a><span class="co"># Step 3.2: K+ ion</span></span>
-<span id="cb44-12"><a href="Ch11.html#cb44-12"></a><span class="bu">print</span>(Eion(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb44-13"><a href="Ch11.html#cb44-13"></a><span class="co"># Step 3.3: Cl- ion</span></span>
-<span id="cb44-14"><a href="Ch11.html#cb44-14"></a><span class="bu">print</span>(Eion(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
-<span id="cb44-15"><a href="Ch11.html#cb44-15"></a></span>
-<span id="cb44-16"><a href="Ch11.html#cb44-16"></a><span class="co"># Answer: Na+ is positive, K+ and Cl- are negative</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="Ch11.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Import libraries</span></span>
+<span id="cb6-2"><a href="Ch11.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> log </span>
+<span id="cb6-3"><a href="Ch11.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="Ch11.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Define general function</span></span>
+<span id="cb6-5"><a href="Ch11.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Eion(z, o, i):</span>
+<span id="cb6-6"><a href="Ch11.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> z <span class="op">*</span> log(o<span class="op">/</span>i)</span>
+<span id="cb6-7"><a href="Ch11.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-8"><a href="Ch11.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Use function to print the Nernst potential of each ion</span></span>
+<span id="cb6-9"><a href="Ch11.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3.1: Na+ ion</span></span>
+<span id="cb6-10"><a href="Ch11.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Eion(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb6-11"><a href="Ch11.html#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3.2: K+ ion</span></span>
+<span id="cb6-12"><a href="Ch11.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Eion(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb6-13"><a href="Ch11.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3.3: Cl- ion</span></span>
+<span id="cb6-14"><a href="Ch11.html#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Eion(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb6-15"><a href="Ch11.html#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="Ch11.html#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: Na+ is positive, K+ and Cl- are negative</span></span></code></pre></div>
 <p>1b.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="Ch11.html#cb45-1"></a><span class="co"># Step 1: Edit general function to use physiological values</span></span>
-<span id="cb45-2"><a href="Ch11.html#cb45-2"></a><span class="kw">def</span> Eion(z, o, i):</span>
-<span id="cb45-3"><a href="Ch11.html#cb45-3"></a>  <span class="cf">return</span> <span class="fl">26.5</span><span class="op">/</span>z <span class="op">*</span> log(o<span class="op">/</span>i)</span>
-<span id="cb45-4"><a href="Ch11.html#cb45-4"></a>  </span>
-<span id="cb45-5"><a href="Ch11.html#cb45-5"></a><span class="co"># Step 2:  Use function to print the Nernst potential of each ion  </span></span>
-<span id="cb45-6"><a href="Ch11.html#cb45-6"></a><span class="co"># Step 2.1: Na+ ion</span></span>
-<span id="cb45-7"><a href="Ch11.html#cb45-7"></a><span class="bu">print</span>(Eion(<span class="dv">1</span>, <span class="dv">145</span>, <span class="dv">15</span>))</span>
-<span id="cb45-8"><a href="Ch11.html#cb45-8"></a><span class="co"># Step 2.2: K+ ion</span></span>
-<span id="cb45-9"><a href="Ch11.html#cb45-9"></a><span class="bu">print</span>(Eion(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">150</span>))</span>
-<span id="cb45-10"><a href="Ch11.html#cb45-10"></a><span class="co"># Step 2.3: Cl- ion</span></span>
-<span id="cb45-11"><a href="Ch11.html#cb45-11"></a><span class="bu">print</span>(Eion(<span class="op">-</span><span class="dv">1</span>, <span class="dv">110</span>, <span class="dv">11</span>))</span>
-<span id="cb45-12"><a href="Ch11.html#cb45-12"></a></span>
-<span id="cb45-13"><a href="Ch11.html#cb45-13"></a><span class="co"># Answers: </span></span>
-<span id="cb45-14"><a href="Ch11.html#cb45-14"></a><span class="co"># Na+: 60.1 mV</span></span>
-<span id="cb45-15"><a href="Ch11.html#cb45-15"></a><span class="co"># K+: -96 mV</span></span>
-<span id="cb45-16"><a href="Ch11.html#cb45-16"></a><span class="co"># Cl-: -61 mV</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="Ch11.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Edit general function to use physiological values</span></span>
+<span id="cb7-2"><a href="Ch11.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Eion(z, o, i):</span>
+<span id="cb7-3"><a href="Ch11.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fl">26.5</span><span class="op">/</span>z <span class="op">*</span> log(o<span class="op">/</span>i)</span>
+<span id="cb7-4"><a href="Ch11.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-5"><a href="Ch11.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2:  Use function to print the Nernst potential of each ion  </span></span>
+<span id="cb7-6"><a href="Ch11.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2.1: Na+ ion</span></span>
+<span id="cb7-7"><a href="Ch11.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Eion(<span class="dv">1</span>, <span class="dv">145</span>, <span class="dv">15</span>))</span>
+<span id="cb7-8"><a href="Ch11.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2.2: K+ ion</span></span>
+<span id="cb7-9"><a href="Ch11.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Eion(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">150</span>))</span>
+<span id="cb7-10"><a href="Ch11.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2.3: Cl- ion</span></span>
+<span id="cb7-11"><a href="Ch11.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Eion(<span class="op">-</span><span class="dv">1</span>, <span class="dv">110</span>, <span class="dv">11</span>))</span>
+<span id="cb7-12"><a href="Ch11.html#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="Ch11.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Answers: </span></span>
+<span id="cb7-14"><a href="Ch11.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Na+: 60.1 mV</span></span>
+<span id="cb7-15"><a href="Ch11.html#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># K+: -96 mV</span></span>
+<span id="cb7-16"><a href="Ch11.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Cl-: -61 mV</span></span></code></pre></div>
 <p>2a</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="Ch11.html#cb46-1"></a><span class="co"># Step 1: Import the necessary Python libraries</span></span>
-<span id="cb46-2"><a href="Ch11.html#cb46-2"></a><span class="im">from</span> numpy <span class="im">import</span> log </span>
-<span id="cb46-3"><a href="Ch11.html#cb46-3"></a></span>
-<span id="cb46-4"><a href="Ch11.html#cb46-4"></a><span class="co"># Step 2: Set up the general function</span></span>
-<span id="cb46-5"><a href="Ch11.html#cb46-5"></a><span class="kw">def</span> Vrest(Nao, Nai, Ko, Ki, pCl, Cli, Clo):</span>
-<span id="cb46-6"><a href="Ch11.html#cb46-6"></a>  <span class="cf">return</span> <span class="fl">26.5</span> <span class="op">*</span> log((<span class="fl">0.05</span><span class="op">*</span>Nao <span class="op">+</span> <span class="dv">1</span><span class="op">*</span>Ko <span class="op">+</span> pCl<span class="op">*</span>Cli) <span class="op">/</span> (<span class="fl">0.05</span><span class="op">*</span>Nai <span class="op">+</span> <span class="dv">1</span><span class="op">*</span>Ki <span class="op">+</span> pCl<span class="op">*</span>Clo))</span>
-<span id="cb46-7"><a href="Ch11.html#cb46-7"></a></span>
-<span id="cb46-8"><a href="Ch11.html#cb46-8"></a><span class="co"># Step 3: Use the function along with the provided values</span></span>
-<span id="cb46-9"><a href="Ch11.html#cb46-9"></a><span class="bu">print</span>(Vrest(<span class="dv">145</span>, <span class="dv">15</span>, <span class="dv">4</span>, <span class="dv">150</span>, <span class="fl">0.45</span>, <span class="dv">10</span>, <span class="dv">110</span>))</span>
-<span id="cb46-10"><a href="Ch11.html#cb46-10"></a></span>
-<span id="cb46-11"><a href="Ch11.html#cb46-11"></a><span class="co">#Answer: -67 mV</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="Ch11.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Import the necessary Python libraries</span></span>
+<span id="cb8-2"><a href="Ch11.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> log </span>
+<span id="cb8-3"><a href="Ch11.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="Ch11.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Set up the general function</span></span>
+<span id="cb8-5"><a href="Ch11.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Vrest(Nao, Nai, Ko, Ki, pCl, Cli, Clo):</span>
+<span id="cb8-6"><a href="Ch11.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fl">26.5</span> <span class="op">*</span> log((<span class="fl">0.05</span><span class="op">*</span>Nao <span class="op">+</span> <span class="dv">1</span><span class="op">*</span>Ko <span class="op">+</span> pCl<span class="op">*</span>Cli) <span class="op">/</span> (<span class="fl">0.05</span><span class="op">*</span>Nai <span class="op">+</span> <span class="dv">1</span><span class="op">*</span>Ki <span class="op">+</span> pCl<span class="op">*</span>Clo))</span>
+<span id="cb8-7"><a href="Ch11.html#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="Ch11.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Use the function along with the provided values</span></span>
+<span id="cb8-9"><a href="Ch11.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Vrest(<span class="dv">145</span>, <span class="dv">15</span>, <span class="dv">4</span>, <span class="dv">150</span>, <span class="fl">0.45</span>, <span class="dv">10</span>, <span class="dv">110</span>))</span>
+<span id="cb8-10"><a href="Ch11.html#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="Ch11.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Answer: -67 mV</span></span></code></pre></div>
 <p>2b</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="Ch11.html#cb47-1"></a><span class="co"># Change the values for pCl and [out] and [in] for Cl-</span></span>
-<span id="cb47-2"><a href="Ch11.html#cb47-2"></a><span class="bu">print</span>(Vrest(<span class="dv">145</span>, <span class="dv">15</span>, <span class="dv">4</span>, <span class="dv">150</span>, <span class="fl">0.1</span>, <span class="dv">110</span>, <span class="dv">10</span>))</span>
-<span id="cb47-3"><a href="Ch11.html#cb47-3"></a></span>
-<span id="cb47-4"><a href="Ch11.html#cb47-4"></a><span class="co"># Answer: Vrest=-50.9</span></span>
-<span id="cb47-5"><a href="Ch11.html#cb47-5"></a><span class="co"># This resting potential is less negative, making it more likely to fire an action potential.</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="Ch11.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the values for pCl and [out] and [in] for Cl-</span></span>
+<span id="cb9-2"><a href="Ch11.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Vrest(<span class="dv">145</span>, <span class="dv">15</span>, <span class="dv">4</span>, <span class="dv">150</span>, <span class="fl">0.1</span>, <span class="dv">110</span>, <span class="dv">10</span>))</span>
+<span id="cb9-3"><a href="Ch11.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="Ch11.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer: Vrest=-50.9</span></span>
+<span id="cb9-5"><a href="Ch11.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This resting potential is less negative, making it more likely to fire an action potential.</span></span></code></pre></div>
 </div>
 </div>
-<div id="chapter-4-hodgkin-and-huxley" class="section level2">
-<h2><span class="header-section-number">12.4</span> Chapter 4: Hodgkin and Huxley</h2>
-<div id="conceptual-questions-1" class="section level3">
-<h3><span class="header-section-number">12.4.1</span> Conceptual Questions:</h3>
+<div id="chapter-4-hodgkin-and-huxley" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> Chapter 4: Hodgkin and Huxley<a href="Ch11.html#chapter-4-hodgkin-and-huxley" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conceptual-questions-1" class="section level3 hasAnchor" number="12.4.1">
+<h3><span class="header-section-number">12.4.1</span> Conceptual Questions:<a href="Ch11.html#conceptual-questions-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li><p>TBD</p></li>
-<li><p>An example of <em>negative</em> feedback is:</p></li>
-</ol>
-<ul>
-<li>In the rising phase of the action potential, there is less driving force on Na+ as Vm approaches the Nernst potential for Na+.</li>
-</ul>
-<p>An example of positive feedback is:</p>
-<ul>
-<li>An initial depolarization of the membrane causing voltage-gated Na+ channels to open. This allows for more Na+ to enter, which further depolarizes the cell.</li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
 <li><p>The main difference between the leaky integrate and fire model, and the Hodgkin and Huxley model is the inclusion of the Na+ and K+ channels instead of just using the leak channels. Including the Na+ and K+ voltage gated channels allows the H-H model to spike on its own. In the Integrate and Fire model, one must include artificial spikes to see the relationship between the applied current, the membrane threshold and the conductance of the leak channels.</p></li>
 <li><p>TBD</p></li>
 <li><p>TBD</p></li>
+<li><p>TBD</p></li>
 </ol>
 </div>
-<div id="coding-questions-1" class="section level3">
-<h3><span class="header-section-number">12.4.2</span> Coding Questions:</h3>
+<div id="coding-questions-1" class="section level3 hasAnchor" number="12.4.2">
+<h3><span class="header-section-number">12.4.2</span> Coding Questions:<a href="Ch11.html#coding-questions-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Problem 1, part 1:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="Ch11.html#cb48-1"></a>tStimStart <span class="op">=</span>  <span class="dv">100</span> </span>
-<span id="cb48-2"><a href="Ch11.html#cb48-2"></a>tStimEnd  <span class="op">=</span>  <span class="dv">400</span> </span>
-<span id="cb48-3"><a href="Ch11.html#cb48-3"></a>tFinal  <span class="op">=</span>  <span class="dv">500</span> </span>
-<span id="cb48-4"><a href="Ch11.html#cb48-4"></a>dt  <span class="op">=</span>  <span class="fl">0.1</span> </span>
-<span id="cb48-5"><a href="Ch11.html#cb48-5"></a>Ie   <span class="op">=</span>  <span class="dv">100</span></span>
-<span id="cb48-6"><a href="Ch11.html#cb48-6"></a>RestingPotential <span class="op">=</span> <span class="dv">-65</span> </span>
-<span id="cb48-7"><a href="Ch11.html#cb48-7"></a>HHmodel(Ie, dt, tFinal, tStimStart, tStimEnd, RestingPotential)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="Ch11.html#cb10-1" aria-hidden="true" tabindex="-1"></a>tStimStart <span class="op">=</span>  <span class="dv">100</span> </span>
+<span id="cb10-2"><a href="Ch11.html#cb10-2" aria-hidden="true" tabindex="-1"></a>tStimEnd  <span class="op">=</span>  <span class="dv">400</span> </span>
+<span id="cb10-3"><a href="Ch11.html#cb10-3" aria-hidden="true" tabindex="-1"></a>tFinal  <span class="op">=</span>  <span class="dv">500</span> </span>
+<span id="cb10-4"><a href="Ch11.html#cb10-4" aria-hidden="true" tabindex="-1"></a>dt  <span class="op">=</span>  <span class="fl">0.1</span> </span>
+<span id="cb10-5"><a href="Ch11.html#cb10-5" aria-hidden="true" tabindex="-1"></a>Ie   <span class="op">=</span>  <span class="dv">100</span></span>
+<span id="cb10-6"><a href="Ch11.html#cb10-6" aria-hidden="true" tabindex="-1"></a>RestingPotential <span class="op">=</span> <span class="op">-</span><span class="dv">65</span> </span>
+<span id="cb10-7"><a href="Ch11.html#cb10-7" aria-hidden="true" tabindex="-1"></a>HHmodel(Ie, dt, tFinal, tStimStart, tStimEnd, RestingPotential)</span></code></pre></div>
 <p>Problem 1, part 2: Set <span class="math inline">\(I_e\)</span> to 250. The firing rate increases.</p>
 <p>Problem 2, part 1:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="Ch11.html#cb49-1"></a><span class="co"># Note: as long as the range includes 13, this will work</span></span>
-<span id="cb49-2"><a href="Ch11.html#cb49-2"></a>Ie <span class="op">=</span> np.arange(<span class="dv">20</span>)</span>
-<span id="cb49-3"><a href="Ch11.html#cb49-3"></a>HHmodel_threshold(Ie)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="Ch11.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: as long as the range includes 13, this will work</span></span>
+<span id="cb11-2"><a href="Ch11.html#cb11-2" aria-hidden="true" tabindex="-1"></a>Ie <span class="op">=</span> np.arange(<span class="dv">20</span>)</span>
+<span id="cb11-3"><a href="Ch11.html#cb11-3" aria-hidden="true" tabindex="-1"></a>HHmodel_threshold(Ie)</span></code></pre></div>
 <p>Problem 2, part 2:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="Ch11.html#cb50-1"></a>Ie <span class="op">=</span> [<span class="dv">12</span>,<span class="dv">13</span>]</span>
-<span id="cb50-2"><a href="Ch11.html#cb50-2"></a>RestingPotential <span class="op">=</span> <span class="dv">-65</span></span>
-<span id="cb50-3"><a href="Ch11.html#cb50-3"></a>HHmodel_compare(Ie,RestingPotential)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="Ch11.html#cb12-1" aria-hidden="true" tabindex="-1"></a>Ie <span class="op">=</span> [<span class="dv">12</span>,<span class="dv">13</span>]</span>
+<span id="cb12-2"><a href="Ch11.html#cb12-2" aria-hidden="true" tabindex="-1"></a>RestingPotential <span class="op">=</span> <span class="op">-</span><span class="dv">65</span></span>
+<span id="cb12-3"><a href="Ch11.html#cb12-3" aria-hidden="true" tabindex="-1"></a>HHmodel_compare(Ie,RestingPotential)</span></code></pre></div>
 <p>Problem 2, part 3:<br />
 restingPotential = -60</p>
 <p>Problem 3, part 1:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="Ch11.html#cb51-1"></a><span class="cf">if</span> timeVec[v] <span class="op">&gt;=</span> <span class="dv">300</span>:</span>
-<span id="cb51-2"><a href="Ch11.html#cb51-2"></a>  beta_h <span class="op">=</span> <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="Ch11.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> timeVec[v] <span class="op">&gt;=</span> <span class="dv">300</span>:</span>
+<span id="cb13-2"><a href="Ch11.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  beta_h <span class="op">=</span> <span class="dv">0</span></span></code></pre></div>
 <p>Problem 3, part 2:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="Ch11.html#cb52-1"></a><span class="cf">if</span> timeVec[v] <span class="op">&gt;</span> <span class="dv">600</span>:</span>
-<span id="cb52-2"><a href="Ch11.html#cb52-2"></a>  alpha_m <span class="op">=</span> <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="Ch11.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> timeVec[v] <span class="op">&gt;</span> <span class="dv">600</span>:</span>
+<span id="cb14-2"><a href="Ch11.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  alpha_m <span class="op">=</span> <span class="dv">0</span></span></code></pre></div>
 <p>Problem 3, part 3:<br />
 If TTX was indeed a cure, then there should be action potentials occurring in that range between 600 and 800 ms.</p>
 </div>
 </div>
-<div id="chapter-5-firing-rates" class="section level2">
-<h2><span class="header-section-number">12.5</span> Chapter 5: Firing Rates</h2>
-<div id="conceptual-questions-2" class="section level3">
-<h3><span class="header-section-number">12.5.1</span> Conceptual Questions</h3>
+<div id="chapter-5-firing-rates" class="section level2 hasAnchor" number="12.5">
+<h2><span class="header-section-number">12.5</span> Chapter 5: Firing Rates<a href="Ch11.html#chapter-5-firing-rates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conceptual-questions-2" class="section level3 hasAnchor" number="12.5.1">
+<h3><span class="header-section-number">12.5.1</span> Conceptual Questions<a href="Ch11.html#conceptual-questions-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>The spike count rate is defined as the spike count during an interval of time, divided by the length of time, average over time. While this is an easy method to apply mathematically, it is not a continuous method. This means that this method does not reflect that the rates change over time, instead it assumes that rate stays the same.<br />
+<li>The spike count rate is defined as the spike count during an interval of time, divided by the length of time, average over time. While this is an easy method to apply both mathematically and practically (because it does not require that we record from a whole neural population), it is not a continuous method. This means that this method does not reflect that the rates change over time, instead it assumes that rate stays the same.<br />
 </li>
-<li>The spike density rate is defined as the number of spikes observed during a time interval divided by the number of trials that were run, then multiplied by one divided by the length of the time interval, average over several runs. However, this requires multiple trial runs for usable data. As a result, it is not a good model for real world situations, as events do not happen repeatedly.<br />
+<li>The spike density rate is defined as the number of spikes observed during a time interval divided by the number of trials that were run, then multiplied by one divided by the length of the time interval, average over several runs. However, this requires multiple trial runs for usable data. As a result, it is not a good model for real world situations, as events do not happen repeatedly. Further, neural habituation may occur over time. However, multiple measurements have the advantage of being reliable, and we gain back some temporal information.<br />
 </li>
 <li>The spike density rate is defined as the number of spikes observed during a time interval divided by the number of neurons on which trials were run, then multiplied by one divided by the length of the time interval, average over several neurons. This method is continuous, and it is all done in one trial, instead of several trial runs. However, depending on the electrode to work simultaneously makes this method hard to execute. Additionally, the neurons need to all have the same basic computation.<br />
 </li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>A Poisson spike train needs to have a Fano factor of 1. The distribution of its spikes has to have a known firing rate, but be random in the integration window.</li>
+</ol></li>
 <li>TBD</li>
 </ol>
 </div>
-<div id="coding-questions-2" class="section level3">
-<h3><span class="header-section-number">12.5.2</span> Coding Questions</h3>
+<div id="coding-questions-2" class="section level3 hasAnchor" number="12.5.2">
+<h3><span class="header-section-number">12.5.2</span> Coding Questions<a href="Ch11.html#coding-questions-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Problem 1, parts a and b.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="Ch11.html#cb53-1"></a><span class="co"># Import the necessary libraries</span></span>
-<span id="cb53-2"><a href="Ch11.html#cb53-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb53-3"><a href="Ch11.html#cb53-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb53-4"><a href="Ch11.html#cb53-4"></a></span>
-<span id="cb53-5"><a href="Ch11.html#cb53-5"></a><span class="co"># Initialize data structures</span></span>
-<span id="cb53-6"><a href="Ch11.html#cb53-6"></a><span class="co"># Hint: your simulation runs for 2000 ms</span></span>
-<span id="cb53-7"><a href="Ch11.html#cb53-7"></a>timeVec <span class="op">=</span> np.arange(<span class="dv">2000</span>)</span>
-<span id="cb53-8"><a href="Ch11.html#cb53-8"></a></span>
-<span id="cb53-9"><a href="Ch11.html#cb53-9"></a><span class="co"># Hint: you may express your desired rate as a nSpikes / 1000 ms probability</span></span>
-<span id="cb53-10"><a href="Ch11.html#cb53-10"></a>probability <span class="op">=</span> <span class="dv">50</span><span class="op">/</span><span class="dv">1000</span></span>
-<span id="cb53-11"><a href="Ch11.html#cb53-11"></a></span>
-<span id="cb53-12"><a href="Ch11.html#cb53-12"></a><span class="co"># Hint: you want the default value to be zero</span></span>
-<span id="cb53-13"><a href="Ch11.html#cb53-13"></a>spikes <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVec))</span>
-<span id="cb53-14"><a href="Ch11.html#cb53-14"></a></span>
-<span id="cb53-15"><a href="Ch11.html#cb53-15"></a><span class="co"># Loop through each time point - fill in missing code</span></span>
-<span id="cb53-16"><a href="Ch11.html#cb53-16"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(timeVec)):</span>
-<span id="cb53-17"><a href="Ch11.html#cb53-17"></a>  <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> probability:</span>
-<span id="cb53-18"><a href="Ch11.html#cb53-18"></a>    <span class="co"># fill in this key line</span></span>
-<span id="cb53-19"><a href="Ch11.html#cb53-19"></a>    spikes[i] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb53-20"><a href="Ch11.html#cb53-20"></a>    </span>
-<span id="cb53-21"><a href="Ch11.html#cb53-21"></a><span class="co"># Compute the spike count rate here</span></span>
-<span id="cb53-22"><a href="Ch11.html#cb53-22"></a>spikeCountRate <span class="op">=</span> np.<span class="bu">sum</span>(spikes) <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb53-23"><a href="Ch11.html#cb53-23"></a></span>
-<span id="cb53-24"><a href="Ch11.html#cb53-24"></a><span class="co"># Print the spike count rate</span></span>
-<span id="cb53-25"><a href="Ch11.html#cb53-25"></a><span class="bu">print</span>(<span class="st">&#39;The firing rate was: </span><span class="sc">{}</span><span class="st"> Hz&#39;</span>.<span class="bu">format</span>(spikeCountRate))</span>
-<span id="cb53-26"><a href="Ch11.html#cb53-26"></a></span>
-<span id="cb53-27"><a href="Ch11.html#cb53-27"></a><span class="co"># Create a figure of the spike train</span></span>
-<span id="cb53-28"><a href="Ch11.html#cb53-28"></a>plt.figure()</span>
-<span id="cb53-29"><a href="Ch11.html#cb53-29"></a>plt.plot(timeVec, spikes)</span>
-<span id="cb53-30"><a href="Ch11.html#cb53-30"></a>plt.title(<span class="st">&#39;Spikes versus Time&#39;</span>)</span>
-<span id="cb53-31"><a href="Ch11.html#cb53-31"></a>plt.xlabel(<span class="st">&#39;Time (ms)&#39;</span>)</span>
-<span id="cb53-32"><a href="Ch11.html#cb53-32"></a>plt.ylabel(<span class="st">&#39;Spikes&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="Ch11.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the necessary libraries</span></span>
+<span id="cb15-2"><a href="Ch11.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb15-3"><a href="Ch11.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-4"><a href="Ch11.html#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="Ch11.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize data structures</span></span>
+<span id="cb15-6"><a href="Ch11.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: your simulation runs for 2000 ms</span></span>
+<span id="cb15-7"><a href="Ch11.html#cb15-7" aria-hidden="true" tabindex="-1"></a>timeVec <span class="op">=</span> np.arange(<span class="dv">2000</span>)</span>
+<span id="cb15-8"><a href="Ch11.html#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="Ch11.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: you may express your desired rate as a nSpikes / 1000 ms probability</span></span>
+<span id="cb15-10"><a href="Ch11.html#cb15-10" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> <span class="dv">50</span><span class="op">/</span><span class="dv">1000</span></span>
+<span id="cb15-11"><a href="Ch11.html#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="Ch11.html#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: you want the default value to be zero</span></span>
+<span id="cb15-13"><a href="Ch11.html#cb15-13" aria-hidden="true" tabindex="-1"></a>spikes <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVec))</span>
+<span id="cb15-14"><a href="Ch11.html#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="Ch11.html#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each time point - fill in missing code</span></span>
+<span id="cb15-16"><a href="Ch11.html#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(timeVec)):</span>
+<span id="cb15-17"><a href="Ch11.html#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> probability:</span>
+<span id="cb15-18"><a href="Ch11.html#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fill in this key line</span></span>
+<span id="cb15-19"><a href="Ch11.html#cb15-19" aria-hidden="true" tabindex="-1"></a>    spikes[i] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-20"><a href="Ch11.html#cb15-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-21"><a href="Ch11.html#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the spike count rate here</span></span>
+<span id="cb15-22"><a href="Ch11.html#cb15-22" aria-hidden="true" tabindex="-1"></a>spikeCountRate <span class="op">=</span> np.<span class="bu">sum</span>(spikes) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb15-23"><a href="Ch11.html#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="Ch11.html#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the spike count rate</span></span>
+<span id="cb15-25"><a href="Ch11.html#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;The firing rate was: </span><span class="sc">{}</span><span class="st"> Hz&#39;</span>.<span class="bu">format</span>(spikeCountRate))</span>
+<span id="cb15-26"><a href="Ch11.html#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="Ch11.html#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a figure of the spike train</span></span>
+<span id="cb15-28"><a href="Ch11.html#cb15-28" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb15-29"><a href="Ch11.html#cb15-29" aria-hidden="true" tabindex="-1"></a>plt.plot(timeVec, spikes)</span>
+<span id="cb15-30"><a href="Ch11.html#cb15-30" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Spikes versus Time&#39;</span>)</span>
+<span id="cb15-31"><a href="Ch11.html#cb15-31" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Time (ms)&#39;</span>)</span>
+<span id="cb15-32"><a href="Ch11.html#cb15-32" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Spikes&#39;</span>)</span></code></pre></div>
 <p>Problem 1, part c.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="Ch11.html#cb54-1"></a><span class="co"># Import necessary libraries</span></span>
-<span id="cb54-2"><a href="Ch11.html#cb54-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb54-3"><a href="Ch11.html#cb54-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb54-4"><a href="Ch11.html#cb54-4"></a></span>
-<span id="cb54-5"><a href="Ch11.html#cb54-5"></a><span class="co"># Find locations of spikes in vector</span></span>
-<span id="cb54-6"><a href="Ch11.html#cb54-6"></a>spikeLocs, <span class="op">=</span> np.where(spikes <span class="op">==</span> <span class="dv">1</span>)</span>
-<span id="cb54-7"><a href="Ch11.html#cb54-7"></a></span>
-<span id="cb54-8"><a href="Ch11.html#cb54-8"></a><span class="co"># Pre-allocate space for ISIs</span></span>
-<span id="cb54-9"><a href="Ch11.html#cb54-9"></a>ISI <span class="op">=</span> np.zeros(<span class="bu">len</span>(spikeLocs)<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb54-10"><a href="Ch11.html#cb54-10"></a></span>
-<span id="cb54-11"><a href="Ch11.html#cb54-11"></a><span class="co"># Loop through all spikes</span></span>
-<span id="cb54-12"><a href="Ch11.html#cb54-12"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ISI)):</span>
-<span id="cb54-13"><a href="Ch11.html#cb54-13"></a>  ISI[i] <span class="op">=</span> spikeLocs[i<span class="op">+</span><span class="dv">1</span>]<span class="op">-</span>spikeLocs[i]</span>
-<span id="cb54-14"><a href="Ch11.html#cb54-14"></a>  </span>
-<span id="cb54-15"><a href="Ch11.html#cb54-15"></a><span class="co"># Create a plot of the results</span></span>
-<span id="cb54-16"><a href="Ch11.html#cb54-16"></a>plt.figure()</span>
-<span id="cb54-17"><a href="Ch11.html#cb54-17"></a>plt.hist(ISI)</span>
-<span id="cb54-18"><a href="Ch11.html#cb54-18"></a>plt.ylabel(<span class="st">&#39;Counts&#39;</span>)</span>
-<span id="cb54-19"><a href="Ch11.html#cb54-19"></a>plt.xlabel(<span class="st">&#39;ISI in ms&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="Ch11.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary libraries</span></span>
+<span id="cb16-2"><a href="Ch11.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb16-3"><a href="Ch11.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-4"><a href="Ch11.html#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="Ch11.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Find locations of spikes in vector</span></span>
+<span id="cb16-6"><a href="Ch11.html#cb16-6" aria-hidden="true" tabindex="-1"></a>spikeLocs, <span class="op">=</span> np.where(spikes <span class="op">==</span> <span class="dv">1</span>)</span>
+<span id="cb16-7"><a href="Ch11.html#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="Ch11.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-allocate space for ISIs</span></span>
+<span id="cb16-9"><a href="Ch11.html#cb16-9" aria-hidden="true" tabindex="-1"></a>ISI <span class="op">=</span> np.zeros(<span class="bu">len</span>(spikeLocs)<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb16-10"><a href="Ch11.html#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="Ch11.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through all spikes</span></span>
+<span id="cb16-12"><a href="Ch11.html#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ISI)):</span>
+<span id="cb16-13"><a href="Ch11.html#cb16-13" aria-hidden="true" tabindex="-1"></a>  ISI[i] <span class="op">=</span> spikeLocs[i<span class="op">+</span><span class="dv">1</span>]<span class="op">-</span>spikeLocs[i]</span>
+<span id="cb16-14"><a href="Ch11.html#cb16-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-15"><a href="Ch11.html#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a plot of the results</span></span>
+<span id="cb16-16"><a href="Ch11.html#cb16-16" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb16-17"><a href="Ch11.html#cb16-17" aria-hidden="true" tabindex="-1"></a>plt.hist(ISI)</span>
+<span id="cb16-18"><a href="Ch11.html#cb16-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Counts&#39;</span>)</span>
+<span id="cb16-19"><a href="Ch11.html#cb16-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;ISI in ms&#39;</span>)</span></code></pre></div>
 <p>Problem 2, part a.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="Ch11.html#cb55-1"></a><span class="co"># Import necessary libraries</span></span>
-<span id="cb55-2"><a href="Ch11.html#cb55-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb55-3"><a href="Ch11.html#cb55-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb55-4"><a href="Ch11.html#cb55-4"></a></span>
-<span id="cb55-5"><a href="Ch11.html#cb55-5"></a><span class="co">#fill in the time vector and the spike frequency value of 50 Hz</span></span>
-<span id="cb55-6"><a href="Ch11.html#cb55-6"></a>timeVec <span class="op">=</span> np.arange(<span class="dv">2000</span>)</span>
-<span id="cb55-7"><a href="Ch11.html#cb55-7"></a>p1 <span class="op">=</span> <span class="dv">50</span><span class="op">/</span><span class="dv">1000</span></span>
-<span id="cb55-8"><a href="Ch11.html#cb55-8"></a></span>
-<span id="cb55-9"><a href="Ch11.html#cb55-9"></a><span class="co">#Allocate space for the 40 trials x 2000 ms array</span></span>
-<span id="cb55-10"><a href="Ch11.html#cb55-10"></a>allTrials <span class="op">=</span> np.zeros((<span class="dv">40</span>, <span class="dv">2000</span>))</span>
-<span id="cb55-11"><a href="Ch11.html#cb55-11"></a></span>
-<span id="cb55-12"><a href="Ch11.html#cb55-12"></a><span class="co">#Create a Poisson spike generator, that loops 40 times for all 40 trials</span></span>
-<span id="cb55-13"><a href="Ch11.html#cb55-13"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">40</span>):</span>
-<span id="cb55-14"><a href="Ch11.html#cb55-14"></a></span>
-<span id="cb55-15"><a href="Ch11.html#cb55-15"></a>    <span class="co"># For each trial, use an inner loop to represent all 2000 time points</span></span>
-<span id="cb55-16"><a href="Ch11.html#cb55-16"></a>    <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(timeVec)):</span>
-<span id="cb55-17"><a href="Ch11.html#cb55-17"></a>        <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> p1:</span>
-<span id="cb55-18"><a href="Ch11.html#cb55-18"></a>            allTrials[i, v] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb55-19"><a href="Ch11.html#cb55-19"></a></span>
-<span id="cb55-20"><a href="Ch11.html#cb55-20"></a><span class="co"># Create the raster plot</span></span>
-<span id="cb55-21"><a href="Ch11.html#cb55-21"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">40</span>): <span class="co"># How many trials are we running? </span></span>
-<span id="cb55-22"><a href="Ch11.html#cb55-22"></a>    spikes, <span class="op">=</span>  np.nonzero(allTrials[j,:])<span class="co">#Fill in Spikes to represent every spike found in the allTrials matrix. Index the jth trial only. </span></span>
-<span id="cb55-23"><a href="Ch11.html#cb55-23"></a>    </span>
-<span id="cb55-24"><a href="Ch11.html#cb55-24"></a>    spikeTimes <span class="op">=</span> timeVec[spikes] </span>
-<span id="cb55-25"><a href="Ch11.html#cb55-25"></a>    theseSpikes <span class="op">=</span> np.ones(<span class="bu">len</span>(spikes))<span class="op">*</span>j<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb55-26"><a href="Ch11.html#cb55-26"></a>    </span>
-<span id="cb55-27"><a href="Ch11.html#cb55-27"></a>    plt.scatter(spikeTimes, theseSpikes, s<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="st">&#39;k&#39;</span>)</span>
-<span id="cb55-28"><a href="Ch11.html#cb55-28"></a></span>
-<span id="cb55-29"><a href="Ch11.html#cb55-29"></a><span class="co">#Fill in the labels of the x, y axis</span></span>
-<span id="cb55-30"><a href="Ch11.html#cb55-30"></a>plt.title(<span class="st">&#39;Poisson Model Firing Rates for 40 Trials&#39;</span>)</span>
-<span id="cb55-31"><a href="Ch11.html#cb55-31"></a>plt.xlabel(<span class="st">&#39;Time (ms)&#39;</span>) </span>
-<span id="cb55-32"><a href="Ch11.html#cb55-32"></a>plt.ylabel(<span class="st">&#39;Trial number&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="Ch11.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary libraries</span></span>
+<span id="cb17-2"><a href="Ch11.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-3"><a href="Ch11.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb17-4"><a href="Ch11.html#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="Ch11.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#fill in the time vector and the spike frequency value of 50 Hz</span></span>
+<span id="cb17-6"><a href="Ch11.html#cb17-6" aria-hidden="true" tabindex="-1"></a>timeVec <span class="op">=</span> np.arange(<span class="dv">2000</span>)</span>
+<span id="cb17-7"><a href="Ch11.html#cb17-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> <span class="dv">50</span><span class="op">/</span><span class="dv">1000</span></span>
+<span id="cb17-8"><a href="Ch11.html#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="Ch11.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Allocate space for the 40 trials x 2000 ms array</span></span>
+<span id="cb17-10"><a href="Ch11.html#cb17-10" aria-hidden="true" tabindex="-1"></a>allTrials <span class="op">=</span> np.zeros((<span class="dv">40</span>, <span class="dv">2000</span>))</span>
+<span id="cb17-11"><a href="Ch11.html#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="Ch11.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a Poisson spike generator, that loops 40 times for all 40 trials</span></span>
+<span id="cb17-13"><a href="Ch11.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">40</span>):</span>
+<span id="cb17-14"><a href="Ch11.html#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="Ch11.html#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># For each trial, use an inner loop to represent all 2000 time points</span></span>
+<span id="cb17-16"><a href="Ch11.html#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(timeVec)):</span>
+<span id="cb17-17"><a href="Ch11.html#cb17-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> p1:</span>
+<span id="cb17-18"><a href="Ch11.html#cb17-18" aria-hidden="true" tabindex="-1"></a>            allTrials[i, v] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb17-19"><a href="Ch11.html#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="Ch11.html#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the raster plot</span></span>
+<span id="cb17-21"><a href="Ch11.html#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">40</span>): <span class="co"># How many trials are we running? </span></span>
+<span id="cb17-22"><a href="Ch11.html#cb17-22" aria-hidden="true" tabindex="-1"></a>    spikes, <span class="op">=</span>  np.nonzero(allTrials[j,:])<span class="co">#Fill in Spikes to represent every spike found in the allTrials matrix. Index the jth trial only. </span></span>
+<span id="cb17-23"><a href="Ch11.html#cb17-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-24"><a href="Ch11.html#cb17-24" aria-hidden="true" tabindex="-1"></a>    spikeTimes <span class="op">=</span> timeVec[spikes] </span>
+<span id="cb17-25"><a href="Ch11.html#cb17-25" aria-hidden="true" tabindex="-1"></a>    theseSpikes <span class="op">=</span> np.ones(<span class="bu">len</span>(spikes))<span class="op">*</span>j<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb17-26"><a href="Ch11.html#cb17-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-27"><a href="Ch11.html#cb17-27" aria-hidden="true" tabindex="-1"></a>    plt.scatter(spikeTimes, theseSpikes, s<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="st">&#39;k&#39;</span>)</span>
+<span id="cb17-28"><a href="Ch11.html#cb17-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-29"><a href="Ch11.html#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="co">#Fill in the labels of the x, y axis</span></span>
+<span id="cb17-30"><a href="Ch11.html#cb17-30" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Poisson Model Firing Rates for 40 Trials&#39;</span>)</span>
+<span id="cb17-31"><a href="Ch11.html#cb17-31" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Time (ms)&#39;</span>) </span>
+<span id="cb17-32"><a href="Ch11.html#cb17-32" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Trial number&#39;</span>)</span></code></pre></div>
 <p>Problem 2, part b</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="Ch11.html#cb56-1"></a>fano <span class="op">=</span> np.var(allTrials) <span class="op">/</span> np.mean(allTrials)</span>
-<span id="cb56-2"><a href="Ch11.html#cb56-2"></a><span class="bu">print</span>(fano)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="Ch11.html#cb18-1" aria-hidden="true" tabindex="-1"></a>fano <span class="op">=</span> np.var(allTrials) <span class="op">/</span> np.mean(allTrials)</span>
+<span id="cb18-2"><a href="Ch11.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fano)</span></code></pre></div>
 </div>
 </div>
-<div id="chapter-6-reverse-correlation-and-receptive-field-mapping" class="section level2">
-<h2><span class="header-section-number">12.6</span> Chapter 6: Reverse Correlation and Receptive Field Mapping</h2>
-<div id="conceptual-questions-3" class="section level3">
-<h3><span class="header-section-number">12.6.1</span> Conceptual Questions</h3>
+<div id="chapter-6-reverse-correlation-and-receptive-field-mapping" class="section level2 hasAnchor" number="12.6">
+<h2><span class="header-section-number">12.6</span> Chapter 6: Reverse Correlation and Receptive Field Mapping<a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conceptual-questions-3" class="section level3 hasAnchor" number="12.6.1">
+<h3><span class="header-section-number">12.6.1</span> Conceptual Questions<a href="Ch11.html#conceptual-questions-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p>A white noise stimulus is first generated to record the neuron’s response to it. This random selection of stimuli is important in obtaining an independent assessment of the neuron’s preference. As different white noise stimuli are presented, the action potentials that the neuron fires are being recorded. A time window is then chosen to observe each time there is a spike. By creating a window of time, we can examine the response of the neuron to the stimulus over a particular time and detect the preferred time window for the neuron in which it will respond to the stimulus. The stimulus presented each time before a spike at their respective time windows is finally stored in an array and averaged over all the time steps to obtain the spike-triggered average.</p></li>
 <li><p>Point A has a higher level of resulting convolution because the stimulus and the STA (acting as the signal and kernel respectively), are aligned. This means that the stimulus has a lot of similarity with the preferred feature of the neuron at the given point of time, allowing the neuron to have a high firing rate. Point B, on the other hand, has very minimal neuronal firing due to the dissimilarity between the stimulus and the preferred feature.</p></li>
@@ -625,25 +688,18 @@ If TTX was indeed a cure, then there should be action potentials occurring in th
 <li><p>A linear process only provides information on the degree of similarity between the stimulus and the STA. Firstly, the firing rates can take negative values from the linear approximation. Secondly, the firing rates can increase indefinitely as the input of stimulus intensity increases due to the continuity feature of the linear model. Thus, the non-linearity function is needed to eliminate these negative values and categorizing firing rates into super-threshold or sub-threshold through rectification because biologically, neurons will saturate as they have a maximum firing rate.</p></li>
 </ol>
 </div>
-<div id="coding-questions-3" class="section level3">
-<h3><span class="header-section-number">12.6.2</span> Coding Questions</h3>
+<div id="coding-questions-3" class="section level3 hasAnchor" number="12.6.2">
+<h3><span class="header-section-number">12.6.2</span> Coding Questions<a href="Ch11.html#coding-questions-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 </div>
-<div id="chapter-7-decoding" class="section level2">
-<h2><span class="header-section-number">12.7</span> Chapter 7: Decoding</h2>
+<div id="chapter-7-decoding" class="section level2 hasAnchor" number="12.7">
+<h2><span class="header-section-number">12.7</span> Chapter 7: Decoding<a href="Ch11.html#chapter-7-decoding" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="chapter-8-neural-networks" class="section level2">
-<h2><span class="header-section-number">12.8</span> Chapter 8: Neural Networks</h2>
+<div id="chapter-8-neural-networks" class="section level2 hasAnchor" number="12.8">
+<h2><span class="header-section-number">12.8</span> Chapter 8: Neural Networks<a href="Ch11.html#chapter-8-neural-networks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
-
-
-
-
-
-
-
             </section>
 
           </div>
@@ -654,7 +710,6 @@ If TTX was indeed a cure, then there should be action potentials occurring in th
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
 <script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -673,6 +728,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -681,8 +737,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/11-answers.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -692,7 +748,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Computational Neuroscience.pdf", "Computational Neuroscience.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 },
@@ -709,7 +769,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

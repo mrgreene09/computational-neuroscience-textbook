@@ -4,27 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Passive Membrane Models | Computational Neuroscience</title>
+  <title>Chapter 4 Passive Membrane Models | Computational Neuroscience</title>
   <meta name="description" content="TBD" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Passive Membrane Models | Computational Neuroscience" />
+  <meta property="og:title" content="Chapter 4 Passive Membrane Models | Computational Neuroscience" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="TBD" />
   <meta name="github-repo" content="mrgreene09/compNeuroTextbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Passive Membrane Models | Computational Neuroscience" />
+  <meta name="twitter:title" content="Chapter 4 Passive Membrane Models | Computational Neuroscience" />
   
   <meta name="twitter:description" content="TBD" />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Students of NS/PY 357 Bates College" />
 
 
-<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +31,8 @@
   
 <link rel="prev" href="Ch2.html"/>
 <link rel="next" href="Ch4.html"/>
-<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,23 +48,24 @@
 
 
 
-
-<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,13 +85,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +104,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -118,6 +118,8 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -130,87 +132,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li><a href="./">Computational Neuroscience</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-book-is-free-as-in-pizza"><i class="fa fa-check"></i><b>1.1</b> This book is free (as in pizza)</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#this-book-is-free-as-in-speech"><i class="fa fa-check"></i><b>1.2</b> This book is free (as in speech)</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#this-book-can-be-revised-and-disseminated-more-rapidly-than-traditional-textbooks"><i class="fa fa-check"></i><b>1.3</b> This book can be revised and disseminated more rapidly than traditional textbooks</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#this-book-creates-a-public-record-of-learning-that-exists-after-the-semester-ends"><i class="fa fa-check"></i><b>1.4</b> This book creates a public record of learning that exists after the semester ends</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#authors-version-0.0"><i class="fa fa-check"></i><b>1.5</b> Authors: Version 0.0</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#authors-version-1.0"><i class="fa fa-check"></i><b>1.6</b> Authors: Version 1.0</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#authors-version-2.0"><i class="fa fa-check"></i><b>1.7</b> Authors: Version 2.0</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a><ul>
+<li class="chapter" data-level="2" data-path="Ch1.html"><a href="Ch1.html"><i class="fa fa-check"></i><b>2</b> Introduction to Python</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>2.1</b> Vocabulary</a></li>
 <li class="chapter" data-level="2.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
-<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
-<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.4</b> Example Python Problems</a></li>
-<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.5</b> Conceptual Exercises for Learning Python</a></li>
-<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.6</b> Coding Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.3" data-path="Ch1.html"><a href="Ch1.html#libraries"><i class="fa fa-check"></i><b>2.3</b> Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="Ch1.html"><a href="Ch1.html#data-types"><i class="fa fa-check"></i><b>2.4</b> Data Types</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="Ch1.html"><a href="Ch1.html#string"><i class="fa fa-check"></i><b>2.4.1</b> String</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Ch1.html"><a href="Ch1.html#integers"><i class="fa fa-check"></i><b>2.4.2</b> Integers</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Ch1.html"><a href="Ch1.html#floats"><i class="fa fa-check"></i><b>2.4.3</b> Floats</a></li>
+<li class="chapter" data-level="2.4.4" data-path="Ch1.html"><a href="Ch1.html#lists"><i class="fa fa-check"></i><b>2.4.4</b> Lists</a></li>
+<li class="chapter" data-level="2.4.5" data-path="Ch1.html"><a href="Ch1.html#boolean"><i class="fa fa-check"></i><b>2.4.5</b> Boolean</a></li>
+<li class="chapter" data-level="2.4.6" data-path="Ch1.html"><a href="Ch1.html#arrays"><i class="fa fa-check"></i><b>2.4.6</b> Arrays</a></li>
+<li class="chapter" data-level="2.4.7" data-path="Ch1.html"><a href="Ch1.html#vectors"><i class="fa fa-check"></i><b>2.4.7</b> Vectors</a></li>
+<li class="chapter" data-level="2.4.8" data-path="Ch1.html"><a href="Ch1.html#matrices"><i class="fa fa-check"></i><b>2.4.8</b> Matrices</a></li>
+<li class="chapter" data-level="2.4.9" data-path="Ch1.html"><a href="Ch1.html#variable-assignment"><i class="fa fa-check"></i><b>2.4.9</b> Variable assignment</a></li>
+<li class="chapter" data-level="2.4.10" data-path="Ch1.html"><a href="Ch1.html#f-strings"><i class="fa fa-check"></i><b>2.4.10</b> f-Strings</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a><ul>
-<li class="chapter" data-level="3.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="3.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a></li>
+<li class="chapter" data-level="2.5" data-path="Ch1.html"><a href="Ch1.html#for-loops"><i class="fa fa-check"></i><b>2.5</b> For loops</a></li>
+<li class="chapter" data-level="2.6" data-path="Ch1.html"><a href="Ch1.html#if-elif-else-statements"><i class="fa fa-check"></i><b>2.6</b> If-Elif-Else Statements</a></li>
+<li class="chapter" data-level="2.7" data-path="Ch1.html"><a href="Ch1.html#conditional-statements"><i class="fa fa-check"></i><b>2.7</b> Conditional statements</a></li>
+<li class="chapter" data-level="2.8" data-path="Ch1.html"><a href="Ch1.html#logic-statements"><i class="fa fa-check"></i><b>2.8</b> Logic statements</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="Ch1.html"><a href="Ch1.html#and-or-not"><i class="fa fa-check"></i><b>2.8.1</b> “And”, “Or”, “Not”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="Ch1.html"><a href="Ch1.html#while-loops"><i class="fa fa-check"></i><b>2.9</b> While loops</a></li>
+<li class="chapter" data-level="2.10" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>2.10</b> Summary</a></li>
+<li class="chapter" data-level="2.11" data-path="Ch1.html"><a href="Ch1.html#example-python-problems"><i class="fa fa-check"></i><b>2.11</b> Example Python Problems</a></li>
+<li class="chapter" data-level="2.12" data-path="Ch1.html"><a href="Ch1.html#conceptual-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.12</b> Conceptual Exercises for Learning Python</a></li>
+<li class="chapter" data-level="2.13" data-path="Ch1.html"><a href="Ch1.html#coding-exercises-for-learning-python"><i class="fa fa-check"></i><b>2.13</b> Coding Exercises for Learning Python</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Ch2.html"><a href="Ch2.html"><i class="fa fa-check"></i><b>3</b> What is Computational Neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Ch2.html"><a href="Ch2.html#vocabulary-1"><i class="fa fa-check"></i><b>3.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.2" data-path="Ch2.html"><a href="Ch2.html#introduction-1"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="Ch2.html"><a href="Ch2.html#what-is-computational-neuroscience"><i class="fa fa-check"></i><b>3.3</b> What is computational neuroscience?</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="Ch2.html"><a href="Ch2.html#can-we-make-models-that-understand"><i class="fa fa-check"></i><b>3.3.1</b> Can we make models that understand?</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="Ch2.html"><a href="Ch2.html#levels-of-organization"><i class="fa fa-check"></i><b>3.4</b> Levels of organization</a></li>
 <li class="chapter" data-level="3.5" data-path="Ch2.html"><a href="Ch2.html#applications-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.5</b> Applications of computational neuroscience</a></li>
 <li class="chapter" data-level="3.6" data-path="Ch2.html"><a href="Ch2.html#the-future-of-computational-neuroscience"><i class="fa fa-check"></i><b>3.6</b> The future of computational neuroscience</a></li>
-<li class="chapter" data-level="3.7" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="Ch2.html"><a href="Ch2.html#summary-1"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
 <li class="chapter" data-level="3.8" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises:</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a><ul>
-<li class="chapter" data-level="4.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="4.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#what-is-an-action-potential"><i class="fa fa-check"></i><b>4.3</b> What is an action potential?</a></li>
-<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.4</b> Nernst equilibrium potential</a></li>
-<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.5</b> Leaky Integrate and Fire Model</a></li>
-<li class="chapter" data-level="4.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
-<li class="chapter" data-level="4.7" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>4.7</b> Exercises</a><ul>
-<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.7.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.7.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="4" data-path="Ch3.html"><a href="Ch3.html"><i class="fa fa-check"></i><b>4</b> Passive Membrane Models</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Ch3.html"><a href="Ch3.html#vocabulary-2"><i class="fa fa-check"></i><b>4.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="4.2" data-path="Ch3.html"><a href="Ch3.html#introduction-2"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="Ch3.html"><a href="Ch3.html#membrane-potentials-and-electrochemical-gradients"><i class="fa fa-check"></i><b>4.3</b> Membrane potentials and electrochemical gradients</a></li>
+<li class="chapter" data-level="4.4" data-path="Ch3.html"><a href="Ch3.html#phases-of-the-action-potential"><i class="fa fa-check"></i><b>4.4</b> Phases of the action potential</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="Ch3.html"><a href="Ch3.html#positive-feedback-and-depolarization"><i class="fa fa-check"></i><b>4.4.1</b> Positive feedback and depolarization</a></li>
+<li class="chapter" data-level="4.4.2" data-path="Ch3.html"><a href="Ch3.html#negative-feedback-and-repolarization"><i class="fa fa-check"></i><b>4.4.2</b> Negative feedback and repolarization</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="Ch3.html"><a href="Ch3.html#nernst-equilibrium-potential"><i class="fa fa-check"></i><b>4.5</b> Nernst equilibrium potential</a></li>
+<li class="chapter" data-level="4.6" data-path="Ch3.html"><a href="Ch3.html#leaky-integrate-and-fire-model"><i class="fa fa-check"></i><b>4.6</b> Leaky Integrate and Fire Model</a></li>
+<li class="chapter" data-level="4.7" data-path="Ch3.html"><a href="Ch3.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="Ch3.html"><a href="Ch3.html#passive-membrane-model"><i class="fa fa-check"></i><b>4.7.1</b> Passive membrane model:</a></li>
+<li class="chapter" data-level="4.7.2" data-path="Ch3.html"><a href="Ch3.html#an-action-potential-has-six-phases"><i class="fa fa-check"></i><b>4.7.2</b> An action potential has six phases:</a></li>
+<li class="chapter" data-level="4.7.3" data-path="Ch3.html"><a href="Ch3.html#main-features-of-an-action-potential"><i class="fa fa-check"></i><b>4.7.3</b> Main features of an action potential:</a></li>
+<li class="chapter" data-level="4.7.4" data-path="Ch3.html"><a href="Ch3.html#the-flow-of-ions-and-equilibrium-potentials"><i class="fa fa-check"></i><b>4.7.4</b> The flow of ions and equilibrium potentials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="Ch3.html"><a href="Ch3.html#exercises-1"><i class="fa fa-check"></i><b>4.8</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>4.8.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="4.8.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>4.8.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a><ul>
-<li class="chapter" data-level="5.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="5.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="Ch4.html"><a href="Ch4.html"><i class="fa fa-check"></i><b>5</b> Hodgkin and Huxley Model</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Ch4.html"><a href="Ch4.html#vocabulary-3"><i class="fa fa-check"></i><b>5.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="5.2" data-path="Ch4.html"><a href="Ch4.html#introduction-3"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
 <li class="chapter" data-level="5.3" data-path="Ch4.html"><a href="Ch4.html#the-hodgkin-and-huxley-model"><i class="fa fa-check"></i><b>5.3</b> The Hodgkin and Huxley model</a></li>
-<li class="chapter" data-level="5.4" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
-<li class="chapter" data-level="5.5" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
-<li class="chapter" data-level="5.5.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
+<li class="chapter" data-level="5.4" data-path="Ch4.html"><a href="Ch4.html#summary-3"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
+<li class="chapter" data-level="5.5" data-path="Ch4.html"><a href="Ch4.html#exercises-2"><i class="fa fa-check"></i><b>5.5</b> Exercises:</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="Ch4.html"><a href="Ch4.html#conceptual-exercises-1"><i class="fa fa-check"></i><b>5.5.1</b> Conceptual Exercises:</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Ch4.html"><a href="Ch4.html#coding-exercises-1"><i class="fa fa-check"></i><b>5.5.2</b> Coding Exercises:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a><ul>
-<li class="chapter" data-level="6.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="6.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6" data-path="Ch5.html"><a href="Ch5.html"><i class="fa fa-check"></i><b>6</b> Firing Rates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Ch5.html"><a href="Ch5.html#vocabulary-4"><i class="fa fa-check"></i><b>6.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="6.2" data-path="Ch5.html"><a href="Ch5.html#introduction-4"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
 <li class="chapter" data-level="6.3" data-path="Ch5.html"><a href="Ch5.html#spike-trains"><i class="fa fa-check"></i><b>6.3</b> Spike Trains</a></li>
 <li class="chapter" data-level="6.4" data-path="Ch5.html"><a href="Ch5.html#spike-statistics"><i class="fa fa-check"></i><b>6.4</b> Spike Statistics</a></li>
-<li class="chapter" data-level="6.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
-<li class="chapter" data-level="6.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>6.6</b> Exercises</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.6.1</b> Conceptual Problems</a></li>
-<li class="chapter" data-level="6.6.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.6.2</b> Coding Problems</a></li>
+<li class="chapter" data-level="6.5" data-path="Ch5.html"><a href="Ch5.html#poisson-processes"><i class="fa fa-check"></i><b>6.5</b> Poisson Processes</a></li>
+<li class="chapter" data-level="6.6" data-path="Ch5.html"><a href="Ch5.html#summary-4"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+<li class="chapter" data-level="6.7" data-path="Ch5.html"><a href="Ch5.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="Ch5.html"><a href="Ch5.html#conceptual-problems"><i class="fa fa-check"></i><b>6.7.1</b> Conceptual Problems</a></li>
+<li class="chapter" data-level="6.7.2" data-path="Ch5.html"><a href="Ch5.html#coding-problems"><i class="fa fa-check"></i><b>6.7.2</b> Coding Problems</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a><ul>
-<li class="chapter" data-level="7.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="7.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7" data-path="Ch6.html"><a href="Ch6.html"><i class="fa fa-check"></i><b>7</b> Reverse Correlation and Receptive Field Mapping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Ch6.html"><a href="Ch6.html#vocabulary-5"><i class="fa fa-check"></i><b>7.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="7.2" data-path="Ch6.html"><a href="Ch6.html#introduction-5"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
 <li class="chapter" data-level="7.3" data-path="Ch6.html"><a href="Ch6.html#spike-triggered-average"><i class="fa fa-check"></i><b>7.3</b> Spike-triggered Average</a></li>
 <li class="chapter" data-level="7.4" data-path="Ch6.html"><a href="Ch6.html#reverse-correlation"><i class="fa fa-check"></i><b>7.4</b> Reverse Correlation</a></li>
-<li class="chapter" data-level="7.5" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-<li class="chapter" data-level="7.6" data-path="Ch2.html"><a href="Ch2.html#exercises"><i class="fa fa-check"></i><b>7.6</b> Exercises</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="Ch3.html"><a href="Ch3.html#conceptual-exercises"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
-<li class="chapter" data-level="7.6.2" data-path="Ch3.html"><a href="Ch3.html#coding-exercises"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
+<li class="chapter" data-level="7.5" data-path="Ch6.html"><a href="Ch6.html#summary-5"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+<li class="chapter" data-level="7.6" data-path="Ch6.html"><a href="Ch6.html#exercises-4"><i class="fa fa-check"></i><b>7.6</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="Ch6.html"><a href="Ch6.html#conceptual-exercises-2"><i class="fa fa-check"></i><b>7.6.1</b> Conceptual Exercises</a></li>
+<li class="chapter" data-level="7.6.2" data-path="Ch6.html"><a href="Ch6.html#coding-exercises-2"><i class="fa fa-check"></i><b>7.6.2</b> Coding Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a><ul>
-<li class="chapter" data-level="8.1" data-path="Ch1.html"><a href="Ch1.html#vocabulary"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="8.2" data-path="Ch1.html"><a href="Ch1.html#introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
-<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a><ul>
+<li class="chapter" data-level="8" data-path="Ch7.html"><a href="Ch7.html"><i class="fa fa-check"></i><b>8</b> Decoding</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="Ch7.html"><a href="Ch7.html#vocabulary-6"><i class="fa fa-check"></i><b>8.1</b> Vocabulary</a></li>
+<li class="chapter" data-level="8.2" data-path="Ch7.html"><a href="Ch7.html#introduction-6"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="Ch7.html"><a href="Ch7.html#imaging-techniques"><i class="fa fa-check"></i><b>8.3</b> Imaging Techniques</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="Ch7.html"><a href="Ch7.html#eeg"><i class="fa fa-check"></i><b>8.3.1</b> EEG</a></li>
 <li class="chapter" data-level="8.3.2" data-path="Ch7.html"><a href="Ch7.html#meg"><i class="fa fa-check"></i><b>8.3.2</b> MEG</a></li>
 <li class="chapter" data-level="8.3.3" data-path="Ch7.html"><a href="Ch7.html#fmri"><i class="fa fa-check"></i><b>8.3.3</b> fMRI</a></li>
 <li class="chapter" data-level="8.3.4" data-path="Ch7.html"><a href="Ch7.html#ecog"><i class="fa fa-check"></i><b>8.3.4</b> ECOG</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="Ch7.html"><a href="Ch7.html#introduction-to-decoding"><i class="fa fa-check"></i><b>8.4</b> Introduction to Decoding</a></li>
-<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a><ul>
+<li class="chapter" data-level="8.5" data-path="Ch7.html"><a href="Ch7.html#what-is-a-classifier"><i class="fa fa-check"></i><b>8.5</b> What is a classifier?</a>
+<ul>
 <li class="chapter" data-level="8.5.1" data-path="Ch7.html"><a href="Ch7.html#correlation-classifiers"><i class="fa fa-check"></i><b>8.5.1</b> Correlation classifiers</a></li>
 <li class="chapter" data-level="8.5.2" data-path="Ch7.html"><a href="Ch7.html#distance-based-classifiers"><i class="fa fa-check"></i><b>8.5.2</b> Distance-based classifiers</a></li>
 <li class="chapter" data-level="8.5.3" data-path="Ch7.html"><a href="Ch7.html#boundary-based-classifiers"><i class="fa fa-check"></i><b>8.5.3</b> Boundary-based classifiers</a></li>
@@ -218,16 +275,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="Ch7.html"><a href="Ch7.html#cross-validation"><i class="fa fa-check"></i><b>8.6</b> Cross validation</a></li>
 <li class="chapter" data-level="8.7" data-path="Ch7.html"><a href="Ch7.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a><ul>
+<li class="chapter" data-level="9" data-path="Ch8.html"><a href="Ch8.html"><i class="fa fa-check"></i><b>9</b> Neural Networks</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="Ch8.html"><a href="Ch8.html#vocabulary-list"><i class="fa fa-check"></i><b>9.1</b> Vocabulary List:</a></li>
 <li class="chapter" data-level="9.2" data-path="Ch8.html"><a href="Ch8.html#introductionbackground"><i class="fa fa-check"></i><b>9.2</b> Introduction/Background</a></li>
 <li class="chapter" data-level="9.3" data-path="Ch8.html"><a href="Ch8.html#different-types-of-learning"><i class="fa fa-check"></i><b>9.3</b> Different Types of Learning</a></li>
 <li class="chapter" data-level="9.4" data-path="Ch8.html"><a href="Ch8.html#mcculloch-pitt-mcp-neurons"><i class="fa fa-check"></i><b>9.4</b> McCulloch-Pitt (MCP) Neurons</a></li>
 <li class="chapter" data-level="9.5" data-path="Ch8.html"><a href="Ch8.html#perceptron"><i class="fa fa-check"></i><b>9.5</b> Perceptron</a></li>
-<li class="chapter" data-level="9.6" data-path="Ch1.html"><a href="Ch1.html#summary"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+<li class="chapter" data-level="9.6" data-path="Ch8.html"><a href="Ch8.html#summary-6"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="Ch9.html"><a href="Ch9.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
-<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a><ul>
+<li class="chapter" data-level="11" data-path="Ch10.html"><a href="Ch10.html"><i class="fa fa-check"></i><b>11</b> References</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="Ch10.html"><a href="Ch10.html#chapter-1-preface"><i class="fa fa-check"></i><b>11.1</b> Chapter 1: Preface</a></li>
 <li class="chapter" data-level="11.2" data-path="Ch10.html"><a href="Ch10.html#chapter-2-introduction-to-python"><i class="fa fa-check"></i><b>11.2</b> Chapter 2: Introduction to Python</a></li>
 <li class="chapter" data-level="11.3" data-path="Ch10.html"><a href="Ch10.html#chapter-3-what-is-computational-neuroscience"><i class="fa fa-check"></i><b>11.3</b> Chapter 3: What is Computational Neuroscience?</a></li>
@@ -238,28 +297,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.8" data-path="Ch10.html"><a href="Ch10.html#chapter-8-decoding"><i class="fa fa-check"></i><b>11.8</b> Chapter 8: Decoding</a></li>
 <li class="chapter" data-level="11.9" data-path="Ch10.html"><a href="Ch10.html#chapter-9-neural-networks"><i class="fa fa-check"></i><b>11.9</b> Chapter 9: Neural Networks</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a><ul>
+<li class="chapter" data-level="12" data-path="Ch11.html"><a href="Ch11.html"><i class="fa fa-check"></i><b>12</b> Answers to Exercises</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="Ch11.html"><a href="Ch11.html#chapter-1-introduction-to-python"><i class="fa fa-check"></i><b>12.1</b> Chapter 1: Introduction to Python</a></li>
 <li class="chapter" data-level="12.2" data-path="Ch11.html"><a href="Ch11.html#chapter-2-introduction-to-computational-neuroscience"><i class="fa fa-check"></i><b>12.2</b> Chapter 2: Introduction to Computational Neuroscience</a></li>
-<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a><ul>
+<li class="chapter" data-level="12.3" data-path="Ch11.html"><a href="Ch11.html#chapter-3-passive-membrane-models"><i class="fa fa-check"></i><b>12.3</b> Chapter 3: Passive Membrane Models</a>
+<ul>
 <li class="chapter" data-level="12.3.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions"><i class="fa fa-check"></i><b>12.3.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.3.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions"><i class="fa fa-check"></i><b>12.3.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a><ul>
+<li class="chapter" data-level="12.4" data-path="Ch11.html"><a href="Ch11.html#chapter-4-hodgkin-and-huxley"><i class="fa fa-check"></i><b>12.4</b> Chapter 4: Hodgkin and Huxley</a>
+<ul>
 <li class="chapter" data-level="12.4.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-1"><i class="fa fa-check"></i><b>12.4.1</b> Conceptual Questions:</a></li>
 <li class="chapter" data-level="12.4.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-1"><i class="fa fa-check"></i><b>12.4.2</b> Coding Questions:</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a><ul>
+<li class="chapter" data-level="12.5" data-path="Ch11.html"><a href="Ch11.html#chapter-5-firing-rates"><i class="fa fa-check"></i><b>12.5</b> Chapter 5: Firing Rates</a>
+<ul>
 <li class="chapter" data-level="12.5.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-2"><i class="fa fa-check"></i><b>12.5.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.5.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-2"><i class="fa fa-check"></i><b>12.5.2</b> Coding Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a><ul>
+<li class="chapter" data-level="12.6" data-path="Ch11.html"><a href="Ch11.html#chapter-6-reverse-correlation-and-receptive-field-mapping"><i class="fa fa-check"></i><b>12.6</b> Chapter 6: Reverse Correlation and Receptive Field Mapping</a>
+<ul>
 <li class="chapter" data-level="12.6.1" data-path="Ch11.html"><a href="Ch11.html#conceptual-questions-3"><i class="fa fa-check"></i><b>12.6.1</b> Conceptual Questions</a></li>
 <li class="chapter" data-level="12.6.2" data-path="Ch11.html"><a href="Ch11.html#coding-questions-3"><i class="fa fa-check"></i><b>12.6.2</b> Coding Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="12.7" data-path="Ch11.html"><a href="Ch11.html#chapter-7-decoding"><i class="fa fa-check"></i><b>12.7</b> Chapter 7: Decoding</a></li>
 <li class="chapter" data-level="12.8" data-path="Ch11.html"><a href="Ch11.html#chapter-8-neural-networks"><i class="fa fa-check"></i><b>12.8</b> Chapter 8: Neural Networks</a></li>
 </ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -277,61 +344,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ch3" class="section level1">
-<h1><span class="header-section-number">4</span> Passive Membrane Models</h1>
-<div id="vocabulary" class="section level2">
-<h2><span class="header-section-number">4.1</span> Vocabulary</h2>
+<div id="Ch3" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Passive Membrane Models<a href="Ch3.html#Ch3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="vocabulary-2" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Vocabulary<a href="Ch3.html#vocabulary-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Depolarization</li>
+<li>Voltage threshold</li>
 <li>Positive Feedback</li>
 <li>Hyperpolarization</li>
 <li>Negative Feedback</li>
 <li>Membrane Potential</li>
 <li>Sodium-Potassium Pump</li>
-<li>Nernst Potential</li>
-<li>Reversal Potential</li>
+<li>Nernst potential / Reversal potential</li>
 <li>Equilibrium Potential</li>
 <li>Driving Force</li>
 <li>Conductance</li>
+<li>Capacitor</li>
 <li>Leak Current</li>
 <li>Leaky Integrate and Fire Model</li>
 </ul>
 </div>
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">4.2</span> Introduction</h2>
+<div id="introduction-2" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Introduction<a href="Ch3.html#introduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="what-is-an-action-potential" class="section level2">
-<h2><span class="header-section-number">4.3</span> What is an action potential?</h2>
-<p>Before going into ways of modeling action potentials, let’s further explore what an action potential is. Within a cell, there are more sodium ions outside the membrane, which have a positive charge. Because there are less positive ions inside the cell compared to the outside, the inside of the cell has a negative resting potential. When there is a spike of voltage, that causes both voltage-gated sodium and potassium channels–meaning that these channels activate and inactivate at certain voltages–to activate on a neuron’s membrane. However, the sodium channels open much faster than the potassium channels. The flow of sodium ions into the cell causes the membrane potential to become more positive. This process of positive ions flowing into the cell is called <strong>depolarization</strong>. When depolarization happens, it causes additional sodium channels to open, which causes further depolarization—this phenomenon is called <strong>positive feedback</strong>, and the positive feedback starts if the depolarization hits a set threshold. In other words, a positive feedback loop is a process that perpetuates itself. The positive feedback loop ends once voltage-gated potassium channels also open at the peak of the action potential and potassium begins flowing out of the cell and ending depolarization, we call this <strong>repolarization</strong>. When the voltage is below the resting potential, we call this undershoot <strong>hyperpolarization</strong>, which is when the membrane potential decreases towards a move negative value via potassium ions flowing out. As the voltage-gated potassium channels open and the voltage-gated sodium channels to close or become inactivated, there is now <strong>negative feedback</strong>. Negative feedback is a process by which an initial change is opposed by a force caused by the initial change. In this situation, the positive feedback causes a spike in membrane potential and the negative feedback stabilizes.</p>
-<div class="figure"><span id="fig:channel1-fig"></span>
-<img src="images/channel1.png" alt="A cell at rest has more potassium ions intracellular than extracellular and more sodium ions extracellular than intracellular. There is a negative net charge within the cell being maintained by the  voltage gradient."  />
+<div id="membrane-potentials-and-electrochemical-gradients" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Membrane potentials and electrochemical gradients<a href="Ch3.html#membrane-potentials-and-electrochemical-gradients" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before going into ways of modeling action potentials, let’s further explore what an action
+potential is. Within a neuron, there resides a higher concentration of positively charged
+potassium ions, whereas outside of a neuron, there resides a higher concentration of positively
+charged sodium ions. However, there is an electrical and concentration difference between the
+intracellular and extracellular regions of the cell. The electrical difference, which occurs due to the difference in charge of different ions across the cell membrane, and the concentration
+difference, which is governed by the distribution of ions across the cell membrane, keep the cell in balance. Due to the higher concentration of sodium ions outside the cell, as well as their positive charge, the extracellular area is positive. Then, due the higher concentration of
+potassium ions inside the cell (which has an equilibrium potential of -90mV) as well as other
+negatively charged intracellular molecules, and a higher concentration of sodium outside the cell (which has an equilibrium potential of +55mV), the inside of a cell has a a more net negative charge relative to the outside. This feature illustrates the cause of the negative resting potential of a neuron.</p>
+<p>There are two types of ion channels that continually contribute to the equilibrium
+between the cell’s electrical and concentration gradients. These channels are leakage channels
+and the <strong>sodium-potassium pump</strong>, which reside on the cell’s membrane. The sodium-potassium
+pump requires an input of one ATP to export three intracellular sodium ions and import two
+extracellular potassium ions against their electrical and concentration gradients. This pump
+takes energy because it is actively pushing ions against where they want to go. In addition to
+this, the leakage channels allow for ions to constantly move passively in and out of the cell with the flow of their opposing electrical and concentration gradients.</p>
+</div>
+<div id="phases-of-the-action-potential" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Phases of the action potential<a href="Ch3.html#phases-of-the-action-potential" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="positive-feedback-and-depolarization" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Positive feedback and depolarization<a href="Ch3.html#positive-feedback-and-depolarization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Stimulation to the neuron will cause a positive increase in the intracellular voltage, due to the influx of sodium ions, beyond its <strong>voltage threshold</strong>. This positive increase across the threshold initiates the activation of both the voltage-gated sodium and voltage-gated potassium channels. The term <strong>voltage-gated</strong> indicates that these channels will either open or close when a specified intracellular voltage is reached. However, an important distinction between the two channels is that the voltage-gated sodium channels open much faster than the potassium channels. Thus, the quick reaction of the sodium channels causes an influx of intracellular sodium ions as they flow through the open voltage-gated sodium channels, causing the cell’s membrane potential to become more net positive. This process of positive ions flowing into the cell can be referred to as the rising phase, or <strong>depolarization</strong>. When depolarization happens, it causes additional sodium channels to open, which causes further depolarization. This phenomenon is called <strong>positive feedback</strong>. Positive feedback can be defined as a deviation reinforced by an action in the same direction, thus emphasizing that deviation. This positive feedback begins if the voltage threshold is met, and the loop of depolarization is a process that perpetuates itself.</p>
+<div class="figure"><span style="display:block;" id="fig:pos-feedback-fig"></span>
+<img src="images/positive_feedback_loop.png" alt="An illustration of the positive feedback loop that perpetuates the depolarization of a cell." width="520" />
 <p class="caption">
-Figure 4.1: A cell at rest has more potassium ions intracellular than extracellular and more sodium ions extracellular than intracellular. There is a negative net charge within the cell being maintained by the voltage gradient.
+Figure 4.1: An illustration of the positive feedback loop that perpetuates the depolarization of a cell.
 </p>
 </div>
-<div class="figure"><span id="fig:channel2-fig"></span>
-<img src="images/channel2.png" alt="When the cell becomes depolarized sodium ions enter the cell. The charge within the cell becomes more positive."  />
+</div>
+<div id="negative-feedback-and-repolarization" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Negative feedback and repolarization<a href="Ch3.html#negative-feedback-and-repolarization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The membrane potential will begin to approach the equilibrium potential for sodium due
+to a higher membrane permeability of this ion during depolarization. Before the membrane
+potential reaches the equilibrium potential of sodium, this triggers the inactivation of
+voltage-gated sodium channels, thus ending the positive feedback loop. This prevents the
+further exchange of sodium ions along their electrical and concentration gradient into the cell.
+Additionally, slow-reacting voltage-gated potassium channels activate and lead to the net flow of positively charged potassium ions along their electrical concentration gradient out of the cell. This action is characterized by the peak of an action potential, which then leads into the falling phase, or <strong>repolarization</strong>. Repolarization is the process of positive potassium ions flowing out of the cell, thus causing the membrane potential to decrease. The process of repolarization back to the cell’s initial resting potential is reinforced by a process called <strong>negative feedback</strong>. Negative feedback can be defined as a deviation offset by action in the opposite direction, thus re-establishing the “normal state.” This repolarization due to negative feedback eventually returns the cell’s voltage back to its resting potential.</p>
+<div class="figure"><span style="display:block;" id="fig:neg-feedback-fig"></span>
+<img src="images/negative_feedback_loop.png" alt="An illustration of the negative feedback loop that hat re-establishes the normal resting potential of the cell membrane." width="487" />
 <p class="caption">
-Figure 4.2: When the cell becomes depolarized sodium ions enter the cell. The charge within the cell becomes more positive.
+Figure 4.2: An illustration of the negative feedback loop that hat re-establishes the normal resting potential of the cell membrane.
 </p>
 </div>
-<div class="figure"><span id="fig:channel3-fig"></span>
-<img src="images/channel3.png" alt="When the cell repolarizes potassium ions leave the cell. The charge within the cell go from positive to negative as it goes back to the resting state."  />
+<p>However, due to the potassium channels being slow, they are also slow to close once
+the cell has reached its initial resting potential. This means that even when the cell is
+appropriately negative, there are still potassium ions flowing out. This causes the voltage to fall slightly below the resting potential, a feature which we call the undershoot or
+<strong>hyperpolarization</strong>. The continuous function of sodium-potassium pumps and the leakage
+channels ultimately compensate for this slight undershoot, and re-establishes the initial resting potential.</p>
+<p>To recap, the positive feedback causes a spike in membrane potential and the negative
+feedback stabilizes.</p>
+<div class="figure"><span style="display:block;" id="fig:channel1-fig"></span>
+<img src="images/channel1.png" alt="A cell at rest has more potassium ions intracellular than extracellular and more sodium ions extracellular than intracellular. There is a negative net charge within the cell being maintained by the  voltage gradient." width="408" />
 <p class="caption">
-Figure 4.3: When the cell repolarizes potassium ions leave the cell. The charge within the cell go from positive to negative as it goes back to the resting state.
+Figure 4.3: A cell at rest has more potassium ions intracellular than extracellular and more sodium ions extracellular than intracellular. There is a negative net charge within the cell being maintained by the voltage gradient.
 </p>
 </div>
-<div class="figure"><span id="fig:actionPotential-fig"></span>
-<img src="images/actionPotential.png" alt="Example of an action potential."  />
+<div class="figure"><span style="display:block;" id="fig:channel2-fig"></span>
+<img src="images/channel2.png" alt="When the cell becomes depolarized sodium ions enter the cell. The charge within the cell becomes more positive." width="430" />
 <p class="caption">
-Figure 4.4: Example of an action potential.
+Figure 4.4: When the cell becomes depolarized sodium ions enter the cell. The charge within the cell becomes more positive.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:channel3-fig"></span>
+<img src="images/channel3.png" alt="When the cell repolarizes potassium ions leave the cell. The charge within the cell go from positive to negative as it goes back to the resting state." width="453" />
+<p class="caption">
+Figure 4.5: When the cell repolarizes potassium ions leave the cell. The charge within the cell go from positive to negative as it goes back to the resting state.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:actionPotential-fig"></span>
+<img src="images/actionPotential.png" alt="Example of an action potential." width="344" />
+<p class="caption">
+Figure 4.6: Example of an action potential.
 </p>
 </div>
 </div>
-<div id="nernst-equilibrium-potential" class="section level2">
-<h2><span class="header-section-number">4.4</span> Nernst equilibrium potential</h2>
-<p>The electrical activity generated in a neuron is a result of ions flowing across the neuron’s membrane which is caused by the following two principles: opposite charges attract, and concentration gradients seek to equalize. This potential difference is referred to as the <strong>membrane potential</strong>. In order for ions to flow, a concentration gradient must be established because the difference in concentration across the membrane leads it to pass either into the neuron or out of the neuron. This is accomplished by the <strong>sodium-potassium pump</strong>, which uses just below 10% of your body’s daily energy to pump three sodium ions out of the neuron for every two potassium ions pumped in, thus forming two respective concentration gradients.</p>
-<p>With the concentration gradient established, the sodium and potassium ions will flow down the concentration gradients when their respective channels open, generating an electrical current that propagates down the axon. We must also take into account the fact that each ion possesses a charge–or charges in the case of Ca++ and Mg++–and that as this charge is built up on one side of the cell, this will generate an electrical force that will begin to repel ions with similar charge as they try to flow down their concentration gradient. When the force of the concentration gradient matches the electrical force attracting or repelling the ion, this is known as the <strong>Nernst potential</strong> for that ion, also referred to as the <strong>reversal potential</strong>. This means that means that both sodium and potassium possess their own respective Nernst potentials. Nernst potentials are especially important because they allow us to calculate the membrane voltage when a particular ion is in equilibrium, which helps to define the role it plays in an action potential.</p>
+</div>
+<div id="nernst-equilibrium-potential" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Nernst equilibrium potential<a href="Ch3.html#nernst-equilibrium-potential" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The electrical potential generated in a neuron is the result of ions flowing across the neuron’s
+membrane which is caused by the following two principles: opposite charges attract, and
+concentration gradients seek to equalize. This electrical potential, generated by the sum of all
+electrical concentration gradients of each species of intracellular and extracellular ions at a
+specified time, is referred to as the <strong>membrane potential</strong>. In order for ions to flow, a
+concentration gradient must be established because the difference in ion distribution across the
+membrane leads the ions to either pass into or out of the neuron in an attempt to equalize.
+Thus, in order to build up a charge, we must create an unequal distribution of ions across the
+membrane relative to one another. This is accomplished by the <strong>sodium-potassium pump</strong>.
+This pump, which is suggested to use roughly 50% of total brain energy, pumps three sodium
+ions out of the neuron for every two potassium ions pumped in, thus forming the two respective
+concentration gradients [1].</p>
+<p>With the concentration gradient established, the sodium and potassium ions will flow down the
+concentration gradients when their respective channels open, generating an electrical current
+that propagates down the axon. However, we must also take into account the fact that each ion
+possesses a charge–or charges in the case of Ca++ and Mg++–and that as this charge builds
+up on one side of the cell, generating an electrical force that will begin to repel ions with similar charge as they try to flow down their concentration gradient. This forms the electrical gradient, which along with the concentration gradient, dictates ion movement and the membrane
+potential. When the force of the concentration gradient matches the electrical force attracting or repelling the ion, it is known as the <strong>Nernst potential</strong>, which may also be referred to as the <strong>reversal potential</strong>. Each species of ion (i.e. sodium and potassium respectively) possess its own Nernst potential. Thus, the sum of Nernst potentials at a specified time can be summed in order to accurately predict the membrane potential at that time. Nernst potentials are especially important because they allow us to calculate the membrane voltage when a particular ion is in equilibrium, which helps to define the role it plays in an action potential.</p>
 <p>The Nernst potential for an ion can be derived from the following equation: <span class="math display">\[E_{ion} = \frac{RT}{zF}ln(\frac{[out]}{[in]}) \]</span></p>
 <table>
 <thead>
@@ -524,8 +657,10 @@ From the values given in part a:<br />
 <p><span class="math display">\[V_{rest} = 26.71099545 \cdot \ln \frac{48.75}{420.25} = -57.3 mV\]</span>
 The resting potential of the unicorn neuron is -57.3 mV. This happens as a result of the permeabilities and concentrations of all four ions in this example, especially as a result of the magic+ ion’s high permeability. This makes the resting potential most similat to its Nernst potential.</p>
 </div>
-<div id="leaky-integrate-and-fire-model" class="section level2">
-<h2><span class="header-section-number">4.5</span> Leaky Integrate and Fire Model</h2>
+<div id="leaky-integrate-and-fire-model" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Leaky Integrate and Fire Model<a href="Ch3.html#leaky-integrate-and-fire-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>Leaky Integrate and Fire Model</strong> describes the membrane potential of a neuron in
+terms of its input in the form of injected current, and is a way to model a neuron’s potential using code. The model itself represents a neuron as a combination of the conductance, referred to as the “leaky resistance”, and a capacitor. <strong>Conductance</strong> is referred to as the ability of an object to conduct electricity. A <strong>capacitor</strong> stores electrical potential due to the separation of charges. For this model to work, some amount of current needs to be injected into the neuron, which is referred to as the injected current. If sufficient current is injected in order for the membrane potential to rise above its voltage threshold, the neuron will produce a spike. This can be modeled as an action potential. However, because of this, the model can only function when current and time is coded into it, and can not run on its own. This model also operates on the assumption that most stimuli give rise to roughly the same spike forms. In other words, it assumes that an injected current will result in a set spike rate. This is unrepresentative to true neuronal spike behavior, where interspike intervals may vary with a constant input. Finally, after each spike is fired, the model resets the membrane potential, which means that it cannot store information regarding previous spike activity. Thus, action potentials are being set, and the neuron is not truly “firing”. Therefore, the <strong>Leaky Integrate and Fire Model</strong> may be best utilized to model more controlled neuronal behavior that has fewer biological factors. This would include using the model to look at the pattern and shape of action potentials in controlled laboratory settings, as it can accurately represent the resting voltage, the voltage threshold, the spike voltage, and the reset voltage.</p>
 <p><strong>Worked Example: Deriving the Integrate and Fire Model</strong><br />
 In the leaky integrate and fire model, we are modeling the membrane as a resistor-capacitor (RC) circuit and injecting into the cell some external current, <span class="math inline">\(I_e\)</span>. By Kirchhoff’s rule, we know that the the sum of all currents sums to zero. This means that the external current is the sum of a resistive current and a capactive current:<br />
 <span class="math display">\[I_e = I_R + I_C\]</span></p>
@@ -570,102 +705,103 @@ Johnny Firehydrant has just begun an investigative neurological study, focusing 
 <li><span class="math inline">\(V_m\)</span>: Membrane potential.</li>
 </ul>
 <p><strong>Step 1:</strong> Import numpy and matplotlib libraries for Python operations. Then assign variables to the parameter values provided above.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="Ch3.html#cb7-1"></a><span class="co"># Import essential libraries</span></span>
-<span id="cb7-2"><a href="Ch3.html#cb7-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-3"><a href="Ch3.html#cb7-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-4"><a href="Ch3.html#cb7-4"></a></span>
-<span id="cb7-5"><a href="Ch3.html#cb7-5"></a><span class="co"># Set simulation parameters</span></span>
-<span id="cb7-6"><a href="Ch3.html#cb7-6"></a>Vthresh <span class="op">=</span> <span class="dv">-55</span>   <span class="co">#mV</span></span>
-<span id="cb7-7"><a href="Ch3.html#cb7-7"></a>Vreset  <span class="op">=</span> <span class="dv">-75</span>   <span class="co">#mV</span></span>
-<span id="cb7-8"><a href="Ch3.html#cb7-8"></a>Vspike  <span class="op">=</span>  <span class="dv">20</span>   <span class="co">#mV</span></span>
-<span id="cb7-9"><a href="Ch3.html#cb7-9"></a>Rm      <span class="op">=</span>  <span class="dv">10</span>   <span class="co">#MOhms</span></span>
-<span id="cb7-10"><a href="Ch3.html#cb7-10"></a>tau     <span class="op">=</span>  <span class="dv">10</span>   <span class="co">#ms</span></span>
-<span id="cb7-11"><a href="Ch3.html#cb7-11"></a>dt      <span class="op">=</span>  <span class="fl">0.05</span> <span class="co">#ms</span></span>
-<span id="cb7-12"><a href="Ch3.html#cb7-12"></a>counter <span class="op">=</span>  <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="Ch3.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import essential libraries</span></span>
+<span id="cb1-2"><a href="Ch3.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="Ch3.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="Ch3.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="Ch3.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set simulation parameters</span></span>
+<span id="cb1-6"><a href="Ch3.html#cb1-6" aria-hidden="true" tabindex="-1"></a>Vthresh <span class="op">=</span> <span class="op">-</span><span class="dv">55</span>   <span class="co">#mV</span></span>
+<span id="cb1-7"><a href="Ch3.html#cb1-7" aria-hidden="true" tabindex="-1"></a>Vreset  <span class="op">=</span> <span class="op">-</span><span class="dv">75</span>   <span class="co">#mV</span></span>
+<span id="cb1-8"><a href="Ch3.html#cb1-8" aria-hidden="true" tabindex="-1"></a>Vspike  <span class="op">=</span>  <span class="dv">20</span>   <span class="co">#mV</span></span>
+<span id="cb1-9"><a href="Ch3.html#cb1-9" aria-hidden="true" tabindex="-1"></a>Rm      <span class="op">=</span>  <span class="dv">10</span>   <span class="co">#MOhms</span></span>
+<span id="cb1-10"><a href="Ch3.html#cb1-10" aria-hidden="true" tabindex="-1"></a>tau     <span class="op">=</span>  <span class="dv">10</span>   <span class="co">#ms</span></span>
+<span id="cb1-11"><a href="Ch3.html#cb1-11" aria-hidden="true" tabindex="-1"></a>dt      <span class="op">=</span>  <span class="fl">0.05</span> <span class="co">#ms</span></span>
+<span id="cb1-12"><a href="Ch3.html#cb1-12" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span>  <span class="dv">0</span></span></code></pre></div>
 <p><strong>Step 2:</strong> Next, we will set up the data structures for holding our data.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="Ch3.html#cb8-1"></a><span class="co"># Creates a vector of time points from 0 to 499 ms in steps of dt=0.05</span></span>
-<span id="cb8-2"><a href="Ch3.html#cb8-2"></a>timeVector <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">500</span>, dt)</span>
-<span id="cb8-3"><a href="Ch3.html#cb8-3"></a></span>
-<span id="cb8-4"><a href="Ch3.html#cb8-4"></a><span class="co"># Creates a placeholder for our voltages that is the same size as timeVector</span></span>
-<span id="cb8-5"><a href="Ch3.html#cb8-5"></a>voltageVector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVector))</span>
-<span id="cb8-6"><a href="Ch3.html#cb8-6"></a></span>
-<span id="cb8-7"><a href="Ch3.html#cb8-7"></a><span class="co"># Creates a placeholder for the external stimulation vector.</span></span>
-<span id="cb8-8"><a href="Ch3.html#cb8-8"></a><span class="co"># It is also the same size as the time vector.</span></span>
-<span id="cb8-9"><a href="Ch3.html#cb8-9"></a>stimVector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVector))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="Ch3.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a vector of time points from 0 to 499 ms in steps of dt=0.05</span></span>
+<span id="cb2-2"><a href="Ch3.html#cb2-2" aria-hidden="true" tabindex="-1"></a>timeVector <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">500</span>, dt)</span>
+<span id="cb2-3"><a href="Ch3.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="Ch3.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a placeholder for our voltages that is the same size as timeVector</span></span>
+<span id="cb2-5"><a href="Ch3.html#cb2-5" aria-hidden="true" tabindex="-1"></a>voltageVector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVector))</span>
+<span id="cb2-6"><a href="Ch3.html#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="Ch3.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a placeholder for the external stimulation vector.</span></span>
+<span id="cb2-8"><a href="Ch3.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># It is also the same size as the time vector.</span></span>
+<span id="cb2-9"><a href="Ch3.html#cb2-9" aria-hidden="true" tabindex="-1"></a>stimVector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVector))</span></code></pre></div>
 <p><strong>Step 3:</strong> We will now set our initial conditions</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="Ch3.html#cb9-1"></a><span class="co"># Set the initial voltage to be equal to the resting potential</span></span>
-<span id="cb9-2"><a href="Ch3.html#cb9-2"></a>voltageVector[<span class="dv">0</span>] <span class="op">=</span> Vrest</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="Ch3.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the initial voltage to be equal to the resting potential</span></span>
+<span id="cb3-2"><a href="Ch3.html#cb3-2" aria-hidden="true" tabindex="-1"></a>voltageVector[<span class="dv">0</span>] <span class="op">=</span> Vrest</span></code></pre></div>
 <p><strong>Step 4:</strong> At this point you want to arrange Johnny’s applied current pulses according to time. (remember that the dt=0.05, so there are 20 time points per millisecond.)</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="Ch3.html#cb10-1"></a><span class="co"># Sets the external stimulation to 0.5 nA for the first 100 ms</span></span>
-<span id="cb10-2"><a href="Ch3.html#cb10-2"></a>stimVector[<span class="dv">0</span>:<span class="dv">2000</span>] <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb10-3"><a href="Ch3.html#cb10-3"></a></span>
-<span id="cb10-4"><a href="Ch3.html#cb10-4"></a><span class="co"># Sets the external stimulation to 1.3 nA between 125 and 250 ms</span></span>
-<span id="cb10-5"><a href="Ch3.html#cb10-5"></a>stimVector[<span class="dv">2500</span>:<span class="dv">4000</span>]<span class="op">=</span> <span class="fl">1.3</span></span>
-<span id="cb10-6"><a href="Ch3.html#cb10-6"></a></span>
-<span id="cb10-7"><a href="Ch3.html#cb10-7"></a><span class="co"># Sets the external stimulation to 2.0 nA between 250 and 350 ms</span></span>
-<span id="cb10-8"><a href="Ch3.html#cb10-8"></a>stimVector[<span class="dv">5000</span>:<span class="dv">7000</span>] <span class="op">=</span> <span class="fl">2.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="Ch3.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sets the external stimulation to 0.5 nA for the first 100 ms</span></span>
+<span id="cb4-2"><a href="Ch3.html#cb4-2" aria-hidden="true" tabindex="-1"></a>stimVector[<span class="dv">0</span>:<span class="dv">2000</span>] <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb4-3"><a href="Ch3.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="Ch3.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sets the external stimulation to 1.3 nA between 125 and 250 ms</span></span>
+<span id="cb4-5"><a href="Ch3.html#cb4-5" aria-hidden="true" tabindex="-1"></a>stimVector[<span class="dv">2500</span>:<span class="dv">4000</span>]<span class="op">=</span> <span class="fl">1.3</span></span>
+<span id="cb4-6"><a href="Ch3.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="Ch3.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Sets the external stimulation to 2.0 nA between 250 and 350 ms</span></span>
+<span id="cb4-8"><a href="Ch3.html#cb4-8" aria-hidden="true" tabindex="-1"></a>stimVector[<span class="dv">5000</span>:<span class="dv">7000</span>] <span class="op">=</span> <span class="fl">2.0</span></span></code></pre></div>
 <p><strong>Step 5:</strong> Use a for-loop to use the present voltage value to compute the next voltage value.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="Ch3.html#cb11-1"></a><span class="co"># This line initiates the loop. &quot;S&quot; counts the number of loops.</span></span>
-<span id="cb11-2"><a href="Ch3.html#cb11-2"></a><span class="co"># We are looping for 1 less than the length of the time vector</span></span>
-<span id="cb11-3"><a href="Ch3.html#cb11-3"></a><span class="co"># because we have already calculated the voltage for the first</span></span>
-<span id="cb11-4"><a href="Ch3.html#cb11-4"></a><span class="co"># iteration.</span></span>
-<span id="cb11-5"><a href="Ch3.html#cb11-5"></a><span class="cf">for</span> S <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(timeVector)<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb11-6"><a href="Ch3.html#cb11-6"></a>  <span class="co"># Vinf is set to equal the resting potential plus the product</span></span>
-<span id="cb11-7"><a href="Ch3.html#cb11-7"></a>  <span class="co"># of the stimulation vector at the Sth time point.</span></span>
-<span id="cb11-8"><a href="Ch3.html#cb11-8"></a>  Vinf<span class="op">=</span> Vrest <span class="op">+</span> Rm <span class="op">*</span> stimVector[S]</span>
-<span id="cb11-9"><a href="Ch3.html#cb11-9"></a>  </span>
-<span id="cb11-10"><a href="Ch3.html#cb11-10"></a>  <span class="co"># The next voltage value is is equal to where we are going (Vinf)</span></span>
-<span id="cb11-11"><a href="Ch3.html#cb11-11"></a>  <span class="co"># plus the product of the different between the present voltage and</span></span>
-<span id="cb11-12"><a href="Ch3.html#cb11-12"></a>  <span class="co"># Vinf (how far we have to go) and e^-t/tau (how far we are going</span></span>
-<span id="cb11-13"><a href="Ch3.html#cb11-13"></a>  <span class="co"># in each step)</span></span>
-<span id="cb11-14"><a href="Ch3.html#cb11-14"></a>  voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Vinf <span class="op">+</span> (voltageVector[S]<span class="op">-</span>Vinf)<span class="op">*</span>np.exp(<span class="op">-</span>dt<span class="op">/</span>tau)</span>
-<span id="cb11-15"><a href="Ch3.html#cb11-15"></a>  </span>
-<span id="cb11-16"><a href="Ch3.html#cb11-16"></a>  <span class="co"># This &#39;if&#39; condition states that if the next voltage is greater than</span></span>
-<span id="cb11-17"><a href="Ch3.html#cb11-17"></a>  <span class="co"># or equal to the threshold, then to run the next section</span></span>
-<span id="cb11-18"><a href="Ch3.html#cb11-18"></a>  <span class="cf">if</span> voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">&gt;=</span> Vthresh:</span>
-<span id="cb11-19"><a href="Ch3.html#cb11-19"></a>     <span class="co"># This states that the next voltage vector will be the Vspike value</span></span>
-<span id="cb11-20"><a href="Ch3.html#cb11-20"></a>     voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Vspike</span>
-<span id="cb11-21"><a href="Ch3.html#cb11-21"></a>     </span>
-<span id="cb11-22"><a href="Ch3.html#cb11-22"></a>     <span class="co"># This &#39;if&#39; statement checks if we are already at Vspike (this is</span></span>
-<span id="cb11-23"><a href="Ch3.html#cb11-23"></a>     <span class="co"># another way we can be above Vthresh)</span></span>
-<span id="cb11-24"><a href="Ch3.html#cb11-24"></a>     <span class="cf">if</span> voltageVector[S] <span class="op">==</span> Vspike:</span>
-<span id="cb11-25"><a href="Ch3.html#cb11-25"></a>      </span>
-<span id="cb11-26"><a href="Ch3.html#cb11-26"></a>        <span class="co"># Set the next voltage equal to the reset value</span></span>
-<span id="cb11-27"><a href="Ch3.html#cb11-27"></a>        voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Vreset</span>
-<span id="cb11-28"><a href="Ch3.html#cb11-28"></a>        </span>
-<span id="cb11-29"><a href="Ch3.html#cb11-29"></a>        <span class="co"># This will count the number of observed spikes so that spike count</span></span>
-<span id="cb11-30"><a href="Ch3.html#cb11-30"></a>        <span class="co"># rate may be calculated later</span></span>
-<span id="cb11-31"><a href="Ch3.html#cb11-31"></a>        counter <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="Ch3.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This line initiates the loop. &quot;S&quot; counts the number of loops.</span></span>
+<span id="cb5-2"><a href="Ch3.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We are looping for 1 less than the length of the time vector</span></span>
+<span id="cb5-3"><a href="Ch3.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># because we have already calculated the voltage for the first</span></span>
+<span id="cb5-4"><a href="Ch3.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># iteration.</span></span>
+<span id="cb5-5"><a href="Ch3.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> S <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(timeVector)<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb5-6"><a href="Ch3.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Vinf is set to equal the resting potential plus the product</span></span>
+<span id="cb5-7"><a href="Ch3.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># of the stimulation vector at the Sth time point.</span></span>
+<span id="cb5-8"><a href="Ch3.html#cb5-8" aria-hidden="true" tabindex="-1"></a>  Vinf<span class="op">=</span> Vrest <span class="op">+</span> Rm <span class="op">*</span> stimVector[S]</span>
+<span id="cb5-9"><a href="Ch3.html#cb5-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-10"><a href="Ch3.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The next voltage value is is equal to where we are going (Vinf)</span></span>
+<span id="cb5-11"><a href="Ch3.html#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plus the product of the different between the present voltage and</span></span>
+<span id="cb5-12"><a href="Ch3.html#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Vinf (how far we have to go) and e^-t/tau (how far we are going</span></span>
+<span id="cb5-13"><a href="Ch3.html#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># in each step)</span></span>
+<span id="cb5-14"><a href="Ch3.html#cb5-14" aria-hidden="true" tabindex="-1"></a>  voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Vinf <span class="op">+</span> (voltageVector[S]<span class="op">-</span>Vinf)<span class="op">*</span>np.exp(<span class="op">-</span>dt<span class="op">/</span>tau)</span>
+<span id="cb5-15"><a href="Ch3.html#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-16"><a href="Ch3.html#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This &#39;if&#39; condition states that if the next voltage is greater than</span></span>
+<span id="cb5-17"><a href="Ch3.html#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># or equal to the threshold, then to run the next section</span></span>
+<span id="cb5-18"><a href="Ch3.html#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">&gt;=</span> Vthresh:</span>
+<span id="cb5-19"><a href="Ch3.html#cb5-19" aria-hidden="true" tabindex="-1"></a>     <span class="co"># This states that the next voltage vector will be the Vspike value</span></span>
+<span id="cb5-20"><a href="Ch3.html#cb5-20" aria-hidden="true" tabindex="-1"></a>     voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Vspike</span>
+<span id="cb5-21"><a href="Ch3.html#cb5-21" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb5-22"><a href="Ch3.html#cb5-22" aria-hidden="true" tabindex="-1"></a>     <span class="co"># This &#39;if&#39; statement checks if we are already at Vspike (this is</span></span>
+<span id="cb5-23"><a href="Ch3.html#cb5-23" aria-hidden="true" tabindex="-1"></a>     <span class="co"># another way we can be above Vthresh)</span></span>
+<span id="cb5-24"><a href="Ch3.html#cb5-24" aria-hidden="true" tabindex="-1"></a>     <span class="cf">if</span> voltageVector[S] <span class="op">==</span> Vspike:</span>
+<span id="cb5-25"><a href="Ch3.html#cb5-25" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-26"><a href="Ch3.html#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Set the next voltage equal to the reset value</span></span>
+<span id="cb5-27"><a href="Ch3.html#cb5-27" aria-hidden="true" tabindex="-1"></a>        voltageVector[S<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Vreset</span>
+<span id="cb5-28"><a href="Ch3.html#cb5-28" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-29"><a href="Ch3.html#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="co"># This will count the number of observed spikes so that spike count</span></span>
+<span id="cb5-30"><a href="Ch3.html#cb5-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># rate may be calculated later</span></span>
+<span id="cb5-31"><a href="Ch3.html#cb5-31" aria-hidden="true" tabindex="-1"></a>        counter <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
 <p><strong>Step 6:</strong> Now, we just have to plot the simulation.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="Ch3.html#cb12-1"></a><span class="co"># This sets the new plot object</span></span>
-<span id="cb12-2"><a href="Ch3.html#cb12-2"></a>plt.figure()</span>
-<span id="cb12-3"><a href="Ch3.html#cb12-3"></a></span>
-<span id="cb12-4"><a href="Ch3.html#cb12-4"></a><span class="co"># This plots the voltage (y-axis) as a function of time (x-axis)</span></span>
-<span id="cb12-5"><a href="Ch3.html#cb12-5"></a>plt.plot(timeVector, voltageVector)</span>
-<span id="cb12-6"><a href="Ch3.html#cb12-6"></a></span>
-<span id="cb12-7"><a href="Ch3.html#cb12-7"></a><span class="co"># This labels the y-axis</span></span>
-<span id="cb12-8"><a href="Ch3.html#cb12-8"></a>plt.ylabel(<span class="st">&#39;Voltage in mV&#39;</span>)</span>
-<span id="cb12-9"><a href="Ch3.html#cb12-9"></a></span>
-<span id="cb12-10"><a href="Ch3.html#cb12-10"></a><span class="co"># This labels the x-axis</span></span>
-<span id="cb12-11"><a href="Ch3.html#cb12-11"></a>plt.xlabel(<span class="st">&#39;Time in ms)</span></span>
-<span id="cb12-12"><a href="Ch3.html#cb12-12"></a></span>
-<span id="cb12-13"><a href="Ch3.html#cb12-13"></a><span class="st"># This sets the title</span></span>
-<span id="cb12-14"><a href="Ch3.html#cb12-14"></a><span class="st">plt.title(&#39;</span>Voltage versus time)</span></code></pre></div>
-The final graph looks like this:<br />
-
-<div class="figure"><span id="fig:integrateFire-fig"></span>
-<img src="images/integrateFire.png" alt="Output of sample code"  />
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="Ch3.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This sets the new plot object</span></span>
+<span id="cb6-2"><a href="Ch3.html#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb6-3"><a href="Ch3.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="Ch3.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This plots the voltage (y-axis) as a function of time (x-axis)</span></span>
+<span id="cb6-5"><a href="Ch3.html#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.plot(timeVector, voltageVector)</span>
+<span id="cb6-6"><a href="Ch3.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="Ch3.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># This labels the y-axis</span></span>
+<span id="cb6-8"><a href="Ch3.html#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Voltage in mV&#39;</span>)</span>
+<span id="cb6-9"><a href="Ch3.html#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="Ch3.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># This labels the x-axis</span></span>
+<span id="cb6-11"><a href="Ch3.html#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Time in ms)</span></span>
+<span id="cb6-12"><a href="Ch3.html#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="Ch3.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="er"># This sets the title</span></span>
+<span id="cb6-14"><a href="Ch3.html#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="er">plt.title(&#39;Voltage versus time)</span></span></code></pre></div>
+<p>The final graph looks like this:</p>
+<div style="float:center;width:450px">
+<div class="figure"><span style="display:block;" id="fig:integrateFire-fig"></span>
+<img src="images/integrateFire.png" alt="Output of sample code" width="281" />
 <p class="caption">
-Figure 4.5: Output of sample code
+Figure 4.7: Output of sample code
 </p>
+</div>
 </div>
 <p><strong>Step 7:</strong> Explore your simulation<br />
 Now that you have designed an algorithm to plot Johnny’s experiment you are capable of learning a few characteristics of the design. For example, if you are curious about the voltage at a particular time step, you can read it out of the voltage vector. For instance, if you wanted to know the voltage at time point 2540 you would type:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="Ch3.html#cb13-1"></a><span class="bu">print</span>(voltageVector[<span class="dv">2540</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="Ch3.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(voltageVector[<span class="dv">2540</span>])</span></code></pre></div>
 <p>If you wanted to change the strength of the applied stimulation, or the duration of each pulse, you may edit these lines:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="Ch3.html#cb14-1"></a>stimVector[<span class="dv">0</span>:<span class="dv">2000</span>] <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb14-2"><a href="Ch3.html#cb14-2"></a>stimVector[<span class="dv">2500</span>:<span class="dv">4000</span>]<span class="op">=</span> <span class="fl">1.3</span></span>
-<span id="cb14-3"><a href="Ch3.html#cb14-3"></a>stimVector[<span class="dv">5000</span>:<span class="dv">7000</span>] <span class="op">=</span> <span class="fl">2.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="Ch3.html#cb8-1" aria-hidden="true" tabindex="-1"></a>stimVector[<span class="dv">0</span>:<span class="dv">2000</span>] <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb8-2"><a href="Ch3.html#cb8-2" aria-hidden="true" tabindex="-1"></a>stimVector[<span class="dv">2500</span>:<span class="dv">4000</span>]<span class="op">=</span> <span class="fl">1.3</span></span>
+<span id="cb8-3"><a href="Ch3.html#cb8-3" aria-hidden="true" tabindex="-1"></a>stimVector[<span class="dv">5000</span>:<span class="dv">7000</span>] <span class="op">=</span> <span class="fl">2.0</span></span></code></pre></div>
 <p><strong>Worked Example:</strong><br />
 Johnny has now developed a general model of how a hippocampal neuron fires. But Mr. Firehydrant wants to know how both the length of the stimulation pulse and the strength of that pulse interact to influence the neuron’s firing. Johnny devises the following stimulation protocol:</p>
 <ul>
@@ -679,84 +815,181 @@ Johnny has now developed a general model of how a hippocampal neuron fires. But 
 </ul>
 <p>This appears more difficult than it is, and much of what you did for the previous example will help here. Graph the cell’s voltage over time as well as the external current over time. Notice how increasing the duration of the current pulse provides an additive effect in bringing the cell’s membrane potential closer to threshold.</p>
 <p>Most of your previous simulation can be recycled in full. You will make changes to two sections: defining your stimulation vector, and in adding a second graph. Here, we set the stimulation protocol.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="Ch3.html#cb15-1"></a><span class="co"># Begin by setting the default stimulation level to 0</span></span>
-<span id="cb15-2"><a href="Ch3.html#cb15-2"></a>stimVector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVector))</span>
-<span id="cb15-3"><a href="Ch3.html#cb15-3"></a></span>
-<span id="cb15-4"><a href="Ch3.html#cb15-4"></a><span class="co"># At 0.5 ms, 0.5 nA of current is injected</span></span>
-<span id="cb15-5"><a href="Ch3.html#cb15-5"></a>stimVector[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb15-6"><a href="Ch3.html#cb15-6"></a></span>
-<span id="cb15-7"><a href="Ch3.html#cb15-7"></a><span class="co"># From 50 to 54 ms, 5 nA are injected into the cell</span></span>
-<span id="cb15-8"><a href="Ch3.html#cb15-8"></a>stimVector[<span class="dv">999</span>:<span class="dv">1080</span>] <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb15-9"><a href="Ch3.html#cb15-9"></a></span>
-<span id="cb15-10"><a href="Ch3.html#cb15-10"></a><span class="co"># At 150 ms, 15 nA is injected for one time step</span></span>
-<span id="cb15-11"><a href="Ch3.html#cb15-11"></a>stimVector[<span class="dv">2999</span>] <span class="op">=</span> <span class="dv">15</span></span>
-<span id="cb15-12"><a href="Ch3.html#cb15-12"></a></span>
-<span id="cb15-13"><a href="Ch3.html#cb15-13"></a><span class="co"># From 200-202 ms, the current is held at 15 nA</span></span>
-<span id="cb15-14"><a href="Ch3.html#cb15-14"></a>stimVector[<span class="dv">3999</span>:<span class="dv">4040</span>] <span class="op">=</span> <span class="dv">15</span></span>
-<span id="cb15-15"><a href="Ch3.html#cb15-15"></a></span>
-<span id="cb15-16"><a href="Ch3.html#cb15-16"></a><span class="co"># A pulse of 30 nA at 250 ms</span></span>
-<span id="cb15-17"><a href="Ch3.html#cb15-17"></a>stimVector[<span class="dv">4999</span>] <span class="op">=</span> <span class="dv">30</span></span>
-<span id="cb15-18"><a href="Ch3.html#cb15-18"></a></span>
-<span id="cb15-19"><a href="Ch3.html#cb15-19"></a><span class="co"># From 300 to 301 ms, the applied current is 30 nA</span></span>
-<span id="cb15-20"><a href="Ch3.html#cb15-20"></a>stimVector[<span class="dv">5999</span>:<span class="dv">6020</span>] <span class="op">=</span> <span class="dv">30</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="Ch3.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Begin by setting the default stimulation level to 0</span></span>
+<span id="cb9-2"><a href="Ch3.html#cb9-2" aria-hidden="true" tabindex="-1"></a>stimVector <span class="op">=</span> np.zeros(<span class="bu">len</span>(timeVector))</span>
+<span id="cb9-3"><a href="Ch3.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="Ch3.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># At 0.5 ms, 0.5 nA of current is injected</span></span>
+<span id="cb9-5"><a href="Ch3.html#cb9-5" aria-hidden="true" tabindex="-1"></a>stimVector[timeVector<span class="op">==</span><span class="fl">0.5</span>] <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb9-6"><a href="Ch3.html#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="Ch3.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># From 50 to 54 ms, 5 nA are injected into the cell</span></span>
+<span id="cb9-8"><a href="Ch3.html#cb9-8" aria-hidden="true" tabindex="-1"></a>tStart <span class="op">=</span> np.where(timeVector<span class="op">==</span><span class="dv">50</span>)[<span class="dv">0</span>]</span>
+<span id="cb9-9"><a href="Ch3.html#cb9-9" aria-hidden="true" tabindex="-1"></a>tEnd <span class="op">=</span> np.where(timeVector<span class="op">==</span><span class="dv">54</span>)[<span class="dv">0</span>]</span>
+<span id="cb9-10"><a href="Ch3.html#cb9-10" aria-hidden="true" tabindex="-1"></a>stimVector[tStart[<span class="dv">0</span>]:tEnd[<span class="dv">0</span>]] <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb9-11"><a href="Ch3.html#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="Ch3.html#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># At 150 ms, 15 nA is injected for one time step</span></span>
+<span id="cb9-13"><a href="Ch3.html#cb9-13" aria-hidden="true" tabindex="-1"></a>stimVector[timeVector<span class="op">==</span><span class="dv">150</span>] <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb9-14"><a href="Ch3.html#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="Ch3.html#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># From 200-202 ms, the current is held at 15 nA</span></span>
+<span id="cb9-16"><a href="Ch3.html#cb9-16" aria-hidden="true" tabindex="-1"></a>tStart <span class="op">=</span> np.where(timeVector<span class="op">==</span><span class="dv">200</span>)[<span class="dv">0</span>]</span>
+<span id="cb9-17"><a href="Ch3.html#cb9-17" aria-hidden="true" tabindex="-1"></a>tEnd <span class="op">=</span> np.where(timeVector<span class="op">==</span><span class="dv">202</span>)[<span class="dv">0</span>]</span>
+<span id="cb9-18"><a href="Ch3.html#cb9-18" aria-hidden="true" tabindex="-1"></a>stimVector[tStart[<span class="dv">0</span>]:tEnd[<span class="dv">0</span>]] <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb9-19"><a href="Ch3.html#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="Ch3.html#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># A pulse of 30 nA at 250 ms</span></span>
+<span id="cb9-21"><a href="Ch3.html#cb9-21" aria-hidden="true" tabindex="-1"></a>stimVector[timeVector<span class="op">==</span><span class="dv">250</span>] <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb9-22"><a href="Ch3.html#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="Ch3.html#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># From 300 to 301 ms, the applied current is 30 nA</span></span>
+<span id="cb9-24"><a href="Ch3.html#cb9-24" aria-hidden="true" tabindex="-1"></a>tStart <span class="op">=</span> np.where(timeVector<span class="op">==</span><span class="dv">300</span>)[<span class="dv">0</span>]</span>
+<span id="cb9-25"><a href="Ch3.html#cb9-25" aria-hidden="true" tabindex="-1"></a>tEnd <span class="op">=</span> np.where(timeVector<span class="op">==</span><span class="dv">301</span>)[<span class="dv">0</span>]</span>
+<span id="cb9-26"><a href="Ch3.html#cb9-26" aria-hidden="true" tabindex="-1"></a>stimVector[tStart[<span class="dv">0</span>]:tEnd[<span class="dv">0</span>]] <span class="op">=</span> <span class="dv">30</span></span></code></pre></div>
 <p>And this code snippet creates our two plots.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="Ch3.html#cb16-1"></a><span class="co"># This sets the plot object</span></span>
-<span id="cb16-2"><a href="Ch3.html#cb16-2"></a>plt.figure()</span>
-<span id="cb16-3"><a href="Ch3.html#cb16-3"></a></span>
-<span id="cb16-4"><a href="Ch3.html#cb16-4"></a><span class="co"># This defines that we are plotting into the top plot</span></span>
-<span id="cb16-5"><a href="Ch3.html#cb16-5"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># two rows, one column, first graph</span></span>
-<span id="cb16-6"><a href="Ch3.html#cb16-6"></a></span>
-<span id="cb16-7"><a href="Ch3.html#cb16-7"></a><span class="co"># Plots time on the x-axis and current on the y-axis</span></span>
-<span id="cb16-8"><a href="Ch3.html#cb16-8"></a>plt.plot(timeVector, stimVector)</span>
-<span id="cb16-9"><a href="Ch3.html#cb16-9"></a></span>
-<span id="cb16-10"><a href="Ch3.html#cb16-10"></a><span class="co"># Labels the x-axis</span></span>
-<span id="cb16-11"><a href="Ch3.html#cb16-11"></a>plt.xlabel(<span class="st">&#39;Time in ms&#39;</span>)</span>
-<span id="cb16-12"><a href="Ch3.html#cb16-12"></a></span>
-<span id="cb16-13"><a href="Ch3.html#cb16-13"></a><span class="co"># Labels the y-axis</span></span>
-<span id="cb16-14"><a href="Ch3.html#cb16-14"></a>plt.ylabel(<span class="st">&#39;External current in nA&#39;</span>)</span>
-<span id="cb16-15"><a href="Ch3.html#cb16-15"></a></span>
-<span id="cb16-16"><a href="Ch3.html#cb16-16"></a><span class="co"># Titles the plot</span></span>
-<span id="cb16-17"><a href="Ch3.html#cb16-17"></a>plt.title(<span class="st">&#39;External Stimulation vs Time&#39;</span>)</span>
-<span id="cb16-18"><a href="Ch3.html#cb16-18"></a></span>
-<span id="cb16-19"><a href="Ch3.html#cb16-19"></a><span class="co"># This defines that we are plotting into the top plot</span></span>
-<span id="cb16-20"><a href="Ch3.html#cb16-20"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># 2 rows, 1 column, 2nd graph</span></span>
-<span id="cb16-21"><a href="Ch3.html#cb16-21"></a></span>
-<span id="cb16-22"><a href="Ch3.html#cb16-22"></a><span class="co"># Plots time on the x-axis and voltage on the y-axis</span></span>
-<span id="cb16-23"><a href="Ch3.html#cb16-23"></a>plt.plot(timeVector, voltageVector)</span>
-<span id="cb16-24"><a href="Ch3.html#cb16-24"></a></span>
-<span id="cb16-25"><a href="Ch3.html#cb16-25"></a><span class="co"># Labels the x-axis</span></span>
-<span id="cb16-26"><a href="Ch3.html#cb16-26"></a>plt.xlabel(<span class="st">&#39;Time in ms&#39;</span>)</span>
-<span id="cb16-27"><a href="Ch3.html#cb16-27"></a></span>
-<span id="cb16-28"><a href="Ch3.html#cb16-28"></a><span class="co"># Labels the y-axis</span></span>
-<span id="cb16-29"><a href="Ch3.html#cb16-29"></a>plt.ylabel(<span class="st">&#39;Membrane potential in mV&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="Ch3.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This sets the plot object</span></span>
+<span id="cb10-2"><a href="Ch3.html#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb10-3"><a href="Ch3.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="Ch3.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This defines that we are plotting into the top plot</span></span>
+<span id="cb10-5"><a href="Ch3.html#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># two rows, one column, first graph</span></span>
+<span id="cb10-6"><a href="Ch3.html#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="Ch3.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plots time on the x-axis and current on the y-axis</span></span>
+<span id="cb10-8"><a href="Ch3.html#cb10-8" aria-hidden="true" tabindex="-1"></a>plt.plot(timeVector, stimVector)</span>
+<span id="cb10-9"><a href="Ch3.html#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="Ch3.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels the x-axis</span></span>
+<span id="cb10-11"><a href="Ch3.html#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Time in ms&#39;</span>)</span>
+<span id="cb10-12"><a href="Ch3.html#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="Ch3.html#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels the y-axis</span></span>
+<span id="cb10-14"><a href="Ch3.html#cb10-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;External current in nA&#39;</span>)</span>
+<span id="cb10-15"><a href="Ch3.html#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="Ch3.html#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Titles the plot</span></span>
+<span id="cb10-17"><a href="Ch3.html#cb10-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;External Stimulation vs Time&#39;</span>)</span>
+<span id="cb10-18"><a href="Ch3.html#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="Ch3.html#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># This defines that we are plotting into the top plot</span></span>
+<span id="cb10-20"><a href="Ch3.html#cb10-20" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># 2 rows, 1 column, 2nd graph</span></span>
+<span id="cb10-21"><a href="Ch3.html#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="Ch3.html#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Plots time on the x-axis and voltage on the y-axis</span></span>
+<span id="cb10-23"><a href="Ch3.html#cb10-23" aria-hidden="true" tabindex="-1"></a>plt.plot(timeVector, voltageVector)</span>
+<span id="cb10-24"><a href="Ch3.html#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="Ch3.html#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels the x-axis</span></span>
+<span id="cb10-26"><a href="Ch3.html#cb10-26" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Time in ms&#39;</span>)</span>
+<span id="cb10-27"><a href="Ch3.html#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="Ch3.html#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels the y-axis</span></span>
+<span id="cb10-29"><a href="Ch3.html#cb10-29" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Membrane potential in mV&#39;</span>)</span></code></pre></div>
 The plot looks like this:<br />
 
-<div class="figure"><span id="fig:integrateFire2-fig"></span>
-<img src="images/integrateFire2.png" alt="Output of sample code"  />
+<div class="figure"><span style="display:block;" id="fig:integrateFire2-fig"></span>
+<img src="images/integrateFire2.png" alt="Output of sample code" width="408" />
 <p class="caption">
-Figure 4.6: Output of sample code
+Figure 4.8: Output of sample code
 </p>
 </div>
 </div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">4.6</span> Summary</h2>
+<div id="summary-2" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Summary<a href="Ch3.html#summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="passive-membrane-model" class="section level3 hasAnchor" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Passive membrane model:<a href="Ch3.html#passive-membrane-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>The neuron is like a battery. We can assign different characteristics in a neuron to
+different parts of a circuit:
+<ul>
+<li>Cell membrane = capacitor</li>
+<li>Ions = charge (Q)</li>
+<li>Current = injected stimulus (I)</li>
+<li>Voltage = membrane potential (V)</li>
+</ul></li>
+<li>We can use concepts from Ohm’s law to model a neuron’s capacitance:
+<ul>
+<li><span class="math inline">\(Q = C_mV_m\)</span></li>
+</ul></li>
+<li>We can use the GHK equation to compute the resting potential of a neuron.
+<ul>
+<li><span class="math inline">\(V_{m} = \frac{RT}{F}ln(\frac{P_{K}[K+]_{out}+P_{Na}[Na+]_{out}+P_{Cl}[Cl-]_{in}}{P_{K}[K+]_{in}+P_{Na}[Na+]_{in}+P_{Cl}[Cl-]_{out}})\)</span></li>
+</ul></li>
+<li>We can combine the concepts listed above to model the change in voltage of a cell!
+<ul>
+<li>For circuits in parallel, the currents will sum.</li>
+<li><span class="math inline">\(\tau_m \frac{dV_m}{dt} = R_m I_e + E_L-V_m\)</span></li>
+</ul></li>
+<li>Leaky integrate and fire:
+<ul>
+<li>The leaky integrate and fire model is a way to model a neuron’s membrane
+potential using code.
+<ul>
+<li>In this model, current needs to be injected into the neuron, and as a result
+the neuron will produce a spike, which is modeled as an action potential.</li>
+<li>It represents a neuron as a combination of conductance (the “leaky
+resistance”) and a capacitor.</li>
+</ul></li>
+<li>This model operates on the assumption that most stimuli give rise to roughly the
+same spike forms (i.e. that interspike intervals do not vary for a given stimulus).</li>
+<li>This model cannot store information regarding previous spike activity because it
+resets the membrane potential after each spike is fired.</li>
+</ul></li>
+</ul>
 </div>
-<div id="exercises" class="section level2">
-<h2><span class="header-section-number">4.7</span> Exercises</h2>
-<div id="conceptual-exercises" class="section level3">
-<h3><span class="header-section-number">4.7.1</span> Conceptual Exercises</h3>
+<div id="an-action-potential-has-six-phases" class="section level3 hasAnchor" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> An action potential has six phases:<a href="Ch3.html#an-action-potential-has-six-phases" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Resting phase: when only the sodium-potassium pump and leakage channels are open.</li>
+<li>The threshold: activation of voltage-gated sodium and potassium channels.</li>
+<li>Depolarization: net increase in membrane potential as a result of the flow of sodium ions into the cell through the open voltage-gated sodium channels.</li>
+<li>Overshoot: inactivation of sodium channels and activation of potassium channels.</li>
+<li>Repolarization: net decrease in membrane potential back to its resting potential as a result of the flow of potassium ions out of the cell through the open voltage-gated potassium channels.</li>
+<li>Hyperpolarization (undershoot): open voltage-gated potassium channels that cause the
+membrane potential to fall below the resting potential. An action that is corrected by the
+sodium-potassium pump and the leakage channels.</li>
+</ol>
+</div>
+<div id="main-features-of-an-action-potential" class="section level3 hasAnchor" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span> Main features of an action potential:<a href="Ch3.html#main-features-of-an-action-potential" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>The sodium-potassium pump and leakage channels are ALWAYS functioning.</li>
+<li>Potassium channels are slow to open and slow to close.</li>
+<li>At resting membrane potential, the inside of the cell has a net negative charge and the
+extracellular contents are more net positive.</li>
+<li>Ions will always follow both their electrical and concentration gradients unless some
+process prevents them from doing so.</li>
+<li>The positive feedback loop causes depolarization and the negative feedback loop
+causes repolarization.</li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:actionPotential2-fig"></span>
+<img src="images/actionPotential.png" alt="Example of an action potential." width="344" />
+<p class="caption">
+Figure 4.9: Example of an action potential.
+</p>
+</div>
+</div>
+<div id="the-flow-of-ions-and-equilibrium-potentials" class="section level3 hasAnchor" number="4.7.4">
+<h3><span class="header-section-number">4.7.4</span> The flow of ions and equilibrium potentials<a href="Ch3.html#the-flow-of-ions-and-equilibrium-potentials" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>The main idea: equilibrium potentials are dictated by the separation of charges and the
+distribution of ions across the membrane.</li>
+<li>There are two types of equilibrium potentials that influence action potentials:
+<ol style="list-style-type: decimal">
+<li>Membrane Potential: the electrical potential when the sum of all electrical concentration
+gradients of each species of the intracellular and extracellular ion at a specified time are at
+equilibrium.</li>
+<li>Nernst Potential: the electrical potential when the force of the concentration gradient matches the electrical force attracting or repelling a specific species of ion.
+<ul>
+<li>Is also referred to as the reversal potential.</li>
+<li>Each species of ion has its own Nernst potential.</li>
+</ul></li>
+</ol></li>
+</ul>
+</div>
+</div>
+<div id="exercises-1" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Exercises<a href="Ch3.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conceptual-exercises" class="section level3 hasAnchor" number="4.8.1">
+<h3><span class="header-section-number">4.8.1</span> Conceptual Exercises<a href="Ch3.html#conceptual-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p>Describe the life cycle of an action potential. Be sure to include changes in channels/pumps, ion movement, and voltage.</p></li>
 <li><p>Explain why the resting potential is a steady state and how ion permeability and Nernst potential play a role.</p></li>
 <li><p>What does the Goldman-Hodgkin-Katz (GHK) equation tell you and when should it be used?</p></li>
-<li><p>What are the different ways molecules can move across the membrane of the neuron?</p></li>
+<li><p>What are the different ways ions can move across the membrane of the neuron?</p></li>
 <li><p>Water flow abides by similar rules as ions flowing across a membrane in a neuron. Match each aspect of ion flow to water flow below. Explain your reasoning.</p></li>
 <li><p>Explain how depolarization and hyperpolarization relate to positive/negative feedback.</p></li>
 </ol>
-<div class="figure"><span id="fig:dam-fig"></span>
+<div class="figure"><span style="display:block;" id="fig:dam-fig"></span>
 <img src="images/SQK_Dam_DSC_3657.jpg" alt="Match each part of the water flow in this dam to ion flow in a neuron."  />
 <p class="caption">
-Figure 4.7: Match each part of the water flow in this dam to ion flow in a neuron.
+Figure 4.10: Match each part of the water flow in this dam to ion flow in a neuron.
 </p>
 </div>
 <table>
@@ -788,8 +1021,8 @@ Figure 4.7: Match each part of the water flow in this dam to ion flow in a neuro
 <li><p>Explain the difference between the membrane potential, Nernst potential and equilibrium potential.</p></li>
 </ol>
 </div>
-<div id="coding-exercises" class="section level3">
-<h3><span class="header-section-number">4.7.2</span> Coding Exercises</h3>
+<div id="coding-exercises" class="section level3 hasAnchor" number="4.8.2">
+<h3><span class="header-section-number">4.8.2</span> Coding Exercises<a href="Ch3.html#coding-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Let us walk through calculating the Nernst potential in Python. 1. Shown below is the Nernst equation that allows us to calculate the Nernst potential (AKA: reversal potential, resting potential) of the crucial ions (Na+, K+, Cl-) in our body that make action potentials possible.<br />
 <span class="math display">\[E_{ion} = \frac{RT}{zF}ln(\frac{[out]}{[in]}) \]</span>
@@ -818,6 +1051,12 @@ Okay, I know this equation may seem to be made up of lots of different variables
 <li>Good job! Now, let’s apply your function to calculate more realistic Nernst potentials for Na+, K+, and Cl- given their actual ionic concentrations:</li>
 </ol>
 <table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Ion</th>
@@ -891,7 +1130,6 @@ The first part of the equation looks similar to the Nernst equation - great!<br 
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
 <script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -910,6 +1148,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -918,8 +1157,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-PassiveMembrane.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -929,7 +1168,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Computational Neuroscience.pdf", "Computational Neuroscience.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 },
@@ -946,7 +1189,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
